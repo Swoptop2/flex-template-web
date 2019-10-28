@@ -1,4 +1,6 @@
 version: 2
+orbs: 
+  heroku: circleci/heroku@0.0.6
 jobs:
   format:
     docker:
@@ -92,10 +94,42 @@ jobs:
       - run:
           name: Audit dependencies
           command: yarn run audit
+  deploy_dev:
+    docker:
+      - image: cirlceci/node:10.14
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git: 
+          app-name: swoptop-dev
+          only-branch: master
+  deploy_prod: 
+    docker:
+      - image: circleci/node:10.14  
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git: 
+          app-name: swoptop-prod
+          only-branch: master
 workflows:
   version: 2
-  format_test_build_audit:
-    jobs:
-      - format
+  deploy_dev_promote_prod:
+    jobs: 
       - test
       - build
+      # - audit
+      - format
+      - deploy_dev: 
+          requires: 
+            - build
+            # - audit
+            - test
+            - format            
+      - hold:
+          type: approval
+          requires: 
+            - deploy_dev     
+      - deploy_prod: 
+          requires: 
+            - hold  

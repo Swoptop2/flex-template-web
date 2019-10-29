@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 orbs: 
   heroku: circleci/heroku@0.0.6
 jobs:
@@ -94,9 +94,9 @@ jobs:
       - run:
           name: Audit dependencies
           command: yarn run audit
-  deploy_dev:
+  deploy_dev: 
     docker:
-      - image: cirlceci/node:10.14
+      - image: circleci/node:10.14  
     steps:
       - checkout
       - heroku/install
@@ -114,7 +114,7 @@ jobs:
           only-branch: master
 workflows:
   version: 2
-  deploy_dev_promote_prod:
+  deploy_dev_promote_prod: 
     jobs: 
       - test
       - build
@@ -132,4 +132,4 @@ workflows:
             - deploy_dev     
       - deploy_prod: 
           requires: 
-            - hold  
+            - hold      

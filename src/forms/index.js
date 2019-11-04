@@ -2,6 +2,12 @@ export { default as BookingDatesForm } from './BookingDatesForm/BookingDatesForm
 export { default as ContactDetailsForm } from './ContactDetailsForm/ContactDetailsForm';
 export { default as EditListingAvailabilityForm } from './EditListingAvailabilityForm/EditListingAvailabilityForm';
 export { default as EditListingDescriptionForm } from './EditListingDescriptionForm/EditListingDescriptionForm';
+export { default as EditListingRetailPricingForm } from './EditListingRetailPricingForm/EditListingRetailPricingForm';
+export { default as EditListingBrandForm } from './EditListingBrandForm/EditListingBrandForm';
+export { default as EditListingItemForm } from './EditListingItemForm/EditListingItemForm';
+export { default as EditListingSizeForm } from './EditListingSizeForm/EditListingSizeForm';
+export { default as EditListingColorForm } from './EditListingColorForm/EditListingColorForm';
+export { default as EditListingDamagePricingForm } from './EditListingDamagePricingForm/EditListingDamagePricingForm';
 export { default as EditListingFeaturesForm } from './EditListingFeaturesForm/EditListingFeaturesForm';
 export { default as EditListingLocationForm } from './EditListingLocationForm/EditListingLocationForm';
 export { default as EditListingPhotosForm } from './EditListingPhotosForm/EditListingPhotosForm';

@@ -22,8 +22,8 @@
   /* Full screen Background image located in root-folder/src/assets */
   --backgroundImage: {
     /* Gradient direction and overlaying the black color on top of the image for better readability */
-    background: linear-gradient(-45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),
-      url('../../assets/background-1440.jpg');
+    background: linear-gradient(-45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
+      url('../../assets/bg.jpg');
 
     /* Add loading color for the div */
     background-color: var(--matterColor);
@@ -32,11 +32,11 @@
     background-size: cover;
 
     /* Align the image within the container */
-    background-position: center center;
+    background-position: center 15%;
 
     @media (--viewportLarge) {
-      border-radius: 40px;
-      border: solid 36px var(--matterColorBright);
+      border-radius: 25px;
+      border: solid 16px var(--matterColorBright);
     }
   }
 

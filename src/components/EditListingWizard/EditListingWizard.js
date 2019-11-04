@@ -16,9 +16,12 @@ import { Modal, NamedRedirect, Tabs } from '../../components';
 
 import EditListingWizardTab, {
   AVAILABILITY,
-  DESCRIPTION,
-  FEATURES,
-  POLICY,
+  BRAND,
+  RETAIL_PRICE,
+  ITEM,
+  SIZE,
+  COLOR,
+  DAMAGE_PRICE,
   LOCATION,
   PRICING,
   PHOTOS,
@@ -31,9 +34,12 @@ const availabilityMaybe = config.enableAvailability ? [AVAILABILITY] : [];
 // TODO: PHOTOS panel needs to be the last one since it currently contains PayoutDetailsForm modal
 // All the other panels can be reordered.
 export const TABS = [
-  DESCRIPTION,
-  FEATURES,
-  POLICY,
+  RETAIL_PRICE,
+  BRAND,
+  ITEM,
+  SIZE,
+  COLOR,
+  DAMAGE_PRICE,
   LOCATION,
   PRICING,
   ...availabilityMaybe,
@@ -45,12 +51,18 @@ const MAX_HORIZONTAL_NAV_SCREEN_WIDTH = 1023;
 
 const tabLabel = (intl, tab) => {
   let key = null;
-  if (tab === DESCRIPTION) {
-    key = 'EditListingWizard.tabLabelDescription';
-  } else if (tab === FEATURES) {
-    key = 'EditListingWizard.tabLabelFeatures';
-  } else if (tab === POLICY) {
-    key = 'EditListingWizard.tabLabelPolicy';
+  if (tab === RETAIL_PRICE) {
+    key = 'EditListingWizard.tabLabelRetailPrice';
+  } else if (tab === BRAND) {
+    key = 'EditListingWizard.tabLabelBrand';
+  } else if (tab === ITEM) {
+    key = 'EditListingWizard.tabLabelItem';
+  } else if (tab === SIZE) {
+    key = 'EditListingWizard.tabLabelSize';
+  } else if (tab === COLOR) {
+    key = 'EditListingWizard.tabLabelColor';
+  } else if (tab === DAMAGE_PRICE) {
+    key = 'EditListingWizard.tabLabelDamagePrice';
   } else if (tab === LOCATION) {
     key = 'EditListingWizard.tabLabelLocation';
   } else if (tab === PRICING) {
@@ -73,23 +85,22 @@ const tabLabel = (intl, tab) => {
  * @return true if tab / step is completed.
  */
 const tabCompleted = (tab, listing) => {
-  const {
-    availabilityPlan,
-    description,
-    geolocation,
-    price,
-    title,
-    publicData,
-  } = listing.attributes;
+  const { availabilityPlan, geolocation, price, publicData } = listing.attributes;
   const images = listing.images;
 
   switch (tab) {
-    case DESCRIPTION:
-      return !!(description && title);
-    case FEATURES:
-      return !!(publicData && publicData.amenities);
-    case POLICY:
-      return !!(publicData && typeof publicData.rules !== 'undefined');
+    case RETAIL_PRICE:
+      return !!(publicData && publicData.retailPrice);
+    case BRAND:
+      return !!(publicData && publicData.brand);
+    case ITEM:
+      return !!(publicData && publicData.item);
+    case SIZE:
+      return !!(publicData && publicData.size);
+    case COLOR:
+      return !!(publicData && publicData.color);
+    case DAMAGE_PRICE:
+      return !!(publicData && publicData.damagePrice);
     case LOCATION:
       return !!(geolocation && publicData && publicData.location && publicData.location.address);
     case PRICING:

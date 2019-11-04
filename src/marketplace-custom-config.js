@@ -44,6 +44,52 @@ export const categories = [
   { key: 'other', label: 'Other' },
 ];
 
+export const items = [
+  { key: '1', label: 'Dresses' },
+  { key: '2', label: 'Rompes' },
+  { key: '3', label: 'Matching Set' },
+  { key: '4', label: 'Tops' },
+  { key: '5', label: 'Sweaters' },
+  { key: '6', label: 'Jackets' },
+  { key: '7', label: 'Pants' },
+  { key: '8', label: 'Skirts' },
+  { key: '9', label: 'Shorts' },
+  { key: '10', label: 'Bodysuits' },
+  { key: '11', label: 'Other' },
+];
+
+export const sizes = [
+  { key: '1', label: 'XXS, 00, 24' },
+  { key: '2', label: 'XS, 0, 25' },
+  { key: '3', label: 'S, 2, 26' },
+  { key: '4', label: 'S, 4, 27' },
+  { key: '5', label: 'M, 6, 28' },
+  { key: '6', label: 'M, 8, 29' },
+  { key: '7', label: 'L, 10, 30' },
+  { key: '8', label: 'L, 12, 31' },
+  { key: '9', label: 'XXL, 14, 32' },
+  { key: '10', label: 'XXL, 16, 33' },
+];
+
+export const colors = [
+  { key: '1', label: 'Black' },
+  { key: '2', label: 'White' },
+  { key: '3', label: 'Multicolored/Print' },
+  { key: '4', label: 'Red' },
+  { key: '5', label: 'Orange' },
+  { key: '6', label: 'Yellow' },
+  { key: '7', label: 'Green' },
+  { key: '8', label: 'Blue/Navy' },
+  { key: '9', label: 'Denim' },
+  { key: '10', label: 'Purple' },
+  { key: '11', label: 'Pink' },
+  { key: '12', label: 'Brown' },
+  { key: '13', label: 'Gray' },
+  { key: '14', label: 'Metallic' },
+  { key: '15', label: 'Sequin' },
+  { key: '16', label: 'Nude' },
+];
+
 // Price filter configuration
 // Note: unlike most prices this is not handled in subunits
 export const priceFilterConfig = {

@@ -32,6 +32,10 @@
   }
 }
 
+.fieldSelect {
+  margin-top: 10px;
+}
+
 .sectionTitle {
   /* Font */
   color: var(--matterColorAnti);

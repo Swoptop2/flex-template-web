@@ -9,8 +9,17 @@ import { ensureCurrentUser } from '../../util/data';
 import { propTypes } from '../../util/types';
 import * as validators from '../../util/validators';
 import { isUploadImageOverLimitError } from '../../util/errors';
-import { Form, Avatar, Button, ImageFromFile, IconSpinner, FieldTextInput } from '../../components';
-
+import {
+  Form,
+  Avatar,
+  Button,
+  ImageFromFile,
+  IconSpinner,
+  FieldTextInput,
+  FieldSelectState,
+  FieldSelect,
+} from '../../components';
+import csc from 'country-state-city';
 import css from './ProfileSettingsForm.css';
 
 const ACCEPT_IMAGES = 'image/*';
@@ -19,10 +28,16 @@ const UPLOAD_CHANGE_DELAY = 2000; // Show spinner so that browser has time to lo
 class ProfileSettingsFormComponent extends Component {
   constructor(props) {
     super(props);
-
+    const stateName = props.initialValues.state;
+    const stateId = csc.getStatesOfCountry('231').find(elem => elem.name === stateName).id;
     this.uploadDelayTimeoutId = null;
-    this.state = { uploadDelay: false };
+    this.state = {
+      uploadDelay: false,
+      states: csc.getStatesOfCountry('231'),
+      cities: csc.getCitiesOfState(stateId),
+    };
     this.submittedValues = {};
+    this.changeState = this.changeState.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -38,6 +53,14 @@ class ProfileSettingsFormComponent extends Component {
 
   componentWillUnmount() {
     window.clearTimeout(this.uploadDelayTimeoutId);
+  }
+
+  changeState(e) {
+    this.setState({
+      cities: csc.getCitiesOfState(
+        e.target.options[e.target.options.selectedIndex].getAttribute('data-key')
+      ),
+    });
   }
 
   render() {
@@ -103,6 +126,13 @@ class ProfileSettingsFormComponent extends Component {
                 <IconSpinner />
               </div>
             ) : null;
+
+          // state
+          const stateRequiredMessage = 'You must select your state';
+          const stateRequired = validators.required(stateRequiredMessage);
+          // city
+          const cityRequiredMessage = 'You must select your city';
+          const cityRequired = validators.required(cityRequiredMessage);
 
           const hasUploadError = !!uploadImageError && !uploadInProgress;
           const errorClasses = classNames({ [css.avatarUploadError]: hasUploadError });
@@ -276,6 +306,39 @@ class ProfileSettingsFormComponent extends Component {
                     validate={lastNameRequired}
                   />
                 </div>
+                <FieldSelectState
+                  className={css.fieldSelect}
+                  label="State"
+                  validate={stateRequired}
+                  name="state"
+                  id="state"
+                  changeState={this.changeState}
+                >
+                  <option disabled value="">
+                    Choose your state...
+                  </option>
+                  {this.state.states.map(state => (
+                    <option value={state.name} data-key={state.id} key={state.id}>
+                      {state.name}
+                    </option>
+                  ))}
+                </FieldSelectState>
+                <FieldSelect
+                  className={css.fieldSelect}
+                  label="City"
+                  name="city"
+                  id="city"
+                  validate={cityRequired}
+                >
+                  <option disabled value="">
+                    Choose your city...
+                  </option>
+                  {this.state.cities.map(city => (
+                    <option value={city.name} key={city.id}>
+                      {city.name}
+                    </option>
+                  ))}
+                </FieldSelect>
               </div>
               <div className={classNames(css.sectionContainer, css.lastSection)}>
                 <h3 className={css.sectionTitle}>

@@ -1,6 +1,11 @@
 import { denormalisedResponseEntities } from '../../util/data';
 import { storableError } from '../../util/errors';
 import { currentUserShowSuccess } from '../../ducks/user.duck';
+import GeocoderMapBox from '../../components/LocationAutocompleteInput/GeocoderMapbox';
+import { types as sdkTypes } from '../../util/sdkLoader';
+
+const geoCode = new GeocoderMapBox();
+const { LatLng, UUID } = sdkTypes;
 
 // ================ Action types ================ //
 
@@ -146,6 +151,39 @@ export const updateProfile = actionPayload => {
     return sdk.currentUser
       .updateProfile(actionPayload, queryParams)
       .then(response => {
+        // update all listings' locations when user udpates his location
+        sdk.ownListings.query().then(resp => {
+          const listings = resp.data.data;
+          const listingIds = [];
+          listings.forEach(listing => listingIds.push(listing.id));
+          // 1. Destructure state and city from actionPayload
+          const {
+            protectedData: { city, state },
+          } = actionPayload;
+          // 2. Get origin from state and city using Geocode class
+          geoCode
+            .getPlacePredictions(`${city}, ${state}`)
+            .then(res => {
+              const newOrigin = new LatLng(
+                res.predictions[0].center[1],
+                res.predictions[0].center[0]
+              );
+              // 3. Loop through array of id's and update the listings
+              listingIds.forEach(item => {
+                sdk.ownListings
+                  .update({
+                    id: new UUID(item.uuid),
+                    geolocation: newOrigin,
+                    publicData: {
+                      location: { address: `${city}, ${state}, United States of America` },
+                    },
+                  })
+                  .then(updateResp => console.log(updateResp))
+                  .catch(err => console.log(err));
+              });
+            })
+            .catch(error => console.log(error));
+        });
         dispatch(updateProfileSuccess(response));
 
         const entities = denormalisedResponseEntities(response);

@@ -37,7 +37,6 @@ const SEARCH_WITH_MAP_DEBOUNCE = 300; // Little bit of debounce before search is
 export class SearchPageComponent extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       isSearchMapOpenOnMobile: props.tab === 'map',
       isMobileModalOpen: false,

@@ -17,7 +17,6 @@ import {
   EditListingSizePanel,
   EditListingColorPanel,
   EditListingDamagePricingPanel,
-  EditListingLocationPanel,
   EditListingPhotosPanel,
   EditListingPricingPanel,
 } from '../../components';
@@ -31,7 +30,6 @@ export const ITEM = 'item';
 export const SIZE = 'size';
 export const COLOR = 'color';
 export const DAMAGE_PRICE = 'damagePrice';
-export const LOCATION = 'location';
 export const PRICING = 'pricing';
 export const PHOTOS = 'photos';
 
@@ -43,7 +41,6 @@ export const SUPPORTED_TABS = [
   SIZE,
   COLOR,
   DAMAGE_PRICE,
-  LOCATION,
   PRICING,
   AVAILABILITY,
   PHOTOS,
@@ -240,20 +237,6 @@ const EditListingWizardTab = props => {
       return (
         <EditListingDamagePricingPanel
           {...panelProps(DAMAGE_PRICE)}
-          submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
-          onSubmit={values => {
-            onCompleteEditListingWizardTab(tab, values);
-          }}
-        />
-      );
-    }
-    case LOCATION: {
-      const submitButtonTranslationKey = isNewListingFlow
-        ? 'EditListingWizard.saveNewLocation'
-        : 'EditListingWizard.saveEditLocation';
-      return (
-        <EditListingLocationPanel
-          {...panelProps(LOCATION)}
           submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
           onSubmit={values => {
             onCompleteEditListingWizardTab(tab, values);

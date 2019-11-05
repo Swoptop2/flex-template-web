@@ -45,24 +45,13 @@ const EditListingRetailPricing = props => {
         initialValues={{ retailPrice: publicData.retailPrice }}
         onSubmit={values => {
           const { retailPrice = '' } = values;
-          let updateValues;
-          if (publicData.brand) {
-            updateValues = {
-              title: 'default',
-              description: 'default',
-              publicData: {
-                retailPrice,
-              },
-            };
-          } else {
-            updateValues = {
-              title: `${publicData.brand} $${retailPrice}`,
-              description: 'default',
-              publicData: {
-                retailPrice,
-              },
-            };
-          }
+          const updateValues = {
+            title: `${publicData.brand} $${retailPrice}`,
+            description: 'default',
+            publicData: {
+              retailPrice,
+            },
+          };
           onSubmit(updateValues);
         }}
         onChange={onChange}

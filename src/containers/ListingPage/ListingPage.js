@@ -45,8 +45,10 @@ import { sendEnquiry, loadData, setInitialValues } from './ListingPage.duck';
 import SectionImages from './SectionImages';
 import SectionAvatar from './SectionAvatar';
 import SectionHeading from './SectionHeading';
-import SectionDescriptionMaybe from './SectionDescriptionMaybe';
-import SectionFeaturesMaybe from './SectionFeaturesMaybe';
+import SectionItemMaybe from './SectionItemMaybe';
+import SectionSizeMaybe from './SectionSizeMaybe';
+import SectionColorMaybe from './SectionColorMaybe';
+import SectionDamageCostMaybe from './SectionDamageCostMaybe';
 import SectionReviews from './SectionReviews';
 import SectionHostMaybe from './SectionHostMaybe';
 import SectionRulesMaybe from './SectionRulesMaybe';
@@ -55,11 +57,14 @@ import css from './ListingPage.css';
 
 const MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE = 16;
 
-const { UUID } = sdkTypes;
+const { UUID, Money } = sdkTypes;
 
 const priceData = (price, intl) => {
+  const amount = price.amount;
+  const fixedAmount = amount * 3;
+  const fixedPrice = new Money(fixedAmount, config.currency);
   if (price && price.currency === config.currency) {
-    const formattedPrice = formatMoney(intl, price);
+    const formattedPrice = formatMoney(intl, fixedPrice);
     return { formattedPrice, priceTitle: formattedPrice };
   } else if (price) {
     return {
@@ -189,7 +194,9 @@ export class ListingPageComponent extends Component {
       timeSlots,
       fetchTimeSlotsError,
       categoriesConfig,
-      amenitiesConfig,
+      itemsConfig,
+      sizesConfig,
+      colorsConfig,
     } = this.props;
 
     const listingId = new UUID(rawParams.id);
@@ -235,7 +242,6 @@ export class ListingPageComponent extends Component {
       title = '',
       publicData,
     } = currentListing.attributes;
-
     const richTitle = (
       <span>
         {richText(title, {
@@ -325,7 +331,6 @@ export class ListingPageComponent extends Component {
     const authorDisplayName = userDisplayNameAsString(ensuredAuthor, '');
 
     const { formattedPrice, priceTitle } = priceData(price, intl);
-
     const handleBookingSubmit = values => {
       const isCurrentlyClosed = currentListing.attributes.state === LISTING_STATE_CLOSED;
       if (isOwnListing || isCurrentlyClosed) {
@@ -334,7 +339,6 @@ export class ListingPageComponent extends Component {
         this.handleSubmit(values);
       }
     };
-
     const listingImages = (listing, variantName) =>
       (listing.images || [])
         .map(image => {
@@ -426,8 +430,10 @@ export class ListingPageComponent extends Component {
                     showContactUser={showContactUser}
                     onContactUser={this.onContactUser}
                   />
-                  <SectionDescriptionMaybe description={description} />
-                  <SectionFeaturesMaybe options={amenitiesConfig} publicData={publicData} />
+                  <SectionItemMaybe options={itemsConfig} publicData={publicData} />
+                  <SectionSizeMaybe options={sizesConfig} publicData={publicData} />
+                  <SectionColorMaybe options={colorsConfig} publicData={publicData} />
+                  <SectionDamageCostMaybe publicData={publicData} />
                   <SectionRulesMaybe publicData={publicData} />
                   <SectionMapMaybe
                     geolocation={geolocation}
@@ -485,7 +491,9 @@ ListingPageComponent.defaultProps = {
   fetchTimeSlotsError: null,
   sendEnquiryError: null,
   categoriesConfig: config.custom.categories,
-  amenitiesConfig: config.custom.amenities,
+  itemsConfig: config.custom.items,
+  sizesConfig: config.custom.sizes,
+  colorsConfig: config.custom.colors,
 };
 
 ListingPageComponent.propTypes = {
@@ -526,7 +534,9 @@ ListingPageComponent.propTypes = {
   onInitializeCardPaymentData: func.isRequired,
 
   categoriesConfig: array,
-  amenitiesConfig: array,
+  itemsConfig: array,
+  sizesConfig: array,
+  colorsConfig: array,
 };
 
 const mapStateToProps = state => {

@@ -28,6 +28,10 @@
   width: calc(66% - 9px);
 }
 
+.fieldSelect {
+  margin-top: 10px;
+}
+
 .password {
   @apply --marketplaceModalPasswordMargins;
 }

@@ -22,7 +22,6 @@ import EditListingWizardTab, {
   SIZE,
   COLOR,
   DAMAGE_PRICE,
-  LOCATION,
   PRICING,
   PHOTOS,
 } from './EditListingWizardTab';
@@ -40,7 +39,6 @@ export const TABS = [
   SIZE,
   COLOR,
   DAMAGE_PRICE,
-  LOCATION,
   PRICING,
   ...availabilityMaybe,
   PHOTOS,
@@ -63,8 +61,6 @@ const tabLabel = (intl, tab) => {
     key = 'EditListingWizard.tabLabelColor';
   } else if (tab === DAMAGE_PRICE) {
     key = 'EditListingWizard.tabLabelDamagePrice';
-  } else if (tab === LOCATION) {
-    key = 'EditListingWizard.tabLabelLocation';
   } else if (tab === PRICING) {
     key = 'EditListingWizard.tabLabelPricing';
   } else if (tab === AVAILABILITY) {
@@ -85,7 +81,7 @@ const tabLabel = (intl, tab) => {
  * @return true if tab / step is completed.
  */
 const tabCompleted = (tab, listing) => {
-  const { availabilityPlan, geolocation, price, publicData } = listing.attributes;
+  const { availabilityPlan, price, publicData } = listing.attributes;
   const images = listing.images;
 
   switch (tab) {
@@ -101,8 +97,6 @@ const tabCompleted = (tab, listing) => {
       return !!(publicData && publicData.color);
     case DAMAGE_PRICE:
       return !!(publicData && publicData.damagePrice);
-    case LOCATION:
-      return !!(geolocation && publicData && publicData.location && publicData.location.address);
     case PRICING:
       return !!price;
     case AVAILABILITY:
@@ -333,7 +327,6 @@ EditListingWizard.propTypes = {
     attributes: shape({
       publicData: object,
       description: string,
-      geolocation: object,
       pricing: object,
       title: string,
     }),

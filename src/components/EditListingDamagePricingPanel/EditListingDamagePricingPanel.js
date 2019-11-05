@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from '../../util/reactIntl';
@@ -6,10 +6,14 @@ import { LISTING_STATE_DRAFT } from '../../util/types';
 import { ensureOwnListing } from '../../util/data';
 import { ListingLink } from '../../components';
 import { EditListingDamagePricingForm } from '../../forms';
-
+import GeocoderMapbox from '../LocationAutocompleteInput/GeocoderMapbox';
+import { types as sdkTypes } from '../../util/sdkLoader';
 import css from './EditListingDamagePricingPanel.css';
 
+const { LatLng } = sdkTypes;
+
 const EditListingDamagePricing = props => {
+  const [origin, setOrigin] = useState({});
   const {
     className,
     rootClassName,
@@ -22,9 +26,28 @@ const EditListingDamagePricing = props => {
     errors,
   } = props;
 
+  const geoCode = new GeocoderMapbox();
+
+  useEffect(() => {
+    geoCode.getPlacePredictions(`${city}, ${state}`).then(res => {
+      const newOrigin = new LatLng(res.predictions[0].center[1], res.predictions[0].center[0]);
+      setOrigin(newOrigin);
+    });
+    // eslint-disable-next-line
+  }, []);
+
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureOwnListing(listing);
   const { publicData } = currentListing.attributes;
+  const {
+    author: {
+      attributes: {
+        profile: {
+          protectedData: { city, state },
+        },
+      },
+    },
+  } = props.listing;
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
   const panelTitle = isPublished ? (
@@ -47,8 +70,10 @@ const EditListingDamagePricing = props => {
           // update listing location here, by pulling origin and address from current user's extended data
           const { damagePrice = '' } = values;
           const updateValues = {
+            geolocation: origin,
             publicData: {
               damagePrice,
+              location: { address: `${city}, ${state}, United States of America` },
             },
           };
           onSubmit(updateValues);

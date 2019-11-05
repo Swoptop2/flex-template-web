@@ -121,7 +121,7 @@ exports[`ListingPage matches snapshot 1`] = `
           <div>
             <SectionHeading
               category={null}
-              formattedPrice={55}
+              formattedPrice={165}
               hostLink={
                 <NamedLink
                   name="ListingPage"
@@ -141,7 +141,7 @@ exports[`ListingPage matches snapshot 1`] = `
                 </NamedLink>
               }
               onContactUser={[Function]}
-              priceTitle={55}
+              priceTitle={165}
               richTitle={
                 <span>
                   
@@ -153,26 +153,176 @@ exports[`ListingPage matches snapshot 1`] = `
               }
               showContactUser={true}
             />
-            <SectionDescriptionMaybe
-              description="listing1 description"
-            />
-            <SectionFeaturesMaybe
+            <SectionItem
               options={
                 Array [
                   Object {
-                    "key": "feat1",
-                    "label": "Feat 1",
+                    "key": "1",
+                    "label": "Dresses",
                   },
                   Object {
-                    "key": "feat2",
-                    "label": "Feat 2",
+                    "key": "2",
+                    "label": "Rompes",
                   },
                   Object {
-                    "key": "feat3",
-                    "label": "Feat 3",
+                    "key": "3",
+                    "label": "Matching Set",
+                  },
+                  Object {
+                    "key": "4",
+                    "label": "Tops",
+                  },
+                  Object {
+                    "key": "5",
+                    "label": "Sweaters",
+                  },
+                  Object {
+                    "key": "6",
+                    "label": "Jackets",
+                  },
+                  Object {
+                    "key": "7",
+                    "label": "Pants",
+                  },
+                  Object {
+                    "key": "8",
+                    "label": "Skirts",
+                  },
+                  Object {
+                    "key": "9",
+                    "label": "Shorts",
+                  },
+                  Object {
+                    "key": "10",
+                    "label": "Bodysuits",
+                  },
+                  Object {
+                    "key": "11",
+                    "label": "Other",
                   },
                 ]
               }
+              publicData={Object {}}
+            />
+            <SectionSize
+              options={
+                Array [
+                  Object {
+                    "key": "1",
+                    "label": "XXS, 00, 24",
+                  },
+                  Object {
+                    "key": "2",
+                    "label": "XS, 0, 25",
+                  },
+                  Object {
+                    "key": "3",
+                    "label": "S, 2, 26",
+                  },
+                  Object {
+                    "key": "4",
+                    "label": "S, 4, 27",
+                  },
+                  Object {
+                    "key": "5",
+                    "label": "M, 6, 28",
+                  },
+                  Object {
+                    "key": "6",
+                    "label": "M, 8, 29",
+                  },
+                  Object {
+                    "key": "7",
+                    "label": "L, 10, 30",
+                  },
+                  Object {
+                    "key": "8",
+                    "label": "L, 12, 31",
+                  },
+                  Object {
+                    "key": "9",
+                    "label": "XXL, 14, 32",
+                  },
+                  Object {
+                    "key": "10",
+                    "label": "XXL, 16, 33",
+                  },
+                ]
+              }
+              publicData={Object {}}
+            />
+            <SectionColor
+              options={
+                Array [
+                  Object {
+                    "key": "1",
+                    "label": "Black",
+                  },
+                  Object {
+                    "key": "2",
+                    "label": "White",
+                  },
+                  Object {
+                    "key": "3",
+                    "label": "Multicolored/Print",
+                  },
+                  Object {
+                    "key": "4",
+                    "label": "Red",
+                  },
+                  Object {
+                    "key": "5",
+                    "label": "Orange",
+                  },
+                  Object {
+                    "key": "6",
+                    "label": "Yellow",
+                  },
+                  Object {
+                    "key": "7",
+                    "label": "Green",
+                  },
+                  Object {
+                    "key": "8",
+                    "label": "Blue/Navy",
+                  },
+                  Object {
+                    "key": "9",
+                    "label": "Denim",
+                  },
+                  Object {
+                    "key": "10",
+                    "label": "Purple",
+                  },
+                  Object {
+                    "key": "11",
+                    "label": "Pink",
+                  },
+                  Object {
+                    "key": "12",
+                    "label": "Brown",
+                  },
+                  Object {
+                    "key": "13",
+                    "label": "Gray",
+                  },
+                  Object {
+                    "key": "14",
+                    "label": "Metallic",
+                  },
+                  Object {
+                    "key": "15",
+                    "label": "Sequin",
+                  },
+                  Object {
+                    "key": "16",
+                    "label": "Nude",
+                  },
+                ]
+              }
+              publicData={Object {}}
+            />
+            <SectionDamageCost
               publicData={Object {}}
             />
             <SectionRulesMaybe

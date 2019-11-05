@@ -8,7 +8,6 @@ import omit from 'lodash/omit';
 
 import {
   BookingDateRangeFilter,
-  SelectSingleFilter,
   SelectMultipleFilter,
   PriceFilter,
   KeywordFilter,
@@ -67,8 +66,9 @@ const SearchFiltersComponent = props => {
     listingsAreLoaded,
     resultsCount,
     searchInProgress,
-    categoryFilter,
-    amenitiesFilter,
+    itemFilter,
+    sizeFilter,
+    colorFilter,
     priceFilter,
     dateRangeFilter,
     keywordFilter,
@@ -82,25 +82,21 @@ const SearchFiltersComponent = props => {
   const hasNoResult = listingsAreLoaded && resultsCount === 0;
   const classes = classNames(rootClassName || css.root, { [css.longInfo]: hasNoResult }, className);
 
-  const categoryLabel = intl.formatMessage({
-    id: 'SearchFilters.categoryLabel',
-  });
+  const itemLabel = 'Item';
 
-  const amenitiesLabel = intl.formatMessage({
-    id: 'SearchFilters.amenitiesLabel',
-  });
+  const sizeLabel = 'Size';
+
+  const colorLabel = 'Color';
 
   const keywordLabel = intl.formatMessage({
     id: 'SearchFilters.keywordLabel',
   });
 
-  const initialAmenities = amenitiesFilter
-    ? initialValues(urlQueryParams, amenitiesFilter.paramName)
-    : null;
+  const initialItem = itemFilter ? initialValues(urlQueryParams, itemFilter.paramName) : null;
 
-  const initialCategory = categoryFilter
-    ? initialValue(urlQueryParams, categoryFilter.paramName)
-    : null;
+  const initialSize = sizeFilter ? initialValues(urlQueryParams, sizeFilter.paramName) : null;
+
+  const initialColor = colorFilter ? initialValues(urlQueryParams, colorFilter.paramName) : null;
 
   const initialPriceRange = priceFilter
     ? initialPriceRangeValue(urlQueryParams, priceFilter.paramName)
@@ -123,15 +119,15 @@ const SearchFiltersComponent = props => {
     history.push(createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams));
   };
 
-  const handleSelectOption = (urlParam, option) => {
-    // query parameters after selecting the option
-    // if no option is passed, clear the selection for the filter
-    const queryParams = option
-      ? { ...urlQueryParams, [urlParam]: option }
-      : omit(urlQueryParams, urlParam);
+  // const handleSelectOption = (urlParam, option) => {
+  //   // query parameters after selecting the option
+  //   // if no option is passed, clear the selection for the filter
+  //   const queryParams = option
+  //     ? { ...urlQueryParams, [urlParam]: option }
+  //     : omit(urlQueryParams, urlParam);
 
-    history.push(createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams));
-  };
+  //   history.push(createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams));
+  // };
 
   const handlePrice = (urlParam, range) => {
     const { minPrice, maxPrice } = range || {};
@@ -165,28 +161,44 @@ const SearchFiltersComponent = props => {
     history.push(createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams));
   };
 
-  const categoryFilterElement = categoryFilter ? (
-    <SelectSingleFilter
-      urlParam={categoryFilter.paramName}
-      label={categoryLabel}
-      onSelect={handleSelectOption}
+  const itemFilterElement = itemFilter ? (
+    <SelectMultipleFilter
+      id={'SearchFilters.itemFilter'}
+      name="item"
+      urlParam={itemFilter.paramName}
+      label={itemLabel}
+      onSubmit={handleSelectOptions}
       showAsPopup
-      options={categoryFilter.options}
-      initialValue={initialCategory}
+      options={itemFilter.options}
+      initialValues={initialItem}
       contentPlacementOffset={FILTER_DROPDOWN_OFFSET}
     />
   ) : null;
 
-  const amenitiesFilterElement = amenitiesFilter ? (
+  const sizeFilterElement = sizeFilter ? (
     <SelectMultipleFilter
-      id={'SearchFilters.amenitiesFilter'}
-      name="amenities"
-      urlParam={amenitiesFilter.paramName}
-      label={amenitiesLabel}
+      id={'SearchFilters.sizeFilter'}
+      name="size"
+      urlParam={sizeFilter.paramName}
+      label={sizeLabel}
       onSubmit={handleSelectOptions}
       showAsPopup
-      options={amenitiesFilter.options}
-      initialValues={initialAmenities}
+      options={sizeFilter.options}
+      initialValues={initialSize}
+      contentPlacementOffset={FILTER_DROPDOWN_OFFSET}
+    />
+  ) : null;
+
+  const colorFilterElement = colorFilter ? (
+    <SelectMultipleFilter
+      id={'SearchFilters.colorFilter'}
+      name="color"
+      urlParam={colorFilter.paramName}
+      label={colorLabel}
+      onSubmit={handleSelectOptions}
+      showAsPopup
+      options={colorFilter.options}
+      initialValues={initialColor}
       contentPlacementOffset={FILTER_DROPDOWN_OFFSET}
     />
   ) : null;
@@ -249,8 +261,9 @@ const SearchFiltersComponent = props => {
   return (
     <div className={classes}>
       <div className={css.filters}>
-        {categoryFilterElement}
-        {amenitiesFilterElement}
+        {itemFilterElement}
+        {sizeFilterElement}
+        {colorFilterElement}
         {priceFilterElement}
         {dateRangeFilterElement}
         {keywordFilterElement}
@@ -285,8 +298,9 @@ SearchFiltersComponent.defaultProps = {
   className: null,
   resultsCount: null,
   searchingInProgress: false,
-  categoryFilter: null,
-  amenitiesFilter: null,
+  itemFilter: null,
+  sizeFilter: null,
+  colorFilter: null,
   priceFilter: null,
   dateRangeFilter: null,
   isSearchFiltersPanelOpen: false,
@@ -302,8 +316,9 @@ SearchFiltersComponent.propTypes = {
   resultsCount: number,
   searchingInProgress: bool,
   onManageDisableScrolling: func.isRequired,
-  categoriesFilter: propTypes.filterConfig,
-  amenitiesFilter: propTypes.filterConfig,
+  itemFilter: propTypes.filterConfig,
+  sizeFilter: propTypes.filterConfig,
+  colorFilter: propTypes.filterConfig,
   priceFilter: propTypes.filterConfig,
   dateRangeFilter: propTypes.filterConfig,
   isSearchFiltersPanelOpen: bool,

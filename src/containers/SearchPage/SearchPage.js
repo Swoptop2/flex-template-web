@@ -55,6 +55,9 @@ export class SearchPageComponent extends Component {
     const {
       categories,
       amenities,
+      items,
+      sizes,
+      colors,
       priceFilterConfig,
       dateRangeFilterConfig,
       keywordFilterConfig,
@@ -85,6 +88,18 @@ export class SearchPageComponent extends Component {
       keywordFilter: {
         paramName: 'keywords',
         config: keywordFilterConfig,
+      },
+      itemFilter: {
+        paramName: 'pub_item',
+        options: items,
+      },
+      sizeFilter: {
+        paramName: 'pub_size',
+        options: sizes,
+      },
+      colorFilter: {
+        paramName: 'pub_color',
+        options: colors,
       },
     };
   }
@@ -231,6 +246,9 @@ export class SearchPageComponent extends Component {
               priceFilter: filters.priceFilter,
               dateRangeFilter: filters.dateRangeFilter,
               keywordFilter: filters.keywordFilter,
+              itemFilter: filters.itemFilter,
+              sizeFilter: filters.sizeFilter,
+              colorFilter: filters.colorFilter,
             }}
           />
           <ModalInMobile
@@ -280,6 +298,9 @@ SearchPageComponent.defaultProps = {
   dateRangeFilterConfig: config.custom.dateRangeFilterConfig,
   keywordFilterConfig: config.custom.keywordFilterConfig,
   activeListingId: null,
+  items: config.custom.items,
+  sizes: config.custom.sizes,
+  colors: config.custom.colors,
 };
 
 SearchPageComponent.propTypes = {
@@ -296,6 +317,9 @@ SearchPageComponent.propTypes = {
   tab: oneOf(['filters', 'listings', 'map']).isRequired,
   categories: array,
   amenities: array,
+  items: array,
+  sizes: array,
+  colors: array,
   priceFilterConfig: shape({
     min: number.isRequired,
     max: number.isRequired,

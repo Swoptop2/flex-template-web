@@ -13,7 +13,6 @@ import {
   Button,
   KeywordFilter,
   PriceFilter,
-  SelectSingleFilter,
   SelectMultipleFilter,
   BookingDateRangeFilter,
 } from '../../components';
@@ -192,8 +191,9 @@ class SearchFiltersMobileComponent extends Component {
       onMapIconClick,
       onManageDisableScrolling,
       selectedFiltersCount,
-      categoryFilter,
-      amenitiesFilter,
+      itemFilter,
+      sizeFilter,
+      colorFilter,
       priceFilter,
       dateRangeFilter,
       keywordFilter,
@@ -218,37 +218,54 @@ class SearchFiltersMobileComponent extends Component {
     const filtersButtonClasses =
       selectedFiltersCount > 0 ? css.filtersButtonSelected : css.filtersButton;
 
-    const categoryLabel = intl.formatMessage({
-      id: 'SearchFiltersMobile.categoryLabel',
-    });
-    const initialCategory = categoryFilter ? this.initialValue(categoryFilter.paramName) : null;
+    const itemLabel = 'Item';
 
-    const categoryFilterElement = categoryFilter ? (
-      <SelectSingleFilter
-        urlParam={categoryFilter.paramName}
-        label={categoryLabel}
-        onSelect={this.handleSelectSingle}
+    const initialItem = this.initialValues(itemFilter.paramName);
+
+    const itemFilterElement = itemFilter ? (
+      <SelectMultipleFilter
+        id="SearchFiltersMobile.itemFilter"
+        name="item"
+        urlParam={itemFilter.paramName}
+        label={itemLabel}
+        onSubmit={this.handleSelectMultiple}
         liveEdit
-        options={categoryFilter.options}
-        initialValue={initialCategory}
-        intl={intl}
+        options={itemFilter.options}
+        initialValues={initialItem}
       />
     ) : null;
 
-    const amenitiesLabel = intl.formatMessage({ id: 'SearchFiltersMobile.amenitiesLabel' });
+    const sizeLabel = 'size';
 
-    const initialAmenities = this.initialValues(amenitiesFilter.paramName);
+    const initialSize = this.initialValues(sizeFilter.paramName);
 
-    const amenitiesFilterElement = amenitiesFilter ? (
+    const sizeFilterElement = sizeFilter ? (
       <SelectMultipleFilter
-        id="SearchFiltersMobile.amenitiesFilter"
-        name="amenities"
-        urlParam={amenitiesFilter.paramName}
-        label={amenitiesLabel}
+        id="SearchFiltersMobile.sizeFilter"
+        name="size"
+        urlParam={sizeFilter.paramName}
+        label={sizeLabel}
         onSubmit={this.handleSelectMultiple}
         liveEdit
-        options={amenitiesFilter.options}
-        initialValues={initialAmenities}
+        options={sizeFilter.options}
+        initialValues={initialSize}
+      />
+    ) : null;
+
+    const colorLabel = 'Color';
+
+    const initialColor = this.initialValues(colorFilter.paramName);
+
+    const colorFilterElement = colorFilter ? (
+      <SelectMultipleFilter
+        id="SearchFiltersMobile.colorFilter"
+        name="color"
+        urlParam={colorFilter.paramName}
+        label={colorLabel}
+        onSubmit={this.handleSelectMultiple}
+        liveEdit
+        options={colorFilter.options}
+        initialValues={initialColor}
       />
     ) : null;
 
@@ -330,8 +347,9 @@ class SearchFiltersMobileComponent extends Component {
           {this.state.isFiltersOpenOnMobile ? (
             <div className={css.filtersWrapper}>
               {keywordFilterElement}
-              {categoryFilterElement}
-              {amenitiesFilterElement}
+              {itemFilterElement}
+              {sizeFilterElement}
+              {colorFilterElement}
               {priceFilterElement}
               {dateRangeFilterElement}
             </div>
@@ -357,6 +375,9 @@ SearchFiltersMobileComponent.defaultProps = {
   filterParamNames: [],
   categoryFilter: null,
   amenitiesFilter: null,
+  itemFilter: null,
+  sizeFilter: null,
+  colorFilter: null,
   priceFilter: null,
   dateRangeFilter: null,
 };
@@ -377,6 +398,9 @@ SearchFiltersMobileComponent.propTypes = {
   filterParamNames: array,
   categoriesFilter: propTypes.filterConfig,
   amenitiesFilter: propTypes.filterConfig,
+  itemFilter: propTypes.filterConfig,
+  sizeFilter: propTypes.filterConfig,
+  colorFilter: propTypes.filterConfig,
   priceFilter: propTypes.filterConfig,
   dateRangeFilter: propTypes.filterConfig,
 

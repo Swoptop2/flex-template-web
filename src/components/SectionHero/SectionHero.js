@@ -1,13 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { string } from 'prop-types';
 import { FormattedMessage } from '../../util/reactIntl';
 import classNames from 'classnames';
 import { NamedLink } from '../../components';
+import { types as sdkTypes } from '../../util/sdkLoader';
+import GeocoderMapbox from '../LocationAutocompleteInput/GeocoderMapbox';
 
 import css from './SectionHero.css';
 
 const SectionHero = props => {
-  const { rootClassName, className } = props;
+  const { rootClassName, className, currentUser } = props;
+  const { LatLng } = sdkTypes;
+  const geoCode = new GeocoderMapbox();
+  const [addressString, setAddressString] = useState(
+    `s?address=United+States&bounds=49.64,-66.43,23.88,-125.98`
+  );
+  // add one, subtract one. subtract one, add one to coordinates in order to get coorect bounds for location
+  if (currentUser) {
+    const {
+      profile: {
+        protectedData: { city, state },
+      },
+    } = currentUser.attributes;
+    geoCode.getPlacePredictions(`${city}, ${state}`).then(res => {
+      const origin = new LatLng(res.predictions[0].center[1], res.predictions[0].center[0]);
+      const { lat, lng } = origin;
+      const firstLat = lat + 1;
+      const firstLng = lng + 1;
+      const secondLat = lat - 1;
+      const secondLng = lng - 1;
+      setAddressString(
+        `s?address=United+States&bounds=${firstLat},${firstLng},${secondLat},${secondLng}`
+      );
+    });
+  }
 
   const classes = classNames(rootClassName || css.root, className);
 
@@ -23,8 +49,7 @@ const SectionHero = props => {
         <NamedLink
           name="SearchPage"
           to={{
-            search:
-              'address=Finland&bounds=70.0922932%2C31.5870999%2C59.693623%2C20.456500199999937',
+            search: addressString,
           }}
           className={css.heroButton}
         >

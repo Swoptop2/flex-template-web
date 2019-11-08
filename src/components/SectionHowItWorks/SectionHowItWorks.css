@@ -4,7 +4,10 @@
   @apply --marketplaceH1FontStyles;
   margin-top: 0;
   max-width: 800px;
-  margin-bottom: 35px;
+  margin-bottom: 45px;
+  @media (--viewportMedium) {
+    margin-bottom: 85px;
+  }
 }
 
 .steps {

@@ -90,6 +90,7 @@
 
   @apply --SectionHero_animation;
   animation-delay: 0.65s;
+  font-size: 23px;
 
   @media (--viewportMedium) {
     /* max-width: var(--SectionHero_desktopTitleMaxWidth); */

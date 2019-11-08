@@ -14,11 +14,6 @@ exports[`CheckoutPage matches snapshot 1`] = `
         format="mobile"
         title="CheckoutPage.goToLandingPage"
       />
-      <Logo
-        alt="CheckoutPage.goToLandingPage"
-        className={null}
-        format="desktop"
-      />
     </NamedLink>
   </div>
   <div>
@@ -88,7 +83,7 @@ exports[`CheckoutPage matches snapshot 1`] = `
           inProgress={false}
           initialValues={
             Object {
-              "name": "currentUser first name currentUser last name",
+              "name": "undefined undefined",
             }
           }
           initiateOrderError={null}
@@ -98,6 +93,8 @@ exports[`CheckoutPage matches snapshot 1`] = `
           paymentInfo="CheckoutPage.paymentInfo"
           paymentIntent={null}
           showInitialMessageInput={true}
+          userCity=""
+          userState=""
         />
       </section>
     </div>

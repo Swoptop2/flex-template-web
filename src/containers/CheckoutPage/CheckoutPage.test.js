@@ -18,7 +18,7 @@ describe('CheckoutPage', () => {
       history: { push: noop, action: 'PUSH' },
       intl: fakeIntl,
       listing,
-      currentUser: createCurrentUser('currentUser'),
+      currentUser: { attributes: { profile: { protectedData: { state: '', city: '' } } } },
       params: { id: 'listing1', slug: 'listing1' },
       sendOrderRequest: noop,
       fetchStripeCustomer: noop,

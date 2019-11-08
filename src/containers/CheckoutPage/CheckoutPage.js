@@ -532,11 +532,11 @@ export class CheckoutPageComponent extends Component {
             title={intl.formatMessage({ id: 'CheckoutPage.goToLandingPage' })}
             format="mobile"
           />
-          <Logo
+          {/* <Logo
             className={css.logoDesktop}
             alt={intl.formatMessage({ id: 'CheckoutPage.goToLandingPage' })}
             format="desktop"
-          />
+          /> */}
         </NamedLink>
       </div>
     );
@@ -742,6 +742,12 @@ export class CheckoutPageComponent extends Component {
     // e.g. {country: 'FI'}
 
     const initalValuesForStripePayment = { name: userName };
+    let userState;
+    let userCity;
+    if (currentUser.attributes) {
+      userState = currentUser.attributes.profile.protectedData.state;
+      userCity = currentUser.attributes.profile.protectedData.city;
+    }
 
     return (
       <Page {...pageProps}>
@@ -801,6 +807,8 @@ export class CheckoutPageComponent extends Component {
                   confirmPaymentError={confirmPaymentError}
                   hasHandledCardPayment={hasPaymentIntentUserActionsDone}
                   loadingData={!stripeCustomerFetched}
+                  userCity={userCity}
+                  userState={userState}
                   defaultPaymentMethod={
                     hasDefaultPaymentMethod ? currentUser.stripeCustomer.defaultPaymentMethod : null
                   }

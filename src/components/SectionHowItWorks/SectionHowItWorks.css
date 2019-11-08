@@ -3,6 +3,8 @@
 .title {
   @apply --marketplaceH1FontStyles;
   margin-top: 0;
+  max-width: 800px;
+  margin-bottom: 35px;
 }
 
 .steps {
@@ -15,10 +17,14 @@
 }
 
 .step {
+  text-align: center;
   @media (--viewportMedium) {
     width: 324px;
     margin-right: 40px;
   }
+}
+.image {
+  width: 170px;
 }
 
 .step:last-of-type {
@@ -30,10 +36,13 @@
 .stepTitle {
   margin-top: 18px;
   margin-bottom: 18px;
-
+  font-weight: 200;
+  font-size: 20px;
+  text-align: left;
   @media (--viewportMedium) {
     margin-top: 21px;
     margin-bottom: 18px;
+    font-size: 25px;
   }
 }
 

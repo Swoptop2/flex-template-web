@@ -32,9 +32,9 @@ exports[`ListingCard matches snapshot 1`] = `
   <div>
     <div>
       <div
-        title={55}
+        title={165}
       >
-        55
+        165
       </div>
       <div>
         <FormattedMessage

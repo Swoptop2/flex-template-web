@@ -83,6 +83,24 @@ exports[`LandingPage matches snapshot 1`] = `
             />
           </div>
         </li>
+        <li>
+          <div>
+            <div>
+              Why?
+            </div>
+            <YoutubeFrame />
+            <div>
+              <NamedLink
+                name="NewListingPage"
+              >
+                <FormattedMessage
+                  id="SectionHowItWorks.createListingLink"
+                  values={Object {}}
+                />
+              </NamedLink>
+            </div>
+          </div>
+        </li>
       </ul>
     </LayoutWrapperMain>
     <LayoutWrapperFooter

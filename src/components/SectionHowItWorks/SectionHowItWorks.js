@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from '../../util/reactIntl';
 import classNames from 'classnames';
 
-import { NamedLink } from '../../components';
-
 import css from './SectionHowItWorks.css';
+
+import money from './images/money.png';
+import creativity from './images/creativity.png';
+import self from './images/self.png';
 
 const SectionHowItWorks = props => {
   const { rootClassName, className } = props;
@@ -15,43 +17,29 @@ const SectionHowItWorks = props => {
     <div className={classes}>
       <div className={css.title}>
         <FormattedMessage id="SectionHowItWorks.titleLineOne" />
-        <br />
-        <FormattedMessage id="SectionHowItWorks.titleLineTwo" />
       </div>
 
       <div className={css.steps}>
         <div className={css.step}>
+          <img className={css.image} src={money} alt="money" />
           <h2 className={css.stepTitle}>
             <FormattedMessage id="SectionHowItWorks.part1Title" />
           </h2>
-          <p>
-            <FormattedMessage id="SectionHowItWorks.part1Text" />
-          </p>
         </div>
 
         <div className={css.step}>
+          <img src={creativity} className={css.image} alt="creativity" />
           <h2 className={css.stepTitle}>
             <FormattedMessage id="SectionHowItWorks.part2Title" />
           </h2>
-          <p>
-            <FormattedMessage id="SectionHowItWorks.part2Text" />
-          </p>
         </div>
 
         <div className={css.step}>
+          <img src={self} className={css.image} alt="self" />
           <h2 className={css.stepTitle}>
             <FormattedMessage id="SectionHowItWorks.part3Title" />
           </h2>
-          <p>
-            <FormattedMessage id="SectionHowItWorks.part3Text" />
-          </p>
         </div>
-      </div>
-
-      <div className={css.createListingLink}>
-        <NamedLink name="NewListingPage">
-          <FormattedMessage id="SectionHowItWorks.createListingLink" />
-        </NamedLink>
       </div>
     </div>
   );

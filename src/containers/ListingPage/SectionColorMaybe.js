@@ -24,7 +24,7 @@ SectionColor.propTypes = {
   options: array.isRequired,
   publicData: shape({
     color: string,
-  }).isRequired,
+  }),
 };
 
 export default SectionColor;

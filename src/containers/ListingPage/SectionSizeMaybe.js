@@ -7,8 +7,6 @@ import css from './ListingPage.css';
 const SectionSize = props => {
   const { publicData, options } = props;
 
-  console.log(publicData);
-
   const size = publicData && publicData.size ? publicData.size : [];
   const sizeOption = options.find(option => option.key === size);
 
@@ -26,7 +24,7 @@ SectionSize.propTypes = {
   options: array.isRequired,
   publicData: shape({
     size: string,
-  }).isRequired,
+  }),
 };
 
 export default SectionSize;

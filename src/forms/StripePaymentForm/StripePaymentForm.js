@@ -383,7 +383,14 @@ class StripePaymentForm extends Component {
     // Asking billing address is recommended in PaymentIntent flow.
     // In CheckoutPage, we send name and email as billing details, but address only if it exists.
     const billingAddress = (
-      <StripePaymentAddress intl={intl} form={form} fieldId={formId} card={this.card} />
+      <StripePaymentAddress
+        userCity={this.props.userCity}
+        userState={this.props.userState}
+        intl={intl}
+        form={form}
+        fieldId={formId}
+        card={this.card}
+      />
     );
 
     const hasStripeKey = config.stripe.publishableKey;

@@ -18,10 +18,40 @@ import {
   Footer,
 } from '../../components';
 import { TopbarContainer } from '../../containers';
+import { NamedLink } from '../../components';
+import { FormattedMessage } from '../../util/reactIntl';
 
 import facebookImage from '../../assets/saunatimeFacebook-1200x630.jpg';
 import twitterImage from '../../assets/saunatimeTwitter-600x314.jpg';
 import css from './LandingPage.css';
+
+const YoutubeFrame = _ => {
+  return (
+    <div
+      className={css.video}
+      style={{
+        position: 'relative',
+        paddingBottom: '50.25%' /* 16:9 */,
+        height: 0,
+      }}
+    >
+      <iframe
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: '15%',
+          width: '70%',
+          height: '70%',
+        }}
+        title="video"
+        src="https://www.youtube.com/embed/3qjkf4PCkDI"
+        frameBorder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
+    </div>
+  );
+};
 
 export const LandingPageComponent = props => {
   const { history, intl, location, scrollingDisabled, currentUser } = props;
@@ -75,6 +105,17 @@ export const LandingPageComponent = props => {
             <li className={css.section}>
               <div className={css.sectionContent}>
                 <SectionHowItWorks />
+              </div>
+            </li>
+            <li className={css.section}>
+              <div className={css.videoContainer}>
+                <div className={css.title}>Why?</div>
+                <YoutubeFrame />
+                <div className={css.createListingLink}>
+                  <NamedLink name="NewListingPage">
+                    <FormattedMessage id="SectionHowItWorks.createListingLink" />
+                  </NamedLink>
+                </div>
               </div>
             </li>
           </ul>

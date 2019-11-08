@@ -9,7 +9,7 @@ import { FieldTextInput, FieldSelect } from '../../components';
 import css from './StripePaymentAddress.css';
 
 const StripePaymentAddress = props => {
-  const { className, intl, disabled, form, fieldId, card } = props;
+  const { className, intl, disabled, form, fieldId, card, userCity, userState } = props;
 
   const optionalText = intl.formatMessage({
     id: 'StripePaymentAddress.optionalText',
@@ -76,6 +76,7 @@ const StripePaymentAddress = props => {
 
   // Use tha language set in config.locale to get the correct translations of the country names
   const countryCodes = getCountryCodes(config.locale);
+  const defaultCode = countryCodes.find(country => country.code === 'US');
 
   return (
     <div className={className ? className : css.root}>
@@ -131,6 +132,7 @@ const StripePaymentAddress = props => {
           placeholder={cityPlaceholder}
           validate={cityRequired}
           onUnmount={() => form.change('city', undefined)}
+          defaultValue={userCity}
         />
       </div>
       <div className={css.formRow}>
@@ -144,6 +146,7 @@ const StripePaymentAddress = props => {
           label={stateLabel}
           placeholder={statePlaceholder}
           onUnmount={() => form.change('state', undefined)}
+          defaultValue={userState}
         />
 
         <FieldSelect
@@ -153,6 +156,7 @@ const StripePaymentAddress = props => {
           className={css.field}
           label={countryLabel}
           validate={countryRequired}
+          defaultValue={defaultCode.code}
         >
           <option disabled value="">
             {countryPlaceholder}

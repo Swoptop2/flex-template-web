@@ -15,6 +15,7 @@ import {
 } from '../../util/types';
 import { formatMoney } from '../../util/currency';
 import { ensureOwnListing } from '../../util/data';
+import { types as sdkTypes } from '../../util/sdkLoader';
 import {
   LISTING_PAGE_PENDING_APPROVAL_VARIANT,
   LISTING_PAGE_DRAFT_VARIANT,
@@ -39,13 +40,18 @@ import MenuIcon from './MenuIcon';
 import Overlay from './Overlay';
 import css from './ManageListingCard.css';
 
+const { Money } = sdkTypes;
+
 // Menu content needs the same padding
 const MENU_CONTENT_OFFSET = -12;
 const MAX_LENGTH_FOR_WORDS_IN_TITLE = 7;
 
 const priceData = (price, intl) => {
+  const amount = price.amount;
+  const fixedAmount = amount * 3;
+  const fixedPrice = new Money(fixedAmount, config.currency);
   if (price && price.currency === config.currency) {
-    const formattedPrice = formatMoney(intl, price);
+    const formattedPrice = formatMoney(intl, fixedPrice);
     return { formattedPrice, priceTitle: formattedPrice };
   } else if (price) {
     return {

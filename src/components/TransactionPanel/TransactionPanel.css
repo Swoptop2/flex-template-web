@@ -22,6 +22,12 @@
   }
 }
 
+.phoneWarning {
+  font-size: 14px;
+  color: rgb(218, 18, 18);
+  line-height: 1.1;
+}
+
 .txInfo {
   margin-bottom: 210px;
 

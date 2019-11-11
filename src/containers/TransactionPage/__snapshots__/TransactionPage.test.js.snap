@@ -23,6 +23,8 @@ exports[`TransactionPage - Order matches snapshot 1`] = `
         <injectIntl(TransactionPanelComponent)
           acceptInProgress={false}
           acceptSaleError={null}
+          cancelBookingError={null}
+          cancelBookingInProgress={false}
           className=""
           currentUser={
             Object {
@@ -247,6 +249,8 @@ exports[`TransactionPage - Sale matches snapshot 1`] = `
         <injectIntl(TransactionPanelComponent)
           acceptInProgress={false}
           acceptSaleError={null}
+          cancelBookingError={null}
+          cancelBookingInProgress={false}
           className=""
           currentUser={
             Object {

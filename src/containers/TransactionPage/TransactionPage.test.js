@@ -39,6 +39,8 @@ describe('TransactionPage - Sale', () => {
       currentUser: createCurrentUser('provider1'),
       acceptInProgress: false,
       declineInProgress: false,
+      cancelBookingInProgress: false,
+      cancelBookingError: null,
       onAcceptSale: noop,
       onDeclineSale: noop,
       scrollingDisabled: false,
@@ -112,6 +114,8 @@ describe('TransactionPage - Order', () => {
 
       acceptInProgress: false,
       declineInProgress: false,
+      cancelBookingInProgress: false,
+      cancelBookingError: null,
       onAcceptSale: noop,
       onDeclineSale: noop,
 

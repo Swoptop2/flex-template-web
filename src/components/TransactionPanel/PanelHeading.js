@@ -111,6 +111,8 @@ const PanelHeading = props => {
   const titleClasses = classNames(rootClassName || defaultRootClassName, className);
   const listingLink = createListingLink(listingId, listingTitle, listingDeleted);
 
+  console.log(panelHeadingState);
+
   switch (panelHeadingState) {
     case HEADING_ENQUIRED:
       return isCustomer ? (

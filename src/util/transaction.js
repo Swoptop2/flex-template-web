@@ -40,6 +40,9 @@ export const TRANSITION_EXPIRE = 'transition/expire';
 // Admin can also cancel the transition.
 export const TRANSITION_CANCEL = 'transition/cancel';
 
+//Provider can cancel accepted booking
+export const TRANSITION_PROVIDER_CANCEL = 'transition/provider-cancel';
+
 // The backend will mark the transaction completed.
 export const TRANSITION_COMPLETE = 'transition/complete';
 
@@ -108,7 +111,7 @@ const stateDescription = {
   // id is defined only to support Xstate format.
   // However if you have multiple transaction processes defined,
   // it is best to keep them in sync with transaction process aliases.
-  id: 'preauth-with-nightly-booking/release-1',
+  id: 'preauth-daily-booking/release-1',
 
   // This 'initial' state is a starting point for new transaction
   initial: STATE_INITIAL,
@@ -147,6 +150,7 @@ const stateDescription = {
     [STATE_ACCEPTED]: {
       on: {
         [TRANSITION_CANCEL]: STATE_CANCELED,
+        [TRANSITION_PROVIDER_CANCEL]: STATE_CANCELED,
         [TRANSITION_COMPLETE]: STATE_DELIVERED,
       },
     },

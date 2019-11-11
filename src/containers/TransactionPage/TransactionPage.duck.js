@@ -12,6 +12,7 @@ import {
   txIsInFirstReviewBy,
   TRANSITION_ACCEPT,
   TRANSITION_DECLINE,
+  TRANSITION_PROVIDER_CANCEL,
 } from '../../util/transaction';
 import * as log from '../../util/log';
 import {
@@ -21,6 +22,7 @@ import {
 } from '../../util/data';
 import { addMarketplaceEntities } from '../../ducks/marketplaceData.duck';
 import { fetchCurrentUserNotifications } from '../../ducks/user.duck';
+import swal from 'sweetalert';
 
 const { UUID } = sdkTypes;
 
@@ -42,6 +44,10 @@ export const FETCH_TRANSITIONS_ERROR = 'app/TransactionPage/FETCH_TRANSITIONS_ER
 export const ACCEPT_SALE_REQUEST = 'app/TransactionPage/ACCEPT_SALE_REQUEST';
 export const ACCEPT_SALE_SUCCESS = 'app/TransactionPage/ACCEPT_SALE_SUCCESS';
 export const ACCEPT_SALE_ERROR = 'app/TransactionPage/ACCEPT_SALE_ERROR';
+
+export const CANCEL_BOOKING = 'app/TransactionPage/CANCEL_BOOKING';
+export const CANCEL_BOOKING_SUCCESS = 'app/TransactionPage/CANCEL_BOOKING_SUCCESS';
+export const CANCEL_BOOKING_ERROR = 'app/TransactionPage/CANCEL_BOOKING_ERROR';
 
 export const DECLINE_SALE_REQUEST = 'app/TransactionPage/DECLINE_SALE_REQUEST';
 export const DECLINE_SALE_SUCCESS = 'app/TransactionPage/DECLINE_SALE_SUCCESS';
@@ -90,6 +96,8 @@ const initialState = {
   fetchTransitionsInProgress: false,
   fetchTransitionsError: null,
   processTransitions: null,
+  cancelBookingInProgress: false,
+  cancelBookingError: null,
 };
 
 // Merge entity arrays using ids, so that conflicting items in newer array (b) overwrite old values (a).
@@ -138,6 +146,13 @@ export default function checkoutPageReducer(state = initialState, action = {}) {
       return { ...state, declineInProgress: false };
     case DECLINE_SALE_ERROR:
       return { ...state, declineInProgress: false, declineSaleError: payload };
+
+    case CANCEL_BOOKING:
+      return { ...state, cancelBookingInProgress: true, cancelBookingError: null };
+    case CANCEL_BOOKING_SUCCESS:
+      return { ...state, cancelBookingInProgress: false };
+    case CANCEL_BOOKING_ERROR:
+      return { ...state, cancelBookingInProgress: true };
 
     case FETCH_MESSAGES_REQUEST:
       return { ...state, fetchMessagesInProgress: true, fetchMessagesError: null };
@@ -195,6 +210,10 @@ export const acceptOrDeclineInProgress = state => {
   return state.TransactionPage.acceptInProgress || state.TransactionPage.declineInProgress;
 };
 
+export const cancelingBookingInProgress = state => {
+  return state.TransactionPage.cancelBookingInProgress;
+};
+
 // ================ Action creators ================ //
 export const setInitialValues = initialValues => ({
   type: SET_INITAL_VALUES,
@@ -222,6 +241,15 @@ const acceptSaleError = e => ({ type: ACCEPT_SALE_ERROR, error: true, payload: e
 const declineSaleRequest = () => ({ type: DECLINE_SALE_REQUEST });
 const declineSaleSuccess = () => ({ type: DECLINE_SALE_SUCCESS });
 const declineSaleError = e => ({ type: DECLINE_SALE_ERROR, error: true, payload: e });
+
+//cancelRental() instead of cancelBooking() because of conficting names
+const cancelRental = () => ({ type: CANCEL_BOOKING });
+const cancelBookingSuccess = () => ({ type: CANCEL_BOOKING_SUCCESS });
+const cancelBookingError = e => ({
+  type: CANCEL_BOOKING_ERROR,
+  error: true,
+  payload: e,
+});
 
 const fetchMessagesRequest = () => ({ type: FETCH_MESSAGES_REQUEST });
 const fetchMessagesSuccess = (messages, pagination) => ({
@@ -368,6 +396,39 @@ export const declineSale = id => (dispatch, getState, sdk) => {
       });
       throw e;
     });
+};
+
+export const cancelBookingProvider = id => (dispatch, getState, sdk) => {
+  swal({
+    title: 'Are you sure?',
+    text: 'This booking will be cancelled and the booking amount will be refunded to the customer.',
+    icon: 'warning',
+    buttons: true,
+    dangerMode: true,
+  }).then(willDelete => {
+    if (willDelete) {
+      if (cancelingBookingInProgress(getState())) {
+        return Promise.reject(new Error('Request cancellation already in progress'));
+      }
+      dispatch(cancelRental());
+      return sdk.transactions
+        .transition({ id, transition: TRANSITION_PROVIDER_CANCEL, params: {} }, { expand: true })
+        .then(response => {
+          dispatch(addMarketplaceEntities(response));
+          dispatch(cancelBookingSuccess());
+          dispatch(fetchCurrentUserNotifications());
+          return response;
+        })
+        .catch(e => {
+          dispatch(cancelBookingError(storableError(e)));
+          log.error(e, 'cancel-request-failed', {
+            txId: id,
+            transition: TRANSITION_PROVIDER_CANCEL,
+          });
+          throw e;
+        });
+    }
+  });
 };
 
 const fetchMessages = (txId, page) => (dispatch, getState, sdk) => {

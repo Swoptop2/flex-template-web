@@ -35,11 +35,13 @@ import {
   sendMessage,
   sendReview,
   fetchMoreMessages,
+  cancelBookingProvider,
 } from './TransactionPage.duck';
 import css from './TransactionPage.css';
 
 const PROVIDER = 'provider';
 const CUSTOMER = 'customer';
+let transactionData;
 
 // TransactionPage handles data loading for Sale and Order views to transaction pages in Inbox.
 export const TransactionPageComponent = props => {
@@ -69,6 +71,8 @@ export const TransactionPageComponent = props => {
     transactionRole,
     acceptInProgress,
     acceptSaleError,
+    cancelBookingError,
+    cancelBookingInProgress,
     declineInProgress,
     declineSaleError,
     onAcceptSale,
@@ -78,7 +82,9 @@ export const TransactionPageComponent = props => {
     processTransitions,
     callSetInitialValues,
     onInitializeCardPaymentData,
+    onCancelBookingProvider,
   } = props;
+  transactionData = transaction;
 
   const currentTransaction = ensureTransaction(transaction);
   const currentListing = ensureListing(currentTransaction.listing);
@@ -214,6 +220,8 @@ export const TransactionPageComponent = props => {
   // that currently handles showing everything inside layout's main view area.
   const panel = isDataAvailable ? (
     <TransactionPanel
+      cancelBookingError={cancelBookingError}
+      cancelBookingInProgress={cancelBookingInProgress}
       className={detailsClassName}
       currentUser={currentUser}
       transaction={currentTransaction}
@@ -239,6 +247,7 @@ export const TransactionPageComponent = props => {
       declineInProgress={declineInProgress}
       acceptSaleError={acceptSaleError}
       declineSaleError={declineSaleError}
+      onCancelBookingProvider={onCancelBookingProvider}
       nextTransitions={processTransitions}
       onSubmitBookingRequest={handleSubmitBookingRequest}
       timeSlots={timeSlots}
@@ -273,6 +282,7 @@ TransactionPageComponent.defaultProps = {
   fetchTransactionError: null,
   acceptSaleError: null,
   declineSaleError: null,
+  cancelBookingError: null,
   transaction: null,
   fetchMessagesError: null,
   initialMessageFailedToTransaction: null,
@@ -291,10 +301,13 @@ TransactionPageComponent.propTypes = {
   fetchTransactionError: propTypes.error,
   acceptSaleError: propTypes.error,
   declineSaleError: propTypes.error,
+  cancelBookingError: propTypes.error,
   acceptInProgress: bool.isRequired,
   declineInProgress: bool.isRequired,
+  cancelBookingInProgress: bool.isRequired,
   onAcceptSale: func.isRequired,
   onDeclineSale: func.isRequired,
+  onCancelBookingProvider: func.isRequired,
   scrollingDisabled: bool.isRequired,
   transaction: propTypes.transaction,
   fetchMessagesError: propTypes.error,
@@ -329,8 +342,10 @@ const mapStateToProps = state => {
     fetchTransactionError,
     acceptSaleError,
     declineSaleError,
+    cancelBookingError,
     acceptInProgress,
     declineInProgress,
+    cancelBookingInProgress,
     transactionRef,
     fetchMessagesInProgress,
     fetchMessagesError,
@@ -357,8 +372,10 @@ const mapStateToProps = state => {
     fetchTransactionError,
     acceptSaleError,
     declineSaleError,
+    cancelBookingError,
     acceptInProgress,
     declineInProgress,
+    cancelBookingInProgress,
     scrollingDisabled: isScrollingDisabled(state),
     transaction,
     fetchMessagesInProgress,
@@ -382,6 +399,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onAcceptSale: transactionId => dispatch(acceptSale(transactionId)),
     onDeclineSale: transactionId => dispatch(declineSale(transactionId)),
+    onCancelBookingProvider: transactionId =>
+      dispatch(cancelBookingProvider(transactionId, transactionData)),
     onShowMoreMessages: txId => dispatch(fetchMoreMessages(txId)),
     onSendMessage: (txId, message) => dispatch(sendMessage(txId, message)),
     onManageDisableScrolling: (componentId, disableScrolling) =>

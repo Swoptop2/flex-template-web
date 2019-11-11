@@ -39,6 +39,7 @@ import DetailCardHeadingsMaybe from './DetailCardHeadingsMaybe';
 import DetailCardImage from './DetailCardImage';
 import FeedSection from './FeedSection';
 import SaleActionButtonsMaybe from './SaleActionButtonsMaybe';
+import SaleProviderCancelButtonMaybe from './SaleProviderCancelButtonMaybe';
 import PanelHeading, {
   HEADING_ENQUIRED,
   HEADING_PAYMENT_PENDING,
@@ -191,7 +192,16 @@ export class TransactionPanelComponent extends Component {
       timeSlots,
       fetchTimeSlotsError,
       nextTransitions,
+      onCancelBookingProvider,
+      cancelBookingInProgress,
+      cancelBookingError,
     } = this.props;
+    /*transaction has the start and end dates, which can be used to enable or disable
+    booking cancellation (up to 24hrs before booking period starts). The object holding this data will be passed
+    down as props to the saleCustomerCancelButtonMaybe Component*/
+    const startDate = transaction.booking ? transaction.booking.attributes.start : null;
+    const createdAtDate = transaction.booking ? transaction.attributes.createdAt : null;
+    //I also need to send the createdAt attribute that comes from transaction
 
     const currentTransaction = ensureTransaction(transaction);
     const currentListing = ensureListing(currentTransaction.listing);
@@ -243,6 +253,7 @@ export class TransactionPanelComponent extends Component {
           headingState: HEADING_ACCEPTED,
           showDetailCardHeadings: isCustomer,
           showAddress: isCustomer,
+          showCancelButtons: isProvider && !isCustomerBanned,
         };
       } else if (txIsDeclined(tx)) {
         return {
@@ -314,6 +325,18 @@ export class TransactionPanelComponent extends Component {
       />
     );
 
+    // create sale action buttons for provider cancelation
+    const providerCancelBookingButton = (
+      <SaleProviderCancelButtonMaybe
+        showButtons={stateData.showCancelButtons}
+        cancelBookingInProgress={cancelBookingInProgress}
+        cancelBookingError={cancelBookingError}
+        onCancelBooking={() => onCancelBookingProvider(currentTransaction.id)}
+        startDate={startDate}
+        createdAtDate={createdAtDate}
+      />
+    );
+
     const showSendMessageForm =
       !isCustomerBanned && !isCustomerDeleted && !isProviderBanned && !isProviderDeleted;
 
@@ -333,6 +356,8 @@ export class TransactionPanelComponent extends Component {
     );
 
     const classes = classNames(rootClassName || css.root, className);
+
+    console.log(stateData.headingState);
 
     return (
       <div className={classes}>
@@ -412,6 +437,9 @@ export class TransactionPanelComponent extends Component {
             {stateData.showSaleButtons ? (
               <div className={css.mobileActionButtons}>{saleButtons}</div>
             ) : null}
+            {stateData.showCancelButtons ? (
+              <div className={css.mobileActionButtons}>{providerCancelBookingButton}</div>
+            ) : null}
           </div>
 
           <div className={css.asideDesktop}>
@@ -455,6 +483,9 @@ export class TransactionPanelComponent extends Component {
 
               {stateData.showSaleButtons ? (
                 <div className={css.desktopActionButtons}>{saleButtons}</div>
+              ) : null}
+              {stateData.showCancelButtons ? (
+                <div className={css.desktopActionButtons}>{providerCancelBookingButton}</div>
               ) : null}
             </div>
           </div>

@@ -36,6 +36,7 @@ export { default as ExternalLink } from './ExternalLink/ExternalLink';
 export { default as ExpandingTextarea } from './ExpandingTextarea/ExpandingTextarea';
 export { default as Form } from './Form/Form';
 export { default as Logo } from './Logo/Logo';
+export { default as FooterLogo } from './Logo/FooterLogo';
 export { default as NamedLink } from './NamedLink/NamedLink';
 export { default as NamedRedirect } from './NamedRedirect/NamedRedirect';
 export { default as NotificationBadge } from './NotificationBadge/NotificationBadge';

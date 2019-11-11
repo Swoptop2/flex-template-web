@@ -4,6 +4,6 @@
   fill: var(--matterColor);
   transition: var(--transitionStyleButton);
   &:hover {
-    fill: var(--marketplaceColor);
+    fill: var(--successColor);
   }
 }

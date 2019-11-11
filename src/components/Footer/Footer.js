@@ -2,13 +2,11 @@ import React from 'react';
 import { string } from 'prop-types';
 import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
 import classNames from 'classnames';
-import { twitterPageURL } from '../../util/urlHelpers';
 import config from '../../config';
 import {
   IconSocialMediaFacebook,
   IconSocialMediaInstagram,
-  IconSocialMediaTwitter,
-  Logo,
+  FooterLogo,
   ExternalLink,
   NamedLink,
 } from '../../components';
@@ -16,27 +14,14 @@ import {
 import css from './Footer.css';
 
 const renderSocialMediaLinks = intl => {
-  const { siteFacebookPage, siteInstagramPage, siteTwitterHandle } = config;
-  const siteTwitterPage = twitterPageURL(siteTwitterHandle);
+  const { siteFacebookPage, siteInstagramPage } = config;
 
   const goToFb = intl.formatMessage({ id: 'Footer.goToFacebook' });
   const goToInsta = intl.formatMessage({ id: 'Footer.goToInstagram' });
-  const goToTwitter = intl.formatMessage({ id: 'Footer.goToTwitter' });
 
   const fbLink = siteFacebookPage ? (
     <ExternalLink key="linkToFacebook" href={siteFacebookPage} className={css.icon} title={goToFb}>
       <IconSocialMediaFacebook />
-    </ExternalLink>
-  ) : null;
-
-  const twitterLink = siteTwitterPage ? (
-    <ExternalLink
-      key="linkToTwitter"
-      href={siteTwitterPage}
-      className={css.icon}
-      title={goToTwitter}
-    >
-      <IconSocialMediaTwitter />
     </ExternalLink>
   ) : null;
 
@@ -50,7 +35,7 @@ const renderSocialMediaLinks = intl => {
       <IconSocialMediaInstagram />
     </ExternalLink>
   ) : null;
-  return [fbLink, twitterLink, instragramLink].filter(v => v != null);
+  return [fbLink, instragramLink].filter(v => v != null);
 };
 
 const Footer = props => {
@@ -66,7 +51,7 @@ const Footer = props => {
           <div className={css.links}>
             <div className={css.organization} id="organization">
               <NamedLink name="LandingPage" className={css.logoLink}>
-                <Logo format="desktop" className={css.logo} />
+                <FooterLogo format="desktop" className={css.logo} />
               </NamedLink>
               <div className={css.organizationInfo}>
                 <p className={css.organizationDescription}>

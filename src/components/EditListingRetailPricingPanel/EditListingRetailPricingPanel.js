@@ -6,6 +6,7 @@ import { LISTING_STATE_DRAFT } from '../../util/types';
 import { ensureOwnListing } from '../../util/data';
 import { ListingLink } from '../../components';
 import { EditListingRetailPricingForm } from '../../forms';
+import config from '../../config';
 
 import css from './EditListingRetailPricingPanel.css';
 
@@ -45,8 +46,12 @@ const EditListingRetailPricing = props => {
         initialValues={{ retailPrice: publicData.retailPrice }}
         onSubmit={values => {
           const { retailPrice = '' } = values;
+          const selectedItem = config.custom.items.find(option => option.key === publicData.item);
+          let titleString = selectedItem
+            ? `${publicData.brand} ${selectedItem.label} Retail ($${retailPrice})`
+            : `${publicData.brand} Retail ($${retailPrice})`;
           const updateValues = {
-            title: `${publicData.brand} $${retailPrice}`,
+            title: titleString,
             description: 'default',
             publicData: {
               retailPrice,

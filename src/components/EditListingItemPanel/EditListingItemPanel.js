@@ -45,7 +45,9 @@ const EditListingItemPanel = props => {
         initialValues={{ item: publicData.item }}
         onSubmit={values => {
           const { item } = values;
+          const selectedItem = config.custom.items.find(option => option.key === item);
           const updateValues = {
+            title: `${publicData.brand} ${selectedItem.label} Retail ($${publicData.retailPrice})`,
             publicData: {
               item,
             },

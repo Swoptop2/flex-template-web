@@ -130,7 +130,7 @@
 
 .organizationDescription {
   @apply --marketplaceTinyFontStyles;
-  color: var(--matterColorAnti);
+  color: var(--matterColorLight);
 }
 
 .organizationCopyright {
@@ -179,7 +179,7 @@
   /* Font */
   @apply --marketplaceH4FontStyles;
   line-height: 20px;
-  color: var(--matterColorAnti);
+  color: var(--matterColorLight);
   transition: var(--transitionStyleButton);
 
   margin-top: 0;
@@ -263,7 +263,7 @@
 .terms {
   /* Font */
   @apply --marketplaceTinyFontStyles;
-  color: var(--matterColorAnti);
+  color: var(--matterColorLight);
   transition: var(--transitionStyleButton);
 
   margin-top: 0;

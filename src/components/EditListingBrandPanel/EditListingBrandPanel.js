@@ -6,6 +6,7 @@ import { LISTING_STATE_DRAFT } from '../../util/types';
 import { ensureOwnListing } from '../../util/data';
 import { ListingLink } from '../../components';
 import { EditListingBrandForm } from '../../forms';
+import config from '../../config';
 
 import css from './EditListingBrandPanel.css';
 
@@ -26,7 +27,7 @@ const EditListingBrandPanel = props => {
   const currentListing = ensureOwnListing(listing);
   const { publicData } = currentListing.attributes;
   const {
-    publicData: { retailPrice },
+    publicData: { retailPrice, item },
   } = currentListing.attributes;
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
@@ -48,8 +49,13 @@ const EditListingBrandPanel = props => {
         initialValues={{ brand: publicData.brand }}
         onSubmit={values => {
           const { brand = '' } = values;
+          const theItem = item ? item : [];
+          const selectedItem = config.custom.items.find(option => option.key === theItem);
+          const titleString = selectedItem
+            ? `${brand} ${selectedItem.label} Retail ($${retailPrice})`
+            : `${brand} Retail ($${retailPrice})`;
           const updateValues = {
-            title: `${brand} $${retailPrice}`,
+            title: titleString,
             publicData: {
               brand,
             },

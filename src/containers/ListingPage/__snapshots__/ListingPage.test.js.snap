@@ -158,11 +158,11 @@ exports[`ListingPage matches snapshot 1`] = `
                 Array [
                   Object {
                     "key": "1",
-                    "label": "Dresses",
+                    "label": "Dress",
                   },
                   Object {
                     "key": "2",
-                    "label": "Rompes",
+                    "label": "Romper",
                   },
                   Object {
                     "key": "3",
@@ -170,15 +170,15 @@ exports[`ListingPage matches snapshot 1`] = `
                   },
                   Object {
                     "key": "4",
-                    "label": "Tops",
+                    "label": "Top",
                   },
                   Object {
                     "key": "5",
-                    "label": "Sweaters",
+                    "label": "Sweater",
                   },
                   Object {
                     "key": "6",
-                    "label": "Jackets",
+                    "label": "Jacket",
                   },
                   Object {
                     "key": "7",
@@ -186,15 +186,15 @@ exports[`ListingPage matches snapshot 1`] = `
                   },
                   Object {
                     "key": "8",
-                    "label": "Skirts",
+                    "label": "Skirt",
                   },
                   Object {
                     "key": "9",
-                    "label": "Shorts",
+                    "label": "Short",
                   },
                   Object {
                     "key": "10",
-                    "label": "Bodysuits",
+                    "label": "Bodysuit",
                   },
                   Object {
                     "key": "11",

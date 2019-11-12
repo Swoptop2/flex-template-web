@@ -47,7 +47,7 @@ const MENU_CONTENT_OFFSET = -12;
 const MAX_LENGTH_FOR_WORDS_IN_TITLE = 7;
 
 const priceData = (price, intl) => {
-  const amount = price.amount;
+  const amount = price ? price.amount : 0;
   const fixedAmount = amount * 3;
   const fixedPrice = new Money(fixedAmount, config.currency);
   if (price && price.currency === config.currency) {

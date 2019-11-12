@@ -45,16 +45,16 @@ export const categories = [
 ];
 
 export const items = [
-  { key: '1', label: 'Dresses' },
-  { key: '2', label: 'Rompes' },
+  { key: '1', label: 'Dress' },
+  { key: '2', label: 'Romper' },
   { key: '3', label: 'Matching Set' },
-  { key: '4', label: 'Tops' },
-  { key: '5', label: 'Sweaters' },
-  { key: '6', label: 'Jackets' },
+  { key: '4', label: 'Top' },
+  { key: '5', label: 'Sweater' },
+  { key: '6', label: 'Jacket' },
   { key: '7', label: 'Pants' },
-  { key: '8', label: 'Skirts' },
-  { key: '9', label: 'Shorts' },
-  { key: '10', label: 'Bodysuits' },
+  { key: '8', label: 'Skirt' },
+  { key: '9', label: 'Short' },
+  { key: '10', label: 'Bodysuit' },
   { key: '11', label: 'Other' },
 ];
 

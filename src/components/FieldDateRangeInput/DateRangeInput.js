@@ -146,7 +146,8 @@ class DateRangeInputComponent extends Component {
   }
 
   onDatesChange(dates) {
-    // const { timeSlots } = this.props;
+    // const { unitType, timeSlots } = this.props;
+    // const { startDate, endDate } = dates;
     const { startDate } = dates;
 
     // both dates are selected, a new start date before the previous start
@@ -167,7 +168,7 @@ class DateRangeInputComponent extends Component {
     const startDateAsDate = startDate instanceof moment ? startDate.toDate() : null;
     // const endDateAsDate = clearEndDate ? null : pickerEndDateToApiDate(unitType, endDate);
     const startDateCopy = moment(startDate);
-    const end = startDateCopy.add(3, 'days').toDate();
+    const end = startDateCopy.add(2, 'days').toDate();
 
     this.setState(() => ({
       currentStartDate: startDateAsDate,

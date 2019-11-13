@@ -95,13 +95,13 @@ exports[`ManageListingCard matches snapshot 1`] = `
   <div>
     <div>
       <div
-        title={165}
+        title={55}
       >
-        165
+        55
       </div>
       <div>
         <FormattedMessage
-          id="ManageListingCard.perDay"
+          id="ManageListingCard.perUnit"
           values={Object {}}
         />
       </div>

@@ -121,7 +121,7 @@ exports[`ListingPage matches snapshot 1`] = `
           <div>
             <SectionHeading
               category={null}
-              formattedPrice={165}
+              formattedPrice={55}
               hostLink={
                 <NamedLink
                   name="ListingPage"
@@ -141,7 +141,7 @@ exports[`ListingPage matches snapshot 1`] = `
                 </NamedLink>
               }
               onContactUser={[Function]}
-              priceTitle={165}
+              priceTitle={55}
               richTitle={
                 <span>
                   

@@ -8,6 +8,7 @@ import css from './BookingBreakdown.css';
 
 const BookingPeriod = props => {
   const { startDate, endDate, dateType } = props;
+  const end = moment(endDate).add(1, 'days');
 
   const timeFormatOptions =
     dateType === DATE_TYPE_DATE
@@ -45,10 +46,10 @@ const BookingPeriod = props => {
             <FormattedMessage id="BookingBreakdown.bookingEnd" />
           </div>
           <div className={css.dayInfo}>
-            <FormattedDate value={endDate} {...timeFormatOptions} />
+            <FormattedDate value={end} {...timeFormatOptions} />
           </div>
           <div className={css.itemLabel}>
-            <FormattedDate value={endDate} {...dateFormatOptions} />
+            <FormattedDate value={end} {...dateFormatOptions} />
           </div>
         </div>
       </div>
@@ -75,7 +76,6 @@ const LineItemBookingPeriod = props => {
       <div className={css.lineItem}>
         <BookingPeriod startDate={localStartDate} endDate={endDay} dateType={dateType} />
       </div>
-      <hr className={css.totalDivider} />
     </>
   );
 };

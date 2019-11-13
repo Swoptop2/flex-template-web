@@ -4,56 +4,43 @@ exports[`BookingBreakdown customer transaction data matches snapshot 1`] = `
 <div
   className=""
 >
-  Array [
+  <div>
     <div>
       <div>
         <div>
-          <div>
-            <span>
-              BookingBreakdown.bookingStart
-            </span>
-          </div>
-          <div>
-            <span>
-              Sat 12:00 PM
-            </span>
-          </div>
-          <div>
-            <span>
-              Jun 10
-            </span>
-          </div>
+          <span>
+            BookingBreakdown.bookingStart
+          </span>
         </div>
         <div>
-          <div>
-            <span>
-              BookingBreakdown.bookingEnd
-            </span>
-          </div>
-          <div>
-            <span>
-              Sat 12:00 PM
-            </span>
-          </div>
-          <div>
-            <span>
-              Jun 10
-            </span>
-          </div>
+          <span>
+            Sat 12:00 PM
+          </span>
+        </div>
+        <div>
+          <span>
+            Jun 10
+          </span>
         </div>
       </div>
-    </div>,
-    <hr />,
-  ]
-  <div>
-    <span>
-      <span>
-        BookingBreakdown.baseUnitNight
-      </span>
-    </span>
-    <span>
-      20
-    </span>
+      <div>
+        <div>
+          <span>
+            BookingBreakdown.bookingEnd
+          </span>
+        </div>
+        <div>
+          <span>
+            Sun 12:00 PM
+          </span>
+        </div>
+        <div>
+          <span>
+            Jun 11
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
   Array [
     <hr />,
@@ -75,56 +62,43 @@ exports[`BookingBreakdown pretransaction data matches snapshot 1`] = `
 <div
   className=""
 >
-  Array [
+  <div>
     <div>
       <div>
         <div>
-          <div>
-            <span>
-              BookingBreakdown.bookingStart
-            </span>
-          </div>
-          <div>
-            <span>
-              Sat 12:00 PM
-            </span>
-          </div>
-          <div>
-            <span>
-              Jun 10
-            </span>
-          </div>
+          <span>
+            BookingBreakdown.bookingStart
+          </span>
         </div>
         <div>
-          <div>
-            <span>
-              BookingBreakdown.bookingEnd
-            </span>
-          </div>
-          <div>
-            <span>
-              Sat 12:00 PM
-            </span>
-          </div>
-          <div>
-            <span>
-              Jun 10
-            </span>
-          </div>
+          <span>
+            Sat 12:00 PM
+          </span>
+        </div>
+        <div>
+          <span>
+            Jun 10
+          </span>
         </div>
       </div>
-    </div>,
-    <hr />,
-  ]
-  <div>
-    <span>
-      <span>
-        BookingBreakdown.baseUnitNight
-      </span>
-    </span>
-    <span>
-      20
-    </span>
+      <div>
+        <div>
+          <span>
+            BookingBreakdown.bookingEnd
+          </span>
+        </div>
+        <div>
+          <span>
+            Sun 12:00 PM
+          </span>
+        </div>
+        <div>
+          <span>
+            Jun 11
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
   Array [
     <hr />,
@@ -146,56 +120,43 @@ exports[`BookingBreakdown provider canceled transaction data matches snapshot 1`
 <div
   className=""
 >
-  Array [
+  <div>
     <div>
       <div>
         <div>
-          <div>
-            <span>
-              BookingBreakdown.bookingStart
-            </span>
-          </div>
-          <div>
-            <span>
-              Sat 12:00 PM
-            </span>
-          </div>
-          <div>
-            <span>
-              Jun 10
-            </span>
-          </div>
+          <span>
+            BookingBreakdown.bookingStart
+          </span>
         </div>
         <div>
-          <div>
-            <span>
-              BookingBreakdown.bookingEnd
-            </span>
-          </div>
-          <div>
-            <span>
-              Sat 12:00 PM
-            </span>
-          </div>
-          <div>
-            <span>
-              Jun 10
-            </span>
-          </div>
+          <span>
+            Sat 12:00 PM
+          </span>
+        </div>
+        <div>
+          <span>
+            Jun 10
+          </span>
         </div>
       </div>
-    </div>,
-    <hr />,
-  ]
-  <div>
-    <span>
-      <span>
-        BookingBreakdown.baseUnitNight
-      </span>
-    </span>
-    <span>
-      20
-    </span>
+      <div>
+        <div>
+          <span>
+            BookingBreakdown.bookingEnd
+          </span>
+        </div>
+        <div>
+          <span>
+            Sun 12:00 PM
+          </span>
+        </div>
+        <div>
+          <span>
+            Jun 11
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
   Array [
     <hr />,
@@ -265,56 +226,43 @@ exports[`BookingBreakdown provider transaction data matches snapshot 1`] = `
 <div
   className=""
 >
-  Array [
+  <div>
     <div>
       <div>
         <div>
-          <div>
-            <span>
-              BookingBreakdown.bookingStart
-            </span>
-          </div>
-          <div>
-            <span>
-              Sat 12:00 PM
-            </span>
-          </div>
-          <div>
-            <span>
-              Jun 10
-            </span>
-          </div>
+          <span>
+            BookingBreakdown.bookingStart
+          </span>
         </div>
         <div>
-          <div>
-            <span>
-              BookingBreakdown.bookingEnd
-            </span>
-          </div>
-          <div>
-            <span>
-              Sat 12:00 PM
-            </span>
-          </div>
-          <div>
-            <span>
-              Jun 10
-            </span>
-          </div>
+          <span>
+            Sat 12:00 PM
+          </span>
+        </div>
+        <div>
+          <span>
+            Jun 10
+          </span>
         </div>
       </div>
-    </div>,
-    <hr />,
-  ]
-  <div>
-    <span>
-      <span>
-        BookingBreakdown.baseUnitNight
-      </span>
-    </span>
-    <span>
-      20
-    </span>
+      <div>
+        <div>
+          <span>
+            BookingBreakdown.bookingEnd
+          </span>
+        </div>
+        <div>
+          <span>
+            Sun 12:00 PM
+          </span>
+        </div>
+        <div>
+          <span>
+            Jun 11
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
   Array [
     <hr />,

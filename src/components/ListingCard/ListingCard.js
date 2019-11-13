@@ -10,20 +10,20 @@ import { richText } from '../../util/richText';
 import { createSlug } from '../../util/urlHelpers';
 import config from '../../config';
 import { NamedLink, ResponsiveImage } from '../../components';
-import { types as sdkTypes } from '../../util/sdkLoader';
+// import { types as sdkTypes } from '../../util/sdkLoader';
 
 import css from './ListingCard.css';
 
-const { Money } = sdkTypes;
+// const { Money } = sdkTypes;
 
 const MIN_LENGTH_FOR_LONG_WORDS = 10;
 
 const priceData = (price, intl) => {
-  const amount = price.amount;
-  const fixedAmount = amount * 3;
-  const fixedPrice = new Money(fixedAmount, config.currency);
+  // const amount = price.amount;
+  // const fixedAmount = amount * 3;
+  // const fixedPrice = new Money(fixedAmount, config.currency);
   if (price && price.currency === config.currency) {
-    const formattedPrice = formatMoney(intl, fixedPrice);
+    const formattedPrice = formatMoney(intl, price);
     return { formattedPrice, priceTitle: formattedPrice };
   } else if (price) {
     return {

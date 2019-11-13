@@ -81,7 +81,7 @@ class CurrencyInputComponent extends Component {
         : '';
       // Formatted value fully localized currency string ("$1,000.99")
       const formattedValue = hasInitialValue
-        ? intl.formatNumber(ensureDotSeparator((unformattedValue * 3).toString()), currencyConfig)
+        ? intl.formatNumber(ensureDotSeparator(unformattedValue), currencyConfig)
         : '';
 
       this.state = {
@@ -108,9 +108,6 @@ class CurrencyInputComponent extends Component {
     const { unformattedValue } = this.updateValues(event);
     // Notify parent component about current price change
     const price = getPrice(ensureDotSeparator(unformattedValue), this.props.currencyConfig);
-    if (price) {
-      price.amount = price.amount / 3;
-    }
     this.props.input.onChange(price);
   }
 
@@ -147,10 +144,7 @@ class CurrencyInputComponent extends Component {
         onFocus(price);
       }
       return {
-        value:
-          prevState.unformattedValue === ''
-            ? prevState.unformattedValue
-            : prevState.unformattedValue * 3,
+        value: prevState.unformattedValue,
       };
     });
   }

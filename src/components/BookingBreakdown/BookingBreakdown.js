@@ -34,7 +34,10 @@ export const BookingBreakdownComponent = props => {
     booking,
     intl,
     dateType,
+    shouldAdd,
   } = props;
+
+  console.log(shouldAdd);
 
   const isCustomer = userRole === 'customer';
   const isProvider = userRole === 'provider';
@@ -86,7 +89,12 @@ export const BookingBreakdownComponent = props => {
 
   return (
     <div className={classes}>
-      <LineItemBookingPeriod booking={booking} unitType={unitType} dateType={dateType} />
+      <LineItemBookingPeriod
+        shouldAdd={true}
+        booking={booking}
+        unitType={unitType}
+        dateType={dateType}
+      />
       {/* <LineItemUnitsMaybe transaction={transaction} unitType={unitType} /> */}
 
       {/* <LineItemBasePriceMaybe transaction={transaction} unitType={unitType} intl={intl} /> */}

@@ -13,7 +13,13 @@ import moment from 'moment';
 import { START_DATE, END_DATE } from '../../util/dates';
 import { LINE_ITEM_DAY, propTypes } from '../../util/types';
 import config from '../../config';
-import { isDayBlockedFn, isOutsideRangeFn, apiEndDateToPickerDate } from './DateRangeInput.helpers';
+import {
+  isDayBlockedFn,
+  isOutsideRangeFn,
+  apiEndDateToPickerDate,
+  isBlockedBetween,
+  pickerEndDateToApiDate,
+} from './DateRangeInput.helpers';
 
 import { IconArrowHead } from '../../components';
 import css from './DateRangeInput.css';
@@ -146,27 +152,27 @@ class DateRangeInputComponent extends Component {
   }
 
   onDatesChange(dates) {
-    // const { unitType, timeSlots } = this.props;
-    // const { startDate, endDate } = dates;
-    const { startDate } = dates;
+    const { unitType, timeSlots } = this.props;
+    const { startDate, endDate } = dates;
+    //const { startDate } = dates;
 
     // both dates are selected, a new start date before the previous start
     // date is selected
-    // const startDateUpdated =
-    //   timeSlots &&
-    //   startDate &&
-    //   endDate &&
-    //   this.state.currentStartDate &&
-    //   startDate.isBefore(this.state.currentStartDate);
+    const startDateUpdated =
+      timeSlots &&
+      startDate &&
+      endDate &&
+      this.state.currentStartDate &&
+      startDate.isBefore(this.state.currentStartDate);
 
     // clear the end date in case a blocked date can be found
     // between previous start date and new start date
-    // const clearEndDate = startDateUpdated
-    //   ? isBlockedBetween(timeSlots, startDate, moment(this.state.currentStartDate).add(1, 'days'))
-    //   : false;
+    const clearEndDate = startDateUpdated
+      ? isBlockedBetween(timeSlots, startDate, moment(this.state.currentStartDate).add(1, 'days'))
+      : false;
 
     const startDateAsDate = startDate instanceof moment ? startDate.toDate() : null;
-    // const endDateAsDate = clearEndDate ? null : pickerEndDateToApiDate(unitType, endDate);
+    const endDateAsDate = clearEndDate ? null : pickerEndDateToApiDate(unitType, endDate);
     const startDateCopy = moment(startDate);
     const end = startDateCopy.add(2, 'days').toDate();
 

@@ -55,6 +55,7 @@ import {
 } from './CheckoutPage.duck';
 import { storeData, storedData, clearData } from './CheckoutPageSessionHelpers';
 import css from './CheckoutPage.css';
+import moment from 'moment';
 
 const STORAGE_KEY = 'CheckoutPage';
 
@@ -186,6 +187,10 @@ export class CheckoutPageComponent extends Component {
       // a noon of correct year-month-date combo in UTC
       const bookingStartForAPI = dateFromLocalToAPI(bookingStart);
       const bookingEndForAPI = dateFromLocalToAPI(bookingEnd);
+      const real = moment(bookingEndForAPI)
+        .add(1, 'days')
+        .toDate();
+      console.log(bookingEndForAPI, real);
 
       // Fetch speculated transaction for showing price in booking breakdown
       // NOTE: if unit type is line-item/units, quantity needs to be added.
@@ -193,7 +198,7 @@ export class CheckoutPageComponent extends Component {
       fetchSpeculatedTransaction({
         listingId,
         bookingStart: bookingStartForAPI,
-        bookingEnd: bookingEndForAPI,
+        bookingEnd: real,
         quantity: 1,
       });
     }
@@ -369,6 +374,10 @@ export class CheckoutPageComponent extends Component {
         : selectedPaymentFlow === PAY_AND_SAVE_FOR_LATER_USE
         ? { setupPaymentMethodForSaving: true }
         : {};
+
+    // const realEnd = moment(tx.booking.attributes.end)
+    //   .add(1, 'days')
+    //   .toDate();
 
     const orderParams = {
       listingId: pageData.listing.id,

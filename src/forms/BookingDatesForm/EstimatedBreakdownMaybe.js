@@ -137,6 +137,7 @@ const EstimatedBreakdownMaybe = props => {
       transaction={tx}
       booking={tx.booking}
       dateType={DATE_TYPE_DATE}
+      shouldAdd={true}
     />
   );
 };

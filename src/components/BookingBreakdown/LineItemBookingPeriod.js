@@ -7,8 +7,9 @@ import { dateFromAPIToLocalNoon } from '../../util/dates';
 import css from './BookingBreakdown.css';
 
 const BookingPeriod = props => {
-  const { startDate, endDate, dateType } = props;
-  const end = moment(endDate).add(1, 'days');
+  const { startDate, endDate, dateType, shouldAdd } = props;
+
+  const end = shouldAdd ? moment(endDate).add(1, 'days') : endDate;
 
   const timeFormatOptions =
     dateType === DATE_TYPE_DATE
@@ -58,7 +59,7 @@ const BookingPeriod = props => {
 };
 
 const LineItemBookingPeriod = props => {
-  const { booking, unitType, dateType } = props;
+  const { booking, unitType, dateType, shouldAdd } = props;
 
   // Attributes: displayStart and displayEnd can be used to differentiate shown time range
   // from actual start and end times used for availability reservation. It can help in situations
@@ -74,7 +75,12 @@ const LineItemBookingPeriod = props => {
   return (
     <>
       <div className={css.lineItem}>
-        <BookingPeriod startDate={localStartDate} endDate={endDay} dateType={dateType} />
+        <BookingPeriod
+          startDate={localStartDate}
+          shouldAdd={shouldAdd}
+          endDate={endDay}
+          dateType={dateType}
+        />
       </div>
     </>
   );

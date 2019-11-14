@@ -8,6 +8,7 @@ import css from './BookingBreakdown.css';
 
 const BookingPeriod = props => {
   const { startDate, endDate, dateType, shouldAdd } = props;
+  // console.log(shouldAdd);
 
   const end = shouldAdd ? moment(endDate).add(1, 'days') : endDate;
 

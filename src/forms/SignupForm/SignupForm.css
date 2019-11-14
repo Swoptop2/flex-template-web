@@ -28,6 +28,10 @@
   width: calc(66% - 9px);
 }
 
+.schoolRoot {
+  width: calc(50% - 9px);
+}
+
 .fieldSelect {
   margin-top: 10px;
 }

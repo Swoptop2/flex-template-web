@@ -136,6 +136,9 @@ const SignupFormComponent = props => {
         const cityRequiredMessage = 'You must select your city';
         const cityRequired = validators.required(cityRequiredMessage);
 
+        const schoolRequiredMessage = 'You must enter the College you go to';
+        const schoolRequired = validators.required(schoolRequiredMessage);
+
         const handleTermsKeyUp = e => {
           // Allow click action with keyboard like with normal links
           if (e.keyCode === KEY_CODE_ENTER) {
@@ -186,6 +189,25 @@ const SignupFormComponent = props => {
                   label={lastNameLabel}
                   placeholder={lastNamePlaceholder}
                   validate={lastNameRequired}
+                />
+              </div>
+              <div className={css.name}>
+                <FieldTextInput
+                  className={css.schoolRoot}
+                  type="text"
+                  id="school"
+                  name="school"
+                  label="College"
+                  placeholder="University of ..."
+                  validate={schoolRequired}
+                />
+                <FieldTextInput
+                  className={css.schoolRoot}
+                  type="text"
+                  id="sorority"
+                  name="sorority"
+                  label="Sorority"
+                  placeholder="Alpha Chi Omega"
                 />
               </div>
               <FieldSelectState

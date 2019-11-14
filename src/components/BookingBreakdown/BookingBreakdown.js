@@ -37,8 +37,6 @@ export const BookingBreakdownComponent = props => {
     shouldAdd,
   } = props;
 
-  console.log(shouldAdd);
-
   const isCustomer = userRole === 'customer';
   const isProvider = userRole === 'provider';
 
@@ -90,7 +88,7 @@ export const BookingBreakdownComponent = props => {
   return (
     <div className={classes}>
       <LineItemBookingPeriod
-        shouldAdd={true}
+        shouldAdd={shouldAdd}
         booking={booking}
         unitType={unitType}
         dateType={dateType}

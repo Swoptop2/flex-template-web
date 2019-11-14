@@ -73,6 +73,48 @@ exports[`SignupForm matches snapshot 1`] = `
         />
       </div>
     </div>
+    <div>
+      <div
+        className=""
+      >
+        <label
+          htmlFor="school"
+        >
+          College
+        </label>
+        <input
+          className=""
+          id="school"
+          name="school"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="University of ..."
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className=""
+      >
+        <label
+          htmlFor="sorority"
+        >
+          Sorority
+        </label>
+        <input
+          className=""
+          id="sorority"
+          name="sorority"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Alpha Chi Omega"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
     <div
       className=""
     >

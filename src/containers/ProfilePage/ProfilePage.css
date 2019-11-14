@@ -19,6 +19,15 @@
   box-shadow: none;
 }
 
+.schoolData {
+  color: var(--matterColorAnti);
+}
+
+.schoolDataContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
 .asideContent {
   width: 100%;
   display: flex;

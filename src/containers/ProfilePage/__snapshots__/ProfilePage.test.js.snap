@@ -79,6 +79,16 @@ exports[`ProfilePage matches snapshot 1`] = `
           />
         </h1>
         <div>
+          <h2>
+            College: 
+            <span />
+          </h2>
+          <h2>
+            Sorority: 
+            <span />
+          </h2>
+        </div>
+        <div>
           <ButtonTabNavHorizontal
             className={null}
             rootClassName={null}

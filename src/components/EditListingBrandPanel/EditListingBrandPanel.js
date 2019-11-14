@@ -53,7 +53,7 @@ const EditListingBrandPanel = props => {
           const selectedItem = config.custom.items.find(option => option.key === theItem);
           const titleString = selectedItem
             ? `${brand} ${selectedItem.label} Retail ($${retailPrice})`
-            : `${brand} Retail ($${retailPrice})`;
+            : `${brand} Retail - ($${retailPrice})`;
           const updateValues = {
             title: titleString,
             publicData: {

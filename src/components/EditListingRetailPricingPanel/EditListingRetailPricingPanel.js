@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { FormattedMessage } from '../../util/reactIntl';
 import { LISTING_STATE_DRAFT } from '../../util/types';
@@ -10,7 +12,7 @@ import config from '../../config';
 
 import css from './EditListingRetailPricingPanel.css';
 
-const EditListingRetailPricing = props => {
+const EditListingRetailPricingComponent = props => {
   const {
     className,
     rootClassName,
@@ -21,6 +23,7 @@ const EditListingRetailPricing = props => {
     panelUpdated,
     updateInProgress,
     errors,
+    currentUser,
   } = props;
 
   const classes = classNames(rootClassName || css.root, className);
@@ -49,7 +52,7 @@ const EditListingRetailPricing = props => {
           const selectedItem = config.custom.items.find(option => option.key === publicData.item);
           let titleString = selectedItem
             ? `${publicData.brand} ${selectedItem.label} Retail ($${retailPrice})`
-            : `${publicData.brand} Retail ($${retailPrice})`;
+            : `${publicData.brand} Retail - ($${retailPrice})`;
           const updateValues = {
             title: titleString,
             description: 'default',
@@ -64,6 +67,7 @@ const EditListingRetailPricing = props => {
         updated={panelUpdated}
         updateInProgress={updateInProgress}
         fetchErrors={errors}
+        currentUser={currentUser}
       />
     </div>
   );
@@ -71,13 +75,13 @@ const EditListingRetailPricing = props => {
 
 const { func, object, string, bool } = PropTypes;
 
-EditListingRetailPricing.defaultProps = {
+EditListingRetailPricingComponent.defaultProps = {
   className: null,
   rootClassName: null,
   listing: null,
 };
 
-EditListingRetailPricing.propTypes = {
+EditListingRetailPricingComponent.propTypes = {
   className: string,
   rootClassName: string,
 
@@ -91,5 +95,14 @@ EditListingRetailPricing.propTypes = {
   updateInProgress: bool.isRequired,
   errors: object.isRequired,
 };
+
+const mapStateToProps = state => {
+  const { currentUser } = state.user;
+  return { currentUser };
+};
+
+const EditListingRetailPricing = compose(connect(mapStateToProps))(
+  EditListingRetailPricingComponent
+);
 
 export default EditListingRetailPricing;

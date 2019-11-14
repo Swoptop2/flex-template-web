@@ -5,6 +5,12 @@
   flex-direction: column;
 }
 
+.note {
+  color: rgb(194, 7, 7);
+  font-size: 15px;
+  line-height: 1.2;
+}
+
 .bookingDates {
   flex-shrink: 0;
   margin-bottom: 38px;

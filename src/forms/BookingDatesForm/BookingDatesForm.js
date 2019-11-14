@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { string, bool, arrayOf } from 'prop-types';
 import { compose } from 'redux';
+import { connect } from 'react-redux';
 import { Form as FinalForm } from 'react-final-form';
 import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl';
 import classNames from 'classnames';
@@ -19,9 +20,17 @@ const identity = v => v;
 export class BookingDatesFormComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { focusedInput: null };
+    this.state = { focusedInput: null, missingAvatar: true };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.onFocusedInputChange = this.onFocusedInputChange.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.currentUser) {
+      if (this.props.currentUser.profileImage) {
+        this.setState({ missingAvatar: false });
+      }
+    }
   }
 
   // Function that can be passed to nested components
@@ -188,9 +197,15 @@ export class BookingDatesFormComponent extends Component {
                 />
               </p>
               <div className={submitButtonClasses}>
-                <PrimaryButton type="submit">
+                <PrimaryButton type="submit" disabled={this.state.missingAvatar}>
                   <FormattedMessage id="BookingDatesForm.requestToBook" />
                 </PrimaryButton>
+                {this.state.missingAvatar ? (
+                  <p className={css.note}>
+                    *You need to add a profile picture before you can proceed. Please go to your
+                    Profile Settings to do so.
+                  </p>
+                ) : null}
               </div>
             </Form>
           );
@@ -229,7 +244,15 @@ BookingDatesFormComponent.propTypes = {
   endDatePlaceholder: string,
 };
 
-const BookingDatesForm = compose(injectIntl)(BookingDatesFormComponent);
+const mapStateToProps = state => {
+  const { currentUser } = state.user;
+  return { currentUser };
+};
+
+const BookingDatesForm = compose(
+  connect(mapStateToProps),
+  injectIntl
+)(BookingDatesFormComponent);
 BookingDatesForm.displayName = 'BookingDatesForm';
 
 export default BookingDatesForm;

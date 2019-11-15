@@ -15,7 +15,7 @@ const SectionColor = props => {
       <h2 className={css.featuresTitle}>
         <FormattedMessage id="ListingPage.colorTitle" />
       </h2>
-      <p>{colorOption.label}</p>
+      <p className={css.label}>{colorOption.label}</p>
     </div>
   ) : null;
 };

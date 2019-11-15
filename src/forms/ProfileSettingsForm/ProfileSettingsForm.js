@@ -217,6 +217,7 @@ class ProfileSettingsFormComponent extends Component {
                 <h3 className={css.sectionTitle}>
                   <FormattedMessage id="ProfileSettingsForm.yourProfilePicture" />
                 </h3>
+                <p className={css.note}>*Scroll down to save changes</p>
                 <Field
                   accept={ACCEPT_IMAGES}
                   id="profileImage"

@@ -210,6 +210,10 @@ const SignupFormComponent = props => {
                   placeholder="Alpha Chi Omega"
                 />
               </div>
+              <p className={css.note}>
+                *Choose the location from which you want to rent from or want users to rent from
+                you.
+              </p>
               <FieldSelectState
                 className={css.fieldSelect}
                 label="State"

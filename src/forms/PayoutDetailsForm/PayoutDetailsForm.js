@@ -1,6 +1,7 @@
 import React from 'react';
 import { bool, func, object, shape, string } from 'prop-types';
 import { compose } from 'redux';
+import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
 import { Form as FinalForm } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
@@ -45,18 +46,22 @@ const PayoutDetailsFormComponent = props => (
         ready,
         submitButtonText,
         currentUserId,
+        currentUser,
         values,
       } = fieldRenderProps;
 
       const { country } = values;
+      let state, city;
+      if (currentUser) {
+        state = currentUser.attributes.profile.protectedData.state;
+        city = currentUser.attributes.profile.protectedData.city;
+      }
 
-      const accountType = values.accountType;
+      const accountType = 'individual';
 
       const individualAccountLabel = intl.formatMessage({
         id: 'PayoutDetailsForm.individualAccount',
       });
-
-      const companyAccountLabel = intl.formatMessage({ id: 'PayoutDetailsForm.companyAccount' });
 
       const countryLabel = intl.formatMessage({ id: 'PayoutDetailsForm.countryLabel' });
       const countryPlaceholder = intl.formatMessage({
@@ -124,13 +129,7 @@ const PayoutDetailsFormComponent = props => (
                 label={individualAccountLabel}
                 value="individual"
                 showAsRequired={showAsRequired}
-              />
-              <FieldRadioButton
-                id="company"
-                name="accountType"
-                label={companyAccountLabel}
-                value="company"
-                showAsRequired={showAsRequired}
+                checked={true}
               />
             </div>
           </div>
@@ -142,11 +141,12 @@ const PayoutDetailsFormComponent = props => (
                 <FieldSelect
                   id="country"
                   name="country"
-                  disabled={disabled}
                   className={css.selectCountry}
                   autoComplete="country"
                   label={countryLabel}
                   validate={countryRequired}
+                  defaultValue="US"
+                  disabled={true}
                 >
                   <option disabled value="">
                     {countryPlaceholder}
@@ -164,6 +164,8 @@ const PayoutDetailsFormComponent = props => (
                   fieldRenderProps={fieldRenderProps}
                   country={country}
                   currentUserId={currentUserId}
+                  state={state}
+                  city={city}
                 />
               ) : showCompany ? (
                 <PayoutDetailsCompanyAccount
@@ -235,6 +237,14 @@ PayoutDetailsFormComponent.propTypes = {
   intl: intlShape.isRequired,
 };
 
-const PayoutDetailsForm = compose(injectIntl)(PayoutDetailsFormComponent);
+const mapStateToProps = state => {
+  const { currentUser } = state.user;
+  return { currentUser };
+};
+
+const PayoutDetailsForm = compose(
+  connect(mapStateToProps),
+  injectIntl
+)(PayoutDetailsFormComponent);
 
 export default PayoutDetailsForm;

@@ -591,6 +591,8 @@ export const createStripeAccount = payoutDetails => (dispatch, getState, sdk) =>
     throw new Error('Stripe must be loaded for submitting PayoutPreferences');
   }
 
+  payoutDetails.accountType = 'individual';
+
   const stripe = window.Stripe(config.stripe.publishableKey);
 
   const country = payoutDetails.country;

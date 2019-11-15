@@ -98,7 +98,7 @@ exports[`PayoutPreferencesPage matches snapshot with Stripe not connected 1`] = 
             values={Object {}}
           />
         </p>
-        <injectIntl(PayoutDetailsFormComponent)
+        <Connect(injectIntl(PayoutDetailsFormComponent))
           createStripeAccountError={null}
           currentUserId={
             UUID {
@@ -168,7 +168,7 @@ exports[`PayoutPreferencesPage matches snapshot with details submitted 1`] = `
             values={Object {}}
           />
         </p>
-        <injectIntl(PayoutDetailsFormComponent)
+        <Connect(injectIntl(PayoutDetailsFormComponent))
           createStripeAccountError={null}
           currentUserId={
             UUID {

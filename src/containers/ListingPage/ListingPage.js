@@ -45,7 +45,6 @@ import { sendEnquiry, loadData, setInitialValues } from './ListingPage.duck';
 import SectionImages from './SectionImages';
 import SectionAvatar from './SectionAvatar';
 import SectionHeading from './SectionHeading';
-import SectionItemMaybe from './SectionItemMaybe';
 import SectionSizeMaybe from './SectionSizeMaybe';
 import SectionColorMaybe from './SectionColorMaybe';
 import SectionDamageCostMaybe from './SectionDamageCostMaybe';
@@ -194,7 +193,6 @@ export class ListingPageComponent extends Component {
       timeSlots,
       fetchTimeSlotsError,
       categoriesConfig,
-      itemsConfig,
       sizesConfig,
       colorsConfig,
     } = this.props;
@@ -430,7 +428,6 @@ export class ListingPageComponent extends Component {
                     showContactUser={showContactUser}
                     onContactUser={this.onContactUser}
                   />
-                  <SectionItemMaybe options={itemsConfig} publicData={publicData} />
                   <SectionSizeMaybe options={sizesConfig} publicData={publicData} />
                   <SectionColorMaybe options={colorsConfig} publicData={publicData} />
                   <SectionDamageCostMaybe publicData={publicData} />
@@ -491,7 +488,6 @@ ListingPageComponent.defaultProps = {
   fetchTimeSlotsError: null,
   sendEnquiryError: null,
   categoriesConfig: config.custom.categories,
-  itemsConfig: config.custom.items,
   sizesConfig: config.custom.sizes,
   colorsConfig: config.custom.colors,
 };
@@ -534,7 +530,6 @@ ListingPageComponent.propTypes = {
   onInitializeCardPaymentData: func.isRequired,
 
   categoriesConfig: array,
-  itemsConfig: array,
   sizesConfig: array,
   colorsConfig: array,
 };

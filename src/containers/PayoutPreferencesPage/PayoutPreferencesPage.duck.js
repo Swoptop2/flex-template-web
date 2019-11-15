@@ -52,6 +52,12 @@ export const savePayoutDetailsSuccess = () => ({
 // ================ Thunks ================ //
 
 export const savePayoutDetails = values => (dispatch, getState, sdk) => {
+  //grab last 4 off of full SSN number
+  const { personalIdNumber } = values.individual;
+  const len = personalIdNumber.length;
+  const lastFour = personalIdNumber.slice(len - 4, len);
+  values.individual.personalIdNumber = lastFour;
+
   dispatch(savePayoutDetailsRequest());
 
   return dispatch(createStripeAccount(values))

@@ -10,6 +10,12 @@
   }
 }
 
+.note {
+  color: var(--matterColorAnti);
+  font-size: 15px;
+  line-height: 1.22;
+}
+
 .name {
   display: flex;
   justify-content: space-between;

@@ -115,6 +115,9 @@ exports[`SignupForm matches snapshot 1`] = `
         />
       </div>
     </div>
+    <p>
+      *Choose the location from which you want to rent from or want users to rent from you.
+    </p>
     <div
       className=""
     >

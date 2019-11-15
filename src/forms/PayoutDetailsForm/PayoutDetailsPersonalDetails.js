@@ -99,7 +99,7 @@ const PayoutDetailsPersonalDetails = props => {
       id: `PayoutDetailsForm.personalIdNumberPlaceholder.US`,
     });
 
-    const validSSN = validators.validSsnLast4(
+    const validSSN = validators.validSsn(
       intl.formatMessage({
         id: `PayoutDetailsForm.personalIdNumberValid`,
       })
@@ -168,6 +168,7 @@ const PayoutDetailsPersonalDetails = props => {
   return (
     <div className={css.sectionContainer}>
       <h3 className={css.subTitle}>{personalDetailsTitle}</h3>
+      <p className={css.note}>*Be sure to enter your legal name</p>
       <div className={css.formRow}>
         <FieldTextInput
           id={`${fieldId}.firstName`}

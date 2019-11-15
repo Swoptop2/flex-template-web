@@ -1,7 +1,7 @@
 import React from 'react';
 import { bool, object, shape } from 'prop-types';
 import { compose } from 'redux';
-import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
+import { injectIntl, intlShape } from '../../util/reactIntl';
 import config from '../../config';
 import routeConfiguration from '../../routeConfiguration';
 import { propTypes } from '../../util/types';
@@ -15,7 +15,7 @@ import PayoutDetailsBusinessProfile from './PayoutDetailsBusinessProfile';
 import css from './PayoutDetailsForm.css';
 
 const PayoutDetailsIndividualAccountComponent = props => {
-  const { fieldRenderProps, currentUserId, intl, appConfig } = props;
+  const { fieldRenderProps, currentUserId, intl, appConfig, state, city } = props;
   const { disabled, form, values } = fieldRenderProps;
   const { country } = values;
 
@@ -74,13 +74,12 @@ const PayoutDetailsIndividualAccountComponent = props => {
         disabled={disabled}
         form={form}
         fieldId="individual.address"
+        state={state}
+        city={city}
       />
 
       {showBusinssProfileSection ? (
         <div className={css.sectionContainer}>
-          <h3 className={css.subTitle}>
-            <FormattedMessage id="PayoutDetailsForm.businessProfile" />
-          </h3>
           <PayoutDetailsBusinessProfile
             disabled={disabled}
             fieldId="individual.businessProfile"

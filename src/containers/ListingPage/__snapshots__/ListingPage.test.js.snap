@@ -153,57 +153,6 @@ exports[`ListingPage matches snapshot 1`] = `
               }
               showContactUser={true}
             />
-            <SectionItem
-              options={
-                Array [
-                  Object {
-                    "key": "1",
-                    "label": "Dress",
-                  },
-                  Object {
-                    "key": "2",
-                    "label": "Romper",
-                  },
-                  Object {
-                    "key": "3",
-                    "label": "Matching Set",
-                  },
-                  Object {
-                    "key": "4",
-                    "label": "Top",
-                  },
-                  Object {
-                    "key": "5",
-                    "label": "Sweater",
-                  },
-                  Object {
-                    "key": "6",
-                    "label": "Jacket",
-                  },
-                  Object {
-                    "key": "7",
-                    "label": "Pants",
-                  },
-                  Object {
-                    "key": "8",
-                    "label": "Skirt",
-                  },
-                  Object {
-                    "key": "9",
-                    "label": "Short",
-                  },
-                  Object {
-                    "key": "10",
-                    "label": "Bodysuit",
-                  },
-                  Object {
-                    "key": "11",
-                    "label": "Other",
-                  },
-                ]
-              }
-              publicData={Object {}}
-            />
             <SectionSize
               options={
                 Array [

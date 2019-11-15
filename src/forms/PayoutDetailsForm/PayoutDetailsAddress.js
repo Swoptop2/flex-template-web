@@ -24,7 +24,7 @@ const CANADIAN_PROVINCES = [
 ];
 
 const PayoutDetailsAddress = props => {
-  const { className, country, intl, disabled, form, fieldId } = props;
+  const { className, country, intl, disabled, form, fieldId, state, city } = props;
   const countryConfig = country ? stripeCountryConfigs(country).addressConfig : null;
 
   const isRequired = (countryConfig, field) => {
@@ -145,6 +145,7 @@ const PayoutDetailsAddress = props => {
             placeholder={cityPlaceholder}
             validate={cityRequired}
             onUnmount={() => form.change(`${fieldId}.city`, undefined)}
+            defaultValue={city}
           />
         ) : null}
       </div>
@@ -158,6 +159,7 @@ const PayoutDetailsAddress = props => {
           autoComplete="address-level1"
           label={stateLabel}
           placeholder={statePlaceholder}
+          defaultValue={state}
           validate={stateRequired}
           onUnmount={() => form.change(`${fieldId}.state`, undefined)}
         />

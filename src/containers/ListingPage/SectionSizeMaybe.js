@@ -15,7 +15,7 @@ const SectionSize = props => {
       <h2 className={css.featuresTitle}>
         <FormattedMessage id="ListingPage.sizeTitle" />
       </h2>
-      <p>{sizeOption.label}</p>
+      <p className={css.label}>{sizeOption.label}</p>
     </div>
   ) : null;
 };

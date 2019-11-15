@@ -14,7 +14,7 @@ const SectionDamageCost = props => {
       <h2 className={css.featuresTitle}>
         <FormattedMessage id="ListingPage.damageCostTitle" />
       </h2>
-      <p>${damageCost}</p>
+      <p className={css.label}>${damageCost}</p>
     </div>
   ) : null;
 };

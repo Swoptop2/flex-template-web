@@ -5,13 +5,13 @@ import * as validators from '../../util/validators';
 import { FieldSelect, FieldTextInput } from '../../components';
 
 import merchantCategoryCodesUS from './merchantCategoryCodesUS';
-import css from './PayoutDetailsForm.css';
+
+const clothingRentals = merchantCategoryCodesUS[57];
 
 const PayoutDetailsBusinessProfile = props => {
   const { fieldId, disabled, intl, showBusinessURLField, showMCCForUSField } = props;
 
   const isBusinessProfileNeeded = showBusinessURLField || showMCCForUSField;
-  const mccLabel = intl.formatMessage({ id: 'PayoutDetailsForm.businessMCCForUSLabel' });
   const mccPlaceholder = intl.formatMessage({
     id: 'PayoutDetailsForm.businessMCCForUSPlaceholder',
   });
@@ -19,7 +19,6 @@ const PayoutDetailsBusinessProfile = props => {
     intl.formatMessage({ id: 'PayoutDetailsForm.businessMCCForUSRequired' })
   );
 
-  const businessUrlLabel = intl.formatMessage({ id: 'PayoutDetailsForm.businessURLLabel' });
   const businessUrlPlaceholder = intl.formatMessage({
     id: 'PayoutDetailsForm.businessURLPlaceholder',
   });
@@ -38,11 +37,12 @@ const PayoutDetailsBusinessProfile = props => {
         <FieldSelect
           id={`${fieldId}.mcc`}
           name={`${fieldId}.mcc`}
-          className={css.selectMCC}
+          style={{ display: 'none' }}
           autoComplete="mcc"
           disabled={disabled}
-          label={mccLabel}
+          label=""
           validate={mccRequired}
+          defaultValue={clothingRentals.mcc}
         >
           <option disabled value="">
             {mccPlaceholder}
@@ -59,13 +59,14 @@ const PayoutDetailsBusinessProfile = props => {
         <FieldTextInput
           id={`${fieldId}.url`}
           name={`${fieldId}.url`}
-          className={css.textInputRow}
+          style={{ display: 'none' }}
           autoComplete="url"
           disabled={disabled}
-          label={businessUrlLabel}
+          label=""
           placeholder={businessUrlPlaceholder}
           type="text"
           validate={businessUrlRequired}
+          defaultValue="www.swoptop.com"
         />
       ) : null}
     </React.Fragment>

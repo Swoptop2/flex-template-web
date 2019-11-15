@@ -16,6 +16,11 @@
   }
 }
 
+.note {
+  color: var(--matterColorAnti);
+  font-size: 15px;
+}
+
 .subTitle {
   /* Font */
   color: var(--matterColorAnti);

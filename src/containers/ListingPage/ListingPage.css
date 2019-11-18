@@ -21,11 +21,12 @@
 }
 
 .sectionImages {
+  margin-top: 65px;
 }
 
 .threeToTwoWrapper {
   /* Layout */
-  display: block;
+  display: none;
   width: 100%;
   position: relative;
 
@@ -153,8 +154,8 @@
 
   /* Position and dimensions */
   position: absolute;
-  bottom: 19px;
-  right: 24px;
+  top: 100px;
+  right: 35px;
   margin: 0;
   padding: 6px 13px 8px 13px;
 
@@ -162,7 +163,7 @@
   background-color: var(--matterColorLight);
 
   /* Borders */
-  border: none;
+  border: 2px solid var(--marketplaceColor);
   border-radius: var(--borderRadius);
 
   cursor: pointer;

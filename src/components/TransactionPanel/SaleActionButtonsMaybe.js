@@ -24,9 +24,9 @@ const SaleActionButtonsMaybe = props => {
 
   useEffect(() => {
     if (currentUser.attributes) {
-      const { phone } = currentUser.attributes.profile.protectedData;
+      const { phoneNumber } = currentUser.attributes.profile.protectedData;
       // if user has already entered a phone number, then they can accept
-      if (phone) {
+      if (phoneNumber) {
         setShouldDisable(false);
       }
     }
@@ -63,7 +63,7 @@ const SaleActionButtonsMaybe = props => {
         </SecondaryButton>
         {shouldDisable ? (
           <p className={css.phoneWarning}>
-            *If this is your first time accepting a rental, please go to your Profile Settings and
+            *If this is your first time accepting a rental, please go to your Account Settings and
             enter your phone number. Your number will only be shared with your renter so she can
             communicate with you.
           </p>

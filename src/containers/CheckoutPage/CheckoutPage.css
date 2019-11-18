@@ -38,6 +38,11 @@
   }
 }
 
+.note {
+  font-size: 16px;
+  color: var(--matterColor);
+}
+
 .home {
   display: flex;
   padding: calc((var(--topbarHeight) - var(--CheckoutPage_logoHeight)) / 2) 24px;

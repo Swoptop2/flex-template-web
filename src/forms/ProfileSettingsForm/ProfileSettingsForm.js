@@ -343,17 +343,6 @@ class ProfileSettingsFormComponent extends Component {
                     </option>
                   ))}
                 </FieldSelect>
-                <h3 style={{ marginTop: '30px' }} className={css.sectionTitle}>
-                  Your phone number
-                </h3>
-                <FieldTextInput
-                  className={css.fieldSelect}
-                  type="number"
-                  id="phone"
-                  name="phone"
-                  label="Phone number"
-                  placeholder="Your phone number"
-                />
               </div>
               <div className={classNames(css.sectionContainer, css.lastSection)}>
                 <h3 className={css.sectionTitle}>

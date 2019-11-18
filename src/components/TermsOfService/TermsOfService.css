@@ -13,6 +13,10 @@
     }
   }
 
+  .link {
+    color: var(--marketplaceColor);
+  }
+
   & .lastUpdated {
     @apply --marketplaceBodyFontStyles;
     margin-top: 0;

@@ -12,6 +12,11 @@
       margin: 24px 0 24px 0;
     }
   }
+  & li {
+    font-size: 15px;
+    list-style-type: circle;
+    margin-bottom: 2.5px;
+  }
 
   & .lastUpdated {
     @apply --marketplaceBodyFontStyles;

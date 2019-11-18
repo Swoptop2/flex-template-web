@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import css from './TermsOfService.css';
+import ExternalLink from '../ExternalLink/ExternalLink';
 
 const TermsOfService = props => {
   const { rootClassName, className } = props;
@@ -11,51 +12,28 @@ const TermsOfService = props => {
   // prettier-ignore
   return (
     <div className={classes}>
-      <p className={css.lastUpdated}>Last updated: October 30, 2017</p>
 
+      <h2>Rights of Content</h2>
       <p>
-        Thank you for using Saunatime! Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      The users themselves retain the right to all text, pictures and other content that they create in the service. The users allow others to utilize the content in accordance with the nature of the service and furthermore allow the service provider to file information and data and make changes that are necessary for the service or the study, however other rights are not transferred from the users, unless specifically otherwise agreed. The responsibility of the content lies with the user, who has produced it to the service. The service provider has the right to remove or edit any material when it deems it necessary.
       </p>
 
-      <h2>1 Lorem ipsum dolor sit amet</h2>
+      <h2>Disclaimer</h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      No guarantees of the functioning of the service are given. The users are themselves responsible for their actions in the service and they should estimate the reliability of other users before dealing with them. The service provider can under no circumstances be liable for damage that is caused to the user. The user may not store any information or data in the service, and expect it to remain there. Users understand that pricing may be adjusted to meet the needs of the marketplace.
       </p>
 
-      <h2>2 Sed ut perspiciatis unde</h2>
+      <h2>The Removal of a User</h2>
       <p>
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-        aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-        voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-        consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
-        dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-        exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-        consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil
-        molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+      The service provider has the right to remove any users and terminate their right of use of the service without any specific reason and without being liable for compensation.
       </p>
 
-      <h2>3 At vero eos et accusamus</h2>
-      <p>
-        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-        voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
-        cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id
-        est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam
-        libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod
-        maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
-        Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut
-        et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-        sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
-        doloribus asperiores repellat
-      </p>
+      <h2>Applicable Jurisdiction
+</h2>
+<p>The jurisdiction that is applicable in this service and these terms of use is that of the United States & Finland, unless something else is required by binding law.</p>
+<hr/>
+
+<p>To view our terms in more detail, click <ExternalLink className={css.link} href="https://app.termly.io/document/privacy-policy/021431dd-8fd5-4420-bcdd-fe61f2d3dce5">here</ExternalLink></p>
     </div>
   );
 };

@@ -71,6 +71,9 @@ exports[`CheckoutPage matches snapshot 1`] = `
             }
           />
         </div>
+        <p>
+          *Return all items as is after wearing them (unwashed, do not dry clean). Owners handle the cleaning of their items!
+        </p>
       </div>
       <div />
       <section>

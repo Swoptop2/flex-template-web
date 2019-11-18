@@ -388,7 +388,7 @@
   "ListingCard.perUnit": "per rental",
   "ListingCard.unsupportedPrice": "({currency})",
   "ListingCard.unsupportedPriceTitle": "Unsupported currency ({currency})",
-  "ListingPage.bookingSubTitle": "Start by choosing your dates.",
+  "ListingPage.bookingSubTitle": "Start by choosing your dates. Choose the day before you wish to wear the item as the first day of the rental period.",
   "ListingPage.bookingTitle": "Book {title}",
   "ListingPage.closedListing": "This listing has been closed and can't be booked.",
   "ListingPage.contactUser": "Contact",

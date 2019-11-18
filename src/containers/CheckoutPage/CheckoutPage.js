@@ -783,6 +783,10 @@ export class CheckoutPageComponent extends Component {
                   values={{ name: currentAuthor.attributes.profile.displayName }}
                 />
               </div>
+              <p className={css.note}>
+                *Return all items as is after wearing them (unwashed, do not dry clean). Owners
+                handle the cleaning of their items!
+              </p>
             </div>
 
             <div className={css.priceBreakdownContainer}>

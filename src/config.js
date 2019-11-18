@@ -1,5 +1,4 @@
 import * as custom from './marketplace-custom-config.js';
-import defaultLocationSearches from './default-location-searches';
 import { stripePublishableKey, stripeSupportedCountries } from './stripe-config';
 import { currencyConfiguration } from './currency-config';
 
@@ -123,8 +122,7 @@ const maps = {
 
     // Example location can be edited in the
     // `default-location-searches.js` file.
-    defaults:
-      process.env.REACT_APP_DEFAULT_SEARCHES_ENABLED === 'true' ? defaultLocationSearches : [],
+    defaults: process.env.REACT_APP_DEFAULT_SEARCHES_ENABLED === 'true' ? [] : [],
 
     // Limit location autocomplete to a one or more countries
     // using ISO 3166 alpha 2 country codes separated by commas.

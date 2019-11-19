@@ -1,5 +1,4 @@
 import React from 'react';
-import { FormattedMessage } from '../../util/reactIntl';
 import { Modal, ImageCarousel } from '../../components';
 import ActionBarMaybe from './ActionBarMaybe';
 
@@ -16,7 +15,7 @@ const SectionImages = props => {
     onManageDisableScrolling,
   } = props;
 
-  const hasImages = listing.images && listing.images.length > 0;
+  // const hasImages = listing.images && listing.images.length > 0;
   // const firstImage = hasImages ? listing.images[0] : null;
 
   // Action bar is wrapped with a div that prevents the click events
@@ -27,20 +26,23 @@ const SectionImages = props => {
     </div>
   ) : null;
 
-  const viewPhotosButton = hasImages ? (
-    <button className={css.viewPhotos} onClick={handleViewPhotosClick}>
-      <FormattedMessage
-        id="ListingPage.viewImagesButton"
-        values={{ count: listing.images.length }}
-      />
-    </button>
-  ) : null;
+  // const viewPhotosButton = hasImages ? (
+  //   <button className={css.viewPhotos} onClick={handleViewPhotosClick}>
+  //     <FormattedMessage
+  //       id="ListingPage.viewImagesButton"
+  //       values={{ count: listing.images.length }}
+  //     />
+  //   </button>
+  // ) : null;
+
+  const sectionMargin = isOwnListing ? '140px' : '65px';
+  console.log(sectionMargin);
 
   return (
-    <div className={css.sectionImages}>
+    <div style={{ marginTop: sectionMargin }}>
+      {actionBar}
       <div className={css.threeToTwoWrapper}>
         <div className={css.aspectWrapper} onClick={handleViewPhotosClick}>
-          {actionBar}
           {/* <ResponsiveImage
             rootClassName={css.rootForImage}
             alt={title}
@@ -50,11 +52,10 @@ const SectionImages = props => {
               'landscape-crop2x',
               'landscape-crop4x',
               'landscape-crop6x',
-            ]}
-          /> */}
+            ]} */}
         </div>
       </div>
-      {viewPhotosButton}
+      {/* {viewPhotosButton} */}
       <Modal
         id="ListingPage.imageCarousel"
         scrollLayerClassName={css.carouselModalScrollLayer}

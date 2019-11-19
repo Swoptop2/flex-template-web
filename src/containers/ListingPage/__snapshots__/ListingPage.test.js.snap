@@ -279,23 +279,49 @@ exports[`ListingPage matches snapshot 1`] = `
               publicData={Object {}}
               rootClassName={null}
             />
-            <SectionMapMaybe
-              className={null}
-              geolocation={
-                LatLng {
-                  "_sdkType": "LatLng",
-                  "lat": 40,
-                  "lng": 60,
+            <SectionAllImages
+              listing={
+                Object {
+                  "attributes": Object {
+                    "deleted": false,
+                    "description": "listing1 description",
+                    "geolocation": LatLng {
+                      "_sdkType": "LatLng",
+                      "lat": 40,
+                      "lng": 60,
+                    },
+                    "price": Money {
+                      "_sdkType": "Money",
+                      "amount": 5500,
+                      "currency": "USD",
+                    },
+                    "publicData": Object {},
+                    "state": "published",
+                    "title": "listing1 title",
+                  },
+                  "author": Object {
+                    "attributes": Object {
+                      "banned": false,
+                      "deleted": false,
+                      "profile": Object {
+                        "abbreviatedName": "TT",
+                        "displayName": "user-1 display name",
+                      },
+                    },
+                    "id": UUID {
+                      "_sdkType": "UUID",
+                      "uuid": "user-1",
+                    },
+                    "type": "user",
+                  },
+                  "id": UUID {
+                    "_sdkType": "UUID",
+                    "uuid": "listing1",
+                  },
+                  "images": Array [],
+                  "type": "listing",
                 }
               }
-              listingId={
-                UUID {
-                  "_sdkType": "UUID",
-                  "uuid": "listing1",
-                }
-              }
-              publicData={Object {}}
-              rootClassName={null}
             />
             <SectionReviews
               fetchReviewsError={null}

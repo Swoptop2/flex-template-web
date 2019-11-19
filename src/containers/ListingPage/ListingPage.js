@@ -51,7 +51,7 @@ import SectionDamageCostMaybe from './SectionDamageCostMaybe';
 import SectionReviews from './SectionReviews';
 import SectionHostMaybe from './SectionHostMaybe';
 import SectionRulesMaybe from './SectionRulesMaybe';
-import SectionMapMaybe from './SectionMapMaybe';
+import SectionAllImages from './SectionAllImages';
 import css from './ListingPage.css';
 
 const MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE = 16;
@@ -233,13 +233,7 @@ export class ListingPageComponent extends Component {
       return <NamedRedirect name="ListingPage" params={params} search={location.search} />;
     }
 
-    const {
-      description = '',
-      geolocation = null,
-      price = null,
-      title = '',
-      publicData,
-    } = currentListing.attributes;
+    const { description = '', price = null, title = '', publicData } = currentListing.attributes;
     const richTitle = (
       <span>
         {richText(title, {
@@ -432,11 +426,12 @@ export class ListingPageComponent extends Component {
                   <SectionColorMaybe options={colorsConfig} publicData={publicData} />
                   <SectionDamageCostMaybe publicData={publicData} />
                   <SectionRulesMaybe publicData={publicData} />
-                  <SectionMapMaybe
+                  {/* <SectionMapMaybe
                     geolocation={geolocation}
                     publicData={publicData}
                     listingId={currentListing.id}
-                  />
+                  /> */}
+                  <SectionAllImages listing={currentListing} />
                   <SectionReviews reviews={reviews} fetchReviewsError={fetchReviewsError} />
                   <SectionHostMaybe
                     title={title}

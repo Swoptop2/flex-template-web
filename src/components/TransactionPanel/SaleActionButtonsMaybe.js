@@ -20,7 +20,23 @@ const SaleActionButtonsMaybe = props => {
     onAcceptSale,
     onDeclineSale,
     currentUser,
+    startDate,
   } = props;
+
+  const realStartingDate = new Date(startDate);
+  realStartingDate.setDate(realStartingDate.getDate() + 1);
+  const now = new Date();
+
+  //I need to substract now - realStartingDate
+  //If result is equal to or greater than 1, then I should disable the button
+  const cantAccept = _ => {
+    let cantAccept = false;
+    const daysDifference = now - realStartingDate;
+    if (daysDifference >= 1) cantAccept = true;
+    return cantAccept;
+  };
+
+  //Add note stating that
 
   useEffect(() => {
     if (currentUser.attributes) {
@@ -32,7 +48,7 @@ const SaleActionButtonsMaybe = props => {
     }
   }, [currentUser.attributes]);
 
-  const buttonsDisabled = acceptInProgress || declineInProgress;
+  const buttonsDisabled = acceptInProgress || declineInProgress || cantAccept();
 
   const acceptErrorMessage = acceptSaleError ? (
     <p className={css.actionError}>

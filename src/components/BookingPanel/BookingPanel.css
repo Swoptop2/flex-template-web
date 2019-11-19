@@ -67,7 +67,7 @@
 }
 
 .bookingHeading {
-  display: none;
+  /* display: none; */
 
   @media (--viewportLarge) {
     display: block;
@@ -79,9 +79,21 @@
 .bookingTitle {
   /* Font */
   color: var(--matterColor);
+  display: none;
 
   margin-top: 0;
   margin-bottom: 9px;
+  @media (--viewportLarge) {
+    display: block;
+  }
+}
+
+.mobileSubTitle {
+  display: block;
+  padding: 0 5px;
+  @media (min-width: 767px) {
+    display: none;
+  }
 }
 
 .bookingHelp {

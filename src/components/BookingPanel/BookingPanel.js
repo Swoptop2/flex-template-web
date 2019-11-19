@@ -112,6 +112,7 @@ const BookingPanel = props => {
 
         <div className={css.bookingHeading}>
           <h2 className={titleClasses}>{title}</h2>
+          <p className={css.mobileSubTitle}>{subTitleText}</p>
           {subTitleText ? <div className={css.bookingHelp}>{subTitleText}</div> : null}
         </div>
         {showBookingDatesForm ? (

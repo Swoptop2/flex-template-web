@@ -36,7 +36,6 @@ const SectionImages = props => {
   // ) : null;
 
   const sectionMargin = isOwnListing ? '140px' : '65px';
-  console.log(sectionMargin);
 
   return (
     <div style={{ marginTop: sectionMargin }}>

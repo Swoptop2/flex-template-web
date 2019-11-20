@@ -69,67 +69,67 @@ exports[`SearchPageComponent matches snapshot 1`] = `
           "colorFilter": Object {
             "options": Array [
               Object {
-                "key": "1",
+                "key": "black",
                 "label": "Black",
               },
               Object {
-                "key": "2",
+                "key": "white",
                 "label": "White",
               },
               Object {
-                "key": "3",
+                "key": "multicolored_print",
                 "label": "Multicolored/Print",
               },
               Object {
-                "key": "4",
+                "key": "red",
                 "label": "Red",
               },
               Object {
-                "key": "5",
+                "key": "orange",
                 "label": "Orange",
               },
               Object {
-                "key": "6",
+                "key": "yellow",
                 "label": "Yellow",
               },
               Object {
-                "key": "7",
+                "key": "green",
                 "label": "Green",
               },
               Object {
-                "key": "8",
+                "key": "blue_navy",
                 "label": "Blue/Navy",
               },
               Object {
-                "key": "9",
+                "key": "denim",
                 "label": "Denim",
               },
               Object {
-                "key": "10",
+                "key": "purple",
                 "label": "Purple",
               },
               Object {
-                "key": "11",
+                "key": "pink",
                 "label": "Pink",
               },
               Object {
-                "key": "12",
+                "key": "brown",
                 "label": "Brown",
               },
               Object {
-                "key": "13",
+                "key": "gray",
                 "label": "Gray",
               },
               Object {
-                "key": "14",
+                "key": "metallic",
                 "label": "Metallic",
               },
               Object {
-                "key": "15",
+                "key": "sequin",
                 "label": "Sequin",
               },
               Object {
-                "key": "16",
+                "key": "nude",
                 "label": "Nude",
               },
             ],
@@ -144,47 +144,47 @@ exports[`SearchPageComponent matches snapshot 1`] = `
           "itemFilter": Object {
             "options": Array [
               Object {
-                "key": "1",
+                "key": "dress",
                 "label": "Dress",
               },
               Object {
-                "key": "2",
+                "key": "romper",
                 "label": "Romper",
               },
               Object {
-                "key": "3",
+                "key": "matching_set",
                 "label": "Matching Set",
               },
               Object {
-                "key": "4",
+                "key": "top",
                 "label": "Top",
               },
               Object {
-                "key": "5",
+                "key": "sweater",
                 "label": "Sweater",
               },
               Object {
-                "key": "6",
+                "key": "jacket",
                 "label": "Jacket",
               },
               Object {
-                "key": "7",
+                "key": "pants",
                 "label": "Pants",
               },
               Object {
-                "key": "8",
+                "key": "skirt",
                 "label": "Skirt",
               },
               Object {
-                "key": "9",
+                "key": "short",
                 "label": "Short",
               },
               Object {
-                "key": "10",
+                "key": "bodysuit",
                 "label": "Bodysuit",
               },
               Object {
-                "key": "11",
+                "key": "other",
                 "label": "Other",
               },
             ],
@@ -207,44 +207,44 @@ exports[`SearchPageComponent matches snapshot 1`] = `
           "sizeFilter": Object {
             "options": Array [
               Object {
-                "key": "1",
-                "label": "XXS, 00, 24",
+                "key": "xxs-00",
+                "label": "XXS, 00",
               },
               Object {
-                "key": "2",
-                "label": "XS, 0, 25",
+                "key": "xs-0",
+                "label": "XS, 0",
               },
               Object {
-                "key": "3",
-                "label": "S, 2, 26",
+                "key": "s-2",
+                "label": "S, 2",
               },
               Object {
-                "key": "4",
-                "label": "S, 4, 27",
+                "key": "s-4",
+                "label": "S, 4",
               },
               Object {
-                "key": "5",
-                "label": "M, 6, 28",
+                "key": "m-6",
+                "label": "M, 6",
               },
               Object {
-                "key": "6",
-                "label": "M, 8, 29",
+                "key": "m-8",
+                "label": "M, 8",
               },
               Object {
-                "key": "7",
-                "label": "L, 10, 30",
+                "key": "l-10",
+                "label": "L, 10",
               },
               Object {
-                "key": "8",
-                "label": "L, 12, 31",
+                "key": "l-12",
+                "label": "L, 12",
               },
               Object {
-                "key": "9",
-                "label": "XXL, 14, 32",
+                "key": "xl-14",
+                "label": "XL, 14",
               },
               Object {
-                "key": "10",
-                "label": "XXL, 16, 33",
+                "key": "xl-16",
+                "label": "XL, 16",
               },
             ],
             "paramName": "pub_size",

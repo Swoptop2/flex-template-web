@@ -63,6 +63,7 @@
   background-size: cover;
 
   border-radius: 3px;
+  display: none;
   width: 72px;
   height: 35px;
   padding: 9px 22px;

@@ -290,7 +290,6 @@ export const fetchCurrentUserNotifications = () => (dispatch, getState, sdk) => 
   dispatch(fetchCurrentUserNotificationsRequest());
 
   const apiQueryParams = {
-    only: 'sale',
     last_transitions: transitionsToRequested,
     page: 1,
     per_page: NOTIFICATION_PAGE_SIZE,

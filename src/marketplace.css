@@ -1,4 +1,5 @@
 @import './marketplaceFonts.css';
+@import url('https://fonts.googleapis.com/css?family=Chivo:400,700&display=swap');
 
 /* ================ Custom properties aka variables ================ */
 
@@ -157,7 +158,7 @@
   /* ================ Buttons ================ */
 
   --marketplaceButtonFontStyles: {
-    font-family: 'sofiapro', Helvetica, Arial, sans-serif;
+    font-family: 'Chivo', Helvetica, Arial, sans-serif;
     font-weight: var(--fontWeightSemiBold);
     font-size: 18px;
     line-height: 24px;

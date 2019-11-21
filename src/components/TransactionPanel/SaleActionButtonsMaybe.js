@@ -25,13 +25,14 @@ const SaleActionButtonsMaybe = props => {
 
   const realStartingDate = new Date(startDate);
   realStartingDate.setDate(realStartingDate.getDate() + 1);
+
   const now = new Date();
 
-  //I need to substract now - realStartingDate
-  //If result is equal to or greater than 1, then I should disable the button
+  // I need to substract now - realStartingDate
+  // If result is equal to or greater than 1, then I should disable the button
   const cantAccept = _ => {
     let cantAccept = false;
-    const daysDifference = now - realStartingDate;
+    const daysDifference = now.getDate() - realStartingDate.getDate();
     if (daysDifference >= 1) cantAccept = true;
     return cantAccept;
   };
@@ -48,7 +49,7 @@ const SaleActionButtonsMaybe = props => {
     }
   }, [currentUser.attributes]);
 
-  const buttonsDisabled = acceptInProgress || declineInProgress || cantAccept();
+  const buttonsDisabled = acceptInProgress || declineInProgress;
 
   const acceptErrorMessage = acceptSaleError ? (
     <p className={css.actionError}>
@@ -77,21 +78,26 @@ const SaleActionButtonsMaybe = props => {
         >
           <FormattedMessage id="TransactionPanel.declineButton" />
         </SecondaryButton>
-        {shouldDisable ? (
-          <p className={css.phoneWarning}>
-            *If this is your first time accepting a rental, please go to your Account Settings and
-            enter your phone number. Your number will only be shared with your renter so she can
-            communicate with you.
-          </p>
-        ) : null}
         <PrimaryButton
           inProgress={acceptInProgress}
-          disabled={shouldDisable}
+          disabled={shouldDisable || cantAccept()}
           onClick={onAcceptSale}
         >
           <FormattedMessage id="TransactionPanel.acceptButton" />
         </PrimaryButton>
       </div>
+      {shouldDisable ? (
+        <p className={css.phoneWarning}>
+          *If this is your first time accepting a rental, please go to your Account Settings and
+          enter your phone number. Your number will only be shared with your renter so she can
+          communicate with you.
+        </p>
+      ) : cantAccept() ? (
+        <p className={css.phoneWarning}>
+          *This booking period has already started and you did not accept it in time. The booking
+          request will automatically expire at the end of the second booking day.
+        </p>
+      ) : null}
     </div>
   ) : null;
 };

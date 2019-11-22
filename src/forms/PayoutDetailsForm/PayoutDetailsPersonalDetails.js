@@ -99,7 +99,7 @@ const PayoutDetailsPersonalDetails = props => {
       id: `PayoutDetailsForm.personalIdNumberPlaceholder.US`,
     });
 
-    const validSSN = validators.validSsn(
+    const validSSN = validators.validSsnLast4(
       intl.formatMessage({
         id: `PayoutDetailsForm.personalIdNumberValid`,
       })

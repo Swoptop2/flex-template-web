@@ -158,8 +158,8 @@ export const validBusinessURL = message => value => {
   return invalidCharacters || invalidProtocol || isExampleDotCom || isLocalhost ? message : VALID;
 };
 
-export const validSsn = message => value => {
-  return value.length === 9 ? VALID : message;
+export const validSsnLast4 = message => value => {
+  return value.length === 4 ? VALID : message;
 };
 
 export const validHKID = message => value => {

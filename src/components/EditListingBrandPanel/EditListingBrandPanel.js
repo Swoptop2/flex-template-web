@@ -46,18 +46,18 @@ const EditListingBrandPanel = props => {
       <EditListingBrandForm
         className={css.form}
         publicData={publicData}
-        initialValues={{ brand: publicData.brand }}
+        initialValues={{ brandStore: publicData.brandStore }}
         onSubmit={values => {
-          const { brand = '' } = values;
+          const { brandStore = '' } = values;
           const theItem = item ? item : [];
           const selectedItem = config.custom.items.find(option => option.key === theItem);
           const titleString = selectedItem
-            ? `${brand} ${selectedItem.label} Retail ($${retailPrice})`
-            : `${brand} Retail - ($${retailPrice})`;
+            ? `${brandStore} ${selectedItem.label} Retail ($${retailPrice})`
+            : `${brandStore} Retail - ($${retailPrice})`;
           const updateValues = {
             title: titleString,
             publicData: {
-              brand,
+              brandStore,
             },
           };
           onSubmit(updateValues);

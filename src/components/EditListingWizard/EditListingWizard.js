@@ -89,7 +89,7 @@ const tabCompleted = (tab, listing) => {
     case RETAIL_PRICE:
       return !!(publicData && publicData.retailPrice);
     case BRAND:
-      return !!(publicData && publicData.brand);
+      return !!(publicData && publicData.brandStore);
     case ITEM:
       return !!(publicData && publicData.item);
     case SIZE:
@@ -97,7 +97,7 @@ const tabCompleted = (tab, listing) => {
     case COLOR:
       return !!(publicData && publicData.color);
     case DAMAGE_PRICE:
-      return !!(publicData && publicData.damagePrice);
+      return !!(publicData && publicData.damageCost);
     case PRICING:
       return !!price;
     case AVAILABILITY:

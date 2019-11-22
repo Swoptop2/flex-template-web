@@ -66,8 +66,8 @@ export const EditListingDamagePricingFormComponent = props => (
           {errorMessageShowListing}
           <p>{damagePriceExplanation}</p>
           <FieldTextInput
-            id="damagePrice"
-            name="damagePrice"
+            id="damageCost"
+            name="damageCost"
             className={css.policy}
             type="number"
             label={damagePriceLabelMessage}

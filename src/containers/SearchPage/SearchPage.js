@@ -401,7 +401,14 @@ SearchPage.loadData = (params, search) => {
     include: ['author', 'images'],
     'fields.listing': ['title', 'geolocation', 'price'],
     'fields.user': ['profile.displayName', 'profile.abbreviatedName'],
-    'fields.image': ['variants.landscape-crop', 'variants.landscape-crop2x'],
+    'fields.image': [
+      'variants.landscape-crop',
+      'variants.landscape-crop2x',
+      'variants.scaled-small',
+      'variants.scaled-medium',
+      'variants.scaled-large',
+      'variants.scaled-xlarge',
+    ],
     'limit.images': 1,
   });
 };

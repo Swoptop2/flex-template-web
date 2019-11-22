@@ -51,8 +51,8 @@ const EditListingRetailPricingComponent = props => {
           const { retailPrice = '' } = values;
           const selectedItem = config.custom.items.find(option => option.key === publicData.item);
           let titleString = selectedItem
-            ? `${publicData.brand} ${selectedItem.label} Retail ($${retailPrice})`
-            : `${publicData.brand} Retail - ($${retailPrice})`;
+            ? `${publicData.brandStore} ${selectedItem.label} Retail ($${retailPrice})`
+            : `${publicData.brandStore} Retail - ($${retailPrice})`;
           const updateValues = {
             title: titleString,
             description: 'default',

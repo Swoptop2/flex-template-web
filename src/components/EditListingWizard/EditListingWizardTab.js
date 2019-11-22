@@ -25,11 +25,11 @@ import css from './EditListingWizard.css';
 
 export const AVAILABILITY = 'availability';
 export const RETAIL_PRICE = 'retailPrice';
-export const BRAND = 'brand';
+export const BRAND = 'brandStore';
 export const ITEM = 'item';
 export const SIZE = 'size';
 export const COLOR = 'color';
-export const DAMAGE_PRICE = 'damagePrice';
+export const DAMAGE_PRICE = 'damageCost';
 export const PRICING = 'pricing';
 export const PHOTOS = 'photos';
 

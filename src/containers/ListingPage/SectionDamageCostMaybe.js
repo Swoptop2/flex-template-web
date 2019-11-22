@@ -7,7 +7,7 @@ import css from './ListingPage.css';
 const SectionDamageCost = props => {
   const { publicData } = props;
 
-  const damageCost = publicData && publicData.damagePrice ? publicData.damagePrice : '';
+  const damageCost = publicData && publicData.damageCost ? publicData.damageCost : '';
 
   return damageCost ? (
     <div className={css.sectionFeatures}>
@@ -21,7 +21,7 @@ const SectionDamageCost = props => {
 
 SectionDamageCost.propTypes = {
   publicData: shape({
-    damagePrice: string,
+    damageCost: string,
   }),
 };
 

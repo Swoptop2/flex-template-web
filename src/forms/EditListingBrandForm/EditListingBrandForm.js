@@ -61,8 +61,8 @@ export const EditListingBrandFormComponent = props => (
           {errorMessageShowListing}
 
           <FieldTextInput
-            id="brand"
-            name="brand"
+            id="brandStore"
+            name="brandStore"
             className={css.policy}
             type="text"
             label={brandLabelMessage}

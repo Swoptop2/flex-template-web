@@ -53,7 +53,7 @@ export const items = [
   { key: 'jacket', label: 'Jacket' },
   { key: 'pants', label: 'Pants' },
   { key: 'skirt', label: 'Skirt' },
-  { key: 'short', label: 'Short' },
+  { key: 'shorts', label: 'Shorts' },
   { key: 'bodysuit', label: 'Bodysuit' },
   { key: 'other', label: 'Other' },
 ];

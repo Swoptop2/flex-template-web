@@ -65,14 +65,14 @@ const EditListingDamagePricing = props => {
       <EditListingDamagePricingForm
         className={css.form}
         publicData={publicData}
-        initialValues={{ damagePrice: publicData.damagePrice }}
+        initialValues={{ damageCost: publicData.damageCost }}
         onSubmit={values => {
           // update listing location here, by pulling origin and address from current user's extended data
-          const { damagePrice = '' } = values;
+          const { damageCost = '' } = values;
           const updateValues = {
             geolocation: origin,
             publicData: {
-              damagePrice,
+              damageCost,
               location: { address: `${city}, ${state}, United States of America` },
             },
           };

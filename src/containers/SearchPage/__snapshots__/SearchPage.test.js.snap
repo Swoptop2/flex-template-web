@@ -176,8 +176,8 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                 "label": "Skirt",
               },
               Object {
-                "key": "short",
-                "label": "Short",
+                "key": "shorts",
+                "label": "Shorts",
               },
               Object {
                 "key": "bodysuit",

@@ -17,10 +17,12 @@
   width: 100%;
   position: relative;
   transition: var(--transitionStyleButton);
+  box-shadow: 0 0 7px 0 rgb(0, 0, 0, 0.2);
+  border-radius: 5px;
 
   &:hover {
     transform: scale(1.02);
-    box-shadow: var(--boxShadowListingCard);
+    box-shadow: 0 0 15px 0 rgb(255, 4, 132, 0.8);
   }
 }
 
@@ -28,7 +30,7 @@
 .aspectWrapper {
   padding-bottom: 66.6667%; /* 3:2 Aspect Ratio */
   background: var(--matterColorNegative); /* Loading BG color */
-  height: 200px;
+  height: 250px;
 }
 
 .rootForImage {
@@ -40,7 +42,7 @@
   right: 0;
   width: 100%;
   border-radius: var(--borderRadius);
-  min-height: 200px;
+  height: 250px;
 }
 
 .info {

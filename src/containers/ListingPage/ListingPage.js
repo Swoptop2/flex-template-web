@@ -48,7 +48,6 @@ import SectionHeading from './SectionHeading';
 import SectionSizeMaybe from './SectionSizeMaybe';
 import SectionColorMaybe from './SectionColorMaybe';
 import SectionDamageCostMaybe from './SectionDamageCostMaybe';
-import SectionReviews from './SectionReviews';
 import SectionHostMaybe from './SectionHostMaybe';
 import SectionRulesMaybe from './SectionRulesMaybe';
 import SectionAllImages from './SectionAllImages';
@@ -186,8 +185,6 @@ export class ListingPageComponent extends Component {
       location,
       scrollingDisabled,
       showListingError,
-      reviews,
-      fetchReviewsError,
       sendEnquiryInProgress,
       sendEnquiryError,
       timeSlots,
@@ -432,7 +429,6 @@ export class ListingPageComponent extends Component {
                     listingId={currentListing.id}
                   /> */}
                   <SectionAllImages listing={currentListing} />
-                  <SectionReviews reviews={reviews} fetchReviewsError={fetchReviewsError} />
                   <SectionHostMaybe
                     title={title}
                     listing={currentListing}

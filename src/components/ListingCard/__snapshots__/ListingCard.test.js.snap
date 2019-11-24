@@ -22,7 +22,7 @@ exports[`ListingCard matches snapshot 1`] = `
         sizes={null}
         variants={
           Array [
-            "scaled-medium",
+            "scaled-xlarge",
           ]
         }
       />

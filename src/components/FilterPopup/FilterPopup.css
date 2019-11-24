@@ -3,6 +3,7 @@
 .root {
   position: relative;
   display: inline-block;
+  width: 100%;
 }
 
 .label {
@@ -10,17 +11,22 @@
   @apply --marketplaceSearchFilterLabelFontStyles;
 
   padding: 9px 16px 10px 16px;
-  width: auto;
+  border: 0.5px solid rgba(0, 0, 0, 0.4);
+  flex: 1 1 0;
   height: auto;
   min-height: 0;
   border-radius: 4px;
+  margin-bottom: 7px;
 
   &:focus {
     outline: none;
     background-color: var(--matterColorLight);
-    border-color: transparent;
+    border-color: var(--marketplaceColor);
     text-decoration: none;
     box-shadow: var(--boxShadowFilterButton);
+  }
+  &:hover {
+    border-color: var(--marketplaceColor);
   }
 }
 
@@ -30,7 +36,7 @@
   font-weight: var(--fontWeightSemiBold);
 
   padding: 9px 16px 10px 16px;
-  width: auto;
+  width: 100%;
   height: auto;
   min-height: 0;
   border-radius: 4px;

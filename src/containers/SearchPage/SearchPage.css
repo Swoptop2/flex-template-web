@@ -49,6 +49,7 @@
   padding: 2px 0 0 0;
 
   @media (--viewportMedium) {
+    flex-direction: row;
     padding: 18px 0 0 0;
     /**
      * .container is using flexbox,
@@ -79,10 +80,9 @@
     display: flex;
     padding: 0 24px;
     margin-bottom: 21px;
-  }
-
-  @media (--viewportLarge) {
-    padding: 0 36px;
+    flex: 0.2;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 }
 
@@ -97,11 +97,7 @@
 .searchFiltersPanel {
   flex-grow: 1;
   display: flex;
-  padding: 0 24px 24px 24px;
-
-  @media (--viewportLarge) {
-    padding: 0 36px 36px 36px;
-  }
+  flex: 10;
 }
 
 .listings {

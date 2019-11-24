@@ -197,10 +197,13 @@ export class BookingDatesFormComponent extends Component {
                 />
               </p>
               <div className={submitButtonClasses}>
-                <PrimaryButton type="submit" disabled={this.state.missingAvatar}>
+                <PrimaryButton
+                  type="submit"
+                  disabled={this.state.missingAvatar && this.props.currentUser != null}
+                >
                   <FormattedMessage id="BookingDatesForm.requestToBook" />
                 </PrimaryButton>
-                {this.state.missingAvatar ? (
+                {this.state.missingAvatar && this.props.currentUser != null ? (
                   <p className={css.note}>
                     *You need to add a profile picture before you can proceed. Please go to your
                     Profile Settings to do so.

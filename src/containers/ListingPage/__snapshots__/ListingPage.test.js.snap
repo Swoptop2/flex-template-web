@@ -323,10 +323,6 @@ exports[`ListingPage matches snapshot 1`] = `
                 }
               }
             />
-            <SectionReviews
-              fetchReviewsError={null}
-              reviews={Array []}
-            />
             <SectionHostMaybe
               authorDisplayName="user-1 display name"
               currentUser={

@@ -27,7 +27,7 @@ const EditListingBrandPanel = props => {
   const currentListing = ensureOwnListing(listing);
   const { publicData } = currentListing.attributes;
   const {
-    publicData: { retailPrice, item },
+    publicData: { item },
   } = currentListing.attributes;
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
@@ -52,8 +52,8 @@ const EditListingBrandPanel = props => {
           const theItem = item ? item : [];
           const selectedItem = config.custom.items.find(option => option.key === theItem);
           const titleString = selectedItem
-            ? `${brandStore} ${selectedItem.label} Retail ($${retailPrice})`
-            : `${brandStore} Retail - ($${retailPrice})`;
+            ? `${brandStore} ${selectedItem.label}`
+            : `${brandStore}`;
           const updateValues = {
             title: titleString,
             publicData: {

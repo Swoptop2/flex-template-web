@@ -418,6 +418,7 @@ export class ListingPageComponent extends Component {
                     hostLink={hostLink}
                     showContactUser={showContactUser}
                     onContactUser={this.onContactUser}
+                    publicData={publicData}
                   />
                   <SectionSizeMaybe options={sizesConfig} publicData={publicData} />
                   <SectionColorMaybe options={colorsConfig} publicData={publicData} />

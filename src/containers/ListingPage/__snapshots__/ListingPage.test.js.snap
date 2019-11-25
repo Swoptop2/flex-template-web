@@ -142,6 +142,7 @@ exports[`ListingPage matches snapshot 1`] = `
               }
               onContactUser={[Function]}
               priceTitle={55}
+              publicData={Object {}}
               richTitle={
                 <span>
                   

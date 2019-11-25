@@ -9,7 +9,7 @@ import { LINE_ITEM_NIGHT, LINE_ITEM_DAY, propTypes } from '../../util/types';
 import * as validators from '../../util/validators';
 import { formatMoney } from '../../util/currency';
 import { types as sdkTypes } from '../../util/sdkLoader';
-import { Button, Form, FieldCurrencyInput } from '../../components';
+import { Button, Form, FieldCurrencyInput, FieldTextInput } from '../../components';
 import css from './EditListingPricingForm.css';
 
 const { Money } = sdkTypes;
@@ -40,6 +40,37 @@ export const EditListingPricingFormComponent = props => (
         : isDaily
         ? 'EditListingPricingForm.pricePerDay'
         : 'EditListingPricingForm.pricePerUnit';
+
+      // retail price
+      const retailPriceLabelMessage = intl.formatMessage({
+        id: 'EditListingRetailPricingForm.retailPrice',
+      });
+      const retailPricePlaceholderMessage = intl.formatMessage({
+        id: 'EditListingRetailPricingForm.priceInputPlaceholder',
+      });
+      const retailPricingRequiredMessage = intl.formatMessage({
+        id: 'EditListingRetailPricingForm.retailPricingRequired',
+      });
+      const minimumPricingMessage = intl.formatMessage({
+        id: 'EditListingRetailPricingForm.minimumPricing',
+      });
+
+      // damage cost
+      const damagePriceLabelMessage = intl.formatMessage({
+        id: 'EditListingDamagePricingForm.damagePrice',
+      });
+      const damagePriceExplanation = intl.formatMessage({
+        id: 'EditListingDamagePricingForm.damagePriceExplanation',
+      });
+      const damagePricePlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDamagePricingForm.priceInputPlaceholder',
+      });
+      const damagePricingRequiredMessage = intl.formatMessage({
+        id: 'EditListingDamagePricingForm.damagePricingRequired',
+      });
+      const minimumDamagePricingMessage = intl.formatMessage({
+        id: 'EditListingDamagePricingForm.minimumPricing',
+      });
 
       const pricePerUnitMessage = intl.formatMessage({
         id: translationKey,
@@ -88,6 +119,31 @@ export const EditListingPricingFormComponent = props => (
               <FormattedMessage id="EditListingPricingForm.showListingFailed" />
             </p>
           ) : null}
+          <FieldTextInput
+            id="retailPrice"
+            name="retailPrice"
+            className={css.item}
+            type="number"
+            label={retailPriceLabelMessage}
+            placeholder={retailPricePlaceholderMessage}
+            validate={validators.composeValidators(
+              validators.required(retailPricingRequiredMessage),
+              validators.minPricing(minimumPricingMessage)
+            )}
+          />
+          <span className={css.explanation}>{damagePriceExplanation}</span>
+          <FieldTextInput
+            id="damageCost"
+            name="damageCost"
+            className={css.item}
+            type="number"
+            label={damagePriceLabelMessage}
+            placeholder={damagePricePlaceholderMessage}
+            validate={validators.composeValidators(
+              validators.required(damagePricingRequiredMessage),
+              validators.minPricing(minimumDamagePricingMessage)
+            )}
+          />
           <FieldCurrencyInput
             id="price"
             name="price"

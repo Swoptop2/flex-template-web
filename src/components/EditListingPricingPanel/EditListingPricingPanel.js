@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from '../../util/reactIntl';
@@ -7,13 +7,15 @@ import { ListingLink } from '../../components';
 import { EditListingPricingForm } from '../../forms';
 import { ensureOwnListing } from '../../util/data';
 import { types as sdkTypes } from '../../util/sdkLoader';
+import GeocoderMapbox from '../LocationAutocompleteInput/GeocoderMapbox';
 import config from '../../config';
 
 import css from './EditListingPricingPanel.css';
 
-const { Money } = sdkTypes;
+const { Money, LatLng } = sdkTypes;
 
 const EditListingPricingPanel = props => {
+  const [origin, setOrigin] = useState({});
   const {
     className,
     rootClassName,
@@ -26,9 +28,29 @@ const EditListingPricingPanel = props => {
     errors,
   } = props;
 
+  const geoCode = new GeocoderMapbox();
+
+  useEffect(() => {
+    geoCode.getPlacePredictions(`${city}, ${state}`).then(res => {
+      const newOrigin = new LatLng(res.predictions[0].center[1], res.predictions[0].center[0]);
+      setOrigin(newOrigin);
+    });
+    // eslint-disable-next-line
+  }, []);
+
+  const {
+    author: {
+      attributes: {
+        profile: {
+          protectedData: { city, state },
+        },
+      },
+    },
+  } = listing;
+
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureOwnListing(listing);
-  const { price } = currentListing.attributes;
+  const { price, publicData } = currentListing.attributes;
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
   const panelTitle = isPublished ? (
@@ -44,8 +66,24 @@ const EditListingPricingPanel = props => {
   const form = priceCurrencyValid ? (
     <EditListingPricingForm
       className={css.form}
-      initialValues={{ price }}
-      onSubmit={onSubmit}
+      initialValues={{
+        retailPrice: publicData.retailPrice,
+        damageCost: publicData.damageCost,
+        price,
+      }}
+      onSubmit={values => {
+        const { retailPrice = '', damageCost = '', price } = values;
+        const updateValues = {
+          geolocation: origin,
+          price,
+          publicData: {
+            damageCost,
+            retailPrice,
+            location: { address: `${city}, ${state}, United States of America` },
+          },
+        };
+        onSubmit(updateValues);
+      }}
       onChange={onChange}
       saveActionMsg={submitButtonText}
       updated={panelUpdated}

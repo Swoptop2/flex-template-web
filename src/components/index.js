@@ -156,7 +156,7 @@ export { default as PrivacyPolicy } from './PrivacyPolicy/PrivacyPolicy';
 export { default as TermsOfService } from './TermsOfService/TermsOfService';
 export { default as EditListingAvailabilityPanel } from './EditListingAvailabilityPanel/EditListingAvailabilityPanel';
 export { default as EditListingRetailPricingPanel } from './EditListingRetailPricingPanel/EditListingRetailPricingPanel';
-export { default as EditListingBrandPanel } from './EditListingBrandPanel/EditListingBrandPanel';
+export { default as EditListingDetailsPanel } from './EditListingDetailsPanel/EditListingDetailsPanel';
 export { default as EditListingItemPanel } from './EditListingItemPanel/EditListingItemPanel';
 export { default as EditListingSizePanel } from './EditListingSizePanel/EditListingSizePanel';
 export { default as EditListingColorPanel } from './EditListingColorPanel/EditListingColorPanel';

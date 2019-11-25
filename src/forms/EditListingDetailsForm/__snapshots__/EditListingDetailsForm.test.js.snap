@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EditListingBrandForm matches snapshot 1`] = `
+exports[`EditListingDetailsForm matches snapshot 1`] = `
 <ReactFinalForm
   dispatch={[Function]}
   intl={

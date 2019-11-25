@@ -11,12 +11,12 @@ import { ensureListing } from '../../util/data';
 import { createResourceLocatorString } from '../../util/routes';
 import {
   EditListingAvailabilityPanel,
-  EditListingRetailPricingPanel,
-  EditListingBrandPanel,
-  EditListingItemPanel,
-  EditListingSizePanel,
-  EditListingColorPanel,
-  EditListingDamagePricingPanel,
+  //EditListingRetailPricingPanel,
+  EditListingDetailsPanel,
+  // EditListingItemPanel,
+  // EditListingSizePanel,
+  // EditListingColorPanel,
+  // EditListingDamagePricingPanel,
   EditListingPhotosPanel,
   EditListingPricingPanel,
 } from '../../components';
@@ -24,23 +24,23 @@ import {
 import css from './EditListingWizard.css';
 
 export const AVAILABILITY = 'availability';
-export const RETAIL_PRICE = 'retailPrice';
-export const BRAND = 'brandStore';
-export const ITEM = 'item';
-export const SIZE = 'size';
-export const COLOR = 'color';
-export const DAMAGE_PRICE = 'damageCost';
+export const DETAILS = 'details';
+// export const BRAND = 'brandStore';
+// export const ITEM = 'item';
+// export const SIZE = 'size';
+// export const COLOR = 'color';
+// export const DAMAGE_PRICE = 'damageCost';
 export const PRICING = 'pricing';
 export const PHOTOS = 'photos';
 
 // EditListingWizardTab component supports these tabs
 export const SUPPORTED_TABS = [
-  RETAIL_PRICE,
-  BRAND,
-  ITEM,
-  SIZE,
-  COLOR,
-  DAMAGE_PRICE,
+  DETAILS,
+  // BRAND,
+  // ITEM,
+  // SIZE,
+  // COLOR,
+  // DAMAGE_PRICE,
   PRICING,
   AVAILABILITY,
   PHOTOS,
@@ -160,13 +160,13 @@ const EditListingWizardTab = props => {
   };
 
   switch (tab) {
-    case RETAIL_PRICE: {
+    case DETAILS: {
       const submitButtonTranslationKey = isNewListingFlow
-        ? 'EditListingWizard.saveNewRetailPrice'
-        : 'EditListingWizard.saveEditRetailPrice';
+        ? 'EditListingWizard.saveNewDetails'
+        : 'EditListingWizard.saveEditDetails';
       return (
-        <EditListingRetailPricingPanel
-          {...panelProps(RETAIL_PRICE)}
+        <EditListingDetailsPanel
+          {...panelProps(DETAILS)}
           submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
           onSubmit={values => {
             onCompleteEditListingWizardTab(tab, values);
@@ -174,76 +174,20 @@ const EditListingWizardTab = props => {
         />
       );
     }
-    case BRAND: {
-      const submitButtonTranslationKey = isNewListingFlow
-        ? 'EditListingWizard.saveNewBrand'
-        : 'EditListingWizard.saveEditBrand';
-      return (
-        <EditListingBrandPanel
-          {...panelProps(BRAND)}
-          submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
-          onSubmit={values => {
-            onCompleteEditListingWizardTab(tab, values);
-          }}
-        />
-      );
-    }
-    case ITEM: {
-      const submitButtonTranslationKey = isNewListingFlow
-        ? 'EditListingWizard.saveNewItem'
-        : 'EditListingWizard.saveEditItem';
-      return (
-        <EditListingItemPanel
-          {...panelProps(ITEM)}
-          submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
-          onSubmit={values => {
-            onCompleteEditListingWizardTab(tab, values);
-          }}
-        />
-      );
-    }
-    case SIZE: {
-      const submitButtonTranslationKey = isNewListingFlow
-        ? 'EditListingWizard.saveNewSize'
-        : 'EditListingWizard.saveEditSize';
-      return (
-        <EditListingSizePanel
-          {...panelProps(SIZE)}
-          submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
-          onSubmit={values => {
-            onCompleteEditListingWizardTab(tab, values);
-          }}
-        />
-      );
-    }
-    case COLOR: {
-      const submitButtonTranslationKey = isNewListingFlow
-        ? 'EditListingWizard.saveNewColor'
-        : 'EditListingWizard.saveEditColor';
-      return (
-        <EditListingColorPanel
-          {...panelProps(COLOR)}
-          submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
-          onSubmit={values => {
-            onCompleteEditListingWizardTab(tab, values);
-          }}
-        />
-      );
-    }
-    case DAMAGE_PRICE: {
-      const submitButtonTranslationKey = isNewListingFlow
-        ? 'EditListingWizard.saveNewDamagePrice'
-        : 'EditListingWizard.saveEditDamagePrice';
-      return (
-        <EditListingDamagePricingPanel
-          {...panelProps(DAMAGE_PRICE)}
-          submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
-          onSubmit={values => {
-            onCompleteEditListingWizardTab(tab, values);
-          }}
-        />
-      );
-    }
+    // case DAMAGE_PRICE: {
+    //   const submitButtonTranslationKey = isNewListingFlow
+    //     ? 'EditListingWizard.saveNewDamagePrice'
+    //     : 'EditListingWizard.saveEditDamagePrice';
+    //   return (
+    //     <EditListingDamagePricingPanel
+    //       {...panelProps(DAMAGE_PRICE)}
+    //       submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
+    //       onSubmit={values => {
+    //         onCompleteEditListingWizardTab(tab, values);
+    //       }}
+    //     />
+    //   );
+    // }
     case PRICING: {
       const submitButtonTranslationKey = isNewListingFlow
         ? 'EditListingWizard.saveNewPricing'

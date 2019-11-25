@@ -36,6 +36,10 @@
   }
 }
 
+.item {
+  margin-bottom: 10px;
+}
+
 .title {
   @apply --EditListingPoliciesForm_formMargins;
 }

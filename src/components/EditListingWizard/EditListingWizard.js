@@ -16,14 +16,15 @@ import { Modal, NamedRedirect, Tabs } from '../../components';
 
 import EditListingWizardTab, {
   AVAILABILITY,
-  BRAND,
-  RETAIL_PRICE,
-  ITEM,
-  SIZE,
-  COLOR,
-  DAMAGE_PRICE,
+  // BRAND,
+  // RETAIL_PRICE,
+  // ITEM,
+  // SIZE,
+  // COLOR,
+  // DAMAGE_PRICE,
   PRICING,
   PHOTOS,
+  DETAILS,
 } from './EditListingWizardTab';
 import css from './EditListingWizard.css';
 
@@ -34,12 +35,12 @@ const availabilityMaybe = [];
 // TODO: PHOTOS panel needs to be the last one since it currently contains PayoutDetailsForm modal
 // All the other panels can be reordered.
 export const TABS = [
-  RETAIL_PRICE,
-  BRAND,
-  ITEM,
-  SIZE,
-  COLOR,
-  DAMAGE_PRICE,
+  DETAILS,
+  // BRAND,
+  // ITEM,
+  // SIZE,
+  // COLOR,
+  // DAMAGE_PRICE,
   PRICING,
   ...availabilityMaybe,
   PHOTOS,
@@ -50,19 +51,22 @@ const MAX_HORIZONTAL_NAV_SCREEN_WIDTH = 1023;
 
 const tabLabel = (intl, tab) => {
   let key = null;
-  if (tab === RETAIL_PRICE) {
-    key = 'EditListingWizard.tabLabelRetailPrice';
-  } else if (tab === BRAND) {
-    key = 'EditListingWizard.tabLabelBrand';
-  } else if (tab === ITEM) {
-    key = 'EditListingWizard.tabLabelItem';
-  } else if (tab === SIZE) {
-    key = 'EditListingWizard.tabLabelSize';
-  } else if (tab === COLOR) {
-    key = 'EditListingWizard.tabLabelColor';
-  } else if (tab === DAMAGE_PRICE) {
-    key = 'EditListingWizard.tabLabelDamagePrice';
-  } else if (tab === PRICING) {
+  if (tab === DETAILS) {
+    key = 'EditListingWizard.tabLabelDetails';
+  }
+  //  else if (tab === BRAND) {
+  //   key = 'EditListingWizard.tabLabelBrand';
+  // } else if (tab === ITEM) {
+  //   key = 'EditListingWizard.tabLabelItem';
+  // } else if (tab === SIZE) {
+  //   key = 'EditListingWizard.tabLabelSize';
+  // } else if (tab === COLOR) {
+  //   key = 'EditListingWizard.tabLabelColor';
+  // }
+  // else if (tab === DAMAGE_PRICE) {
+  //   key = 'EditListingWizard.tabLabelDamagePrice';
+  // }
+  else if (tab === PRICING) {
     key = 'EditListingWizard.tabLabelPricing';
   } else if (tab === AVAILABILITY) {
     key = 'EditListingWizard.tabLabelAvailability';
@@ -86,20 +90,26 @@ const tabCompleted = (tab, listing) => {
   const images = listing.images;
 
   switch (tab) {
-    case RETAIL_PRICE:
-      return !!(publicData && publicData.retailPrice);
-    case BRAND:
-      return !!(publicData && publicData.brandStore);
-    case ITEM:
-      return !!(publicData && publicData.item);
-    case SIZE:
-      return !!(publicData && publicData.size);
-    case COLOR:
-      return !!(publicData && publicData.color);
-    case DAMAGE_PRICE:
-      return !!(publicData && publicData.damageCost);
+    case DETAILS:
+      return !!(
+        publicData &&
+        publicData.item &&
+        publicData.color &&
+        publicData.size &&
+        publicData.brandStore
+      );
+    // case BRAND:
+    //   return !!(publicData && publicData.brandStore);
+    // case ITEM:
+    //   return !!(publicData && publicData.item);
+    // case SIZE:
+    //   return !!(publicData && publicData.size);
+    // case COLOR:
+    //   return !!(publicData && publicData.color);
+    // case DAMAGE_PRICE:
+    //   return !!(publicData && publicData.damageCost);
     case PRICING:
-      return !!price;
+      return !!(price && publicData && publicData.retailPrice && publicData.damageCost);
     case AVAILABILITY:
       return !!availabilityPlan;
     case PHOTOS:

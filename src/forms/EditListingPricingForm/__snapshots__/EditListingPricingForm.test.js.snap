@@ -11,6 +11,49 @@ exports[`EditListingPricingForm matches snapshot 1`] = `
     className=""
   >
     <label
+      htmlFor="retailPrice"
+    >
+      EditListingRetailPricingForm.retailPrice
+    </label>
+    <input
+      className=""
+      id="retailPrice"
+      name="retailPrice"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="EditListingRetailPricingForm.priceInputPlaceholder"
+      type="number"
+      value=""
+    />
+  </div>
+  <span>
+    EditListingDamagePricingForm.damagePriceExplanation
+  </span>
+  <div
+    className=""
+  >
+    <label
+      htmlFor="damageCost"
+    >
+      EditListingDamagePricingForm.damagePrice
+    </label>
+    <input
+      className=""
+      id="damageCost"
+      name="damageCost"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="EditListingDamagePricingForm.priceInputPlaceholder"
+      type="number"
+      value=""
+    />
+  </div>
+  <div
+    className=""
+  >
+    <label
       htmlFor="price"
     >
       EditListingPricingForm.pricePerUnit

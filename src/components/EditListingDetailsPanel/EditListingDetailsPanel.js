@@ -5,12 +5,12 @@ import { FormattedMessage } from '../../util/reactIntl';
 import { LISTING_STATE_DRAFT } from '../../util/types';
 import { ensureOwnListing } from '../../util/data';
 import { ListingLink } from '../../components';
-import { EditListingBrandForm } from '../../forms';
+import { EditListingDetailsForm } from '../../forms';
 import config from '../../config';
 
-import css from './EditListingBrandPanel.css';
+import css from './EditListingDetailsPanel.css';
 
-const EditListingBrandPanel = props => {
+const EditListingDetailsPanel = props => {
   const {
     className,
     rootClassName,
@@ -26,37 +26,38 @@ const EditListingBrandPanel = props => {
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureOwnListing(listing);
   const { publicData } = currentListing.attributes;
-  const {
-    publicData: { item },
-  } = currentListing.attributes;
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
   const panelTitle = isPublished ? (
     <FormattedMessage
-      id="EditListingBrandPanel.title"
+      id="EditListingDetailsPanel.title"
       values={{ listingTitle: <ListingLink listing={listing} /> }}
     />
   ) : (
-    <FormattedMessage id="EditListingBrandPanel.createListingTitle" />
+    <FormattedMessage id="EditListingDetailsPanel.createListingTitle" />
   );
 
   return (
     <div className={classes}>
       <h1 className={css.title}>{panelTitle}</h1>
-      <EditListingBrandForm
+      <EditListingDetailsForm
         className={css.form}
         publicData={publicData}
-        initialValues={{ brandStore: publicData.brandStore }}
+        initialValues={{
+          item: publicData.item,
+          color: publicData.color,
+          size: publicData.size,
+          brandStore: publicData.brandStore,
+        }}
         onSubmit={values => {
-          const { brandStore = '' } = values;
-          const theItem = item ? item : [];
-          const selectedItem = config.custom.items.find(option => option.key === theItem);
-          const titleString = selectedItem
-            ? `${brandStore} ${selectedItem.label}`
-            : `${brandStore}`;
+          const { item, color, size, brandStore = '' } = values;
+          const selectedItem = config.custom.items.find(option => option.key === item);
           const updateValues = {
-            title: titleString,
+            title: `${brandStore} ${selectedItem.label}`,
             publicData: {
+              item,
+              color,
+              size,
               brandStore,
             },
           };
@@ -67,6 +68,9 @@ const EditListingBrandPanel = props => {
         updated={panelUpdated}
         updateInProgress={updateInProgress}
         fetchErrors={errors}
+        items={config.custom.items}
+        colors={config.custom.colors}
+        sizes={config.custom.sizes}
       />
     </div>
   );
@@ -74,13 +78,13 @@ const EditListingBrandPanel = props => {
 
 const { func, object, string, bool } = PropTypes;
 
-EditListingBrandPanel.defaultProps = {
+EditListingDetailsPanel.defaultProps = {
   className: null,
   rootClassName: null,
   listing: null,
 };
 
-EditListingBrandPanel.propTypes = {
+EditListingDetailsPanel.propTypes = {
   className: string,
   rootClassName: string,
 
@@ -95,4 +99,4 @@ EditListingBrandPanel.propTypes = {
   errors: object.isRequired,
 };
 
-export default EditListingBrandPanel;
+export default EditListingDetailsPanel;

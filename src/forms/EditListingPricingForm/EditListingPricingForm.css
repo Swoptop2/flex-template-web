@@ -18,6 +18,15 @@
   color: var(--failColor);
 }
 
+.explanation {
+  font-size: 15px;
+  margin-top: 15px;
+}
+
+.item {
+  margin-bottom: 10px;
+}
+
 .priceInput {
   flex-shrink: 0;
   width: 100%;

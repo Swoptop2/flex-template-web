@@ -15,7 +15,7 @@ const SectionHeading = props => {
     hostLink,
     showContactUser,
     onContactUser,
-    publicData: { retailPrice },
+    publicData,
   } = props;
 
   const unitType = config.bookingUnitType;
@@ -28,7 +28,7 @@ const SectionHeading = props => {
     ? 'ListingPage.perDay'
     : 'ListingPage.perUnit';
 
-  console.log(retailPrice);
+  const retailPrice = publicData && publicData.retailPrice ? publicData.retailPrice : null;
 
   return (
     <div className={css.sectionHeading}>
@@ -40,14 +40,16 @@ const SectionHeading = props => {
           <FormattedMessage id={unitTranslationKey} />
         </div>
       </div>
-      <div className={css.desktopPriceContainer2}>
-        <div className={css.desktopPriceValue} title={priceTitle}>
-          {`$${retailPrice}.00`}
+      {retailPrice ? (
+        <div className={css.desktopPriceContainer2}>
+          <div className={css.desktopPriceValue} title={priceTitle}>
+            {`$${retailPrice}.00`}
+          </div>
+          <div className={css.desktopPerUnit}>
+            <span>retail</span>
+          </div>
         </div>
-        <div className={css.desktopPerUnit}>
-          <span>retail</span>
-        </div>
-      </div>
+      ) : null}
       <div className={css.heading}>
         <h1 className={css.title}>{richTitle}</h1>
         <div className={css.author}>

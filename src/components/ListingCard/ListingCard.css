@@ -29,7 +29,7 @@
 .aspectWrapper {
   padding-bottom: 66.6667%; /* 3:2 Aspect Ratio */
   background: var(--matterColorNegative); /* Loading BG color */
-  height: 350px;
+  height: 310px;
 }
 
 .rootForImage {
@@ -41,7 +41,7 @@
   right: 0;
   width: 100%;
   border-radius: var(--borderRadius);
-  height: 350px;
+  height: 310px;
 }
 
 .info {

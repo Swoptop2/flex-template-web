@@ -25,16 +25,12 @@ const SaleProviderCancelButtonMaybe = props => {
   const realStartingDate = new Date(startDate);
   realStartingDate.setDate(realStartingDate.getDate() + 1);
 
-  const currentDate = new Date();
-
-  const getHoursToStart = (start, now) => {
-    return (start - now) / 36e5;
-  };
+  const now = new Date();
 
   const cantCancelBooking = _ => {
     let cantCancel = false;
-    const hoursToStart = getHoursToStart(realStartingDate, currentDate);
-    if (hoursToStart < 18) cantCancel = true;
+    const daysDifference = now.getDate() - realStartingDate.getDate();
+    if (daysDifference >= 1) cantCancel = true;
     return cantCancel;
   };
 

@@ -17,6 +17,7 @@ import {
   TRANSITION_REVIEW_1_BY_PROVIDER,
   TRANSITION_REVIEW_2_BY_CUSTOMER,
   TRANSITION_REVIEW_2_BY_PROVIDER,
+  TRANSITION_PROVIDER_CANCEL,
   transitionIsReviewed,
   txIsDelivered,
   txIsInFirstReviewBy,
@@ -142,6 +143,7 @@ const resolveTransitionMessage = (
         <FormattedMessage id="ActivityFeed.transitionExpire" values={{ displayName }} />
       );
     case TRANSITION_CANCEL:
+    case TRANSITION_PROVIDER_CANCEL:
       return <FormattedMessage id="ActivityFeed.transitionCancel" />;
     case TRANSITION_COMPLETE:
       // Show the leave a review link if the state is delivered and if the current user is the first to leave a review

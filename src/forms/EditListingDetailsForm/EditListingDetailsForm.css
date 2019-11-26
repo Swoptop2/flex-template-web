@@ -40,6 +40,11 @@
   margin-bottom: 10px;
 }
 
+.note {
+  color: rgb(194, 7, 7);
+  font-size: 15px;
+}
+
 .title {
   @apply --EditListingPoliciesForm_formMargins;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { connect } from 'react-redux';
 import { FormattedMessage } from '../../util/reactIntl';
 import { LISTING_STATE_DRAFT } from '../../util/types';
 import { ensureOwnListing } from '../../util/data';
@@ -10,7 +11,7 @@ import config from '../../config';
 
 import css from './EditListingDetailsPanel.css';
 
-const EditListingDetailsPanel = props => {
+const EditListingDetailsPanelComponent = props => {
   const {
     className,
     rootClassName,
@@ -21,6 +22,7 @@ const EditListingDetailsPanel = props => {
     panelUpdated,
     updateInProgress,
     errors,
+    currentUser,
   } = props;
 
   const classes = classNames(rootClassName || css.root, className);
@@ -71,6 +73,7 @@ const EditListingDetailsPanel = props => {
         items={config.custom.items}
         colors={config.custom.colors}
         sizes={config.custom.sizes}
+        currentUser={currentUser}
       />
     </div>
   );
@@ -78,13 +81,13 @@ const EditListingDetailsPanel = props => {
 
 const { func, object, string, bool } = PropTypes;
 
-EditListingDetailsPanel.defaultProps = {
+EditListingDetailsPanelComponent.defaultProps = {
   className: null,
   rootClassName: null,
   listing: null,
 };
 
-EditListingDetailsPanel.propTypes = {
+EditListingDetailsPanelComponent.propTypes = {
   className: string,
   rootClassName: string,
 
@@ -98,5 +101,12 @@ EditListingDetailsPanel.propTypes = {
   updateInProgress: bool.isRequired,
   errors: object.isRequired,
 };
+
+const mapStateToProps = state => {
+  const { currentUser } = state.user;
+  return { currentUser };
+};
+
+const EditListingDetailsPanel = connect(mapStateToProps)(EditListingDetailsPanelComponent);
 
 export default EditListingDetailsPanel;

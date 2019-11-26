@@ -148,7 +148,7 @@ const resolveTransitionMessage = (
       const reviewPeriodJustStarted = txIsDelivered(transaction);
 
       const reviewAsFirstLink = reviewPeriodJustStarted ? (
-        <InlineTextButton onClick={onOpenReviewModal}>
+        <InlineTextButton style={{ display: 'none' }} onClick={onOpenReviewModal}>
           <FormattedMessage id="ActivityFeed.leaveAReview" values={{ displayName }} />
         </InlineTextButton>
       ) : null;

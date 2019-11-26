@@ -67,6 +67,9 @@ const FilterFormComponent = props => {
             style={{ ...style }}
           >
             <div className={classNames(paddingClasses || css.contentWrapper)}>{children}</div>
+            <button className={css.clearButton2} type="button" onClick={onClear}>
+              {clear}
+            </button>
 
             {liveEdit ? (
               <FormSpy onChange={handleChange} subscription={{ values: true, dirty: true }} />

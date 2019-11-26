@@ -34,6 +34,35 @@
   }
 }
 
+.clearButton2 {
+  @apply --marketplaceH4FontStyles;
+  font-weight: var(--fontWeightMedium);
+  color: var(--matterColorAnti);
+
+  /* Layout */
+  margin: 0 auto 0 0;
+  padding: 0;
+
+  /* Override button styles */
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  display: none;
+
+  &:focus,
+  &:hover {
+    color: var(--matterColor);
+    transition: width var(--transitionStyleButton);
+  }
+  @media (--viewportMedium) {
+    display: block;
+  }
+}
+
 .cancelButton {
   @apply --marketplaceH4FontStyles;
   font-weight: var(--fontWeightMedium);

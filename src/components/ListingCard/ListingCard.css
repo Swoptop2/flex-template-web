@@ -4,7 +4,11 @@
   /* Layout */
   display: flex;
   flex-direction: column;
+  margin: 0 8px;
 
+  @media (--viewportMedium) {
+    margin: 0;
+  }
   /* Remove link's hover effect */
   &:hover {
     text-decoration: none;

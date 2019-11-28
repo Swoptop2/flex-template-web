@@ -30,6 +30,7 @@
   flex-shrink: 0;
   border-top: 0.45px solid black;
   padding-top: 45px;
+  text-align: center;
 }
 
 .noSearchResults {

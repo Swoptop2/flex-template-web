@@ -11,10 +11,7 @@ exports[`ListingCard matches snapshot 1`] = `
     }
   }
 >
-  <div
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
+  <div>
     <div>
       <lazyLoadWithDimensions(ListingImage)
         alt="listing1 title"

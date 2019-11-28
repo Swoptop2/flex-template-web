@@ -12,10 +12,10 @@
     since browsers support CSS Properties already.
  */
 
-  --fontWeightRegular: 250;
-  --fontWeightMedium: 350;
-  --fontWeightSemiBold: 450;
-  --fontWeightBold: 500;
+  --fontWeightRegular: 150;
+  --fontWeightMedium: 250;
+  --fontWeightSemiBold: 350;
+  --fontWeightBold: 400;
 
   /* ================ Default font ================ */
 
@@ -65,7 +65,7 @@
 
   --marketplaceHeroTitleFontStyles: {
     font-weight: var(--fontWeightBold);
-    font-size: 42px;
+    font-size: 40px;
     line-height: 42px;
     letter-spacing: -1px;
     /* margin-top + n * line-height + margin-bottom => x * 6px */
@@ -118,7 +118,7 @@
     margin-bottom: 18px;
 
     @media (--viewportMedium) {
-      font-size: 48px;
+      font-size: 39px;
       font-weight: var(--fontWeightSemiBold);
       line-height: 56px;
       letter-spacing: -2px;
@@ -147,7 +147,7 @@
 
   --marketplaceH3FontStyles: {
     font-weight: var(--fontWeightSemiBold);
-    font-size: 20px;
+    font-size: 17px;
     line-height: 24px;
     letter-spacing: -0.2px;
     /* margin-top + n * line-height + margin-bottom => x * 6px */

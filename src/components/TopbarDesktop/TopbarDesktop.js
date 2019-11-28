@@ -132,6 +132,12 @@ const TopbarDesktop = props => {
     </NamedLink>
   );
 
+  const howItWorksLink = isAuthenticatedOrJustHydrated ? null : (
+    <NamedLink name="LoginPage" className={css.loginLink}>
+      <span className={css.login}>How it Works</span>
+    </NamedLink>
+  );
+
   return (
     <nav className={classes}>
       <NamedLink className={css.logoLink} name="LandingPage">
@@ -148,6 +154,7 @@ const TopbarDesktop = props => {
         </span>
       </NamedLink>
       {inboxLink}
+      {howItWorksLink}
       {profileMenu}
       {signupLink}
       {loginLink}

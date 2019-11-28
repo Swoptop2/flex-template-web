@@ -18,8 +18,6 @@ import {
   Footer,
 } from '../../components';
 import { TopbarContainer } from '../../containers';
-import { NamedLink } from '../../components';
-import { FormattedMessage } from '../../util/reactIntl';
 
 import facebookImage from '../../assets/saunatimeFacebook-1200x630.jpg';
 import twitterImage from '../../assets/saunatimeTwitter-600x314.jpg';
@@ -111,12 +109,26 @@ export const LandingPageComponent = props => {
               <div className={css.videoContainer}>
                 <div className={css.title}>Why?</div>
                 <YoutubeFrame />
-                <div className={css.createListingLink}>
-                  <NamedLink name="NewListingPage">
-                    <FormattedMessage id="SectionHowItWorks.createListingLink" />
-                  </NamedLink>
-                </div>
               </div>
+              <div className={css.mission}>
+                <q>
+                  My mission is for college women to realize their potential early on and to inspire
+                  girls to learn business principles through something they already own and love,
+                  clothes.
+                </q>
+                <span>-Chase Healy, Founder of Swoptop</span>
+              </div>
+              <p className={css.press}>
+                Hot off the press! Read about how Swoptop came about and what’s next{' '}
+                <a
+                  target="_blank"
+                  href="https://platformmagazine.org/2019/10/23/starting-up-a-startup-swoptop/"
+                  rel="noopener noreferrer"
+                >
+                  here
+                </a>
+                ! <br />
+              </p>
             </li>
           </ul>
         </LayoutWrapperMain>

@@ -20,12 +20,12 @@
   display: block;
   width: 100%;
   position: relative;
-  transition: var(--transitionStyleButton);
+  transition: ease 0.19s;
   box-shadow: 0 0 7px 0 rgb(0, 0, 0, 0.2);
 
   &:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 5px 0 rgb(255, 4, 132, 0.8);
+    transform: scale(1.02) rotate(0.5deg);
+    box-shadow: 0 0 5px 0 rgb(0, 0, 0, 0.7);
   }
 }
 
@@ -44,7 +44,7 @@
   left: 0;
   right: 0;
   width: 100%;
-  border-radius: var(--borderRadius);
+  border-radius: 0;
   height: 310px;
 }
 

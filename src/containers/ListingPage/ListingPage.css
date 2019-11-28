@@ -350,7 +350,7 @@
 
 .desktopPriceValue {
   /* Font */
-  @apply --marketplaceH1FontStyles;
+  @apply --marketplaceH2FontStyles;
   color: var(--marketplaceColor);
 
   @media (--viewportMedium) {

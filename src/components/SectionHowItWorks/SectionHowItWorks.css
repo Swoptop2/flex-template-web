@@ -42,10 +42,11 @@
   font-weight: 200;
   font-size: 20px;
   text-align: left;
+  line-height: 1.5;
   @media (--viewportMedium) {
     margin-top: 21px;
     margin-bottom: 18px;
-    font-size: 25px;
+    font-size: 22px;
   }
 }
 

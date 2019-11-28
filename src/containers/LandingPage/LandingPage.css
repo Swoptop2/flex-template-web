@@ -84,6 +84,36 @@
   text-align: center;
 }
 
+.mission {
+  width: 65%;
+  margin: 0px auto 110px;
+  transform: translateY(-80px);
+  display: flex;
+  flex-direction: column;
+}
+
+.mission q {
+  font-size: 23.7px;
+  font-weight: 100;
+  line-height: 1.5;
+  border-left: 1px solid var(--matterColor);
+  padding-left: 30px;
+}
+
+.mission span {
+  margin-top: 25px;
+  margin-left: 25px;
+  font-size: 16px;
+  font-weight: 50;
+  text-transform: uppercase;
+}
+
+.press {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 /* Square corners for the last section if it's even */
 .section:nth-of-type(2n):last-of-type {
   @media (--viewportMedium) {
@@ -121,7 +151,7 @@
 
 .sectionContentFirstChild {
   composes: sectionContent;
-  margin-top: 3vh;
+  margin-top: 80px;
 }
 
 /* A bar on top of light sections */
@@ -129,16 +159,17 @@
   background: var(--marketplaceColor);
   content: '';
   display: block;
-  width: 109px;
-  height: 6px;
+  margin-top: 15px;
+  height: 1px;
+  margin: 0 auto;
 
   /* Place the bar on top of .sectionContent top margin */
   position: relative;
   top: calc(-1 * var(--LandingPage_sectionMarginTop));
 
   @media (--viewportMedium) {
-    width: 192px;
-    height: 8px;
+    width: 65%;
+    height: 3px;
     top: calc(-1 * var(--LandingPage_sectionMarginTopMedium));
   }
 

@@ -83,7 +83,7 @@
   margin-bottom: 18px;
 
   @media (--viewportMedium) {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 0;
   }
@@ -102,7 +102,7 @@
     order: 1;
     margin-right: 12px;
   }
-  @media (--viewportLarge) {
+  @media (--viewportXLarge) {
     flex-basis: 240px;
     margin-right: 57px;
   }
@@ -155,7 +155,11 @@
   margin-right: 24px;
   margin-bottom: 0px;
 
-  @media (--viewportMedium) {
+  @media (--viewportLarge) {
+    margin-right: 300px;
+  }
+
+  @media (--viewportXLarge) {
     padding-top: 2px;
     margin-right: 420px;
   }

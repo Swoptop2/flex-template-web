@@ -133,7 +133,7 @@ const TopbarDesktop = props => {
   );
 
   const howItWorksLink = isAuthenticatedOrJustHydrated ? null : (
-    <NamedLink name="LoginPage" className={css.loginLink}>
+    <NamedLink name="HowItWorksPage" className={css.loginLink}>
       <span className={css.login}>How it Works</span>
     </NamedLink>
   );

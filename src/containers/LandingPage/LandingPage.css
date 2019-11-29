@@ -85,27 +85,36 @@
 }
 
 .mission {
-  width: 65%;
+  width: 85%;
   margin: 0px auto 110px;
-  transform: translateY(-80px);
   display: flex;
   flex-direction: column;
+  @media (--viewportMedium) {
+    transform: translateY(-80px);
+    width: 65%;
+  }
 }
 
 .mission q {
-  font-size: 23.7px;
+  font-size: 19.7px;
   font-weight: 100;
-  line-height: 1.5;
   border-left: 1px solid var(--matterColor);
   padding-left: 30px;
+  @media (--viewportMedium) {
+    font-size: 23.7px;
+    line-height: 1.5;
+  }
 }
 
 .mission span {
   margin-top: 25px;
   margin-left: 25px;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 50;
   text-transform: uppercase;
+  @media (--viewportMedium) {
+    font-size: 16px;
+  }
 }
 
 .press {

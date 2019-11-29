@@ -8,7 +8,6 @@
   width: 100%;
   padding: 24px 24px 42px 24px;
   background-color: var(--marketplaceColor);
-  margin-top: 20px;
 
   @media (--viewportMedium) {
     padding: 0 24px 33px 24px;

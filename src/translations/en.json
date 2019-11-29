@@ -187,7 +187,7 @@
   "EditListingPhotosForm.showListingFailed": "Fetching listing data failed",
   "EditListingPhotosForm.updateFailed": "Failed to update listing. Please try again.",
   "EditListingPhotosPanel.createListingTitle": "Add a few photos",
-  "EditListingPhotosPanel.payoutModalInfo": "Since this was the first listing you created, we need to know bit more about you in order to send you money. We only ask these once.",
+  "EditListingPhotosPanel.payoutModalInfo": "Since this was the first listing you created, we need to know bit more about you in order to send you money. We only ask this once.",
   "EditListingPhotosPanel.payoutModalTitleOneMoreThing": "One more thing:",
   "EditListingPhotosPanel.payoutModalTitlePayoutPreferences": "Payout preferences",
   "EditListingPhotosPanel.title": "Edit the photos of {listingTitle}",

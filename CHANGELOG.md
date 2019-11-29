@@ -14,6 +14,37 @@ way to update this template, but currently, we follow a pattern:
 
 ## Upcoming version 2019-XX-XX
 
+- [add] Add IconEdit [#1237](https://github.com/sharetribe/ftw-daily/pull/1237)
+
+## [v3.6.1] 2019-11-26
+
+- [fix] Fix XSS-vulnerability on SearchPage where URL param 'address' was exposed directly to
+  schema, which is just a script tag: <script type="application/ld+json">. On server-side, this
+  could leak malformed HTML through to browsers and made it possible to inject own script tags.
+
+However, CSP prevents any data breach: injected js can't send data to unknonwn 3rd party sites.
+
+NOTE: Check that `REACT_APP_CSP` is in block mode on your production environment. You can read more
+from Flex docs: https://www.sharetribe.com/docs/guides/how-to-set-up-csp-for-ftw/
+[#1233](https://github.com/sharetribe/flex-template-web/pull/1233)
+
+- [change] Rename repository form `flex-template-web` to `ftw-daily`.
+  [#1230](https://github.com/sharetribe/flex-template-web/pull/1230)
+
+  [v3.6.1]: https://github.com/sharetribe/flex-template-web/compare/v3.6.0...v3.6.1
+
+## [v3.6.0] 2019-11-04
+
+- [change] update react-dates from 20.3.0 to 21.3.1
+  [#1223](https://github.com/sharetribe/flex-template-web/pull/1223)
+- [change] Update helmet from 3.18.0 to 3.21.2
+  [#1225](https://github.com/sharetribe/flex-template-web/pull/1225)
+- [change] Update @sentry/browser and @sentry/node from 5.6.2 to 5.7.1. Due to some refactoring
+  Sentry has done internally which is included to this update, you might need to remove
+  `node_modules` and run `yarn install` again.
+  [#1224](https://github.com/sharetribe/flex-template-web/pull/1224)
+- [add] Add default timezone to date formatting in example transaction process email templates.
+  [#1227](https://github.com/sharetribe/flex-template-web/pull/1227)
 - [change] Update @formatjs/intl-relativetimeformat from 2.8.3 to 4.2.1
   [#1222](https://github.com/sharetribe/flex-template-web/pull/1222)
 - [fix] Use currency of the `lineItem` on every line of the `BookingBreakdown` if possible.

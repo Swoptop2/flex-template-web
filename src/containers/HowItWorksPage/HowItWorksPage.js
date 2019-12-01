@@ -53,7 +53,9 @@ const HowItWorksPage = () => {
               <img src={closet1Img} className={css.img} alt="Add listing details" />
               <div className={css.step}>
                 <h1 className={css.stepTitle}>Listing Details</h1>
-                <p>Enter your listing's details such as the item's name, color, size and brand.</p>
+                <p className={css.hiwP}>
+                  Enter your listing's details such as the item's name, color, size and brand.
+                </p>
               </div>
               <img src={closet2Img} className={css.img} alt="Add listing pricing" />
               <div className={css.step}>
@@ -76,7 +78,9 @@ const HowItWorksPage = () => {
               <img src={closet3Img} className={css.img} alt="Add listing photos" />
               <div className={css.step}>
                 <h1 className={css.stepTitle}>Photos</h1>
-                <p>Time to add some photos! It's best if you add the following type of photos:</p>
+                <p className={css.hiwP}>
+                  Time to add some photos! It's best if you add the following type of photos:
+                </p>
                 <ul style={{ listStyleType: 'circle', marginLeft: '10px' }}>
                   <li>Stock photo</li>
                   <li>Photo hanging</li>
@@ -87,7 +91,9 @@ const HowItWorksPage = () => {
             </div>
             <div className={css.finalStep}>
               <h1 className={css.stepTitle}>Add Your Payout Details</h1>
-              <p>Finally, enter your payout preferences so that you can start making some money!</p>
+              <p className={css.hiwP}>
+                Finally, enter your payout preferences so that you can start making some money!
+              </p>
             </div>
           </div>
         </LayoutWrapperMain>

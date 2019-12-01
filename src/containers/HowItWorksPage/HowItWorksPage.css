@@ -18,7 +18,7 @@
 
 .links {
   width: 82%;
-  margin: 14px auto;
+  margin: 45px auto 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,12 +87,14 @@
   text-align: center;
 }
 
+/* these need to have classes */
 ol li,
 ul li {
   font-size: 18px;
   margin-bottom: 8px;
 }
 
-p {
+/* these need to have classes */
+.hiwP {
   font-size: 18px !important;
 }

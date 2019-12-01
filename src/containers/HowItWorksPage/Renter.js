@@ -54,7 +54,7 @@ const Renter = () => {
               </div>
               <div className={css.step}>
                 <h1 className={css.stepTitle}>Request to Rent</h1>
-                <p>
+                <p className={css.hiwP}>
                   Choose your dates and send a rental request to the owner. The first day fo the
                   rental period should be the day before you wish to wear the item.
                 </p>
@@ -64,7 +64,7 @@ const Renter = () => {
               </div>
               <div className={css.step}>
                 <h1 className={css.stepTitle}>Enter your Payment Info</h1>
-                <p>
+                <p className={css.hiwP}>
                   Enter your payment details to make the request, and wait for the owner to accept
                   it. You'll get the owner's phone number by email so you can easily communicate and
                   coordinate with her.
@@ -73,11 +73,11 @@ const Renter = () => {
             </div>
             <div className={css.finalStep}>
               <h1 className={css.stepTitle}>Wear it & Enjoy it!</h1>
-              <p>
+              <p className={css.hiwP}>
                 Enjoy and turn some heads with your outfit. When the rental period's over, return
-                the item to the owner. And remember, no need to wash/dry clean! The owner will take
-                {/* eslint-disable-next-line */}
-                care of that for you <span role="img">&#128522;</span>.
+                the item to the owner. And remember, no need to wash/dry clean! The owner will take{' '}
+                {/* eslint-disable-next-line */} care of that for you
+                <span role="img">&#128522;</span>.
               </p>
             </div>
           </div>

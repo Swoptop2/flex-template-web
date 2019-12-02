@@ -51,6 +51,9 @@ const EditListingPricingPanel = props => {
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureOwnListing(listing);
   const { price, publicData } = currentListing.attributes;
+  const {
+    id: { uuid },
+  } = currentListing;
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
   const panelTitle = isPublished ? (
@@ -80,6 +83,7 @@ const EditListingPricingPanel = props => {
             damageCost,
             retailPrice,
             location: { address: `${city}, ${state}, United States of America` },
+            listingIdForLikeFilter: uuid,
           },
         };
         onSubmit(updateValues);

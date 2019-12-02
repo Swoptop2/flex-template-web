@@ -172,6 +172,7 @@ export const signup = params => (dispatch, getState, sdk) => {
   }
   dispatch(signupRequest());
   const { email, password, firstName, lastName, state, city, school, sorority, ...rest } = params;
+  const likedListings = [];
 
   const createUserParams = isEmpty(rest)
     ? {
@@ -180,7 +181,7 @@ export const signup = params => (dispatch, getState, sdk) => {
         firstName,
         lastName,
         protectedData: { state, city },
-        publicData: { school, sorority },
+        publicData: { school, sorority, likedListings },
       }
     : {
         email,
@@ -188,7 +189,7 @@ export const signup = params => (dispatch, getState, sdk) => {
         firstName,
         lastName,
         protectedData: { state, city, ...rest },
-        publicData: { school, sorority },
+        publicData: { school, sorority, likedListings },
       };
 
   // We must login the user if signup succeeds since the API doesn't

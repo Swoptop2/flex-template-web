@@ -30,6 +30,7 @@ class MainPanel extends Component {
       searchListingsError,
       searchParamsAreInSync,
       onActivateListing,
+      onFavoriteListing,
       onManageDisableScrolling,
       onOpenModal,
       onCloseModal,
@@ -39,6 +40,7 @@ class MainPanel extends Component {
       showAsModalMaxWidth,
       primaryFilters,
       secondaryFilters,
+      currentUser,
     } = this.props;
 
     const isSearchFiltersPanelOpen = !!secondaryFilters && this.state.isSearchFiltersPanelOpen;
@@ -130,6 +132,8 @@ class MainPanel extends Component {
               pagination={listingsAreLoaded ? pagination : null}
               search={searchParamsForPagination}
               setActiveListing={onActivateListing}
+              setFavoriteListing={onFavoriteListing}
+              currentUser={currentUser}
             />
           </div>
         )}
@@ -159,6 +163,7 @@ MainPanel.propTypes = {
   searchListingsError: propTypes.error,
   searchParamsAreInSync: bool.isRequired,
   onActivateListing: func.isRequired,
+  onFavoriteListing: func.isRequired,
   onManageDisableScrolling: func.isRequired,
   onOpenModal: func.isRequired,
   onCloseModal: func.isRequired,

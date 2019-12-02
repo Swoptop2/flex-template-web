@@ -179,6 +179,39 @@ export const setActiveListing = listingId => ({
   payload: listingId,
 });
 
+export const favoriteListing = listingId => (dispatch, getState, sdk) => {
+  const { uuid } = listingId;
+  sdk.currentUser
+    .show()
+    .then(res => {
+      const {
+        publicData: { likedListings },
+      } = res.data.data.attributes.profile;
+      if (likedListings.includes(uuid)) {
+        const updatedListings = likedListings.filter(item => item !== uuid);
+        sdk.currentUser
+          .updateProfile({
+            publicData: {
+              likedListings: updatedListings,
+            },
+          })
+          .then(res => console.log(res))
+          .catch(err => console.error(err));
+      } else {
+        likedListings.push(uuid);
+        sdk.currentUser
+          .updateProfile({
+            publicData: {
+              likedListings,
+            },
+          })
+          .then(res => console.log(res))
+          .catch(err => console.error(err));
+      }
+    })
+    .catch(err => console.error(err));
+};
+
 export const searchMapListings = searchParams => (dispatch, getState, sdk) => {
   dispatch(searchMapListingsRequest(searchParams));
 

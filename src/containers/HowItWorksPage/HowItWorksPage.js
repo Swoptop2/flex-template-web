@@ -46,6 +46,9 @@ const HowItWorksPage = () => {
             <NamedLink style={{ textDecoration: 'none' }} className={css.link} name="Owner">
               Owner
             </NamedLink>
+            <NamedLink style={{ textDecoration: 'none' }} className={css.link} name="BestPractices">
+              Best renting practices
+            </NamedLink>
           </div>
           <div className={css.content}>
             <h1 className={css.title}>How to Build Your Closet</h1>

@@ -45,6 +45,9 @@ const Renter = () => {
             <NamedLink style={{ textDecoration: 'none' }} className={css.link} name="Owner">
               Owner
             </NamedLink>
+            <NamedLink style={{ textDecoration: 'none' }} className={css.link} name="BestPractices">
+              Best renting practices
+            </NamedLink>
           </div>
           <div className={css.content}>
             <h1 className={css.title}>Step by Step: Renter</h1>
@@ -55,8 +58,9 @@ const Renter = () => {
               <div className={css.step}>
                 <h1 className={css.stepTitle}>Request to Rent</h1>
                 <p className={css.hiwP}>
-                  Choose your dates and send a rental request to the owner. The first day fo the
-                  rental period should be the day before you wish to wear the item.
+                  Choose your dates and send a rental request to the owner. Remember that rentals
+                  are for a fixed period of 3 days, and the first day of that period, should be the
+                  day before you wish to wear the item.
                 </p>
               </div>
               <div style={{ textAlign: 'center' }}>

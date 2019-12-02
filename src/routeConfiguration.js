@@ -2,6 +2,7 @@ import React from 'react';
 import {
   AboutPage,
   AuthenticationPage,
+  BestPractices,
   Renter,
   CheckoutPage,
   ContactDetailsPage,
@@ -74,6 +75,11 @@ const routeConfiguration = () => {
       path: '/owner',
       name: 'Owner',
       component: Owner,
+    },
+    {
+      path: '/bestpractices',
+      name: 'BestPractices',
+      component: BestPractices,
     },
     {
       path: '/s',

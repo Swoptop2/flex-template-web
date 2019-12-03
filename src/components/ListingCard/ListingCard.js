@@ -77,9 +77,19 @@ export const ListingCardComponent = props => {
       const {
         publicData: { likedListings },
       } = currentUser.attributes.profile;
-      if (likedListings.includes(currentListing.id.uuid)) {
+      // set array to local storage and check there too. remove on unmount
+      localStorage.setItem('liked', JSON.stringify(likedListings));
+      const liked = JSON.parse(localStorage.getItem('liked'));
+      if (
+        likedListings.includes(currentListing.id.uuid) ||
+        liked.includes(currentListing.id.uuid)
+      ) {
         setIsLiked(true);
       }
+      return () => {
+        // remove array from local storage
+        localStorage.removeItem('liked');
+      };
     }
     // eslint-disable-next-line
   }, []);

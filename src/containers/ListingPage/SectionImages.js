@@ -35,7 +35,7 @@ const SectionImages = props => {
   //   </button>
   // ) : null;
 
-  const sectionMargin = isOwnListing ? '140px' : '65px';
+  const sectionMargin = isOwnListing ? '140px' : '5px';
 
   return (
     <div style={{ marginTop: sectionMargin }}>

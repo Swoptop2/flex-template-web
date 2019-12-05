@@ -93,32 +93,51 @@ exports[`ListingPage matches snapshot 1`] = `
           title="listing1 title"
         />
         <div>
-          <SectionAvatar
-            params={
-              Object {
-                "id": "listing1",
-                "slug": "listing1-title",
-              }
-            }
-            user={
-              Object {
-                "attributes": Object {
-                  "banned": false,
-                  "deleted": false,
-                  "profile": Object {
-                    "abbreviatedName": "TT",
-                    "displayName": "user-1 display name",
-                  },
-                },
-                "id": UUID {
-                  "_sdkType": "UUID",
-                  "uuid": "user-1",
-                },
-                "type": "user",
-              }
-            }
-          />
           <div>
+            <SectionFirstImage
+              listing={
+                Object {
+                  "attributes": Object {
+                    "deleted": false,
+                    "description": "listing1 description",
+                    "geolocation": LatLng {
+                      "_sdkType": "LatLng",
+                      "lat": 40,
+                      "lng": 60,
+                    },
+                    "price": Money {
+                      "_sdkType": "Money",
+                      "amount": 5500,
+                      "currency": "USD",
+                    },
+                    "publicData": Object {},
+                    "state": "published",
+                    "title": "listing1 title",
+                  },
+                  "author": Object {
+                    "attributes": Object {
+                      "banned": false,
+                      "deleted": false,
+                      "profile": Object {
+                        "abbreviatedName": "TT",
+                        "displayName": "user-1 display name",
+                      },
+                    },
+                    "id": UUID {
+                      "_sdkType": "UUID",
+                      "uuid": "user-1",
+                    },
+                    "type": "user",
+                  },
+                  "id": UUID {
+                    "_sdkType": "UUID",
+                    "uuid": "listing1",
+                  },
+                  "images": Array [],
+                  "type": "listing",
+                }
+              }
+            />
             <SectionHeading
               category={null}
               formattedPrice={55}
@@ -154,127 +173,129 @@ exports[`ListingPage matches snapshot 1`] = `
               }
               showContactUser={true}
             />
-            <SectionSize
-              options={
-                Array [
-                  Object {
-                    "key": "xxs-00",
-                    "label": "XXS, 00",
-                  },
-                  Object {
-                    "key": "xs-0",
-                    "label": "XS, 0",
-                  },
-                  Object {
-                    "key": "s-2",
-                    "label": "S, 2",
-                  },
-                  Object {
-                    "key": "s-4",
-                    "label": "S, 4",
-                  },
-                  Object {
-                    "key": "m-6",
-                    "label": "M, 6",
-                  },
-                  Object {
-                    "key": "m-8",
-                    "label": "M, 8",
-                  },
-                  Object {
-                    "key": "l-10",
-                    "label": "L, 10",
-                  },
-                  Object {
-                    "key": "l-12",
-                    "label": "L, 12",
-                  },
-                  Object {
-                    "key": "xl-14",
-                    "label": "XL, 14",
-                  },
-                  Object {
-                    "key": "xl-16",
-                    "label": "XL, 16",
-                  },
-                ]
-              }
-              publicData={Object {}}
-            />
-            <SectionColor
-              options={
-                Array [
-                  Object {
-                    "key": "black",
-                    "label": "Black",
-                  },
-                  Object {
-                    "key": "white",
-                    "label": "White",
-                  },
-                  Object {
-                    "key": "multicolored_print",
-                    "label": "Multicolored/Print",
-                  },
-                  Object {
-                    "key": "red",
-                    "label": "Red",
-                  },
-                  Object {
-                    "key": "orange",
-                    "label": "Orange",
-                  },
-                  Object {
-                    "key": "yellow",
-                    "label": "Yellow",
-                  },
-                  Object {
-                    "key": "green",
-                    "label": "Green",
-                  },
-                  Object {
-                    "key": "blue_navy",
-                    "label": "Blue/Navy",
-                  },
-                  Object {
-                    "key": "denim",
-                    "label": "Denim",
-                  },
-                  Object {
-                    "key": "purple",
-                    "label": "Purple",
-                  },
-                  Object {
-                    "key": "pink",
-                    "label": "Pink",
-                  },
-                  Object {
-                    "key": "brown",
-                    "label": "Brown",
-                  },
-                  Object {
-                    "key": "gray",
-                    "label": "Gray",
-                  },
-                  Object {
-                    "key": "metallic",
-                    "label": "Metallic",
-                  },
-                  Object {
-                    "key": "sequin",
-                    "label": "Sequin",
-                  },
-                  Object {
-                    "key": "nude",
-                    "label": "Nude",
-                  },
-                ]
-              }
-              publicData={Object {}}
-            />
-            <SectionDamageCost
-              publicData={Object {}}
-            />
+            <div>
+              <SectionSize
+                options={
+                  Array [
+                    Object {
+                      "key": "xxs-00",
+                      "label": "XXS, 00",
+                    },
+                    Object {
+                      "key": "xs-0",
+                      "label": "XS, 0",
+                    },
+                    Object {
+                      "key": "s-2",
+                      "label": "S, 2",
+                    },
+                    Object {
+                      "key": "s-4",
+                      "label": "S, 4",
+                    },
+                    Object {
+                      "key": "m-6",
+                      "label": "M, 6",
+                    },
+                    Object {
+                      "key": "m-8",
+                      "label": "M, 8",
+                    },
+                    Object {
+                      "key": "l-10",
+                      "label": "L, 10",
+                    },
+                    Object {
+                      "key": "l-12",
+                      "label": "L, 12",
+                    },
+                    Object {
+                      "key": "xl-14",
+                      "label": "XL, 14",
+                    },
+                    Object {
+                      "key": "xl-16",
+                      "label": "XL, 16",
+                    },
+                  ]
+                }
+                publicData={Object {}}
+              />
+              <SectionColor
+                options={
+                  Array [
+                    Object {
+                      "key": "black",
+                      "label": "Black",
+                    },
+                    Object {
+                      "key": "white",
+                      "label": "White",
+                    },
+                    Object {
+                      "key": "multicolored_print",
+                      "label": "Multicolored/Print",
+                    },
+                    Object {
+                      "key": "red",
+                      "label": "Red",
+                    },
+                    Object {
+                      "key": "orange",
+                      "label": "Orange",
+                    },
+                    Object {
+                      "key": "yellow",
+                      "label": "Yellow",
+                    },
+                    Object {
+                      "key": "green",
+                      "label": "Green",
+                    },
+                    Object {
+                      "key": "blue_navy",
+                      "label": "Blue/Navy",
+                    },
+                    Object {
+                      "key": "denim",
+                      "label": "Denim",
+                    },
+                    Object {
+                      "key": "purple",
+                      "label": "Purple",
+                    },
+                    Object {
+                      "key": "pink",
+                      "label": "Pink",
+                    },
+                    Object {
+                      "key": "brown",
+                      "label": "Brown",
+                    },
+                    Object {
+                      "key": "gray",
+                      "label": "Gray",
+                    },
+                    Object {
+                      "key": "metallic",
+                      "label": "Metallic",
+                    },
+                    Object {
+                      "key": "sequin",
+                      "label": "Sequin",
+                    },
+                    Object {
+                      "key": "nude",
+                      "label": "Nude",
+                    },
+                  ]
+                }
+                publicData={Object {}}
+              />
+              <SectionDamageCost
+                publicData={Object {}}
+              />
+            </div>
             <SectionRulesMaybe
               className={null}
               publicData={Object {}}
@@ -324,6 +345,9 @@ exports[`ListingPage matches snapshot 1`] = `
                 }
               }
             />
+            <p>
+              *Damage cost is what will be payed to the renter if the item is returned completely damaged (simple wear & tear doesn't apply)
+            </p>
             <SectionHostMaybe
               authorDisplayName="user-1 display name"
               currentUser={

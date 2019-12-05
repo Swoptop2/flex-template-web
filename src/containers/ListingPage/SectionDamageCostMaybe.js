@@ -10,7 +10,7 @@ const SectionDamageCost = props => {
   const damageCost = publicData && publicData.damageCost ? publicData.damageCost : '';
 
   return damageCost ? (
-    <div className={css.sectionFeatures}>
+    <div className={css.sectionDamage}>
       <h2 className={css.featuresTitle}>
         <FormattedMessage id="ListingPage.damageCostTitle" />
       </h2>

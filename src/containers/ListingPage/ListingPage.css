@@ -3,6 +3,12 @@
 .root {
 }
 
+.note {
+  font-size: 15px;
+  color: var(--matterColorAnti);
+  padding: 5px;
+}
+
 .pageRoot {
   display: flex;
   padding-bottom: 90px;
@@ -21,16 +27,29 @@
   }
 }
 
+.allImagesContainer {
+  margin-top: 20px;
+  padding: 0px 24px;
+  @media (--viewportLarge) {
+    padding: 0px;
+  }
+}
+
+.firstImage {
+  max-width: 250px;
+  max-height: 300px;
+  box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.6);
+}
+
 .image {
-  border-radius: 5px;
   box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.6);
   width: 95%;
-  max-height: 250px;
+  max-height: 325px;
   margin: 10px auto;
   @media (--viewportMedium) {
     width: 45%;
     margin: 10px;
-    max-height: 300px;
+    max-height: 350px;
   }
 }
 
@@ -44,7 +63,7 @@
 }
 
 .sectionImages {
-  margin-top: 140px;
+  /* margin-top: 140px; */
 }
 
 .threeToTwoWrapper {
@@ -239,13 +258,11 @@
   margin-bottom: 23px;
 
   @media (--viewportMedium) {
-    margin-top: 50px;
     margin-bottom: 51px;
     flex-shrink: 0;
   }
 
   @media (--viewportLarge) {
-    margin-top: 50px;
     margin-bottom: 0px;
     /* contentContainer's full width - (bookingColumn + two paddings + margin + border) */
     max-width: calc(100% - 433px);
@@ -459,6 +476,45 @@
 
   @media (--viewportMedium) {
     padding: 0;
+  }
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  @media (--viewportLarge) {
+    flex-direction: row;
+  }
+}
+
+.sectionColor {
+  padding: 0 24px;
+  display: flex;
+
+  @media (--viewportMedium) {
+    padding: 0;
+  }
+  @media (--viewportLarge) {
+    margin-left: 80px;
+  }
+}
+
+.sectionDamage {
+  padding: 0 24px;
+  display: flex;
+
+  @media (--viewportMedium) {
+    padding: 0;
+  }
+  @media (--viewportLarge) {
+    margin-left: 80px;
+  }
+}
+
+.firstImageContainer {
+  text-align: center;
+  @media (--viewportLarge) {
+    text-align: left;
   }
 }
 

@@ -8,11 +8,12 @@ const SectionAllImages = props => {
 
   const { images } = listing;
 
-  const shownImages = images.slice(0, 4);
+  // change to 1, 5
+  const shownImages = images.slice(1, 5);
 
-  return listing.images ? (
-    <div style={{ marginTop: '60px' }}>
-      <h2 className={css.featuresTitle}>Photos</h2>
+  return listing.images && shownImages.length > 0 ? (
+    <div className={css.allImagesContainer}>
+      <h2 className={css.featuresTitle}>Additional Photos</h2>
       <div className={css.imagesContainer}>
         {shownImages.map((image, i) => (
           <ResponsiveImage

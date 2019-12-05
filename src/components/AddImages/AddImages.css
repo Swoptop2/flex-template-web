@@ -59,6 +59,7 @@
 
 .aspectWrapper {
   padding-bottom: calc(100% * (2 / 3));
+  min-height: 410px;
 }
 
 .rootForImage {

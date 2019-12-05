@@ -11,7 +11,7 @@ const SectionColor = props => {
   const colorOption = options.find(option => option.key === color);
 
   return colorOption ? (
-    <div className={css.sectionFeatures}>
+    <div className={css.sectionColor}>
       <h2 className={css.featuresTitle}>
         <FormattedMessage id="ListingPage.colorTitle" />
       </h2>

@@ -117,7 +117,7 @@ export const ListingCardComponent = props => {
 
   return (
     <div>
-      {likeBtn}
+      <div style={{ textAlign: 'right', width: '90%' }}>{likeBtn}</div>
       <NamedLink className={classes} name="ListingPage" params={{ id, slug }}>
         <div className={css.threeToTwoWrapper}>
           <div className={css.aspectWrapper}>

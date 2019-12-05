@@ -43,7 +43,6 @@ import { TopbarContainer, NotFoundPage } from '../../containers';
 
 import { sendEnquiry, loadData, setInitialValues } from './ListingPage.duck';
 import SectionImages from './SectionImages';
-import SectionAvatar from './SectionAvatar';
 import SectionHeading from './SectionHeading';
 import SectionSizeMaybe from './SectionSizeMaybe';
 import SectionColorMaybe from './SectionColorMaybe';
@@ -51,6 +50,7 @@ import SectionDamageCostMaybe from './SectionDamageCostMaybe';
 import SectionHostMaybe from './SectionHostMaybe';
 import SectionRulesMaybe from './SectionRulesMaybe';
 import SectionAllImages from './SectionAllImages';
+import SectionFirstImage from './SectionFirstImage';
 import css from './ListingPage.css';
 
 const MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE = 16;
@@ -408,8 +408,8 @@ export class ListingPageComponent extends Component {
                 onManageDisableScrolling={onManageDisableScrolling}
               />
               <div className={css.contentContainer}>
-                <SectionAvatar user={currentAuthor} params={params} />
                 <div className={css.mainContent}>
+                  <SectionFirstImage listing={currentListing} />
                   <SectionHeading
                     priceTitle={priceTitle}
                     formattedPrice={formattedPrice}
@@ -420,9 +420,12 @@ export class ListingPageComponent extends Component {
                     onContactUser={this.onContactUser}
                     publicData={publicData}
                   />
-                  <SectionSizeMaybe options={sizesConfig} publicData={publicData} />
-                  <SectionColorMaybe options={colorsConfig} publicData={publicData} />
-                  <SectionDamageCostMaybe publicData={publicData} />
+                  <div className={css.detailsContainer}>
+                    <SectionSizeMaybe options={sizesConfig} publicData={publicData} />
+                    <SectionColorMaybe options={colorsConfig} publicData={publicData} />
+                    <SectionDamageCostMaybe publicData={publicData} />
+                  </div>
+
                   <SectionRulesMaybe publicData={publicData} />
                   {/* <SectionMapMaybe
                     geolocation={geolocation}
@@ -430,6 +433,10 @@ export class ListingPageComponent extends Component {
                     listingId={currentListing.id}
                   /> */}
                   <SectionAllImages listing={currentListing} />
+                  <p className={css.note}>
+                    *Damage cost is what will be payed to the renter if the item is returned
+                    completely damaged (simple wear & tear doesn't apply)
+                  </p>
                   <SectionHostMaybe
                     title={title}
                     listing={currentListing}

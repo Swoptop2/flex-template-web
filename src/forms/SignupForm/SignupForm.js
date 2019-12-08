@@ -191,25 +191,25 @@ const SignupFormComponent = props => {
                   validate={lastNameRequired}
                 />
               </div>
-              <div className={css.name}>
-                <FieldTextInput
-                  className={css.schoolRoot}
-                  type="text"
-                  id="school"
-                  name="school"
-                  label="College"
-                  placeholder="University of ..."
-                  validate={schoolRequired}
-                />
-                <FieldTextInput
-                  className={css.schoolRoot}
-                  type="text"
-                  id="sorority"
-                  name="sorority"
-                  label="Sorority"
-                  placeholder="Alpha Chi Omega"
-                />
-              </div>
+
+              <FieldTextInput
+                className={css.fieldSelect}
+                type="text"
+                id="school"
+                name="school"
+                label="College"
+                placeholder="University of ..."
+                validate={schoolRequired}
+              />
+              <FieldTextInput
+                className={css.fieldSelect}
+                type="text"
+                id="sorority"
+                name="sorority"
+                label="Sorority (optional)"
+                placeholder="Alpha Chi Omega"
+              />
+
               <p className={css.note}>
                 *Choose the location from which you want to rent from or want users to rent from
                 you.

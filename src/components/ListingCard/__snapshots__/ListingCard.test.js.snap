@@ -2,14 +2,6 @@
 
 exports[`ListingCard matches snapshot 1`] = `
 <div>
-  <div
-    style={
-      Object {
-        "textAlign": "right",
-        "width": "90%",
-      }
-    }
-  />
   <NamedLink
     className=""
     name="ListingPage"

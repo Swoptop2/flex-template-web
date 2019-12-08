@@ -15,58 +15,12 @@
   }
 }
 
-.unlikedButton {
-  position: absolute;
-  display: inline-block;
-  position: relative;
-  font-size: 10px;
-  cursor: pointer;
-  border: none;
-  outline: none;
+.heartContainer {
+  text-align: right;
+  transform: translateY(25px);
   z-index: 1;
-  transition: ease-in 90ms;
-  &::before {
-    font-size: 3em;
-    color: rgba(0, 0, 0, 0.4);
-    content: '♥';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-5%, 30%);
-  }
-  &:hover {
-    font-size: 11.5px;
-  }
-}
-
-.likedButton {
-  position: absolute;
-  z-index: 1;
-  display: inline-block;
   position: relative;
-  font-size: 9px;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  &::before {
-    font-size: 3em;
-    color: #000;
-    content: '♥';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-5%, 30%);
-  }
-  &::after {
-    font-size: 3em;
-    color: rgb(209, 9, 9);
-    content: '♥';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-5%, 30%) scale(1.1);
-    transition: transform 0.2s;
-  }
+  padding-right: 5px;
 }
 
 .threeToTwoWrapper {

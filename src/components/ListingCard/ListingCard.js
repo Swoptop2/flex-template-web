@@ -104,20 +104,24 @@ export const ListingCardComponent = props => {
     ? 'ListingCard.perDay'
     : 'ListingCard.perUnit';
 
-  const buttonClassName = isLiked ? css.likedButton : css.unlikedButton;
+  const heartColor = isLiked ? 'red' : 'grey';
 
   const likeListing = listingId => {
     setIsLiked(!isLiked);
     setFavoriteListing(listingId);
   };
 
-  const likeBtn = currentUser ? (
-    <button className={buttonClassName} onClick={() => likeListing(currentListing.id)}></button>
-  ) : null;
-
   return (
     <div>
-      <div style={{ textAlign: 'right', width: '90%' }}>{likeBtn}</div>
+      {currentUser ? (
+        <div className={css.heartContainer}>
+          <i
+            onClick={() => likeListing(currentListing.id)}
+            style={{ color: heartColor, cursor: 'pointer' }}
+            className="fa fa-heart heart"
+          ></i>
+        </div>
+      ) : null}
       <NamedLink className={classes} name="ListingPage" params={{ id, slug }}>
         <div className={css.threeToTwoWrapper}>
           <div className={css.aspectWrapper}>

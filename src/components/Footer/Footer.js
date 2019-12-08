@@ -65,45 +65,48 @@ const Footer = props => {
               </div>
             </div>
             <div className={css.infoLinks}>
+              <h3 className={css.sectionTitle}>Explore</h3>
               <ul className={css.list}>
-                <li className={css.listItem}>
-                  <NamedLink name="NewListingPage" className={css.link}>
-                    <FormattedMessage id="Footer.toNewListingPage" />
-                  </NamedLink>
-                </li>
-                <li className={css.listItem}>
-                  <NamedLink name="AboutPage" className={css.link}>
-                    <FormattedMessage id="Footer.toAboutPage" />
-                  </NamedLink>
-                </li>
                 <li className={css.listItem}>
                   <NamedLink name="HowItWorksPage" className={css.link}>
                     <span>How It Works</span>
                   </NamedLink>
                 </li>
                 <li className={css.listItem}>
-                  <NamedLink name="AboutPage" to={{ hash: '#contact' }} className={css.link}>
-                    <FormattedMessage id="Footer.toContactPage" />
+                  <NamedLink name="HelpWithPayments" className={css.link}>
+                    <span>Help With Payments</span>
+                  </NamedLink>
+                </li>
+                <li className={css.listItem}>
+                  <NamedLink name="FAQs" className={css.link}>
+                    FAQs
+                  </NamedLink>
+                </li>
+                <li className={css.listItem}>
+                  <NamedLink name="BestPractices" className={css.link}>
+                    Best Renting Practices
+                  </NamedLink>
+                </li>
+              </ul>
+            </div>
+            <div className={css.infoLinks}>
+              <h3 className={css.sectionTitle}>About Us</h3>
+              <ul className={css.list}>
+                <li className={css.listItem}>
+                  <NamedLink name="VisionPage" className={css.link}>
+                    Our Vision
+                  </NamedLink>
+                </li>
+                <li className={css.listItem}>
+                  <NamedLink name="StoryPage" className={css.link}>
+                    Our Story
                   </NamedLink>
                 </li>
               </ul>
             </div>
             <div className={css.extraLinks}>
+              <h3 className={css.sectionTitle}>Stay Connected</h3>
               <div className={css.someLinks}>{socialMediaLinks}</div>
-              <div className={css.legalMatters}>
-                <ul className={css.tosAndPrivacy}>
-                  <li>
-                    <NamedLink name="TermsOfServicePage" className={css.legalLink}>
-                      <FormattedMessage id="Footer.termsOfUse" />
-                    </NamedLink>
-                  </li>
-                  <li>
-                    <NamedLink name="PrivacyPolicyPage" className={css.legalLink}>
-                      <FormattedMessage id="Footer.privacyPolicy" />
-                    </NamedLink>
-                  </li>
-                </ul>
-              </div>
             </div>
           </div>
           <div className={css.copyrightAndTermsMobile}>
@@ -119,6 +122,20 @@ const Footer = props => {
               </NamedLink>
             </div>
           </div>
+        </div>
+        <div className={css.legalMatters}>
+          <ul className={css.tosAndPrivacy}>
+            <li>
+              <NamedLink name="TermsOfServicePage" className={css.legalLink}>
+                <FormattedMessage id="Footer.termsOfUse" />
+              </NamedLink>
+            </li>
+            <li>
+              <NamedLink name="PrivacyPolicyPage" className={css.legalLink}>
+                <FormattedMessage id="Footer.privacyPolicy" />
+              </NamedLink>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

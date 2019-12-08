@@ -3,11 +3,12 @@ import {
   AboutPage,
   AuthenticationPage,
   BestPractices,
-  Renter,
   CheckoutPage,
   ContactDetailsPage,
   EditListingPage,
   EmailVerificationPage,
+  FAQs,
+  HelpWithPaymentsPage,
   HowitWorksPage,
   InboxPage,
   LandingPage,
@@ -23,10 +24,13 @@ import {
   PrivacyPolicyPage,
   ProfilePage,
   ProfileSettingsPage,
+  Renter,
   SearchPage,
+  StoryPage,
   StyleguidePage,
   TermsOfServicePage,
   TransactionPage,
+  VisionPage,
 } from './containers';
 
 // routeConfiguration needs to initialize containers first
@@ -80,6 +84,26 @@ const routeConfiguration = () => {
       path: '/bestpractices',
       name: 'BestPractices',
       component: BestPractices,
+    },
+    {
+      path: '/faqs',
+      name: 'FAQs',
+      component: FAQs,
+    },
+    {
+      path: '/helpwithpayments',
+      name: 'HelpWithPayments',
+      component: HelpWithPaymentsPage,
+    },
+    {
+      path: '/vision',
+      name: 'VisionPage',
+      component: VisionPage,
+    },
+    {
+      path: '/story',
+      name: 'StoryPage',
+      component: StoryPage,
     },
     {
       path: '/s',

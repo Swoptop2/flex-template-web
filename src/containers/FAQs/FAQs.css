@@ -1,0 +1,42 @@
+@import '../../marketplace.css';
+
+.root {
+  background-color: var(--matterColorLight);
+}
+
+.content {
+  padding: 15px;
+  @media (--viewportMedium) {
+    padding: 24px 65px;
+  }
+}
+
+.title {
+  text-align: center;
+}
+
+.section {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: center;
+  @media (--viewportMedium) {
+    flex-direction: row;
+    text-align: none;
+  }
+}
+
+.sectionTitle {
+  flex: 1;
+}
+
+.questionList {
+  text-align: left;
+  flex: 1;
+  list-style-type: disc;
+  padding: 8px;
+}
+
+.questionList p {
+  font-size: 17px;
+}

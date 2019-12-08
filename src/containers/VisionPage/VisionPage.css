@@ -1,0 +1,16 @@
+@import '../../marketplace.css';
+
+.root {
+  background-color: var(--matterColorLight);
+}
+
+.content {
+  padding: 15px;
+  @media (--viewportMedium) {
+    padding: 24px 65px;
+  }
+}
+
+.title {
+  text-align: center;
+}

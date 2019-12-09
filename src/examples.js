@@ -41,7 +41,7 @@ import * as IconReviewUser from './components/IconReviewUser/IconReviewUser.exam
 import * as IconSearch from './components/IconSearch/IconSearch.example';
 import * as IconSocialMediaFacebook from './components/IconSocialMediaFacebook/IconSocialMediaFacebook.example';
 import * as IconSocialMediaInstagram from './components/IconSocialMediaInstagram/IconSocialMediaInstagram.example';
-import * as IconSocialMediaTwitter from './components/IconSocialMediaTwitter/IconSocialMediaTwitter.example';
+import * as IconSocialMediaYoutube from './components/IconSocialMediaYoutube/IconSocialMediaTwitter.example';
 import * as IconSpinner from './components/IconSpinner/IconSpinner.example';
 import * as ImageCarousel from './components/ImageCarousel/ImageCarousel.example';
 import * as KeywordFilter from './components/KeywordFilter/KeywordFilter.example';
@@ -151,7 +151,7 @@ export {
   IconSearch,
   IconSocialMediaFacebook,
   IconSocialMediaInstagram,
-  IconSocialMediaTwitter,
+  IconSocialMediaYoutube,
   IconSpinner,
   ImageCarousel,
   KeywordFilter,

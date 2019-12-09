@@ -29,7 +29,7 @@ export { default as IconReviewUser } from './IconReviewUser/IconReviewUser';
 export { default as IconSearch } from './IconSearch/IconSearch';
 export { default as IconSocialMediaFacebook } from './IconSocialMediaFacebook/IconSocialMediaFacebook';
 export { default as IconSocialMediaInstagram } from './IconSocialMediaInstagram/IconSocialMediaInstagram';
-export { default as IconSocialMediaTwitter } from './IconSocialMediaTwitter/IconSocialMediaTwitter';
+export { default as IconSocialMediaYoutube } from './IconSocialMediaYoutube/IconSocialMediaYoutube';
 export { default as IconSpinner } from './IconSpinner/IconSpinner';
 
 // Other independent components

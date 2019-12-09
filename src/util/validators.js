@@ -115,7 +115,12 @@ export const emailFormatValid = message => value => {
 };
 
 export const moneySubUnitAmountAtLeast = (message, minValue) => value => {
+  console.log('executing');
   return value instanceof Money && value.amount >= minValue ? VALID : message;
+};
+
+export const moneySubUnitAmountAtMost = (message, maxValue) => value => {
+  return value instanceof Money && value.amount <= maxValue ? VALID : message;
 };
 
 const parseNum = str => {

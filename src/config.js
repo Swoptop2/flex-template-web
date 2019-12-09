@@ -67,7 +67,8 @@ const currencyConfig = currencyConfiguration(currency);
 
 // Listing minimum price in currency sub units, e.g. cents.
 // 0 means no restriction to the price
-const listingMinimumPriceSubUnits = 0;
+const listingMinimumPriceSubUnits = 100;
+const listingMaximumPriceSubUnits = 10000;
 
 // Sentry DSN (Data Source Name), a client key for authenticating calls to Sentry
 const sentryDsn = process.env.REACT_APP_SENTRY_DSN;
@@ -95,6 +96,8 @@ const siteInstagramPage = 'https://instagram.com/swoptop?igshid=g9ec4w44231a';
 
 // Facebook page is used in SEO schema (http://schema.org/Organization)
 const siteFacebookPage = 'https://www.facebook.com/swoptoppp/';
+
+const siteYoutubePage = 'https://www.youtube.com/channel/UC2qkyJZoTVpdRu7LsGK0oaQ';
 
 // Facebook counts shares with app or page associated by this id
 // Currently it is unset, but you can read more about fb:app_id from
@@ -197,6 +200,7 @@ const config = {
   currency,
   currencyConfig,
   listingMinimumPriceSubUnits,
+  listingMaximumPriceSubUnits,
   stripe: {
     publishableKey: stripePublishableKey,
     supportedCountries: stripeSupportedCountries,
@@ -211,6 +215,7 @@ const config = {
   siteTitle,
   siteFacebookPage,
   siteInstagramPage,
+  siteYoutubePage,
   siteTwitterHandle,
   facebookAppId,
   sentryDsn,

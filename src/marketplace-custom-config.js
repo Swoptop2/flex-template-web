@@ -94,7 +94,7 @@ export const colors = [
 // Note: unlike most prices this is not handled in subunits
 export const priceFilterConfig = {
   min: 0,
-  max: 1000,
+  max: 100,
   step: 5,
 };
 

@@ -6,6 +6,7 @@ import config from '../../config';
 import {
   IconSocialMediaFacebook,
   IconSocialMediaInstagram,
+  IconSocialMediaYoutube,
   FooterLogo,
   ExternalLink,
   NamedLink,
@@ -14,7 +15,7 @@ import {
 import css from './Footer.css';
 
 const renderSocialMediaLinks = intl => {
-  const { siteFacebookPage, siteInstagramPage } = config;
+  const { siteFacebookPage, siteInstagramPage, siteYoutubePage } = config;
 
   const goToFb = intl.formatMessage({ id: 'Footer.goToFacebook' });
   const goToInsta = intl.formatMessage({ id: 'Footer.goToInstagram' });
@@ -35,7 +36,18 @@ const renderSocialMediaLinks = intl => {
       <IconSocialMediaInstagram />
     </ExternalLink>
   ) : null;
-  return [fbLink, instragramLink].filter(v => v != null);
+
+  const youtubeLink = siteInstagramPage ? (
+    <ExternalLink
+      key="linkToYoutube"
+      href={siteYoutubePage}
+      className={css.icon}
+      title="Go to YouTube"
+    >
+      <IconSocialMediaYoutube />
+    </ExternalLink>
+  ) : null;
+  return [fbLink, instragramLink, youtubeLink].filter(v => v != null);
 };
 
 const Footer = props => {
@@ -73,6 +85,16 @@ const Footer = props => {
                   </NamedLink>
                 </li>
                 <li className={css.listItem}>
+                  <NamedLink name="BestPractices" className={css.link}>
+                    Best Renting Practices
+                  </NamedLink>
+                </li>
+              </ul>
+            </div>
+            <div className={css.infoLinks}>
+              <h3 className={css.sectionTitle}>Get Help</h3>
+              <ul className={css.list}>
+                <li className={css.listItem}>
                   <NamedLink name="HelpWithPayments" className={css.link}>
                     <span>Help With Payments</span>
                   </NamedLink>
@@ -83,8 +105,8 @@ const Footer = props => {
                   </NamedLink>
                 </li>
                 <li className={css.listItem}>
-                  <NamedLink name="BestPractices" className={css.link}>
-                    Best Renting Practices
+                  <NamedLink name="FAQs" className={css.link}>
+                    Contact Us
                   </NamedLink>
                 </li>
               </ul>

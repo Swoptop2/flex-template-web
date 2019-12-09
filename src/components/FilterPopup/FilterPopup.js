@@ -118,6 +118,9 @@ class FilterPopup extends Component {
     const labelMaxWidthMaybe = labelMaxWidth ? { maxWidth: `${labelMaxWidth}px` } : {};
     const labelMaxWidthStyles = labelMaxWidth ? css.labelEllipsis : null;
     const contentStyle = this.positionStyleForContent();
+    const arrowStyles = this.state.isOpen
+      ? { fontSize: '11px', transform: 'rotate(-180deg)', transition: 'ease-in-out 250ms' }
+      : { fontSize: '11px', transition: 'ease-in-out 250ms' };
 
     return (
       <OutsideClickHandler onOutsideClick={this.handleBlur}>
@@ -134,6 +137,7 @@ class FilterPopup extends Component {
             onClick={() => this.toggleOpen()}
           >
             {label}
+            <i className="fa fa-chevron-down" style={arrowStyles}></i>
           </button>
           <div
             id={id}

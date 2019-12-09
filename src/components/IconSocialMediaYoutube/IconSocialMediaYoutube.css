@@ -1,0 +1,23 @@
+@import '../../marketplace.css';
+
+.root {
+  color: var(--matterColor);
+  transition: var(--transitionStyleButton);
+  &:hover {
+    color: var(--successColor);
+  }
+}
+
+.container {
+  transform: translateY(-5px);
+  margin-left: 12px;
+}
+
+.container i {
+  color: var(--matterColor);
+  transition: var(--transitionStyleButton);
+  font-size: 32px;
+  &:hover {
+    color: var(--successColor);
+  }
+}

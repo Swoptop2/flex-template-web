@@ -122,6 +122,9 @@ class PriceFilterPopup extends Component {
 
     const labelStyles = hasInitialValues ? css.labelSelected : css.label;
     const contentStyle = this.positionStyleForContent();
+    const arrowStyles = this.state.isOpen
+      ? { fontSize: '11px', transform: 'rotate(-180deg)', transition: 'ease-in-out 250ms' }
+      : { fontSize: '11px', transition: 'ease-in-out 250ms' };
 
     return (
       <div
@@ -134,6 +137,7 @@ class PriceFilterPopup extends Component {
       >
         <button className={labelStyles} onClick={() => this.toggleOpen()}>
           {label}
+          <i className="fa fa-chevron-down" style={arrowStyles}></i>
         </button>
         <PriceFilterForm
           id={id}

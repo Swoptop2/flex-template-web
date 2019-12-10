@@ -22,6 +22,7 @@ import {
   searchMapListings,
   setActiveListing,
   favoriteListing,
+  setLikedListingsArray,
 } from './SearchPage.duck';
 import {
   pickSearchParamsOnly,
@@ -174,6 +175,7 @@ export class SearchPageComponent extends Component {
       searchParams,
       onActivateListing,
       onFavoriteListing,
+      onSetLikedListingsArray,
       currentUser,
     } = this.props;
     // eslint-disable-next-line no-unused-vars
@@ -239,6 +241,7 @@ export class SearchPageComponent extends Component {
             searchParamsAreInSync={searchParamsAreInSync}
             onActivateListing={onActivateListing}
             onFavoriteListing={onFavoriteListing}
+            onSetLikedListingsArray={onSetLikedListingsArray}
             onManageDisableScrolling={onManageDisableScrolling}
             onOpenModal={this.onOpenMobileModal}
             onCloseModal={this.onCloseMobileModal}
@@ -381,6 +384,7 @@ const mapDispatchToProps = dispatch => ({
   onSearchMapListings: searchParams => dispatch(searchMapListings(searchParams)),
   onActivateListing: listingId => dispatch(setActiveListing(listingId)),
   onFavoriteListing: listingId => dispatch(favoriteListing(listingId)),
+  onSetLikedListingsArray: _ => dispatch(setLikedListingsArray()),
 });
 
 // Note: it is important that the withRouter HOC is **outside** the

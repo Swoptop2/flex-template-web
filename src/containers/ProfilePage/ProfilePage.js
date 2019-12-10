@@ -76,10 +76,11 @@ export class ProfilePageComponent extends Component {
     const isCurrentUser =
       ensuredCurrentUser.id && profileUser.id && ensuredCurrentUser.id.uuid === profileUser.id.uuid;
     const displayName = profileUser.attributes.profile.displayName;
-    let school, sorority;
+    let school, sorority, instagramHandle;
     if (profileUser.attributes.profile.publicData) {
       school = profileUser.attributes.profile.publicData.school;
       sorority = profileUser.attributes.profile.publicData.sorority;
+      instagramHandle = profileUser.attributes.profile.publicData.instaHandle;
     }
 
     const bio = profileUser.attributes.profile.bio;
@@ -192,13 +193,22 @@ export class ProfilePageComponent extends Component {
         <h1 className={css.desktopHeading}>
           <FormattedMessage id="ProfilePage.desktopHeading" values={{ name: displayName }} />
         </h1>
+        {instagramHandle ? (
+          <h2>
+            Instagram handle: <span className={css.schoolData}>{instagramHandle}</span>
+          </h2>
+        ) : null}
         <div className={css.schoolDataContainer}>
-          <h2>
-            College: <span className={css.schoolData}>{school}</span>
-          </h2>
-          <h2>
-            Sorority: <span className={css.schoolData}>{sorority}</span>
-          </h2>
+          {school ? (
+            <h2>
+              College: <span className={css.schoolData}>{school}</span>
+            </h2>
+          ) : null}
+          {sorority ? (
+            <h2>
+              Sorority: <span className={css.schoolData}>{sorority}</span>
+            </h2>
+          ) : null}
         </div>
         {hasBio ? <p className={css.bio}>{bio}</p> : null}
         {hasListings ? (

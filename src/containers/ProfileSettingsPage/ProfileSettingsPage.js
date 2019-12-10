@@ -45,7 +45,7 @@ export class ProfileSettingsPageComponent extends Component {
     } = this.props;
 
     const handleSubmit = values => {
-      const { firstName, lastName, city, state, bio: rawBio } = values;
+      const { firstName, lastName, city, state, instaHandle, bio: rawBio } = values;
 
       // Ensure that the optional bio is a string
       const bio = rawBio || '';
@@ -55,6 +55,7 @@ export class ProfileSettingsPageComponent extends Component {
         lastName: lastName.trim(),
         bio,
         protectedData: { city, state },
+        publicData: { instaHandle },
       };
       const uploadedImage = this.props.image;
 
@@ -75,6 +76,9 @@ export class ProfileSettingsPageComponent extends Component {
     const state = user.attributes.profile.protectedData
       ? user.attributes.profile.protectedData.state
       : null;
+    const instaHandle = user.attributes.profile.publicData
+      ? user.attributes.profile.publicData.instaHandle
+      : null;
 
     const profileImageId = user.profileImage ? user.profileImage.id : null;
     const profileImage = image || { imageId: profileImageId };
@@ -90,6 +94,7 @@ export class ProfileSettingsPageComponent extends Component {
           profileImage: user.profileImage,
           city,
           state,
+          instaHandle,
         }}
         profileImage={profileImage}
         onImageUpload={e => onImageUploadHandler(e, onImageUpload)}

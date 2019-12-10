@@ -4,7 +4,6 @@ import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
 import classNames from 'classnames';
 import config from '../../config';
 import {
-  IconSocialMediaFacebook,
   IconSocialMediaInstagram,
   IconSocialMediaYoutube,
   FooterLogo,
@@ -15,16 +14,16 @@ import {
 import css from './Footer.css';
 
 const renderSocialMediaLinks = intl => {
-  const { siteFacebookPage, siteInstagramPage, siteYoutubePage } = config;
+  const { siteInstagramPage, siteYoutubePage } = config;
 
-  const goToFb = intl.formatMessage({ id: 'Footer.goToFacebook' });
+  // const goToFb = intl.formatMessage({ id: 'Footer.goToFacebook' });
   const goToInsta = intl.formatMessage({ id: 'Footer.goToInstagram' });
 
-  const fbLink = siteFacebookPage ? (
-    <ExternalLink key="linkToFacebook" href={siteFacebookPage} className={css.icon} title={goToFb}>
-      <IconSocialMediaFacebook />
-    </ExternalLink>
-  ) : null;
+  // const fbLink = siteFacebookPage ? (
+  //   <ExternalLink key="linkToFacebook" href={siteFacebookPage} className={css.icon} title={goToFb}>
+  //     <IconSocialMediaFacebook />
+  //   </ExternalLink>
+  // ) : null;
 
   const instragramLink = siteInstagramPage ? (
     <ExternalLink
@@ -47,7 +46,7 @@ const renderSocialMediaLinks = intl => {
       <IconSocialMediaYoutube />
     </ExternalLink>
   ) : null;
-  return [fbLink, instragramLink, youtubeLink].filter(v => v != null);
+  return [instragramLink, youtubeLink].filter(v => v != null);
 };
 
 const Footer = props => {

@@ -343,6 +343,17 @@ class ProfileSettingsFormComponent extends Component {
                     </option>
                   ))}
                 </FieldSelect>
+                <h3 style={{ marginTop: '30px' }} className={css.sectionTitle}>
+                  Social
+                </h3>
+                <FieldTextInput
+                  type="textarea"
+                  id="instaHandle"
+                  name="instaHandle"
+                  label="Instagram handle"
+                  placeholder="@example"
+                  validate={firstNameRequired}
+                />
               </div>
               <div className={classNames(css.sectionContainer, css.lastSection)}>
                 <h3 className={css.sectionTitle}>

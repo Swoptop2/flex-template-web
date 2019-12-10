@@ -212,6 +212,17 @@ export const favoriteListing = listingId => (dispatch, getState, sdk) => {
     .catch(err => console.error(err));
 };
 
+export const setLikedListingsArray = _ => (dispatch, getState, sdk) => {
+  sdk.currentUser
+    .updateProfile({
+      publicData: {
+        likedListings: [],
+      },
+    })
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
+};
+
 export const searchMapListings = searchParams => (dispatch, getState, sdk) => {
   dispatch(searchMapListingsRequest(searchParams));
 

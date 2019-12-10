@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { propTypes } from '../../util/types';
@@ -14,9 +14,24 @@ const SearchResultsPanel = props => {
     search,
     setActiveListing,
     setFavoriteListing,
+    setLikedListingsArray,
     currentUser,
   } = props;
   const classes = classNames(rootClassName || css.root, className);
+
+  useEffect(() => {
+    if (currentUser) {
+      const {
+        attributes: {
+          profile: { publicData },
+        },
+      } = currentUser;
+      if (!publicData.likedListings) {
+        setLikedListingsArray();
+      }
+    }
+    // eslint-disable-next-line
+  }, [currentUser]);
 
   const paginationLinks =
     pagination && pagination.totalPages > 1 ? (

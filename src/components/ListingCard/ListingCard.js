@@ -74,25 +74,27 @@ export const ListingCardComponent = props => {
 
   useEffect(() => {
     if (currentUser) {
-      const {
-        publicData: { likedListings },
-      } = currentUser.attributes.profile;
-      // set array to local storage and check there too. remove on unmount
-      localStorage.setItem('liked', JSON.stringify(likedListings));
-      const liked = JSON.parse(localStorage.getItem('liked'));
-      if (
-        likedListings.includes(currentListing.id.uuid) ||
-        liked.includes(currentListing.id.uuid)
-      ) {
-        setIsLiked(true);
+      if (currentUser.attributes.profile.publicData.likedListings) {
+        const {
+          publicData: { likedListings },
+        } = currentUser.attributes.profile;
+        // set array to local storage and check there too. remove on unmount
+        localStorage.setItem('liked', JSON.stringify(likedListings));
+        const liked = JSON.parse(localStorage.getItem('liked'));
+        if (
+          likedListings.includes(currentListing.id.uuid) ||
+          liked.includes(currentListing.id.uuid)
+        ) {
+          setIsLiked(true);
+        }
+        return () => {
+          // remove array from local storage
+          localStorage.removeItem('liked');
+        };
       }
-      return () => {
-        // remove array from local storage
-        localStorage.removeItem('liked');
-      };
     }
     // eslint-disable-next-line
-  }, []);
+  }, [currentUser]);
 
   const unitType = config.bookingUnitType;
   const isNightly = unitType === LINE_ITEM_NIGHT;

@@ -31,6 +31,7 @@ class MainPanel extends Component {
       searchParamsAreInSync,
       onActivateListing,
       onFavoriteListing,
+      onSetLikedListingsArray,
       onManageDisableScrolling,
       onOpenModal,
       onCloseModal,
@@ -133,6 +134,7 @@ class MainPanel extends Component {
               search={searchParamsForPagination}
               setActiveListing={onActivateListing}
               setFavoriteListing={onFavoriteListing}
+              setLikedListingsArray={onSetLikedListingsArray}
               currentUser={currentUser}
             />
           </div>
@@ -164,6 +166,7 @@ MainPanel.propTypes = {
   searchParamsAreInSync: bool.isRequired,
   onActivateListing: func.isRequired,
   onFavoriteListing: func.isRequired,
+  onSetLikedListingsArray: func.isRequired,
   onManageDisableScrolling: func.isRequired,
   onOpenModal: func.isRequired,
   onCloseModal: func.isRequired,

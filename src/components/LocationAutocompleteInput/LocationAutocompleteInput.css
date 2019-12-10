@@ -17,7 +17,8 @@
 
 .root {
   position: relative;
-  display: flex;
+  /*TODO: Change back to flex*/
+  display: none;
 }
 
 .icon {

@@ -12,12 +12,16 @@ import css from './EditListingDetailsForm.css';
 
 export const EditListingDetailsFormComponent = props => {
   const [missingAvatar, setMissingAvatar] = useState(true);
+  const [missingInsta, setMissingInsta] = useState(true);
   const { currentUser } = props;
 
   useEffect(() => {
     if (currentUser) {
       if (currentUser.profileImage) {
         setMissingAvatar(false);
+      }
+      if (currentUser.attributes.profile.publicData.instaHandle) {
+        setMissingInsta(false);
       }
     }
   }, [currentUser]);
@@ -108,7 +112,8 @@ export const EditListingDetailsFormComponent = props => {
         const classes = classNames(css.root, className);
         const submitReady = updated && pristine;
         const submitInProgress = updateInProgress;
-        const submitDisabled = invalid || disabled || submitInProgress || missingAvatar;
+        const submitDisabled =
+          invalid || disabled || submitInProgress || missingAvatar || missingInsta;
 
         return (
           <Form className={classes} onSubmit={handleSubmit}>
@@ -169,10 +174,10 @@ export const EditListingDetailsFormComponent = props => {
               placeholder={brandPlaceholderMessage}
               validate={brandRequired}
             />
-            {missingAvatar ? (
+            {missingAvatar || missingInsta ? (
               <p className={css.note}>
-                *You need to add a profile picture before you can proceed. Please go to your Profile
-                Settings to do so.
+                *You need to add a profile picture and Instagram handle before you can proceed.
+                Please go to your Profile Settings to do so.
               </p>
             ) : null}
             <Button

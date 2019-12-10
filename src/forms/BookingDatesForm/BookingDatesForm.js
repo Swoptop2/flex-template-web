@@ -20,15 +20,19 @@ const identity = v => v;
 export class BookingDatesFormComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { focusedInput: null, missingAvatar: true };
+    this.state = { focusedInput: null, missingAvatar: true, missingInsta: true };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.onFocusedInputChange = this.onFocusedInputChange.bind(this);
   }
 
   componentDidMount() {
     if (this.props.currentUser) {
+      console.log(this.props.currentUser);
       if (this.props.currentUser.profileImage) {
         this.setState({ missingAvatar: false });
+      }
+      if (this.props.currentUser.attributes.profile.publicData.instaHandle) {
+        this.setState({ missingInsta: false });
       }
     }
   }
@@ -199,14 +203,18 @@ export class BookingDatesFormComponent extends Component {
               <div className={submitButtonClasses}>
                 <PrimaryButton
                   type="submit"
-                  disabled={this.state.missingAvatar && this.props.currentUser != null}
+                  disabled={
+                    (this.state.missingAvatar && this.props.currentUser != null) ||
+                    (this.state.missingInsta && this.props.currentUser != null)
+                  }
                 >
                   <FormattedMessage id="BookingDatesForm.requestToBook" />
                 </PrimaryButton>
-                {this.state.missingAvatar && this.props.currentUser != null ? (
+                {(this.state.missingAvatar && this.props.currentUser != null) ||
+                (this.state.missingInsta && this.props.currentUser != null) ? (
                   <p className={css.note}>
-                    *You need to add a profile picture before you can proceed. Please go to your
-                    Profile Settings to do so.
+                    *You need to add a profile picture and your Instagram handle before you can
+                    proceed. Please go to your Profile Settings to do so.
                   </p>
                 ) : null}
               </div>

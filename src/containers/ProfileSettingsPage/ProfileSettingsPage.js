@@ -45,7 +45,16 @@ export class ProfileSettingsPageComponent extends Component {
     } = this.props;
 
     const handleSubmit = values => {
-      const { firstName, lastName, city, state, instaHandle, bio: rawBio } = values;
+      const {
+        firstName,
+        lastName,
+        city,
+        state,
+        instaHandle,
+        school,
+        sorority,
+        bio: rawBio,
+      } = values;
 
       // Ensure that the optional bio is a string
       const bio = rawBio || '';
@@ -55,7 +64,7 @@ export class ProfileSettingsPageComponent extends Component {
         lastName: lastName.trim(),
         bio,
         protectedData: { city, state },
-        publicData: { instaHandle },
+        publicData: { instaHandle, school, sorority },
       };
       const uploadedImage = this.props.image;
 
@@ -70,12 +79,22 @@ export class ProfileSettingsPageComponent extends Component {
 
     const user = ensureCurrentUser(currentUser);
     const { firstName, lastName, bio } = user.attributes.profile;
-    const city = user.attributes.profile.protectedData
-      ? user.attributes.profile.protectedData.city
-      : null;
-    const state = user.attributes.profile.protectedData
-      ? user.attributes.profile.protectedData.state
-      : null;
+    const city =
+      user.attributes.profile.protectedData && user.attributes.profile.protectedData.city
+        ? user.attributes.profile.protectedData.city
+        : 'Wasilla';
+    const state =
+      user.attributes.profile.protectedData && user.attributes.profile.protectedData.state
+        ? user.attributes.profile.protectedData.state
+        : 'Alaska';
+    const school =
+      user.attributes.profile.publicData && user.attributes.profile.publicData.school
+        ? user.attributes.profile.publicData.school
+        : null;
+    const sorority =
+      user.attributes.profile.publicData && user.attributes.profile.publicData.sorority
+        ? user.attributes.profile.publicData.sorority
+        : null;
     const instaHandle = user.attributes.profile.publicData
       ? user.attributes.profile.publicData.instaHandle
       : null;
@@ -94,6 +113,8 @@ export class ProfileSettingsPageComponent extends Component {
           profileImage: user.profileImage,
           city,
           state,
+          school,
+          sorority,
           instaHandle,
         }}
         profileImage={profileImage}

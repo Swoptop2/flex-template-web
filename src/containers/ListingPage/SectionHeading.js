@@ -40,16 +40,6 @@ const SectionHeading = props => {
           <FormattedMessage id={unitTranslationKey} />
         </div>
       </div>
-      {retailPrice ? (
-        <div className={css.desktopPriceContainer2}>
-          <div className={css.desktopPriceValue} title={priceTitle}>
-            {`$${retailPrice}.00`}
-          </div>
-          <div className={css.desktopPerUnit}>
-            <span>retail</span>
-          </div>
-        </div>
-      ) : null}
       <div className={css.heading}>
         <h1 className={css.title}>{richTitle}</h1>
         <div className={css.author}>
@@ -65,6 +55,16 @@ const SectionHeading = props => {
           ) : null}
         </div>
       </div>
+      {retailPrice ? (
+        <div className={css.desktopPriceContainer2}>
+          <div className={css.desktopPriceValue} title={priceTitle}>
+            {`$${retailPrice}.00`}
+          </div>
+          <div className={css.desktopPerUnit}>
+            <span>retail</span>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };

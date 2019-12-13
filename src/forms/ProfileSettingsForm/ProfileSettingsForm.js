@@ -133,6 +133,9 @@ class ProfileSettingsFormComponent extends Component {
           // city
           const cityRequiredMessage = 'You must select your city';
           const cityRequired = validators.required(cityRequiredMessage);
+          // college
+          const collegeRequiredMessage = "You must enter your college's name";
+          const collegeRequired = validators.required(collegeRequiredMessage);
 
           const hasUploadError = !!uploadImageError && !uploadInProgress;
           const errorClasses = classNames({ [css.avatarUploadError]: hasUploadError });
@@ -343,11 +346,29 @@ class ProfileSettingsFormComponent extends Component {
                     </option>
                   ))}
                 </FieldSelect>
+                <div style={{ marginTop: '10px' }}>
+                  <FieldTextInput
+                    type="text"
+                    id="school"
+                    name="school"
+                    label="College"
+                    placeholder="University of ..."
+                    validate={collegeRequired}
+                  />
+                  <FieldTextInput
+                    className={css.fieldSelect}
+                    type="text"
+                    id="sorority"
+                    name="sorority"
+                    label="Sorority (optional)"
+                    placeholder="Alpha Chi Omega"
+                  />
+                </div>
                 <h3 style={{ marginTop: '30px' }} className={css.sectionTitle}>
                   Social
                 </h3>
                 <FieldTextInput
-                  type="textarea"
+                  type="text"
                   id="instaHandle"
                   name="instaHandle"
                   label="Instagram handle"

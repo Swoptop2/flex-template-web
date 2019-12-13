@@ -508,6 +508,12 @@ class LocationAutocompleteInputImpl extends Component {
             }
           }}
         />
+        {/* <select name={name} value={search} autoFocus={autoFocus}  onChange={this.onChange} ref={node => {
+            this.input = node;
+            if (inputRef) {
+              inputRef(node);
+            }
+          }} id=""></select> */}
         {renderPredictions ? (
           <LocationPredictionsList
             rootClassName={predictionsClass}

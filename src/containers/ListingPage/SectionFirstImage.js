@@ -1,6 +1,5 @@
 import React from 'react';
-// import { FormattedMessage } from 'react-intl';
-import { ResponsiveImage } from '../../components';
+import { ResponsiveImage, AvatarLarge } from '../../components';
 import css from './ListingPage.css';
 
 const SectionFirstImage = props => {
@@ -12,7 +11,7 @@ const SectionFirstImage = props => {
 
   return listing.images ? (
     <div className={css.firstImageContainer}>
-      <div>
+      <div className={css.firstImageItems}>
         <ResponsiveImage
           className={css.firstImage}
           alt="Listing image"
@@ -20,6 +19,7 @@ const SectionFirstImage = props => {
           variants={['scaled-small', 'scaled-medium', 'scaled-large', 'scaled-xlarge']}
           sizes="(max-width: 767px) 100vw, 80vw"
         />
+        <AvatarLarge className={css.firstAvatar} user={listing.author} />
       </div>
     </div>
   ) : null;

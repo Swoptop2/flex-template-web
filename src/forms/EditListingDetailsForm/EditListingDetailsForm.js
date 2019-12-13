@@ -13,6 +13,7 @@ import css from './EditListingDetailsForm.css';
 export const EditListingDetailsFormComponent = props => {
   const [missingAvatar, setMissingAvatar] = useState(true);
   const [missingInsta, setMissingInsta] = useState(true);
+  const [missingLocation, setMissingLocation] = useState(true);
   const { currentUser } = props;
 
   useEffect(() => {
@@ -22,6 +23,12 @@ export const EditListingDetailsFormComponent = props => {
       }
       if (currentUser.attributes.profile.publicData.instaHandle) {
         setMissingInsta(false);
+      }
+      if (
+        currentUser.attributes.profile.protectedData.state &&
+        currentUser.attributes.profile.protectedData.city
+      ) {
+        setMissingLocation(false);
       }
     }
   }, [currentUser]);
@@ -113,7 +120,12 @@ export const EditListingDetailsFormComponent = props => {
         const submitReady = updated && pristine;
         const submitInProgress = updateInProgress;
         const submitDisabled =
-          invalid || disabled || submitInProgress || missingAvatar || missingInsta;
+          invalid ||
+          disabled ||
+          submitInProgress ||
+          missingAvatar ||
+          missingInsta ||
+          missingLocation;
 
         return (
           <Form className={classes} onSubmit={handleSubmit}>
@@ -178,6 +190,12 @@ export const EditListingDetailsFormComponent = props => {
               <p className={css.note}>
                 *You need to add a profile picture and Instagram handle before you can proceed.
                 Please go to your Profile Settings to do so.
+              </p>
+            ) : null}
+            {missingLocation ? (
+              <p className={css.note}>
+                *You need to go to your Profile Settings and update your location info in order to
+                proceed.
               </p>
             ) : null}
             <Button

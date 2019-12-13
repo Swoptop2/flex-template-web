@@ -20,19 +20,29 @@ const identity = v => v;
 export class BookingDatesFormComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { focusedInput: null, missingAvatar: true, missingInsta: true };
+    this.state = {
+      focusedInput: null,
+      missingAvatar: true,
+      missingInsta: true,
+      missingLocation: true,
+    };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.onFocusedInputChange = this.onFocusedInputChange.bind(this);
   }
 
   componentDidMount() {
     if (this.props.currentUser) {
-      console.log(this.props.currentUser);
       if (this.props.currentUser.profileImage) {
         this.setState({ missingAvatar: false });
       }
       if (this.props.currentUser.attributes.profile.publicData.instaHandle) {
         this.setState({ missingInsta: false });
+      }
+      if (
+        this.props.currentUser.attributes.profile.protectedData.state &&
+        this.props.currentUser.attributes.profile.protectedData.city
+      ) {
+        this.setState({ missingLocation: false });
       }
     }
   }
@@ -205,7 +215,8 @@ export class BookingDatesFormComponent extends Component {
                   type="submit"
                   disabled={
                     (this.state.missingAvatar && this.props.currentUser != null) ||
-                    (this.state.missingInsta && this.props.currentUser != null)
+                    (this.state.missingInsta && this.props.currentUser != null) ||
+                    (this.state.missingLocation && this.props.currentUser != null)
                   }
                 >
                   <FormattedMessage id="BookingDatesForm.requestToBook" />
@@ -215,6 +226,12 @@ export class BookingDatesFormComponent extends Component {
                   <p className={css.note}>
                     *You need to add a profile picture and your Instagram handle before you can
                     proceed. Please go to your Profile Settings to do so.
+                  </p>
+                ) : null}
+                {this.state.missingLocation && this.props.currentUser != null ? (
+                  <p className={css.note}>
+                    *You need to update your location info before proceeding. Please go to you
+                    Profile Settings to do so.
                   </p>
                 ) : null}
               </div>

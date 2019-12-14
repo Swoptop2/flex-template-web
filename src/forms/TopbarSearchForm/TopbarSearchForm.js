@@ -72,13 +72,18 @@ class TopbarSearchFormComponent extends Component {
                       predictionsAttributionClassName={
                         isMobile ? css.mobilePredictionsAttribution : null
                       }
-                      placeholder={intl.formatMessage({ id: 'TopbarSearchForm.placeholder' })}
+                      placeholder={
+                        isMobile
+                          ? 'Try "Tuscaloosa, Alabama" '
+                          : intl.formatMessage({ id: 'TopbarSearchForm.placeholder' })
+                      }
                       closeOnBlur={!isMobile}
                       inputRef={node => {
                         this.searchInput = node;
                       }}
                       input={searchInput}
                       meta={meta}
+                      isMobile={isMobile}
                     />
                   );
                 }}

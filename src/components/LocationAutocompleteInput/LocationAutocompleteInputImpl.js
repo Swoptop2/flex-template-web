@@ -456,6 +456,7 @@ class LocationAutocompleteInputImpl extends Component {
       input,
       meta,
       inputRef,
+      isMobile,
     } = this.props;
     const { name, onFocus } = input;
     const { search } = currentValue(this.props);
@@ -501,6 +502,8 @@ class LocationAutocompleteInputImpl extends Component {
           onBlur={this.handleOnBlur}
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}
+          // change based on isMobile. pass that prop from TopBarSearchForm
+          style={isMobile ? { fontSize: '15.5px' } : { fontSize: '17px' }}
           ref={node => {
             this.input = node;
             if (inputRef) {

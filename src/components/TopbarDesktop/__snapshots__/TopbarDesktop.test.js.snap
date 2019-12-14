@@ -65,6 +65,11 @@ exports[`TopbarDesktop data matches snapshot 1`] = `
         onFocus={[Function]}
         onKeyDown={[Function]}
         placeholder="TopbarSearchForm.placeholder"
+        style={
+          Object {
+            "fontSize": "17px",
+          }
+        }
         type="search"
         value=""
       />

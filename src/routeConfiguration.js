@@ -5,6 +5,7 @@ import {
   BestPractices,
   CheckoutPage,
   ContactDetailsPage,
+  ContactUsPage,
   EditListingPage,
   EmailVerificationPage,
   FAQs,
@@ -104,6 +105,11 @@ const routeConfiguration = () => {
       path: '/story',
       name: 'StoryPage',
       component: StoryPage,
+    },
+    {
+      path: '/contactus',
+      name: 'ContactUsPage',
+      component: ContactUsPage,
     },
     {
       path: '/s',

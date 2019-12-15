@@ -3,6 +3,7 @@ export { default as AuthenticationPage } from './AuthenticationPage/Authenticati
 export {default as BestPractices} from './HowItWorksPage/BestPractices';
 export { default as CheckoutPage } from './CheckoutPage/CheckoutPage';
 export { default as ContactDetailsPage } from './ContactDetailsPage/ContactDetailsPage';
+export {default as ContactUsPage} from './ContactUsPage/ContactUsPage';
 export { default as EditListingPage } from './EditListingPage/EditListingPage';
 export { default as EmailVerificationPage } from './EmailVerificationPage/EmailVerificationPage';
 export {default as FAQs} from './FAQs/FAQs';

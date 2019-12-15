@@ -1,0 +1,55 @@
+.root {
+  background-color: var(--matterColorLight);
+}
+
+.content {
+  padding: 15px;
+  @media (--viewportMedium) {
+    padding: 24px 65px;
+  }
+}
+
+.title {
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 55%;
+  margin: 10px auto;
+}
+
+.form input,
+.form textarea {
+  margin-top: 55px;
+}
+
+.errorInput {
+  border-bottom: 2px solid red;
+  border-radius: 4px;
+}
+
+.errorText {
+  margin: 0.25em 0 0 0;
+  padding: 0;
+  color: red;
+  font-style: bold;
+  font-size: 16px;
+}
+
+.button {
+  outline: none;
+  background-color: #ff0484;
+  text-decoration: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 6px;
+  padding: 15px 65px;
+  color: #fff;
+  margin-top: 55px;
+  @media (--viewportMedium) {
+    padding: 15px 80px;
+  }
+}

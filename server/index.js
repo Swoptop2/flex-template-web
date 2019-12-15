@@ -53,6 +53,8 @@ const cspReportUrl = '/csp-report';
 const cspEnabled = CSP === 'block' || CSP === 'report';
 const app = express();
 
+const handleEmailRequest = require('./sendgrid');
+
 const errorPage = fs.readFileSync(path.join(buildPath, '500.html'), 'utf-8');
 
 // load sitemap and robots file structure
@@ -116,6 +118,11 @@ app.use('/static', express.static(path.join(buildPath, 'static')));
 // server robots.txt from the root
 app.use('/robots.txt', express.static(path.join(buildPath, 'robots.txt')));
 app.use(cookieParser());
+
+// handle email request either from contact form or from new posted listing
+app.get('/api/send', (req, res) => {
+  handleEmailRequest(req, res);
+});
 
 // Use basic authentication when not in dev mode. This is
 // intentionally after the static middleware to skip basic auth for

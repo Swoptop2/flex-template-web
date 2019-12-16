@@ -187,6 +187,10 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                 "key": "other",
                 "label": "Other",
               },
+              Object {
+                "key": "costume",
+                "label": "Costume",
+              },
             ],
             "paramName": "pub_item",
           },

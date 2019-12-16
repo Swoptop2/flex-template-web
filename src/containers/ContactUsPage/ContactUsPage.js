@@ -48,6 +48,7 @@ const ContactUsPage = () => {
         <LayoutWrapperMain>
           <div className={css.content}>
             <h1 className={css.title}>Contact Us</h1>
+            <h2 className={css.sectionTitle}>Need help? Feel free to contact us!</h2>
             <form onSubmit={handleSubmit} className={css.form}>
               <input
                 onChange={handleChange}

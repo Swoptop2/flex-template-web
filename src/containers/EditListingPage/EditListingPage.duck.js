@@ -4,6 +4,8 @@ import { denormalisedResponseEntities, ensureAvailabilityException } from '../..
 import { isSameDate, monthIdStringInUTC } from '../../util/dates';
 import { storableError } from '../../util/errors';
 import { addMarketplaceEntities } from '../../ducks/marketplaceData.duck';
+import axios from 'axios';
+import swal from 'sweetalert';
 import * as log from '../../util/log';
 
 const { UUID } = sdkTypes;
@@ -504,6 +506,21 @@ export const requestPublishListingDraft = listingId => (dispatch, getState, sdk)
   return sdk.ownListings
     .publishDraft({ id: listingId }, { expand: true })
     .then(response => {
+      const action = 'approval';
+      const params = {
+        action,
+      };
+      axios('/api/send', { params })
+        .then(res => {
+          console.log(res.status, res.statusText);
+          swal({
+            title: 'Listing added!',
+            text:
+              'The Swoptop team has been notified about your new listing and will approve it as soon as possible. If the team takes too long to approve your listing, please let us now by sending an email to support@swoptop.com.',
+            icon: 'success',
+          });
+        })
+        .catch(err => console.error(err));
       // Add the created listing to the marketplace data
       dispatch(addMarketplaceEntities(response));
       dispatch(publishListingSuccess(response));

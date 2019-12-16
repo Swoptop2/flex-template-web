@@ -13,12 +13,27 @@
   text-align: center;
 }
 
+.sectionTitle {
+  font-weight: 400;
+  text-align: center;
+  font-size: 25px;
+  margin-top: 40px;
+  margin-bottom: 0px;
+  line-height: 1.1;
+  @media (--viewportMedium) {
+    font-size: 30px;
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 55%;
+  width: 85%;
   margin: 10px auto;
+  @media (--viewportMedium) {
+    width: 55%;
+  }
 }
 
 .form input,
@@ -48,7 +63,7 @@
   border-radius: 6px;
   padding: 15px 65px;
   color: #fff;
-  margin-top: 55px;
+  margin-top: 85px;
   @media (--viewportMedium) {
     padding: 15px 80px;
   }

@@ -48,7 +48,7 @@ const useFormValidation = (initialState, validate) => {
       };
       axios('/api/send', { params })
         .then(res => {
-          console.log(res.data.statusCode);
+          console.log(res.status, res.statusText);
           swal({
             title: 'Success!',
             text:

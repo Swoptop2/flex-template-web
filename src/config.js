@@ -1,5 +1,5 @@
 import * as custom from './marketplace-custom-config.js';
-import defaultLocationSearches from './default-location-searches';
+// import defaultLocationSearches from './default-location-searches';
 import { stripePublishableKey, stripeCountryDetails } from './stripe-config';
 import { currencyConfiguration } from './currency-config';
 

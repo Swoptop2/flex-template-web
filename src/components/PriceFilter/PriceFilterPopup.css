@@ -37,7 +37,10 @@
   @apply --marketplaceSearchFilterLabelFontStyles;
   font-weight: var(--fontWeightSemiBold);
 
-  padding: 19px 16px 20px 16px;
+  display: flex;
+  justify-content: space-between;
+  flex: 1 1 0;
+  padding: 15px 16px 16px 16px;
   width: 100%;
   height: auto;
   min-height: 0;

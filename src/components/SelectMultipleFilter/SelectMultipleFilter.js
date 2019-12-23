@@ -18,7 +18,7 @@ const GroupOfFieldCheckboxes = props => {
         {options.map((option, index) => {
           const fieldId = `${id}.${option.key}`;
           return (
-            <li key={fieldId} className={css.item}>
+            <li style={{ margin: '0' }} key={fieldId} className={css.item}>
               <FieldCheckbox id={fieldId} name={name} label={option.label} value={option.key} />
             </li>
           );

@@ -70,6 +70,9 @@ const FilterFormComponent = props => {
             <button className={css.clearButton2} type="button" onClick={onClear}>
               {clear}
             </button>
+            <button className={css.submitButton2} type="submit">
+              {submit}
+            </button>
 
             {liveEdit ? (
               <FormSpy onChange={handleChange} subscription={{ values: true, dirty: true }} />

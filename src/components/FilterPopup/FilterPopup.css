@@ -43,9 +43,10 @@
   @apply --marketplaceButtonStyles;
   @apply --marketplaceSearchFilterLabelFontStyles;
   font-weight: var(--fontWeightSemiBold);
-
-  /* border: none; */
-  padding: 19px 16px 20px 16px;
+  display: flex;
+  justify-content: space-between;
+  flex: 1 1 0;
+  padding: 15px 16px 16px 16px;
   border-bottom: 0.5px solid #ffffff;
   background-color: var(--marketplaceColor);
   width: 100%;

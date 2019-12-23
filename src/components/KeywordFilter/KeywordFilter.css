@@ -44,7 +44,7 @@
 
 .labelText {
   display: inline-block;
-  max-width: 250px;
+  max-width: 300px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

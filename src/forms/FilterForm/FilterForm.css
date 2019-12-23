@@ -63,6 +63,30 @@
   }
 }
 
+.submitButton2 {
+  position: absolute;
+  top: 3px;
+  right: 59px;
+  @apply --marketplaceH4FontStyles;
+  font-weight: var(--fontWeightMedium);
+  color: var(--marketplaceColor);
+
+  /* Layout */
+  margin: 0 0 0 19px;
+  padding: 0;
+
+  /* Override button styles */
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    color: var(--marketplaceColorDark);
+    transition: width var(--transitionStyleButton);
+  }
+}
+
 .cancelButton {
   @apply --marketplaceH4FontStyles;
   font-weight: var(--fontWeightMedium);

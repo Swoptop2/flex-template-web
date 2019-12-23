@@ -109,6 +109,13 @@
   padding: 0;
   flex: 1 1 auto;
   overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.listings::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .newSearchInProgress {

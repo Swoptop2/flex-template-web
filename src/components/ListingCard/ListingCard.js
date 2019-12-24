@@ -119,7 +119,7 @@ export const ListingCardComponent = props => {
         <div className={css.heartContainer}>
           <i
             onClick={() => likeListing(currentListing.id)}
-            style={{ color: heartColor, cursor: 'pointer' }}
+            style={{ color: heartColor, cursor: 'pointer', marginRight: '7px' }}
             className="fa fa-heart heart"
           ></i>
         </div>

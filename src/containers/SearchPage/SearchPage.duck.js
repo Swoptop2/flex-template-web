@@ -195,7 +195,10 @@ export const favoriteListing = listingId => (dispatch, getState, sdk) => {
               likedListings: updatedListings,
             },
           })
-          .then(res => console.log(res))
+          .then(res => {
+            console.log(res);
+            window.location.reload();
+          })
           .catch(err => console.error(err));
       } else {
         likedListings.push(uuid);
@@ -205,7 +208,10 @@ export const favoriteListing = listingId => (dispatch, getState, sdk) => {
               likedListings,
             },
           })
-          .then(res => console.log(res))
+          .then(res => {
+            console.log(res);
+            window.location.reload();
+          })
           .catch(err => console.error(err));
       }
     })

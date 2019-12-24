@@ -86,6 +86,7 @@ class MainPanel extends Component {
           searchInProgress={searchInProgress}
           searchListingsError={searchListingsError}
           onManageDisableScrolling={onManageDisableScrolling}
+          currentUser={currentUser}
           {...searchFiltersPanelProps}
           {...primaryFilters}
         />

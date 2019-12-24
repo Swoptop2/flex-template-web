@@ -79,7 +79,10 @@
   outline: none;
   border: none;
   cursor: pointer;
-
+  display: none;
+  @media (--viewportMedium) {
+    display: block;
+  }
   &:focus,
   &:hover {
     color: var(--marketplaceColorDark);

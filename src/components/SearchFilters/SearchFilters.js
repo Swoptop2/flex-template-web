@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { object, string, bool, number, func, shape } from 'prop-types';
 import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
@@ -59,9 +59,11 @@ const initialDateRangeValue = (queryParams, paramName) => {
 };
 
 const SearchFiltersComponent = props => {
+  const [heartActive, setheartActive] = useState(false);
   const {
     rootClassName,
     className,
+    currentUser,
     urlQueryParams,
     listingsAreLoaded,
     resultsCount,
@@ -78,6 +80,17 @@ const SearchFiltersComponent = props => {
     history,
     intl,
   } = props;
+
+  useEffect(() => {
+    return () => {
+      const localData = JSON.parse(localStorage.getItem('heartActive'));
+      if (localData) {
+        localStorage.removeItem('heartActive');
+      }
+    };
+
+    // es-lint-disable-next-line
+  }, []);
 
   const hasNoResult = listingsAreLoaded && resultsCount === 0;
   const classes = classNames(rootClassName || css.root, { [css.longInfo]: hasNoResult }, className);
@@ -117,6 +130,35 @@ const SearchFiltersComponent = props => {
         : omit(urlQueryParams, urlParam);
 
     history.push(createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams));
+  };
+
+  const testBra = _ => {
+    // populate this array with user's favorited listings
+    // destructure likedListings array from user's publicData in order to construct queryParams
+    const {
+      attributes: {
+        profile: {
+          publicData: { likedListings },
+        },
+      },
+    } = currentUser;
+
+    const queryParams = {
+      ...urlQueryParams,
+      pub_listingIdForLikeFilter: likedListings.length > 0 ? likedListings : 'fake_id',
+    };
+
+    setheartActive(!heartActive);
+    if (heartActive) {
+      //remove form localStorage
+      handleSelectOptions('pub_listingIdForLikeFilter', null);
+      localStorage.removeItem('heartActive');
+    } else {
+      localStorage.setItem('heartActive', JSON.stringify({ active: true }));
+      history.push(
+        createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams)
+      );
+    }
   };
 
   // const handleSelectOption = (urlParam, option) => {
@@ -258,9 +300,29 @@ const SearchFiltersComponent = props => {
       />
     </button>
   ) : null;
+
+  let activeClass = false;
+  try {
+    if (JSON.parse(localStorage.getItem('heartActive'))) {
+      activeClass = true;
+    }
+  } catch (err) {}
+  const arrowStyles = activeClass
+    ? { fontSize: '11px', transform: 'rotate(-180deg)', transition: 'ease-in-out 250ms' }
+    : { fontSize: '11px', transition: 'ease-in-out 250ms' };
   return (
     <div className={classes}>
       <div className={css.filters}>
+        {currentUser ? (
+          <button
+            className={activeClass ? css.heartActive : css.heartBtn}
+            type="button"
+            onClick={testBra}
+          >
+            Your Loves
+            <i className="fa fa-chevron-down" style={arrowStyles}></i>
+          </button>
+        ) : null}
         {itemFilterElement}
         {sizeFilterElement}
         {colorFilterElement}

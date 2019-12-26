@@ -309,7 +309,8 @@ export class ListingPageComponent extends Component {
     const userAndListingAuthorAvailable = !!(currentUser && authorAvailable);
     const isOwnListing =
       userAndListingAuthorAvailable && currentListing.author.id.uuid === currentUser.id.uuid;
-    const showContactUser = authorAvailable && (!currentUser || (currentUser && !isOwnListing));
+    // const showContactUser = authorAvailable && (!currentUser || (currentUser && !isOwnListing));
+    const showContactUser = false;
 
     const currentAuthor = authorAvailable ? currentListing.author : null;
     const ensuredAuthor = ensureUser(currentAuthor);

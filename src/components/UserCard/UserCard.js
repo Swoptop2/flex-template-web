@@ -63,7 +63,7 @@ ExpandableBio.propTypes = {
 };
 
 const UserCard = props => {
-  const { rootClassName, className, user, currentUser, onContactUser } = props;
+  const { rootClassName, className, user, currentUser } = props;
 
   const userIsCurrentUser = user && user.type === 'currentUser';
   const ensuredUser = userIsCurrentUser ? ensureCurrentUser(user) : ensureUser(user);
@@ -73,9 +73,9 @@ const UserCard = props => {
     ensuredUser.id && ensuredCurrentUser.id && ensuredUser.id.uuid === ensuredCurrentUser.id.uuid;
   const { displayName, bio } = ensuredUser.attributes.profile;
 
-  const handleContactUserClick = () => {
-    onContactUser(user);
-  };
+  // const handleContactUserClick = () => {
+  //   onContactUser(user);
+  // };
 
   const hasBio = !!bio;
   const classes = classNames(rootClassName || css.root, className);
@@ -83,13 +83,13 @@ const UserCard = props => {
     [css.withBioMissingAbove]: !hasBio,
   });
 
-  const separator = isCurrentUser ? null : <span className={css.linkSeparator}>•</span>;
+  // const separator = isCurrentUser ? null : <span className={css.linkSeparator}>•</span>;
 
-  const contact = (
-    <InlineTextButton rootClassName={css.contact} onClick={handleContactUserClick}>
-      <FormattedMessage id="UserCard.contactUser" />
-    </InlineTextButton>
-  );
+  // const contact = (
+  //   <InlineTextButton rootClassName={css.contact} onClick={handleContactUserClick}>
+  //     <FormattedMessage id="UserCard.contactUser" />
+  //   </InlineTextButton>
+  // );
 
   const editProfileMobile = (
     <span className={css.editProfileMobile}>
@@ -111,8 +111,7 @@ const UserCard = props => {
       <NamedLink className={css.link} name="ProfilePage" params={{ id: ensuredUser.id.uuid }}>
         <FormattedMessage id="UserCard.viewProfileLink" />
       </NamedLink>
-      {separator}
-      {isCurrentUser ? editProfileMobile : contact}
+      {isCurrentUser ? editProfileMobile : null}
     </p>
   ) : null;
 

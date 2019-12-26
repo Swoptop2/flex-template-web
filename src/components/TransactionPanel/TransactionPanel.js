@@ -214,10 +214,10 @@ export class TransactionPanelComponent extends Component {
     const listingDeleted = listingLoaded && currentListing.attributes.deleted;
     const iscustomerLoaded = !!currentCustomer.id;
     const isCustomerBanned = iscustomerLoaded && currentCustomer.attributes.banned;
-    const isCustomerDeleted = iscustomerLoaded && currentCustomer.attributes.deleted;
+    // const isCustomerDeleted = iscustomerLoaded && currentCustomer.attributes.deleted;
     const isProviderLoaded = !!currentProvider.id;
     const isProviderBanned = isProviderLoaded && currentProvider.attributes.banned;
-    const isProviderDeleted = isProviderLoaded && currentProvider.attributes.deleted;
+    // const isProviderDeleted = isProviderLoaded && currentProvider.attributes.deleted;
 
     const stateDataFn = tx => {
       if (txIsEnquired(tx)) {
@@ -338,17 +338,17 @@ export class TransactionPanelComponent extends Component {
       />
     );
 
-    const showSendMessageForm =
-      !isCustomerBanned && !isCustomerDeleted && !isProviderBanned && !isProviderDeleted;
+    // const showSendMessageForm = !isCustomerBanned && !isCustomerDeleted && !isProviderBanned && !isProviderDeleted;
+    const showSendMessageForm = false;
 
     const sendMessagePlaceholder = intl.formatMessage(
       { id: 'TransactionPanel.sendMessagePlaceholder' },
       { name: otherUserDisplayNameString }
     );
 
-    const sendingMessageNotAllowed = intl.formatMessage({
-      id: 'TransactionPanel.sendingMessageNotAllowed',
-    });
+    // const sendingMessageNotAllowed = intl.formatMessage({
+    //   id: 'TransactionPanel.sendingMessageNotAllowed',
+    // });
 
     const paymentMethodsPageLink = (
       <NamedLink name="PaymentMethodsPage">
@@ -418,6 +418,8 @@ export class TransactionPanelComponent extends Component {
               onShowMoreMessages={() => onShowMoreMessages(currentTransaction.id)}
               totalMessagePages={totalMessagePages}
             />
+            {/* the email buttons can be added here */}
+            {/* show different buttons depending on wether user is a provider or a customer */}
             {showSendMessageForm ? (
               <SendMessageForm
                 formId={this.sendMessageFormName}
@@ -429,9 +431,7 @@ export class TransactionPanelComponent extends Component {
                 onBlur={this.onSendMessageFormBlur}
                 onSubmit={this.onMessageSubmit}
               />
-            ) : (
-              <div className={css.sendingMessageNotAllowed}>{sendingMessageNotAllowed}</div>
-            )}
+            ) : null}
 
             {stateData.showSaleButtons ? (
               <div className={css.mobileActionButtons}>{saleButtons}</div>

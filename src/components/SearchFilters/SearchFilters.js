@@ -132,7 +132,7 @@ const SearchFiltersComponent = props => {
     history.push(createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams));
   };
 
-  const testBra = _ => {
+  const toggleFilter = _ => {
     // populate this array with user's favorited listings
     // destructure likedListings array from user's publicData in order to construct queryParams
     const {
@@ -317,7 +317,7 @@ const SearchFiltersComponent = props => {
           <button
             className={activeClass ? css.heartActive : css.heartBtn}
             type="button"
-            onClick={testBra}
+            onClick={toggleFilter}
           >
             Your Loves
             <i className="fa fa-chevron-down" style={arrowStyles}></i>

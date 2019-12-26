@@ -104,6 +104,7 @@ class MainPanel extends Component {
           onCloseModal={onCloseModal}
           filterParamNames={filterParamNames}
           selectedFiltersCount={selectedFiltersCount}
+          currentUser={currentUser}
           {...primaryFilters}
           {...secondaryFilters}
         />

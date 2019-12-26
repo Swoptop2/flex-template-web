@@ -1,6 +1,7 @@
 import unionWith from 'lodash/unionWith';
 import { storableError } from '../../util/errors';
 import { addMarketplaceEntities } from '../../ducks/marketplaceData.duck';
+import { fetchCurrentUser } from '../../ducks/user.duck';
 import { convertUnitToSubUnit, unitDivisor } from '../../util/currency';
 import { formatDateStringToUTC, getExclusiveEndDate } from '../../util/dates';
 import config from '../../config';
@@ -197,7 +198,7 @@ export const favoriteListing = listingId => (dispatch, getState, sdk) => {
           })
           .then(res => {
             console.log(res);
-            window.location.reload();
+            dispatch(fetchCurrentUser());
           })
           .catch(err => console.error(err));
       } else {
@@ -210,7 +211,7 @@ export const favoriteListing = listingId => (dispatch, getState, sdk) => {
           })
           .then(res => {
             console.log(res);
-            window.location.reload();
+            dispatch(fetchCurrentUser());
           })
           .catch(err => console.error(err));
       }

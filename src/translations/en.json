@@ -764,6 +764,7 @@
   "SearchFilters.amenitiesLabel": "Amenities",
   "SearchFilters.categoryLabel": "Category",
   "SearchFilters.filtersButtonLabel": "Filters",
+  "SearchFilters.heartFilterButtonLabel": "Your Loves",
   "SearchFilters.foundResults": "{count, number} {count, plural, one {result} other {results}}",
   "SearchFilters.keywordLabel": "Keyword",
   "SearchFilters.loadingResults": "Loading search results…",

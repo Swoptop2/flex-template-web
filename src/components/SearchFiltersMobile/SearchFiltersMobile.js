@@ -24,7 +24,7 @@ const RADIX = 10;
 class SearchFiltersMobileComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { isFiltersOpenOnMobile: false, initialQueryParams: null };
+    this.state = { isFiltersOpenOnMobile: false, initialQueryParams: null, heartActive: false };
 
     this.openFilters = this.openFilters.bind(this);
     this.cancelFilters = this.cancelFilters.bind(this);
@@ -39,6 +39,13 @@ class SearchFiltersMobileComponent extends Component {
     this.initialValues = this.initialValues.bind(this);
     this.initialPriceRangeValue = this.initialPriceRangeValue.bind(this);
     this.initialDateRangeValue = this.initialDateRangeValue.bind(this);
+  }
+
+  componentWillUnmount() {
+    const localData = JSON.parse(localStorage.getItem('heartActive'));
+    if (localData) {
+      localStorage.removeItem('heartActive');
+    }
   }
 
   // Open filters modal, set the initial parameters to current ones
@@ -184,6 +191,8 @@ class SearchFiltersMobileComponent extends Component {
     const {
       rootClassName,
       className,
+      currentUser,
+      history,
       listingsAreLoaded,
       resultsCount,
       searchInProgress,
@@ -198,6 +207,7 @@ class SearchFiltersMobileComponent extends Component {
       dateRangeFilter,
       keywordFilter,
       intl,
+      urlQueryParams,
     } = this.props;
 
     const classes = classNames(rootClassName || css.root, className);
@@ -314,6 +324,38 @@ class SearchFiltersMobileComponent extends Component {
         />
       ) : null;
 
+    const toggleFilter = _ => {
+      let userListings;
+      if (currentUser) {
+        userListings = currentUser.attributes.profile.publicData.likedListings;
+      }
+      const queryParams = {
+        ...urlQueryParams,
+        pub_listingIdForLikeFilter: userListings.length > 0 ? userListings : 'fake_id',
+      };
+
+      // perform state setting
+      this.setState(prevState => ({
+        heartActive: !prevState.heartActive,
+      }));
+      if (this.state.heartActive) {
+        this.handleSelectMultiple('pub_listingIdForLikeFilter', null);
+        localStorage.removeItem('heartActive');
+      } else {
+        localStorage.setItem('heartActive', JSON.stringify({ active: true }));
+        history.push(
+          createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams)
+        );
+      }
+    };
+
+    let activeClass = false;
+    try {
+      if (JSON.parse(localStorage.getItem('heartActive'))) {
+        activeClass = true;
+      }
+    } catch (err) {}
+
     return (
       <div className={classes}>
         <div className={css.searchResultSummary}>
@@ -322,6 +364,16 @@ class SearchFiltersMobileComponent extends Component {
           {searchInProgress ? loadingResults : null}
         </div>
         <div className={css.buttons}>
+          <Button
+            rootClassName={filtersButtonClasses}
+            className={activeClass ? css.heartActive : css.heartBtn}
+            onClick={toggleFilter}
+          >
+            <FormattedMessage
+              id="SearchFilters.heartFilterButtonLabel"
+              className={css.mapIconText}
+            />
+          </Button>
           <Button rootClassName={filtersButtonClasses} onClick={this.openFilters}>
             <FormattedMessage id="SearchFilters.filtersButtonLabel" className={css.mapIconText} />
           </Button>

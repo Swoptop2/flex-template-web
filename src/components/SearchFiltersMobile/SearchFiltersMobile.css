@@ -133,3 +133,14 @@
   display: inline-block;
   border-radius: 3px;
 }
+
+.heartBtn {
+  white-space: nowrap;
+}
+
+.heartActive {
+  background-color: var(--marketplaceColor) !important;
+  color: #ffffff;
+  white-space: nowrap;
+  outline: none;
+}

@@ -1,7 +1,8 @@
 import unionWith from 'lodash/unionWith';
 import { storableError } from '../../util/errors';
 import { addMarketplaceEntities } from '../../ducks/marketplaceData.duck';
-import { fetchCurrentUser } from '../../ducks/user.duck';
+import { currentUserShowSuccess } from '../../ducks/user.duck';
+import { denormalisedResponseEntities } from '../../util/data';
 import { convertUnitToSubUnit, unitDivisor } from '../../util/currency';
 import { formatDateStringToUTC, getExclusiveEndDate } from '../../util/dates';
 import config from '../../config';
@@ -191,27 +192,45 @@ export const favoriteListing = listingId => (dispatch, getState, sdk) => {
       if (likedListings.includes(uuid)) {
         const updatedListings = likedListings.filter(item => item !== uuid);
         sdk.currentUser
-          .updateProfile({
-            publicData: {
-              likedListings: updatedListings,
+          .updateProfile(
+            {
+              publicData: {
+                likedListings: updatedListings,
+              },
             },
-          })
-          .then(res => {
-            console.log(res);
-            dispatch(fetchCurrentUser());
+            { expand: true }
+          )
+          .then(response => {
+            const entities = denormalisedResponseEntities(response);
+            if (entities.length !== 1) {
+              throw new Error('Expected a resource in the sdk.currentUser.updateProfile response');
+            }
+            const currentUser = entities[0];
+
+            // Update current user in state.user.currentUser through user.duck.js
+            dispatch(currentUserShowSuccess(currentUser));
           })
           .catch(err => console.error(err));
       } else {
         likedListings.push(uuid);
         sdk.currentUser
-          .updateProfile({
-            publicData: {
-              likedListings,
+          .updateProfile(
+            {
+              publicData: {
+                likedListings,
+              },
             },
-          })
-          .then(res => {
-            console.log(res);
-            dispatch(fetchCurrentUser());
+            { expand: true }
+          )
+          .then(response => {
+            const entities = denormalisedResponseEntities(response);
+            if (entities.length !== 1) {
+              throw new Error('Expected a resource in the sdk.currentUser.updateProfile response');
+            }
+            const currentUser = entities[0];
+
+            // Update current user in state.user.currentUser through user.duck.js
+            dispatch(currentUserShowSuccess(currentUser));
           })
           .catch(err => console.error(err));
       }

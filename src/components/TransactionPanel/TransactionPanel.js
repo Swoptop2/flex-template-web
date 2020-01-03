@@ -25,6 +25,7 @@ import { formatMoney } from '../../util/currency';
 import {
   AvatarLarge,
   BookingPanel,
+  Button,
   NamedLink,
   ReviewModal,
   UserDisplayName,
@@ -50,6 +51,8 @@ import PanelHeading, {
   HEADING_CANCELED,
   HEADING_DELIVERED,
 } from './PanelHeading';
+import axios from 'axios';
+import swal from 'sweetalert';
 
 import css from './TransactionPanel.css';
 
@@ -358,6 +361,139 @@ export class TransactionPanelComponent extends Component {
 
     const classes = classNames(rootClassName || css.root, className);
 
+    // destructure needed data from currentTransaction here
+    const {
+      customer: {
+        attributes: {
+          profile: { displayName: custDisplayName },
+        },
+      },
+      provider: {
+        attributes: {
+          profile: { displayName: provDisplayName },
+        },
+      },
+      booking: {
+        attributes: { start, end },
+      },
+      listing: {
+        attributes: {
+          price: { amount },
+        },
+      },
+    } = transaction;
+    const itemPrice = amount / 100;
+    // start needs to get one day added
+    const startCopy = Object.assign(start);
+    const modifedStart = new Date(startCopy);
+    const correctStart = new Date(modifedStart.setDate(modifedStart.getDate() + 1));
+
+    let customerPhone, customerEmail, providerPhone, providerEmail;
+
+    // get customer and provider phone and email from publicData conditionally
+    try {
+      customerPhone = transaction.customer.attributes.profile.publicData.phoneNumber
+        ? transaction.customer.attributes.profile.publicData.phoneNumber
+        : null;
+      customerEmail = transaction.customer.attributes.profile.publicData.email
+        ? transaction.customer.attributes.profile.publicData.email
+        : null;
+      providerPhone = transaction.provider.attributes.profile.publicData.phoneNumber
+        ? transaction.provider.attributes.profile.publicData.phoneNumber
+        : null;
+      providerEmail = transaction.provider.attributes.profile.publicData.email
+        ? transaction.provider.attributes.profile.publicData.email
+        : null;
+    } catch (err) {}
+
+    // info needed
+    const values = {
+      renterName: custDisplayName,
+      ownerName: provDisplayName,
+      startingDay: `${correctStart.toLocaleString('default', {
+        weekday: 'long',
+      })} ${correctStart.toLocaleString('default', { month: 'short' })} ${correctStart.getDate()}`,
+      endingDay: `${end.toLocaleString('default', {
+        weekday: 'long',
+      })} ${end.toLocaleString('default', { month: 'short' })} ${end.getDate()}`,
+      itemName: listingTitle,
+      itemPrice: `$${itemPrice}`,
+      customerPhone,
+      customerEmail,
+      providerPhone,
+      providerEmail,
+    };
+
+    //write reporting functions here
+    const reportUnreturnedItem = _ => {
+      const action = 'reportUnreturned';
+      const params = { action, values };
+      axios('/api/send', { params })
+        .then(res => {
+          console.log(res.status, res.statusText);
+          swal({
+            title: 'Success!',
+            text:
+              'Message successfully sent. Customer Service has been notified and will reach out shortly!',
+            icon: 'success',
+          });
+        })
+        .catch(err => {
+          console.error(err);
+          swal({
+            title: 'Oops!',
+            text: 'Somehting went wrong, please try again',
+            icon: 'error',
+          });
+        });
+    };
+
+    const reportDamagedItem = _ => {
+      const action = 'reportDamaged';
+      const params = { action, values };
+      axios('/api/send', { params })
+        .then(res => {
+          console.log(res.status, res.statusText);
+          swal({
+            title: 'Success!',
+            text:
+              'Message successfully sent. Customer Service has been notified and will reach out shortly!',
+            icon: 'success',
+          });
+        })
+        .catch(err => {
+          console.error(err);
+          swal({
+            title: 'Oops!',
+            text: 'Somehting went wrong, please try again',
+            icon: 'error',
+          });
+        });
+    };
+
+    const reportIssueWithItem = _ => {
+      const action = 'reportIssue';
+      const params = { action, values };
+      axios('/api/send', { params })
+        .then(res => {
+          console.log(res.status, res.statusText);
+          swal({
+            title: 'Success!',
+            text:
+              'Message successfully sent. Customer Service has been notified and will reach out shortly!',
+            icon: 'success',
+          });
+        })
+        .catch(err => {
+          console.error(err);
+          swal({
+            title: 'Oops!',
+            text: 'Somehting went wrong, please try again',
+            icon: 'error',
+          });
+        });
+    };
+
     return (
       <div className={classes}>
         <div className={css.container}>
@@ -370,9 +506,24 @@ export class TransactionPanelComponent extends Component {
               provider={currentProvider}
               isCustomer={isCustomer}
             />
-            {isProvider ? (
+            {isProvider && stateData.headingState === HEADING_DELIVERED ? (
               <div className={css.avatarWrapperProviderDesktop}>
                 <AvatarLarge user={currentCustomer} className={css.avatarDesktop} />
+                <Button onClick={reportUnreturnedItem} style={{ width: '35%', fontSize: '15px' }}>
+                  Report unreturned item
+                </Button>
+                <Button onClick={reportDamagedItem} style={{ width: '35%', fontSize: '15px' }}>
+                  Report damaged item
+                </Button>
+              </div>
+            ) : null}
+            {(isCustomer && stateData.headingState === HEADING_DELIVERED) ||
+            (isCustomer && stateData.headingState === HEADING_ACCEPTED) ? (
+              <div className={css.avatarWrapperProviderDesktop}>
+                <AvatarLarge user={currentCustomer} className={css.avatarDesktop} />
+                <Button onClick={reportIssueWithItem} style={{ width: '35%', fontSize: '15px' }}>
+                  Report issue with the item
+                </Button>
               </div>
             ) : null}
 
@@ -385,6 +536,7 @@ export class TransactionPanelComponent extends Component {
               listingId={currentListing.id && currentListing.id.uuid}
               listingTitle={listingTitle}
               listingDeleted={listingDeleted}
+              transaction={currentTransaction}
             />
 
             <div className={css.bookingDetailsMobile}>
@@ -418,8 +570,6 @@ export class TransactionPanelComponent extends Component {
               onShowMoreMessages={() => onShowMoreMessages(currentTransaction.id)}
               totalMessagePages={totalMessagePages}
             />
-            {/* the email buttons can be added here */}
-            {/* show different buttons depending on wether user is a provider or a customer */}
             {showSendMessageForm ? (
               <SendMessageForm
                 formId={this.sendMessageFormName}

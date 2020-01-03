@@ -364,7 +364,7 @@ describe('Auth duck', () => {
             {
               ...rest,
               protectedData: { phoneNumber },
-              publicData: { school, sorority, likedListings },
+              publicData: { email, email, school, sorority, likedListings },
             },
           ],
         ]);
@@ -416,7 +416,7 @@ describe('Auth duck', () => {
             {
               ...rest,
               protectedData: { phoneNumber },
-              publicData: { school, sorority, likedListings },
+              publicData: { email, school, sorority, likedListings },
             },
           ],
         ]);

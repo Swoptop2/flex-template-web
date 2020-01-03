@@ -139,6 +139,9 @@
   @media (--viewportLarge) {
     display: block;
     margin-top: 119px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 .avatarDesktop {
@@ -485,4 +488,25 @@
 
   margin-top: 0;
   margin-bottom: 1px;
+}
+
+.mobileBtnContainer {
+  width: 95%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  @media (--viewportLarge) {
+    display: none;
+  }
+}
+
+.reportBtn {
+  color: #ffffff;
+  background-color: var(--marketplaceColor);
+  padding: 8px;
+  border-radius: 6px;
+  border-color: var(--marketplaceColor);
+  font-size: 15px;
+  width: 85%;
+  margin: 8px auto;
 }

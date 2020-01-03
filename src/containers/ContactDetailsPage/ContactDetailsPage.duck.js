@@ -80,7 +80,7 @@ const requestSavePhoneNumber = params => (dispatch, getState, sdk) => {
 
   return sdk.currentUser
     .updateProfile(
-      { protectedData: { phoneNumber } },
+      { publicData: { phoneNumber }, protectedData: { phoneNumber } },
       {
         expand: true,
         include: ['profileImage'],
@@ -109,6 +109,13 @@ const requestSavePhoneNumber = params => (dispatch, getState, sdk) => {
  */
 const requestSaveEmail = params => (dispatch, getState, sdk) => {
   const { email, currentPassword } = params;
+
+  sdk.currentUser
+    .updateProfile({ publicData: { email } })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => console.error(err));
 
   return sdk.currentUser
     .changeEmail(

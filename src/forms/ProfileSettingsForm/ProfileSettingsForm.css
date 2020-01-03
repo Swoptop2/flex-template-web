@@ -24,7 +24,20 @@
 
 .note {
   font-size: 16px;
-  color: var(--matterColorAnti);
+  color: var(--matterColor);
+  -webkit-animation: bounce 5s infinite;
+  animation: bounce 1800ms infinite;
+}
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .sectionContainer {

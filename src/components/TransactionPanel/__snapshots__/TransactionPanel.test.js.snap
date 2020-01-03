@@ -108,6 +108,153 @@ exports[`TransactionPanel - Order accepted matches snapshot 1`] = `
             }
           />
         }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/accept",
+              "lastTransitionedAt": 2017-06-01T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16400,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:01.000Z,
+                  "transition": "transition/confirm-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "order-accepted",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
+        }
       />
       <div>
         <AddressLinkMaybe
@@ -857,6 +1004,153 @@ exports[`TransactionPanel - Order autodeclined matches snapshot 1`] = `
             }
           />
         }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/expire",
+              "lastTransitionedAt": 2017-06-01T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16400,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:01.000Z,
+                  "transition": "transition/confirm-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "order-autodeclined",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
+        }
       />
       <div>
         <AddressLinkMaybe
@@ -1603,6 +1897,153 @@ exports[`TransactionPanel - Order canceled matches snapshot 1`] = `
               }
             }
           />
+        }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/accept",
+              "lastTransitionedAt": 2017-06-01T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16400,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:01.000Z,
+                  "transition": "transition/confirm-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "order-canceled",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
         }
       />
       <div>
@@ -2353,6 +2794,153 @@ exports[`TransactionPanel - Order declined matches snapshot 1`] = `
             }
           />
         }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/decline",
+              "lastTransitionedAt": 2017-06-01T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16400,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:01.000Z,
+                  "transition": "transition/confirm-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "order-declined",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
+        }
       />
       <div>
         <AddressLinkMaybe
@@ -3099,6 +3687,158 @@ exports[`TransactionPanel - Order delivered matches snapshot 1`] = `
               }
             }
           />
+        }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/complete",
+              "lastTransitionedAt": 2017-06-01T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16400,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:01.000Z,
+                  "transition": "transition/confirm-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+                Object {
+                  "by": "system",
+                  "createdAt": 2017-07-01T00:00:00.000Z,
+                  "transition": "transition/complete",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "order-delivered",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
         }
       />
       <div>
@@ -3864,6 +4604,153 @@ exports[`TransactionPanel - Order enquired matches snapshot 1`] = `
             }
           />
         }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/enquire",
+              "lastTransitionedAt": 2017-06-01T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16400,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:01.000Z,
+                  "transition": "transition/confirm-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "order-enquired",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
+        }
       />
       <div>
         <AddressLinkMaybe
@@ -4609,6 +5496,153 @@ exports[`TransactionPanel - Order preauthorized matches snapshot 1`] = `
               }
             }
           />
+        }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/confirm-payment",
+              "lastTransitionedAt": 2017-06-01T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -100,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16400,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:01.000Z,
+                  "transition": "transition/confirm-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "order-preauthorized",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
         }
       />
       <div>
@@ -5356,6 +6390,153 @@ exports[`TransactionPanel - Sale accepted matches snapshot 1`] = `
               }
             }
           />
+        }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/accept",
+              "lastTransitionedAt": 2017-06-10T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 15500,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:01.000Z,
+                  "transition": "transition/confirm-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "sale-accepted",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
         }
       />
       <div>
@@ -6106,6 +7287,153 @@ exports[`TransactionPanel - Sale autodeclined matches snapshot 1`] = `
             }
           />
         }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/expire",
+              "lastTransitionedAt": 2017-06-10T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 15500,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:01.000Z,
+                  "transition": "transition/confirm-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "sale-autodeclined",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
+        }
       />
       <div>
         <AddressLinkMaybe
@@ -6852,6 +8180,153 @@ exports[`TransactionPanel - Sale canceled matches snapshot 1`] = `
               }
             }
           />
+        }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/accept",
+              "lastTransitionedAt": 2017-06-10T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 15500,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:01.000Z,
+                  "transition": "transition/confirm-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "sale-canceled",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
         }
       />
       <div>
@@ -7602,6 +9077,153 @@ exports[`TransactionPanel - Sale declined matches snapshot 1`] = `
             }
           />
         }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/decline",
+              "lastTransitionedAt": 2017-06-10T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 15500,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:01.000Z,
+                  "transition": "transition/confirm-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "sale-declined",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
+        }
       />
       <div>
         <AddressLinkMaybe
@@ -8348,6 +9970,153 @@ exports[`TransactionPanel - Sale delivered matches snapshot 1`] = `
               }
             }
           />
+        }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/complete",
+              "lastTransitionedAt": 2017-06-10T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 15500,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+                Object {
+                  "by": "system",
+                  "createdAt": 2017-07-01T00:00:00.000Z,
+                  "transition": "transition/complete",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "sale-delivered",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
         }
       />
       <div>
@@ -9098,6 +10867,153 @@ exports[`TransactionPanel - Sale enquired matches snapshot 1`] = `
             }
           />
         }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/enquire",
+              "lastTransitionedAt": 2017-06-10T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 15500,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:01.000Z,
+                  "transition": "transition/confirm-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "sale-enquired",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
+        }
       />
       <div>
         <AddressLinkMaybe
@@ -9843,6 +11759,153 @@ exports[`TransactionPanel - Sale preauthorized matches snapshot 1`] = `
               }
             }
           />
+        }
+        transaction={
+          Object {
+            "attributes": Object {
+              "createdAt": 2017-05-01T00:00:00.000Z,
+              "lastTransition": "transition/request-payment",
+              "lastTransitionedAt": 2017-06-10T00:00:00.000Z,
+              "lineItems": Array [
+                Object {
+                  "code": "line-item/night",
+                  "includeFor": Array [
+                    "customer",
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": 16500,
+                    "currency": "USD",
+                  },
+                  "quantity": "3",
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": 5500,
+                    "currency": "USD",
+                  },
+                },
+                Object {
+                  "code": "line-item/provider-commission",
+                  "includeFor": Array [
+                    "provider",
+                  ],
+                  "lineTotal": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                  "reversal": false,
+                  "unitPrice": Money {
+                    "_sdkType": "Money",
+                    "amount": -1000,
+                    "currency": "USD",
+                  },
+                },
+              ],
+              "payinTotal": Money {
+                "_sdkType": "Money",
+                "amount": 16500,
+                "currency": "USD",
+              },
+              "payoutTotal": Money {
+                "_sdkType": "Money",
+                "amount": 15500,
+                "currency": "USD",
+              },
+              "transitions": Array [
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:00.000Z,
+                  "transition": "transition/request-payment",
+                },
+                Object {
+                  "by": "customer",
+                  "createdAt": 2017-05-01T00:00:01.000Z,
+                  "transition": "transition/confirm-payment",
+                },
+                Object {
+                  "by": "provider",
+                  "createdAt": 2017-06-01T00:00:00.000Z,
+                  "transition": "transition/accept",
+                },
+              ],
+            },
+            "booking": Object {
+              "attributes": Object {
+                "displayEnd": 2017-06-13T00:00:00.000Z,
+                "displayStart": 2017-06-10T00:00:00.000Z,
+                "end": 2017-06-13T00:00:00.000Z,
+                "start": 2017-06-10T00:00:00.000Z,
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "booking1",
+              },
+              "type": "booking",
+            },
+            "customer": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "customer display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "customer",
+              },
+              "type": "user",
+            },
+            "id": UUID {
+              "_sdkType": "UUID",
+              "uuid": "sale-preauthorized",
+            },
+            "listing": Object {
+              "attributes": Object {
+                "deleted": false,
+                "description": "listing1 description",
+                "geolocation": LatLng {
+                  "_sdkType": "LatLng",
+                  "lat": 40,
+                  "lng": 60,
+                },
+                "price": Money {
+                  "_sdkType": "Money",
+                  "amount": 5500,
+                  "currency": "USD",
+                },
+                "publicData": Object {},
+                "state": "published",
+                "title": "listing1 title",
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "listing1",
+              },
+              "type": "listing",
+            },
+            "provider": Object {
+              "attributes": Object {
+                "banned": false,
+                "deleted": false,
+                "profile": Object {
+                  "abbreviatedName": "TT",
+                  "displayName": "provider display name",
+                },
+              },
+              "id": UUID {
+                "_sdkType": "UUID",
+                "uuid": "provider",
+              },
+              "type": "user",
+            },
+            "reviews": Array [],
+            "type": "transaction",
+          }
         }
       />
       <div>

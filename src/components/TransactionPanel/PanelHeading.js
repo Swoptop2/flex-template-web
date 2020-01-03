@@ -3,6 +3,8 @@ import { FormattedMessage } from '../../util/reactIntl';
 import classNames from 'classnames';
 import { createSlug, stringify } from '../../util/urlHelpers';
 import { NamedLink } from '../../components';
+import axios from 'axios';
+import swal from 'sweetalert';
 
 import css from './TransactionPanel.css';
 
@@ -38,7 +40,8 @@ const ListingDeletedInfoMaybe = props => {
 };
 
 const HeadingCustomer = props => {
-  const { className, id, values, listingDeleted } = props;
+  const { className, id, values, listingDeleted, showButton, reportIssueWithItem } = props;
+
   return (
     <React.Fragment>
       <h1 className={className}>
@@ -46,13 +49,31 @@ const HeadingCustomer = props => {
           <FormattedMessage id={id} values={values} />
         </span>
       </h1>
+      {showButton ? (
+        <div className={css.mobileBtnContainer}>
+          <button onClick={reportIssueWithItem} className={css.reportBtn}>
+            Click to report an issue with your item
+          </button>
+        </div>
+      ) : null}
       <ListingDeletedInfoMaybe listingDeleted={listingDeleted} />
     </React.Fragment>
   );
 };
 
 const HeadingCustomerWithSubtitle = props => {
-  const { className, id, values, subtitleId, subtitleValues, children, listingDeleted } = props;
+  const {
+    className,
+    id,
+    values,
+    subtitleId,
+    subtitleValues,
+    children,
+    listingDeleted,
+    showButton,
+    reportIssueWithItem,
+  } = props;
+
   return (
     <React.Fragment>
       <h1 className={className}>
@@ -61,6 +82,13 @@ const HeadingCustomerWithSubtitle = props => {
         </span>
         <FormattedMessage id={subtitleId} values={subtitleValues} />
       </h1>
+      {showButton ? (
+        <div className={css.mobileBtnContainer}>
+          <button onClick={reportIssueWithItem} className={css.reportBtn}>
+            Click to report an issue with your item
+          </button>
+        </div>
+      ) : null}
       {children}
       <ListingDeletedInfoMaybe listingDeleted={listingDeleted} />
     </React.Fragment>
@@ -76,14 +104,35 @@ const CustomerBannedInfoMaybe = props => {
 };
 
 const HeadingProvider = props => {
-  const { className, id, values, isCustomerBanned, children } = props;
+  const {
+    className,
+    id,
+    values,
+    isCustomerBanned,
+    children,
+    reportUnreturnedItem,
+    reportDamagedItem,
+    isDelivered,
+  } = props;
   return (
     <React.Fragment>
-      <h1 className={className}>
-        <span className={css.mainTitle}>
-          <FormattedMessage id={id} values={values} />
-        </span>
-      </h1>
+      <div>
+        <h1 className={className}>
+          <span className={css.mainTitle}>
+            <FormattedMessage id={id} values={values} />
+          </span>
+        </h1>
+        {isDelivered ? (
+          <div className={css.mobileBtnContainer}>
+            <button onClick={reportUnreturnedItem} className={css.reportBtn}>
+              Click to report unreturned item
+            </button>
+            <button onClick={reportDamagedItem} className={css.reportBtn}>
+              Click to report damaged item
+            </button>
+          </div>
+        ) : null}
+      </div>
       {children}
       <CustomerBannedInfoMaybe isCustomerBanned={isCustomerBanned} />
     </React.Fragment>
@@ -103,14 +152,143 @@ const PanelHeading = props => {
     listingTitle,
     listingDeleted,
     isCustomerBanned,
+    transaction,
   } = props;
-
   const isCustomer = props.transactionRole === 'customer';
 
   const defaultRootClassName = isCustomer ? css.headingOrder : css.headingSale;
   const titleClasses = classNames(rootClassName || defaultRootClassName, className);
   const listingLink = createListingLink(listingId, listingTitle, listingDeleted);
+  // info needed for reporting an issue
+  const {
+    customer: {
+      attributes: {
+        profile: { displayName: customerDisplayName },
+      },
+    },
+    provider: {
+      attributes: {
+        profile: { displayName: providerDisplayName },
+      },
+    },
+    booking: {
+      attributes: { start, end },
+    },
+    listing: {
+      attributes: {
+        price: { amount },
+      },
+    },
+  } = transaction;
+  // get customer and provider phone and email from publicData conditionally
+  const customerPhone = transaction.customer.attributes.profile.publicData.phoneNumber
+    ? transaction.customer.attributes.profile.publicData.phoneNumber
+    : null;
+  const customerEmail = transaction.customer.attributes.profile.publicData.email
+    ? transaction.customer.attributes.profile.publicData.email
+    : null;
+  const providerPhone = transaction.provider.attributes.profile.publicData.phoneNumber
+    ? transaction.provider.attributes.profile.publicData.phoneNumber
+    : null;
+  const providerEmail = transaction.provider.attributes.profile.publicData.email
+    ? transaction.provider.attributes.profile.publicData.email
+    : null;
 
+  const price = amount / 100;
+  // start needs to get one day added
+  const startCopy = Object.assign(start);
+  const modifedStart = new Date(startCopy);
+  const correctStart = new Date(modifedStart.setDate(modifedStart.getDate() + 1));
+  // info needed
+  const values = {
+    renterName: customerDisplayName,
+    ownerName: providerDisplayName,
+    startingDay: `${correctStart.toLocaleString('default', {
+      weekday: 'long',
+    })} ${correctStart.toLocaleString('default', { month: 'short' })} ${correctStart.getDate()}`,
+    endingDay: `${end.toLocaleString('default', {
+      weekday: 'long',
+    })} ${end.toLocaleString('default', { month: 'short' })} ${end.getDate()}`,
+    itemName: listingTitle,
+    itemPrice: `$${price}`,
+    customerPhone,
+    customerEmail,
+    providerPhone,
+    providerEmail,
+  };
+  const reportUnreturnedItem = _ => {
+    // TODO: get email AND phone number from provder and costumer
+    // customer may not have a phone number yet
+    const action = 'reportUnreturned';
+    const params = { action, values };
+    axios('/api/send', { params })
+      .then(res => {
+        console.log(res.status, res.statusText);
+        swal({
+          title: 'Success!',
+          text:
+            'Message successfully sent. Customer Service has been notified and will reach out shortly!',
+          icon: 'success',
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        swal({
+          title: 'Oops!',
+          text: 'Somehting went wrong, please try again',
+          icon: 'error',
+        });
+      });
+  };
+
+  const reportDamagedItem = _ => {
+    // TODO: get email AND phone number from provder and costumer
+    // customer may not have a phone number yet
+    const action = 'reportDamaged';
+    const params = { action, values };
+    axios('/api/send', { params })
+      .then(res => {
+        console.log(res.status, res.statusText);
+        swal({
+          title: 'Success!',
+          text:
+            'Message successfully sent. Customer Service has been notified and will reach out shortly!',
+          icon: 'success',
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        swal({
+          title: 'Oops!',
+          text: 'Somehting went wrong, please try again',
+          icon: 'error',
+        });
+      });
+  };
+
+  const reportIssueWithItem = _ => {
+    const action = 'reportIssue';
+    const params = { action, values };
+    axios('/api/send', { params })
+      .then(res => {
+        console.log(res.status, res.statusText);
+        swal({
+          title: 'Success!',
+          text:
+            'Message successfully sent. Customer Service has been notified and will reach out shortly!',
+          icon: 'success',
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        swal({
+          title: 'Oops!',
+          text: 'Somehting went wrong, please try again',
+          icon: 'error',
+        });
+      });
+  };
+  // schedule
   switch (panelHeadingState) {
     case HEADING_ENQUIRED:
       return isCustomer ? (
@@ -126,6 +304,7 @@ const PanelHeading = props => {
           id="TransactionPanel.saleEnquiredTitle"
           values={{ customerName, listingLink }}
           isCustomerBanned={isCustomerBanned}
+          listingTitle={listingTitle}
         />
       );
     case HEADING_PAYMENT_PENDING:
@@ -206,6 +385,8 @@ const PanelHeading = props => {
           values={{ customerName }}
           subtitleId="TransactionPanel.orderAcceptedSubtitle"
           subtitleValues={{ listingLink }}
+          showButton={true}
+          reportIssueWithItem={reportIssueWithItem}
         />
       ) : (
         <HeadingProvider
@@ -250,6 +431,8 @@ const PanelHeading = props => {
           id="TransactionPanel.orderDeliveredTitle"
           values={{ customerName, listingLink }}
           isCustomerBanned={isCustomerBanned}
+          showButton={true}
+          reportIssueWithItem={reportIssueWithItem}
         />
       ) : (
         <HeadingProvider
@@ -257,6 +440,9 @@ const PanelHeading = props => {
           id="TransactionPanel.saleDeliveredTitle"
           values={{ customerName, listingLink }}
           isCustomerBanned={isCustomerBanned}
+          reportUnreturnedItem={reportUnreturnedItem}
+          reportDamagedItem={reportDamagedItem}
+          isDelivered={true}
         />
       );
     default:

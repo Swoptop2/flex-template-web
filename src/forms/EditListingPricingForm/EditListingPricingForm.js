@@ -60,9 +60,6 @@ export const EditListingPricingFormComponent = props => (
       const damagePriceLabelMessage = intl.formatMessage({
         id: 'EditListingDamagePricingForm.damagePrice',
       });
-      const damagePriceExplanation = intl.formatMessage({
-        id: 'EditListingDamagePricingForm.damagePriceExplanation',
-      });
       const damagePricePlaceholderMessage = intl.formatMessage({
         id: 'EditListingDamagePricingForm.priceInputPlaceholder',
       });
@@ -145,7 +142,6 @@ export const EditListingPricingFormComponent = props => (
               validators.minPricing(minimumPricingMessage)
             )}
           />
-          <span className={css.explanation}>{damagePriceExplanation}</span>
           <FieldTextInput
             id="damageCost"
             name="damageCost"

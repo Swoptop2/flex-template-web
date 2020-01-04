@@ -27,9 +27,6 @@ exports[`EditListingPricingForm matches snapshot 1`] = `
       value=""
     />
   </div>
-  <span>
-    EditListingDamagePricingForm.damagePriceExplanation
-  </span>
   <div
     className=""
   >

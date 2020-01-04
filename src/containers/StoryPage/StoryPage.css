@@ -13,4 +13,14 @@
 
 .title {
   text-align: center;
+  margin-bottom: 75px;
+  @media (--viewportMedium) {
+    margin-bottom: 110px;
+  }
+}
+
+.press {
+  width: 70%;
+  margin: 20px auto;
+  text-align: center;
 }

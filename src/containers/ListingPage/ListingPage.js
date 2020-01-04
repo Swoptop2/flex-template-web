@@ -38,6 +38,7 @@ import {
   LayoutWrapperFooter,
   Footer,
   BookingPanel,
+  ResponsiveImage,
 } from '../../components';
 import { TopbarContainer, NotFoundPage } from '../../containers';
 
@@ -49,7 +50,6 @@ import SectionColorMaybe from './SectionColorMaybe';
 import SectionDamageCostMaybe from './SectionDamageCostMaybe';
 import SectionHostMaybe from './SectionHostMaybe';
 import SectionRulesMaybe from './SectionRulesMaybe';
-import SectionAllImages from './SectionAllImages';
 import SectionFirstImage from './SectionFirstImage';
 import css from './ListingPage.css';
 
@@ -87,7 +87,6 @@ export class ListingPageComponent extends Component {
       imageCarouselOpen: false,
       enquiryModalOpen: enquiryModalOpenForListingId === params.id,
     };
-    console.log(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onContactUser = this.onContactUser.bind(this);
     this.onSubmitEnquiry = this.onSubmitEnquiry.bind(this);
@@ -372,6 +371,9 @@ export class ListingPageComponent extends Component {
         </span>
       ) : null;
 
+    const { images } = currentListing;
+    const secondImg = images.length > 1 ? images[1] : null;
+
     return (
       <Page
         title={schemaTitle}
@@ -420,20 +422,32 @@ export class ListingPageComponent extends Component {
                     showContactUser={showContactUser}
                     onContactUser={this.onContactUser}
                     publicData={publicData}
+                    listing={currentListing}
                   />
                   <div className={css.detailsContainer}>
-                    <SectionSizeMaybe options={sizesConfig} publicData={publicData} />
-                    <SectionColorMaybe options={colorsConfig} publicData={publicData} />
-                    <SectionDamageCostMaybe publicData={publicData} />
+                    {secondImg ? (
+                      <ResponsiveImage
+                        className={css.desktopFirstImg}
+                        alt="Listing image"
+                        image={secondImg}
+                        variants={[
+                          'scaled-small',
+                          'scaled-medium',
+                          'scaled-large',
+                          'scaled-xlarge',
+                        ]}
+                        sizes="(max-width: 367px) 100vw, 80vw"
+                      />
+                    ) : null}
+                    <div className={css.detailsFlexContainerr}>
+                      <SectionSizeMaybe options={sizesConfig} publicData={publicData} />
+                      <SectionColorMaybe options={colorsConfig} publicData={publicData} />
+                    </div>
                   </div>
-
+                  <SectionDamageCostMaybe listing={currentListing} publicData={publicData} />
                   <SectionRulesMaybe publicData={publicData} />
-                  {/* <SectionMapMaybe
-                    geolocation={geolocation}
-                    publicData={publicData}
-                    listingId={currentListing.id}
-                  /> */}
-                  <SectionAllImages listing={currentListing} />
+
+                  {/* <SectionAllImages listing={currentListing} /> */}
                   <p className={css.note}>
                     *Damage cost is what will be payed to the renter if the item is returned
                     completely damaged (simple wear & tear doesn't apply)

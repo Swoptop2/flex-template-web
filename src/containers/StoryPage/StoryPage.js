@@ -59,6 +59,17 @@ const StoryPage = () => {
           <div className={css.content}>
             <h1 className={css.title}>Our Story</h1>
             <YoutubeFrame />
+            <p className={css.press}>
+              Hot off the press! Read about how Swoptop came about and what’s next{' '}
+              <a
+                target="_blank"
+                href="https://platformmagazine.org/2019/10/23/starting-up-a-startup-swoptop/"
+                rel="noopener noreferrer"
+              >
+                here
+              </a>
+              ! <br />
+            </p>
           </div>
         </LayoutWrapperMain>
         <LayoutWrapperFooter>

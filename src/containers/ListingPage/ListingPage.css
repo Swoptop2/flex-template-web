@@ -39,6 +39,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 25px;
   @media (--viewportMedium) {
     flex-direction: row;
     justify-content: space-between;
@@ -50,6 +51,17 @@
   box-shadow: 0px 0px 15px 0 rgba(0, 0, 0, 0.6);
   @media (--viewportMedium) {
     order: 2;
+  }
+}
+
+.desktopFirstImg {
+  max-width: 150px;
+  height: 180px;
+  box-shadow: 0 0 4px #ccc;
+  margin-right: 20px;
+  display: none;
+  @media (--viewportLarge) {
+    display: block;
   }
 }
 
@@ -346,6 +358,9 @@
   }
 }
 
+.headingContainer {
+}
+
 .sectionHeading {
   margin-top: 22px;
   margin-bottom: 34px;
@@ -353,6 +368,7 @@
   @media (--viewportMedium) {
     display: flex;
     margin-bottom: 53px;
+    justify-content: space-between;
   }
 }
 .desktopPriceContainer {
@@ -372,6 +388,7 @@
 
 .desktopPriceContainer2 {
   padding-left: 20px;
+  display: none;
 
   @media (--viewportLarge) {
     /* Layout */
@@ -412,17 +429,28 @@
 .heading {
   margin-bottom: 33px;
   padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   @media (--viewportMedium) {
     margin-bottom: 0;
     padding: 0;
     order: 2;
+    width: 100%;
+  }
+}
+
+.mobilePrice {
+  @media (--viewportMedium) {
+    display: none;
   }
 }
 
 .title {
   /* Font */
   @apply --marketplaceH1FontStyles;
+  font-size: 30px !important;
   color: var(--matterColor);
 
   /* Layout */
@@ -507,7 +535,13 @@
   flex-direction: column;
   @media (--viewportLarge) {
     flex-direction: row;
+    align-items: center;
   }
+}
+
+.detailsFlexContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 .sectionColor {
@@ -516,9 +550,6 @@
 
   @media (--viewportMedium) {
     padding: 0;
-  }
-  @media (--viewportLarge) {
-    margin-left: 80px;
   }
 }
 
@@ -529,8 +560,12 @@
   @media (--viewportMedium) {
     padding: 0;
   }
+}
+.damageCostContainer {
   @media (--viewportLarge) {
-    margin-left: 80px;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -538,14 +573,21 @@
   text-align: center;
   @media (--viewportLarge) {
     text-align: left;
+    display: none;
   }
 }
 
 .label {
-  margin-bottom: 30px;
-  margin-left: 20px;
-  @media (--viewportMedium) {
-    margin-bottom: 35px;
+  margin: 0 0 0 30px;
+  @media (--viewportLarge) {
+    transform: translateY(-3px);
+  }
+}
+
+.sizeLabel {
+  margin: 0 0 0 43px;
+  @media (--viewportLarge) {
+    transform: translateY(-3px);
   }
 }
 

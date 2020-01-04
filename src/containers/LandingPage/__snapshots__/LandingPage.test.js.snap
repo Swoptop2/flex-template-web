@@ -95,22 +95,9 @@ exports[`LandingPage matches snapshot 1`] = `
               My mission is for college women to realize their potential early on and to inspire girls to learn business principles through something they already own and love, clothes.
             </q>
             <span>
-              -Chase Healy, Founder of Swoptop
+              -Chase Healey, Founder of Swoptop
             </span>
           </div>
-          <p>
-            Hot off the press! Read about how Swoptop came about and what’s next
-             
-            <a
-              href="https://platformmagazine.org/2019/10/23/starting-up-a-startup-swoptop/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              here
-            </a>
-            ! 
-            <br />
-          </p>
         </li>
       </ul>
     </LayoutWrapperMain>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResponsiveImage, AvatarLarge } from '../../components';
+import { ResponsiveImage } from '../../components';
 import css from './ListingPage.css';
 
 const SectionFirstImage = props => {
@@ -19,7 +19,6 @@ const SectionFirstImage = props => {
           variants={['scaled-small', 'scaled-medium', 'scaled-large', 'scaled-xlarge']}
           sizes="(max-width: 767px) 100vw, 80vw"
         />
-        <AvatarLarge className={css.firstAvatar} user={listing.author} />
       </div>
     </div>
   ) : null;

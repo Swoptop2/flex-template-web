@@ -86,12 +86,13 @@
 
 .mission {
   width: 85%;
-  margin: 0px auto 110px;
+  margin: 0px auto 50px;
   display: flex;
   flex-direction: column;
   @media (--viewportMedium) {
     transform: translateY(-80px);
     width: 65%;
+    margin: 0px auto 110px;
   }
 }
 

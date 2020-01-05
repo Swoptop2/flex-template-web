@@ -118,6 +118,13 @@ export const LandingPageComponent = props => {
                 </q>
                 <span>-Chase Healey, Founder of Swoptop</span>
               </div>
+              <div className={css.mission}>
+                <q>
+                  Swoptop really positively impacts a college campus because it allows all types of
+                  girls opportunities to find clothes and make them feel their best self.
+                </q>
+                <span>-Julianna Sweeney, Campus Rep</span>
+              </div>
             </li>
           </ul>
         </LayoutWrapperMain>

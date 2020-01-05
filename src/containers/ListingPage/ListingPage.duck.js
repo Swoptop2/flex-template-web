@@ -287,3 +287,14 @@ export const loadData = (params, search) => dispatch => {
     return Promise.all([dispatch(showListing(listingId)), dispatch(fetchReviews(listingId))]);
   }
 };
+
+export const addEmail = email => (dispatch, getState, sdk) => {
+  return sdk.currentUser
+    .updateProfile({
+      publicData: {
+        email,
+      },
+    })
+    .then(res => console.log(res.status, res.statusText))
+    .catch(err => console.error(err));
+};

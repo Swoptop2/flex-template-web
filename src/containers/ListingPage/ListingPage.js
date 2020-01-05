@@ -42,7 +42,7 @@ import {
 } from '../../components';
 import { TopbarContainer, NotFoundPage } from '../../containers';
 
-import { sendEnquiry, loadData, setInitialValues } from './ListingPage.duck';
+import { sendEnquiry, loadData, setInitialValues, addEmail } from './ListingPage.duck';
 import SectionImages from './SectionImages';
 import SectionHeading from './SectionHeading';
 import SectionSizeMaybe from './SectionSizeMaybe';
@@ -90,6 +90,19 @@ export class ListingPageComponent extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onContactUser = this.onContactUser.bind(this);
     this.onSubmitEnquiry = this.onSubmitEnquiry.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.currentUser) {
+      const {
+        attributes: { email },
+      } = this.props.currentUser;
+      try {
+        if (!this.props.currentUser.attributes.profile.publicData.email) {
+          this.props.onAddEmail(email);
+        }
+      } catch (err) {}
+    }
   }
 
   handleSubmit(values) {
@@ -534,6 +547,7 @@ ListingPageComponent.propTypes = {
   enquiryModalOpenForListingId: string,
   showListingError: propTypes.error,
   callSetInitialValues: func.isRequired,
+  onAddEmail: func.isRequired,
   reviews: arrayOf(propTypes.review),
   fetchReviewsError: propTypes.error,
   timeSlots: arrayOf(propTypes.timeSlot),
@@ -592,6 +606,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  onAddEmail: email => dispatch(addEmail(email)),
   onManageDisableScrolling: (componentId, disableScrolling) =>
     dispatch(manageDisableScrolling(componentId, disableScrolling)),
   callSetInitialValues: (setInitialValues, values) => dispatch(setInitialValues(values)),

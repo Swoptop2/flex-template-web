@@ -18,6 +18,20 @@ class MainPanel extends Component {
   constructor(props) {
     super(props);
     this.state = { isSearchFiltersPanelOpen: false };
+    this.myRef = React.createRef();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.currentUser && prevProps.currentUser) {
+      if (
+        this.props.currentUser.attributes.profile.publicData.likedListings ===
+        prevProps.currentUser.attributes.profile.publicData.likedListings
+      ) {
+        if (this.myRef.current.scrollTop > 0) {
+          this.myRef.current.scrollTop = 0;
+        }
+      }
+    }
   }
 
   render() {
@@ -120,6 +134,7 @@ class MainPanel extends Component {
           </div>
         ) : (
           <div
+            ref={this.myRef}
             className={classNames(css.listings, {
               [css.newSearchInProgress]: !listingsAreLoaded,
             })}

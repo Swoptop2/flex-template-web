@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -36,6 +36,7 @@ import {
   sendReview,
   fetchMoreMessages,
   cancelBookingProvider,
+  addEmail,
 } from './TransactionPage.duck';
 import css from './TransactionPage.css';
 
@@ -75,6 +76,7 @@ export const TransactionPageComponent = props => {
     cancelBookingInProgress,
     declineInProgress,
     declineSaleError,
+    onAddEmail,
     onAcceptSale,
     onDeclineSale,
     timeSlots,
@@ -86,6 +88,17 @@ export const TransactionPageComponent = props => {
   } = props;
   transactionData = transaction;
 
+  useEffect(() => {
+    if (currentUser) {
+      const {
+        attributes: { email },
+      } = currentUser;
+      if (!currentUser.attributes.profile.publicData.email) {
+        onAddEmail(email);
+      }
+    }
+    // eslint-disable-next-line
+  }, [currentUser]);
   const currentTransaction = ensureTransaction(transaction);
   const currentListing = ensureListing(currentTransaction.listing);
   const isProviderRole = transactionRole === PROVIDER;
@@ -305,6 +318,7 @@ TransactionPageComponent.propTypes = {
   acceptInProgress: bool.isRequired,
   declineInProgress: bool.isRequired,
   cancelBookingInProgress: bool.isRequired,
+  onAddEmail: func.isRequired,
   onAcceptSale: func.isRequired,
   onDeclineSale: func.isRequired,
   onCancelBookingProvider: func.isRequired,
@@ -397,6 +411,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    onAddEmail: email => dispatch(addEmail(email)),
     onAcceptSale: transactionId => dispatch(acceptSale(transactionId)),
     onDeclineSale: transactionId => dispatch(declineSale(transactionId)),
     onCancelBookingProvider: transactionId =>

@@ -118,12 +118,17 @@
   height: 0;
 }
 
-/* .scrollDown {
+.scrollDown {
   position: fixed;
   z-index: 2;
   right: 10px;
-  bottom: 40px;
-} */
+  bottom: 30px;
+  padding: 5px 10px;
+  border: none;
+  background-color: var(--marketplaceColor);
+  border-radius: 50%;
+  cursor: pointer;
+}
 
 .newSearchInProgress {
   opacity: 0.1;

@@ -118,6 +118,13 @@
   height: 0;
 }
 
+/* .scrollDown {
+  position: fixed;
+  z-index: 2;
+  right: 10px;
+  bottom: 40px;
+} */
+
 .newSearchInProgress {
   opacity: 0.1;
 }

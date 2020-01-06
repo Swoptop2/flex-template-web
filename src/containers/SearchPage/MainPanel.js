@@ -19,7 +19,12 @@ class MainPanel extends Component {
     super(props);
     this.state = { isSearchFiltersPanelOpen: false };
     this.myRef = React.createRef();
+    // this.setScroll = this.setScroll.bind(this);
   }
+
+  // setScroll() {
+  //   this.myRef.current.scrollTop = this.myRef.current.scrollHeight;
+  // }
 
   componentDidUpdate(prevProps) {
     if (this.props.currentUser && prevProps.currentUser) {
@@ -139,6 +144,9 @@ class MainPanel extends Component {
               [css.newSearchInProgress]: !listingsAreLoaded,
             })}
           >
+            {/* <button className={css.scrollDown} onClick={this.setScroll}>
+              <i className="fa fa-chevron-down"></i>
+            </button> */}
             {searchListingsError ? (
               <h2 className={css.error}>
                 <FormattedMessage id="SearchPage.searchError" />

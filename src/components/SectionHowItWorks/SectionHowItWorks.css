@@ -1,59 +1,9 @@
 @import '../../marketplace.css';
 
-.title {
-  @apply --marketplaceH1FontStyles;
-  margin-top: 0;
-  max-width: 800px;
-  margin-bottom: 45px;
-  @media (--viewportMedium) {
-    margin-bottom: 85px;
-  }
+.root {
+  border: 2px solid red;
 }
 
-.steps {
-  display: flex;
-  flex-direction: column;
-
-  @media (--viewportMedium) {
-    flex-direction: row;
-  }
-}
-
-.step {
-  text-align: center;
-  @media (--viewportMedium) {
-    width: 324px;
-    margin-right: 40px;
-  }
-}
 .image {
-  width: 170px;
-}
-
-.step:last-of-type {
-  @media (--viewportMedium) {
-    margin-right: 0;
-  }
-}
-
-.stepTitle {
-  margin-top: 18px;
-  margin-bottom: 18px;
-  font-weight: 200;
-  font-size: 20px;
-  text-align: left;
-  line-height: 1.5;
-  @media (--viewportMedium) {
-    margin-top: 21px;
-    margin-bottom: 18px;
-    font-size: 22px;
-  }
-}
-
-.createListingLink {
-  margin-top: 36px;
-
-  @media (--viewportMedium) {
-    margin-top: 52px;
-  }
+  width: 480px;
 }

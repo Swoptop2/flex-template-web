@@ -9,6 +9,8 @@ import swal from 'sweetalert';
 
 import css from './SectionHero.css';
 
+import video from './heroVideo.mp4';
+
 const SectionHero = props => {
   const { rootClassName, className, currentUser } = props;
   const { LatLng } = sdkTypes;
@@ -54,12 +56,6 @@ const SectionHero = props => {
   return (
     <div className={classes}>
       <div className={css.heroContent}>
-        <h1 className={css.heroMainTitle}>
-          <FormattedMessage id="SectionHero.title" />
-        </h1>
-        <h2 className={css.heroSubTitle}>
-          <FormattedMessage id="SectionHero.subTitle" />
-        </h2>
         <NamedLink
           name="SearchPage"
           to={{
@@ -70,6 +66,9 @@ const SectionHero = props => {
           <FormattedMessage id="SectionHero.browseButton" />
         </NamedLink>
       </div>
+      <video className={css.videoBg} autoPlay muted loop>
+        <source src={video} type="video/mp4" />
+      </video>
     </div>
   );
 };

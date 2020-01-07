@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from '../../util/reactIntl';
 import classNames from 'classnames';
 
 import css from './SectionLocations.css';
-
-import image from './images/img2.jpg';
 
 const SectionLocations = props => {
   const { rootClassName, className } = props;
@@ -14,19 +11,17 @@ const SectionLocations = props => {
 
   return (
     <div className={classes}>
-      <div className={css.title}>
-        <FormattedMessage id="SectionLocations.title" />
-      </div>
       <div className={css.locations}>
-        <p className={css.explanation}>
-          We are a platform that brings college women together to rent their clothes on campus. We
-          are creating a community of women supporting women, who in return experience more
-          opportunities to look good, feel good, and make money by turning their closet into a
-          business.
-        </p>
-        <div className={css.imageContainer}>
-          <img className={css.image} src={image} alt="closet" />
+        <div className={css.title}>
+          <h2>The platform for college women who invest in style</h2>
         </div>
+        <p className={css.explanation}>
+          We are an online marketplace that brings girls together to rent their clothes on their
+          college campus. We are community of smart & driven young women who strive to improve
+          themselves in style with style. By joining Swoptop, our users gain more opportunities to
+          support likeminded women in their community, to look & feel great, and to make money by
+          turning their closet into a business.
+        </p>
       </div>
     </div>
   );

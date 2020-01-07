@@ -23,11 +23,11 @@
   /* Full screen Background image located in root-folder/src/assets */
   --backgroundImage: {
     /* Gradient direction and overlaying the black color on top of the image for better readability */
-    background: linear-gradient(-54deg, rgba(255, 4, 132, 0.07), rgba(0, 0, 0, 0.8)),
-      url('../../assets/bg.jpg');
+    /* background: linear-gradient(-54deg, rgba(255, 4, 132, 0.07), rgba(0, 0, 0, 0.8)),
+      url('../../assets/bg.jpg'); */
 
     /* Add loading color for the div */
-    background-color: var(--matterColor);
+    background-color: #fff;
 
     /* Cover the whole screen with the background image */
     background-size: cover;
@@ -38,9 +38,9 @@
 
   /* ================ Colors ================ */
 
-  --marketplaceColor: #ff0484;
-  --marketplaceColorLight: #ff0484;
-  --marketplaceColorDark: #ff0484;
+  --marketplaceColor: #000000;
+  --marketplaceColorLight: #000000;
+  --marketplaceColorDark: #000000;
 
   /* Used with inline CSS SVGs */
   --marketplaceColorEncoded: %23c0392b;

@@ -24,6 +24,26 @@
   }
 }
 
+.videoBg {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  height: 80%;
+  @media (--viewportLarge) {
+    height: 65%;
+  }
+  @media (--viewportLargeWithPaddings) {
+    height: 110%;
+  }
+  @media (min-width: 1700px) {
+    height: 70%;
+  }
+}
+
 /* Animation for the hero elements */
 
 @keyframes animationTitle {
@@ -51,6 +71,7 @@
 
 .heroContent {
   margin: 0 24px 0 24px;
+  z-index: 1;
 
   @media (--viewportMedium) {
     margin: 0 7.5vw 0 7.5vw;
@@ -101,6 +122,7 @@
 .heroButton {
   @apply --marketplaceButtonStyles;
   @apply --SectionHero_animation;
+  padding: 20px;
 
   animation-delay: 0.8s;
 

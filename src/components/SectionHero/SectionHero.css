@@ -39,8 +39,14 @@
   @media (--viewportLargeWithPaddings) {
     height: 88.5%;
   }
+  @media (--viewportLargeWithPaddings) and (min-height: 590px) {
+    height: 110%;
+  }
   @media (min-width: 1700px) {
     height: 80%;
+  }
+  @media (min-width: 1700px) and (min-height: 950px) {
+    height: 65%;
   }
 }
 

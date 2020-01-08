@@ -5,12 +5,13 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  width: 90%;
+  width: 99%;
   max-width: 1300px;
   margin: 0 auto;
+  padding: 0px 36px;
   @media (--viewportLarge) {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
   }
 }
 
@@ -60,10 +61,10 @@
   padding: 20px;
 
   animation-delay: 0.8s;
-  width: 60%;
+  width: 72%;
 
   @media (--viewportMedium) {
     display: block;
-    width: 34%;
+    width: 44%;
   }
 }

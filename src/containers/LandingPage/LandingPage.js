@@ -10,6 +10,7 @@ import {
   Page,
   SectionHero,
   SectionHowItWorks,
+  SectionContent,
   SectionLocations,
   LayoutSingleColumn,
   LayoutWrapperTopbar,
@@ -22,34 +23,6 @@ import { TopbarContainer } from '../../containers';
 import facebookImage from '../../assets/saunatimeFacebook-1200x630.jpg';
 import twitterImage from '../../assets/saunatimeTwitter-600x314.jpg';
 import css from './LandingPage.css';
-
-const YoutubeFrame = _ => {
-  return (
-    <div
-      className={css.video}
-      style={{
-        position: 'relative',
-        paddingBottom: '50.25%' /* 16:9 */,
-        height: 0,
-      }}
-    >
-      <iframe
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: '15%',
-          width: '70%',
-          height: '70%',
-        }}
-        title="video"
-        src="https://www.youtube.com/embed/3qjkf4PCkDI"
-        frameBorder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
-    </div>
-  );
-};
 
 export const LandingPageComponent = props => {
   const { history, intl, location, scrollingDisabled, currentUser } = props;
@@ -106,25 +79,7 @@ export const LandingPageComponent = props => {
               </div>
             </li>
             <li className={css.section}>
-              <div className={css.videoContainer}>
-                <div className={css.title}>Why?</div>
-                <YoutubeFrame />
-              </div>
-              <div className={css.mission}>
-                <q>
-                  My mission is for college women to realize their potential early on and to inspire
-                  girls to learn business principles through something they already own and love,
-                  clothes.
-                </q>
-                <span>-Chase Healey, Founder of Swoptop</span>
-              </div>
-              <div className={css.mission}>
-                <q>
-                  Swoptop really positively impacts a college campus because it allows all types of
-                  girls opportunities to find clothes and make them feel their best self.
-                </q>
-                <span>-Julianna Sweeney, Campus Rep</span>
-              </div>
+              <SectionContent />
             </li>
           </ul>
         </LayoutWrapperMain>

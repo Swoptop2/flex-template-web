@@ -66,7 +66,7 @@ const SectionHero = props => {
           <FormattedMessage id="SectionHero.browseButton" />
         </NamedLink>
       </div>
-      <video className={css.videoBg} autoPlay muted loop>
+      <video playsInline disablePictureInPicture="true" className={css.videoBg} autoPlay muted loop>
         <source src={video} type="video/mp4" />
       </video>
     </div>

@@ -84,28 +84,10 @@ exports[`LandingPage matches snapshot 1`] = `
           </div>
         </li>
         <li>
-          <div>
-            <div>
-              Why?
-            </div>
-            <YoutubeFrame />
-          </div>
-          <div>
-            <q>
-              My mission is for college women to realize their potential early on and to inspire girls to learn business principles through something they already own and love, clothes.
-            </q>
-            <span>
-              -Chase Healey, Founder of Swoptop
-            </span>
-          </div>
-          <div>
-            <q>
-              Swoptop really positively impacts a college campus because it allows all types of girls opportunities to find clothes and make them feel their best self.
-            </q>
-            <span>
-              -Julianna Sweeney, Campus Rep
-            </span>
-          </div>
+          <SectionContent
+            className={null}
+            rootClassName={null}
+          />
         </li>
       </ul>
     </LayoutWrapperMain>

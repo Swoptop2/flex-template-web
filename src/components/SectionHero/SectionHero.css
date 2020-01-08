@@ -32,15 +32,15 @@
   right: 0;
   bottom: 0;
   object-fit: cover;
-  height: 80%;
+  height: 85%;
   @media (--viewportLarge) {
     height: 65%;
   }
   @media (--viewportLargeWithPaddings) {
-    height: 110%;
+    height: 88.5%;
   }
   @media (min-width: 1700px) {
-    height: 70%;
+    height: 80%;
   }
 }
 

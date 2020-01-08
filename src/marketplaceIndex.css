@@ -9,7 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale; /* http://szafranek.net/blog/2009/02/22/font-smoothing-explained/ */
   text-rendering: optimizeSpeed;
 
-  background-color: var(--matterColorBright);
+  background-color: #ffffff;
 }
 
 ::selection {

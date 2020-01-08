@@ -5,25 +5,32 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
   @media (--viewportLarge) {
     flex-direction: row;
+    align-items: flex-start;
   }
 }
 
 .image {
   width: 335px;
-  margin: -20px auto 50px;
+  margin: 10px auto 50px;
   box-shadow: 0px 0px 5px #ccc;
+  order: 1;
   @media (--viewportMedium) {
     width: 580px;
+    order: 2;
   }
 }
 
 .content {
   margin: 15px auto;
+  order: 2;
   @media (--viewportMedium) {
-    margin-left: 95px;
-    transform: translateY(-35px);
+    margin-right: 95px;
+    order: 1;
   }
 }
 
@@ -49,6 +56,7 @@
 
 .button {
   @apply --marketplaceButtonStyles;
+
   padding: 20px;
 
   animation-delay: 0.8s;

@@ -11,11 +11,9 @@ exports[`TopbarDesktop data matches snapshot 1`] = `
     style={Object {}}
     title={null}
   >
-    <img
-      alt="TopbarDesktop.logo"
-      className={null}
-      src="swoptop-logo.jpeg"
-    />
+    <span>
+      Swoptop
+    </span>
   </a>
   <form
     action="/"
@@ -99,6 +97,17 @@ exports[`TopbarDesktop data matches snapshot 1`] = `
       <span>
         TopbarDesktop.inbox
       </span>
+    </span>
+  </a>
+  <a
+    className=""
+    href="/s?s?address=United+States&bounds=49.64,-66.43,23.88,-125.98"
+    onClick={[Function]}
+    style={Object {}}
+    title={null}
+  >
+    <span>
+      Browse Listings
     </span>
   </a>
   <div

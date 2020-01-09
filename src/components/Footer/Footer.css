@@ -7,7 +7,7 @@
 
   width: 100%;
   padding: 24px 24px 42px 24px;
-  background-color: var(--marketplaceColor);
+  background-color: #ffffff;
   border: 2px solid transparent;
 
   @media (--viewportMedium) {
@@ -55,9 +55,17 @@
   }
 }
 
+.logoTitle {
+  transform: translateX(-10px);
+  color: var(--marketplaceColor);
+  font-size: 30px;
+  font-weight: 900;
+}
+
 /* Mobile only social media links */
 .someLiksMobile {
   margin-bottom: 24px;
+  transform: translateX(10px);
 
   @media (--viewportMedium) {
     display: none;
@@ -70,6 +78,19 @@
   height: 24px;
   margin-right: 12px;
   text-align: center;
+}
+
+.linksContainer {
+  display: flex;
+  order: 2;
+  flex-direction: column;
+  margin-top: 30px;
+  @media (--viewportMedium) {
+    flex-direction: row;
+    margin-top: 0;
+    width: 70%;
+    justify-content: flex-end;
+  }
 }
 
 /* Footer links */
@@ -129,7 +150,7 @@
 
 .organizationDescription {
   @apply --marketplaceTinyFontStyles;
-  color: var(--matterColorLight);
+  color: var(--marketplaceColor);
 }
 
 .organizationCopyright {
@@ -148,8 +169,12 @@
 }
 
 .sectionTitle {
-  color: #ffffff;
-  font-weight: 700;
+  color: var(--marketplaceColor);
+  font-weight: 900;
+  font-size: 20px;
+  @media (--viewportMedium) {
+    font-size: 17.5px;
+  }
 }
 
 /* Desktop and Mobile: links to more information */
@@ -187,15 +212,16 @@
   /* Font */
   @apply --marketplaceH4FontStyles;
   line-height: 20px;
-  color: var(--matterColorLight);
+  color: var(--marketplaceColor);
   transition: var(--transitionStyleButton);
+  text-decoration: underline;
+  padding-bottom: 50px;
 
   margin-top: 0;
   margin-bottom: 12px;
 
   &:hover {
-    color: var(--successColor);
-    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
   }
 
   @media (--viewportMedium) {
@@ -234,7 +260,7 @@
 /* Desktop: extra links (social media links and legal links) */
 .extraLinks {
   flex-shrink: 0;
-  order: 5;
+  order: 1;
   display: none;
   flex-basis: 180px;
   margin-right: 24px;
@@ -280,7 +306,7 @@
 .terms {
   /* Font */
   @apply --marketplaceTinyFontStyles;
-  color: var(--matterColorLight);
+  color: var(--marketplaceColor);
   transition: var(--transitionStyleButton);
 
   margin-top: 0;
@@ -314,7 +340,7 @@
   justify-content: space-between;
   align-items: flex-end;
 
-  background-color: var(--marketplaceColorDark);
+  background-color: #ffffff;
 
   @media (--viewportMedium) {
     display: none;
@@ -324,7 +350,7 @@
 .organizationCopyrightMobile {
   /* Font */
   @apply --marketplaceTinyFontStyles;
-  color: var(--matterColorAnti);
+  color: var(--marketplaceColor);
   transition: var(--transitionStyleButton);
 
   /* Tell parent component how much space this one prefers */

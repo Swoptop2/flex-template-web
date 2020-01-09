@@ -31,6 +31,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  top: -72px;
 }
 
 .videoBg {
@@ -74,6 +75,7 @@
 
   @media (--viewportMedium) {
     margin: 50px 7.5vw 50px 7.5vw;
+    display: none;
   }
 
   /* Special viewport for adjusting the heroContent's placement */

@@ -6,7 +6,7 @@ import config from '../../config';
 import {
   IconSocialMediaInstagram,
   IconSocialMediaYoutube,
-  FooterLogo,
+  IconSocialMediaFacebook,
   ExternalLink,
   NamedLink,
 } from '../../components';
@@ -14,16 +14,16 @@ import {
 import css from './Footer.css';
 
 const renderSocialMediaLinks = intl => {
-  const { siteInstagramPage, siteYoutubePage } = config;
+  const { siteInstagramPage, siteYoutubePage, siteFacebookPage } = config;
 
-  // const goToFb = intl.formatMessage({ id: 'Footer.goToFacebook' });
+  const goToFb = intl.formatMessage({ id: 'Footer.goToFacebook' });
   const goToInsta = intl.formatMessage({ id: 'Footer.goToInstagram' });
 
-  // const fbLink = siteFacebookPage ? (
-  //   <ExternalLink key="linkToFacebook" href={siteFacebookPage} className={css.icon} title={goToFb}>
-  //     <IconSocialMediaFacebook />
-  //   </ExternalLink>
-  // ) : null;
+  const fbLink = siteFacebookPage ? (
+    <ExternalLink key="linkToFacebook" href={siteFacebookPage} className={css.icon} title={goToFb}>
+      <IconSocialMediaFacebook />
+    </ExternalLink>
+  ) : null;
 
   const instragramLink = siteInstagramPage ? (
     <ExternalLink
@@ -46,7 +46,7 @@ const renderSocialMediaLinks = intl => {
       <IconSocialMediaYoutube />
     </ExternalLink>
   ) : null;
-  return [instragramLink, youtubeLink].filter(v => v != null);
+  return [youtubeLink, fbLink, instragramLink].filter(v => v != null);
 };
 
 const Footer = props => {
@@ -58,76 +58,48 @@ const Footer = props => {
     <div className={classes}>
       <div className={css.topBorderWrapper}>
         <div className={css.content}>
-          <div className={css.someLiksMobile}>{socialMediaLinks}</div>
+          <div className={css.someLiksMobile}>
+            <h2 className={css.logoTitle}>Swoptop</h2>
+            {socialMediaLinks}
+          </div>
           <div className={css.links}>
-            <div className={css.organization} id="organization">
-              <NamedLink name="LandingPage" className={css.logoLink}>
-                <FooterLogo format="desktop" className={css.logo} />
-              </NamedLink>
-              <div className={css.organizationInfo}>
-                <p className={css.organizationDescription}>
-                  <FormattedMessage id="Footer.organizationDescription" />
-                </p>
-                <p className={css.organizationCopyright}>
-                  <NamedLink name="LandingPage" className={css.copyrightLink}>
-                    <FormattedMessage id="Footer.copyright" />
-                  </NamedLink>
-                </p>
+            <div className={css.linksContainer}>
+              <div className={css.infoLinks}>
+                <h3 className={css.sectionTitle}>Explore</h3>
+                <ul className={css.list}>
+                  <li className={css.listItem}>
+                    <NamedLink name="HowItWorksPage" className={css.link}>
+                      <span>How It Works</span>
+                    </NamedLink>
+                  </li>
+                  <li className={css.listItem}>
+                    <NamedLink name="AboutPage" className={css.link}>
+                      About Us
+                    </NamedLink>
+                  </li>
+                </ul>
+              </div>
+              <div className={css.infoLinks}>
+                <h3 className={css.sectionTitle}>Get Help</h3>
+                <ul className={css.list}>
+                  <li className={css.listItem}>
+                    <NamedLink name="FAQs" className={css.link}>
+                      FAQs
+                    </NamedLink>
+                  </li>
+                  <li className={css.listItem}>
+                    <NamedLink name="ContactUsPage" className={css.link}>
+                      Contact Us
+                    </NamedLink>
+                  </li>
+                </ul>
               </div>
             </div>
-            <div className={css.infoLinks}>
-              <h3 className={css.sectionTitle}>Explore</h3>
-              <ul className={css.list}>
-                <li className={css.listItem}>
-                  <NamedLink name="HowItWorksPage" className={css.link}>
-                    <span>How It Works</span>
-                  </NamedLink>
-                </li>
-                <li className={css.listItem}>
-                  <NamedLink name="BestPractices" className={css.link}>
-                    Best Renting Practices
-                  </NamedLink>
-                </li>
-              </ul>
-            </div>
-            <div className={css.infoLinks}>
-              <h3 className={css.sectionTitle}>Get Help</h3>
-              <ul className={css.list}>
-                <li className={css.listItem}>
-                  <NamedLink name="HelpWithPayments" className={css.link}>
-                    <span>Help With Payments</span>
-                  </NamedLink>
-                </li>
-                <li className={css.listItem}>
-                  <NamedLink name="FAQs" className={css.link}>
-                    FAQs
-                  </NamedLink>
-                </li>
-                <li className={css.listItem}>
-                  <NamedLink name="ContactUsPage" className={css.link}>
-                    Contact Us
-                  </NamedLink>
-                </li>
-              </ul>
-            </div>
-            <div className={css.infoLinks}>
-              <h3 className={css.sectionTitle}>About Us</h3>
-              <ul className={css.list}>
-                <li className={css.listItem}>
-                  <NamedLink name="VisionPage" className={css.link}>
-                    Our Vision
-                  </NamedLink>
-                </li>
-                <li className={css.listItem}>
-                  <NamedLink name="StoryPage" className={css.link}>
-                    Our Story
-                  </NamedLink>
-                </li>
-              </ul>
-            </div>
             <div className={css.extraLinks}>
-              <h3 className={css.sectionTitle}>Stay Connected</h3>
-              <div className={css.someLinks}>{socialMediaLinks}</div>
+              <div className={css.someLinks}>
+                <h2 className={css.logoTitle}>Swoptop</h2>
+                {socialMediaLinks}
+              </div>
             </div>
           </div>
           <div className={css.copyrightAndTermsMobile}>

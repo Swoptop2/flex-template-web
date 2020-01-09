@@ -52,6 +52,7 @@ const SectionHero = props => {
 
   return (
     <div className={css.hero}>
+      {/* TODO: display only on mobile */}
       <div className={css.heroContent}>
         <NamedLink
           name="SearchPage"
@@ -63,7 +64,7 @@ const SectionHero = props => {
           <FormattedMessage id="SectionHero.browseButton" />
         </NamedLink>
       </div>
-      <video playsInline disablePictureInPicture="true" className={css.videoBg} autoPlay muted loop>
+      <video playsInline disablePictureInPicture={true} className={css.videoBg} autoPlay muted loop>
         <source src={video} type="video/mp4" />
       </video>
     </div>

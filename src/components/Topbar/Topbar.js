@@ -12,7 +12,6 @@ import { createResourceLocatorString, pathByRouteName } from '../../util/routes'
 import { propTypes } from '../../util/types';
 import {
   Button,
-  Logo,
   Modal,
   ModalMissingInformation,
   NamedLink,
@@ -203,7 +202,7 @@ class TopbarComponent extends Component {
             name="LandingPage"
             title={intl.formatMessage({ id: 'Topbar.logoIcon' })}
           >
-            <Logo format="mobile" />
+            <h2 className={css.logoTitle}>Swoptop</h2>
           </NamedLink>
           <Button
             rootClassName={css.searchMenu}

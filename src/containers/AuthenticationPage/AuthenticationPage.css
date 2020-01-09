@@ -19,6 +19,7 @@
 .content {
   @apply --marketplaceModalBaseStyles;
   padding-top: 29px;
+  box-shadow: 0 0 5px var(--matterColor);
 }
 
 /* ================ Tabs & Form ================ */

@@ -18,6 +18,7 @@
     display: inline-block;
     margin: 24px 0;
     text-decoration: inherit;
+    color: black;
 
     @media (--viewportMedium) {
       margin: 24px 0;
@@ -50,10 +51,9 @@
   padding: 0 12px 0 0;
 
   /* fill */
-  background-color: var(--matterColorLight);
+  background-color: transparent;
 
   /* shadows */
-  box-shadow: var(--boxShadowLight);
 
   @media (--viewportLarge) {
     padding: 0 24px 0 0;
@@ -66,10 +66,17 @@
   flex-shrink: 0;
   padding: 8px 24px 21px 24px;
   height: 100%;
+  display: flex;
+  align-items: center;
 
   @media (--viewportLarge) {
-    padding: 8px 36px 21px 36px;
+    padding: 8px 36px 14px 36px;
   }
+}
+
+.homeLink {
+  font-size: 30px;
+  font-weight: 900;
 }
 
 .logo {
@@ -89,10 +96,9 @@
   flex-grow: 1;
   height: 100%;
   margin-right: 24px;
-  border-left-style: solid;
-  border-left-width: 1px;
-  border-left-color: var(--matterColorNegative);
-
+  &:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  }
   @media (--viewportLarge) {
     padding-left: 0;
   }
@@ -115,7 +121,6 @@
 
 /* Create listing (CTA for providers) */
 .createListingLink {
-  @apply --TopbarDesktop_linkHover;
   @apply --marketplaceH4FontStyles;
 
   flex-shrink: 0;
@@ -124,9 +129,11 @@
   color: var(--marketplaceColor);
   margin-top: 0;
   margin-bottom: 0;
+  font-weight: 900;
 
   &:hover {
     color: var(--marketplaceColorDark);
+    text-decoration: none;
   }
 
   @media (--viewportMedium) {
@@ -141,7 +148,6 @@
 
 /* Inbox */
 .inboxLink {
-  @apply --TopbarDesktop_linkHover;
   @apply --marketplaceH4FontStyles;
   height: 100%;
   padding: 0 12px 0 12px;
@@ -151,6 +157,7 @@
 
   &:hover {
     color: var(--matterColorDark);
+    text-decoration: none;
   }
 
   @media (--viewportMedium) {
@@ -231,10 +238,11 @@
 
 /* Authentication */
 .signupLink {
-  @apply --TopbarDesktop_linkHover;
   flex-shrink: 0;
   height: 100%;
   padding: 0 12px 0 12px;
+  display: flex;
+  align-items: center;
 
   color: var(--matterColor);
 
@@ -244,7 +252,6 @@
 }
 
 .loginLink {
-  @apply --TopbarDesktop_linkHover;
   flex-shrink: 0;
   height: 100%;
   padding: 0 12px 0 12px;
@@ -253,7 +260,15 @@
 
   &:hover {
     color: var(--matterColorDark);
+    text-decoration: none;
   }
+}
+
+.signup {
+  padding: 8px 15px;
+  color: #ffffff !important;
+  background-color: var(--marketplaceColor);
+  text-decoration: none;
 }
 
 .signup,

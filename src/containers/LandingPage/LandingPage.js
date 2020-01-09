@@ -75,11 +75,20 @@ export const LandingPageComponent = props => {
             </li>
             <li className={css.section}>
               <div className={css.sectionContent}>
-                <SectionHowItWorks />
+                <SectionHowItWorks currentUser={currentUser} />
               </div>
             </li>
             <li className={css.section}>
               <SectionContent />
+            </li>
+            <li className={css.section}>
+              <div className={css.quote}>
+                <q>
+                  Swoptop really positively impacts a college campus because it allows all types of
+                  girls opportunities to find clothes and make them feel their best self.
+                </q>
+                <span>-Julianna Sweeney</span>
+              </div>
             </li>
           </ul>
         </LayoutWrapperMain>

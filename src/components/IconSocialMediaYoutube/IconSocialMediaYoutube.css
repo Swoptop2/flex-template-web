@@ -1,7 +1,7 @@
 @import '../../marketplace.css';
 
 .root {
-  color: var(--matterColor);
+  color: var(--marketplaceColor);
   transition: var(--transitionStyleButton);
   &:hover {
     color: var(--successColor);

@@ -17,7 +17,7 @@ exports[`SectionHero matches snapshot 1`] = `
   </div>
   <video
     autoPlay={true}
-    disablePictureInPicture="true"
+    disablePictureInPicture={true}
     loop={true}
     muted={true}
     playsInline={true}

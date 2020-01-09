@@ -4,10 +4,11 @@ import { FormattedMessage, intlShape } from '../../util/reactIntl';
 import classNames from 'classnames';
 import { ACCOUNT_SETTINGS_PAGES } from '../../routeConfiguration';
 import { propTypes } from '../../util/types';
+import { types as sdkTypes } from '../../util/sdkLoader';
+import GeocoderMapbox from '../LocationAutocompleteInput/GeocoderMapbox';
 import {
   Avatar,
   InlineTextButton,
-  Logo,
   Menu,
   MenuLabel,
   MenuContent,
@@ -26,16 +27,41 @@ const TopbarDesktop = props => {
     rootClassName,
     currentUserHasListings,
     notificationCount,
-    intl,
     isAuthenticated,
     onLogout,
     onSearchSubmit,
     initialSearchFormValues,
   } = props;
   const [mounted, setMounted] = useState(false);
+  const [addressString, setAddressString] = useState(
+    `s?address=United+States&bounds=49.64,-66.43,23.88,-125.98`
+  );
+  const { LatLng } = sdkTypes;
+  const geoCode = new GeocoderMapbox();
 
   useEffect(() => {
     setMounted(true);
+    if (currentUser) {
+      const {
+        profile: {
+          protectedData: { city, state },
+        },
+      } = currentUser.attributes;
+      if (state && city) {
+        geoCode.getPlacePredictions(`${city}, ${state}`).then(res => {
+          const origin = new LatLng(res.predictions[0].center[1], res.predictions[0].center[0]);
+          const { lat, lng } = origin;
+          const firstLat = lat + 1;
+          const firstLng = lng + 1;
+          const secondLat = lat - 1;
+          const secondLng = lng - 1;
+          setAddressString(
+            `s?address=United+States&bounds=${firstLat},${firstLng},${secondLat},${secondLng}`
+          );
+        });
+      }
+    }
+    // eslint-disable-next-line
   }, []);
 
   const authenticatedOnClientSide = mounted && isAuthenticated;
@@ -118,7 +144,7 @@ const TopbarDesktop = props => {
 
   const signupLink = isAuthenticatedOrJustHydrated ? null : (
     <NamedLink name="SignupPage" className={css.signupLink}>
-      <span className={css.signup}>
+      <span className={css.login}>
         <FormattedMessage id="TopbarDesktop.signup" />
       </span>
     </NamedLink>
@@ -132,20 +158,16 @@ const TopbarDesktop = props => {
     </NamedLink>
   );
 
-  const howItWorksLink = isAuthenticatedOrJustHydrated ? null : (
-    <NamedLink name="HowItWorksPage" className={css.loginLink}>
-      <span className={css.login}>How it Works</span>
+  const browseLink = (
+    <NamedLink name="SearchPage" to={{ search: addressString }} className={css.signupLink}>
+      <span className={css.signup}>Browse Listings</span>
     </NamedLink>
   );
 
   return (
     <nav className={classes}>
       <NamedLink className={css.logoLink} name="LandingPage">
-        <Logo
-          format="desktop"
-          className={css.logo}
-          alt={intl.formatMessage({ id: 'TopbarDesktop.logo' })}
-        />
+        <span className={css.homeLink}>Swoptop</span>
       </NamedLink>
       {search}
       <NamedLink className={css.createListingLink} name="NewListingPage">
@@ -154,10 +176,10 @@ const TopbarDesktop = props => {
         </span>
       </NamedLink>
       {inboxLink}
-      {howItWorksLink}
-      {profileMenu}
-      {signupLink}
       {loginLink}
+      {signupLink}
+      {browseLink}
+      {profileMenu}
     </nav>
   );
 };

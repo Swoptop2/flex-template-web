@@ -59,6 +59,9 @@
 
   @media (--viewportMedium) {
     display: block;
-    width: 34%;
+    width: 64%;
+  }
+  @media (--viewportLarge) {
+    width: 38%;
   }
 }

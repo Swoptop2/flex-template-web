@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { string } from 'prop-types';
 import { FormattedMessage } from '../../util/reactIntl';
-import classNames from 'classnames';
 import { NamedLink } from '../../components';
 import { types as sdkTypes } from '../../util/sdkLoader';
 import GeocoderMapbox from '../LocationAutocompleteInput/GeocoderMapbox';
@@ -12,7 +11,7 @@ import css from './SectionHero.css';
 import video from './heroVideo.mp4';
 
 const SectionHero = props => {
-  const { rootClassName, className, currentUser } = props;
+  const { currentUser } = props;
   const { LatLng } = sdkTypes;
   const geoCode = new GeocoderMapbox();
   const [addressString, setAddressString] = useState(
@@ -51,10 +50,8 @@ const SectionHero = props => {
     // eslint-disable-next-line
   }, []);
 
-  const classes = classNames(rootClassName || css.root, className);
-
   return (
-    <div className={classes}>
+    <div className={css.hero}>
       <div className={css.heroContent}>
         <NamedLink
           name="SearchPage"

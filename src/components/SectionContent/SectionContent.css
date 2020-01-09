@@ -65,6 +65,9 @@
 
   @media (--viewportMedium) {
     display: block;
+    width: 74%;
+  }
+  @media (--viewportLarge) {
     width: 44%;
   }
 }

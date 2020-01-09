@@ -24,30 +24,24 @@
   }
 }
 
+.hero {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
 .videoBg {
   position: absolute;
   width: 100%;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  z-index: -1;
+  min-height: 100%;
+  min-width: 100%;
   object-fit: cover;
-  height: 85%;
-  @media (--viewportLarge) {
-    height: 65%;
-  }
-  @media (--viewportLargeWithPaddings) {
-    height: 88.5%;
-  }
-  @media (--viewportLargeWithPaddings) and (min-height: 590px) {
-    height: 110%;
-  }
-  @media (min-width: 1700px) {
-    height: 80%;
-  }
-  @media (min-width: 1700px) and (min-height: 950px) {
-    height: 65%;
-  }
 }
 
 /* Animation for the hero elements */
@@ -76,11 +70,10 @@
 }
 
 .heroContent {
-  margin: 0 24px 0 24px;
-  z-index: 1;
+  margin: 50px 24px 50px 24px;
 
   @media (--viewportMedium) {
-    margin: 0 7.5vw 0 7.5vw;
+    margin: 50px 7.5vw 50px 7.5vw;
   }
 
   /* Special viewport for adjusting the heroContent's placement */
@@ -90,7 +83,7 @@
   }
 
   @media only screen and (min-width: 1367px) {
-    margin: 0 auto;
+    margin: 100px auto;
     max-width: calc(1052px + 36px + 36px);
     width: 100%;
     padding: 0 36px 0 36px;

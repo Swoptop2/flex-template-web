@@ -153,11 +153,11 @@
   /* ================ Buttons ================ */
 
   --marketplaceButtonFontStyles: {
-    font-family: 'Chivo', Helvetica, Arial, sans-serif;
-    font-weight: var(--fontWeightSemiBold);
-    font-size: 18px;
+    font-family: 'Poppins', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 15px;
     line-height: 24px;
-    letter-spacing: -0.3px;
+    letter-spacing: 0.7px;
 
     @media (--viewportMedium) {
       /* TODO: Make sure button text aligns with the baseline */

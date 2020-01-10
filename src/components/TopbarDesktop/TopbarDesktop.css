@@ -264,13 +264,6 @@
   }
 }
 
-.signup {
-  padding: 8px 15px;
-  color: #ffffff !important;
-  background-color: var(--marketplaceColor);
-  text-decoration: none;
-}
-
 .login:hover {
   text-decoration: none;
 }
@@ -279,6 +272,21 @@
 .login {
   @apply --marketplaceH4FontStyles;
   @apply --TopbarDesktop_label;
+}
+
+.signup {
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 14px !important;
+  line-height: 24px;
+  letter-spacing: 1px;
+  padding: 8px 15px;
+  color: #ffffff !important;
+  background-color: var(--marketplaceColor);
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 /* left animated "border" like hover element */

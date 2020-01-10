@@ -160,7 +160,7 @@ const TopbarDesktop = props => {
 
   const browseLink = (
     <NamedLink name="SearchPage" to={{ search: addressString }} className={css.signupLink}>
-      <span className={css.signup}>Browse Listings</span>
+      <span className={css.signup}>Sign Up</span>
     </NamedLink>
   );
 

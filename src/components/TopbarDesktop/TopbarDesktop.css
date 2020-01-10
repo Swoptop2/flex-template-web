@@ -271,6 +271,10 @@
   text-decoration: none;
 }
 
+.login:hover {
+  text-decoration: none;
+}
+
 .signup,
 .login {
   @apply --marketplaceH4FontStyles;

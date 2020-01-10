@@ -5,54 +5,76 @@
   background-color: var(--matterColorLight);
 }
 
-.content {
-  padding: 15px;
+.title {
+  text-align: center;
+  color: var(--marketplaceColor);
+  font-weight: 900;
+  word-spacing: 1.3px;
+  letter-spacing: 1.3px;
+  margin-bottom: 40px;
+  font-size: 37px;
+  line-height: 1.4;
   @media (--viewportMedium) {
-    padding: 24px 65px;
+    font-size: 41px;
   }
 }
 
-.title {
+.sectionContainer {
+  margin-bottom: 110px;
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  padding: 5px;
+  @media (--viewportLarge) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }
+}
+
+.step {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.stepText {
+  text-align: left;
+}
+
+.stepText h2 {
+  text-align: center;
+  font-size: 35px;
+  color: var(--marketplaceColor);
+  font-weight: 900;
+  margin-bottom: 32px;
+}
+
+.stepText p,
+.stepText li {
+  color: var(--marketplaceColor);
+  line-height: 1.7;
+  font-size: 21px;
+  @media (--viewportLarge) {
+    font-size: 16px;
+  }
+}
+
+.centered {
   text-align: center;
 }
 
-.links {
-  width: 82%;
-  margin: 45px auto 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-
-  @media (--viewportMedium) {
-    justify-content: space-between;
-    flex-direction: row;
-  }
+.stepText ul {
+  list-style-type: disc;
+  margin-left: 20px;
 }
 
-.link {
-  color: var(--matterColor);
-  &:hover {
-    color: var(--marketplaceColor);
-  }
-  margin-bottom: 10px;
-}
-
-.active {
-  color: var(--marketplaceColor);
-  margin-bottom: 10px;
-  border-bottom: 1px solid var(--marketplaceColor);
-  padding-bottom: 5px;
-}
-
-.explanationContainer {
-  margin-top: 35px;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 40px;
-  @media (--viewportMedium) {
-    grid-template-columns: 1fr 1fr;
-  }
+.stepImg {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 35px;
+  box-shadow: 0 0 5px #ccc;
 }
 
 .img {
@@ -64,7 +86,31 @@
   }
 }
 
-.dateImg {
+.button {
+  @apply --marketplaceButtonStyles;
+  margin: 0 auto;
+  width: 70%;
+  padding: 20px;
+  justify-self: center;
+  animation-delay: 0.8s;
+  @media (--viewportMedium) {
+    width: 20%;
+  }
+}
+
+.longBtn {
+  @apply --marketplaceButtonStyles;
+  margin: 0 auto;
+  width: 70%;
+  padding: 20px;
+  justify-self: center;
+  animation-delay: 0.8s;
+  @media (--viewportMedium) {
+    width: 25%;
+  }
+}
+
+/* .dateImg {
   max-width: 300px;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
   max-height: 500px;
@@ -90,18 +136,7 @@
   @media (--viewportLarge) {
     max-width: 450px;
   }
-}
-
-.finalStep {
-  margin: 65px auto;
-  @media (--viewportLarge) {
-    width: 50%;
-  }
-}
-
-.stepTitle {
-  text-align: center;
-}
+} */
 
 /* these need to have classes */
 ol li,

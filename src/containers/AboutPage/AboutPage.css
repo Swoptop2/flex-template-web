@@ -6,7 +6,7 @@
 
 .staticPageWrapper {
   width: calc(100% - 48px);
-  max-width: 1056px;
+  max-width: 1256px;
   margin: 24px auto;
 
   @media (--viewportMedium) {
@@ -15,48 +15,105 @@
   }
 }
 
-.coverImage {
-  width: 100%;
-  height: 528px;
-  border-radius: 4px;
-  object-fit: cover;
-  margin: 32px 0 40px;
-}
-
-.link {
-  color: var(--marketplaceColor);
-}
-
-.contentWrapper {
+.section,
+.lastSection {
   display: flex;
-  flex-wrap: wrap;
+  min-height: 550px;
+  flex-direction: column;
+  margin-bottom: 60px;
+  @media (--viewportMedium) {
+    flex-direction: row;
+    min-height: 450px;
+  }
+}
+
+.lastSection {
+  min-height: 650px;
+  @media (--viewportMedium) {
+    min-height: 450px;
+  }
+}
+
+.title {
+  color: #000000;
+  margin: 0;
+  font-size: 43px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  margin-bottom: 40px;
+}
+
+.videoContainer {
+  flex: 2;
+  position: relative;
+  box-shadow: 0px 0px 6px #ccc;
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.visionContent {
+  flex: 2;
+}
+
+.visionContent p,
+.visionContent li {
+  color: #000000;
+  font-size: 19px;
+  line-height: 1.7;
+  @media (--viewportLarge) {
+    font-size: 16px;
+  }
+}
+
+.thumbnail {
+  height: 100%;
+  position: relative;
+  display: flex;
   justify-content: center;
-
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
   @media (--viewportMedium) {
-    flex-wrap: nowrap;
+    position: relative;
+    /* margin-left: 20px; */
   }
 }
 
-.contentSide {
-  font-style: italic;
+.thumbImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 
+.text,
+.lastText {
+  flex: 0.5;
   @media (--viewportMedium) {
-    width: 193px;
-    margin-right: 103px;
-    margin-top: 8px;
+    flex: 1;
   }
 }
 
-.contentMain {
-  width: 90%;
-
-  @media (--viewportMedium) {
-    max-width: 650px;
-  }
+.lastText {
+  padding-right: 20px;
 }
 
-.subtitle {
-  @apply --marketplaceH3FontStyles;
-  margin-top: 48px;
-  margin-bottom: 24px;
+.text p,
+.lastText p {
+  color: #000000;
+  font-size: 19px;
+  line-height: 1.7;
+  @media (--viewportLarge) {
+    font-size: 16px;
+  }
 }

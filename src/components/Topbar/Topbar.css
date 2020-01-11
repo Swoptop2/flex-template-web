@@ -24,6 +24,7 @@
 .logoTitle {
   font-weight: 900;
   color: var(--marketplaceColor);
+  font-size: 35px;
 }
 
 .container {

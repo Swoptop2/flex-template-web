@@ -96,7 +96,7 @@
 .button {
   @apply --marketplaceButtonStyles;
   margin: 0 auto;
-  width: 70%;
+  width: 73%;
   padding: 20px;
   justify-self: center;
   animation-delay: 0.8s;
@@ -108,7 +108,7 @@
 .longBtn {
   @apply --marketplaceButtonStyles;
   margin: 0 auto;
-  width: 70%;
+  width: 77%;
   padding: 20px;
   justify-self: center;
   animation-delay: 0.8s;

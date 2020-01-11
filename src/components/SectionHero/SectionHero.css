@@ -32,6 +32,10 @@
   align-items: flex-end;
   justify-content: center;
   top: -92px;
+  min-height: 95vh;
+  @media (--viewportMedium) {
+    min-height: none;
+  }
 }
 
 .videoBg {
@@ -126,9 +130,11 @@
   padding: 20px;
 
   animation-delay: 0.8s;
+  transform: translateY(-120px);
 
   @media (--viewportMedium) {
     display: block;
     width: 260px;
+    transform: translateY(0);
   }
 }

@@ -62,7 +62,7 @@
   padding: 20px;
 
   animation-delay: 0.8s;
-  width: 72%;
+  width: 82%;
 
   @media (--viewportMedium) {
     display: block;

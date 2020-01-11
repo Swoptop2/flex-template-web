@@ -6,7 +6,7 @@
 
 .staticPageWrapper {
   width: calc(100% - 48px);
-  max-width: 1256px;
+  max-width: 1380px;
   margin: 24px auto;
 
   @media (--viewportMedium) {
@@ -24,14 +24,14 @@
   margin-bottom: 90px;
   @media (--viewportMedium) {
     flex-direction: row;
-    min-height: 440px;
+    min-height: 510px;
   }
 }
 
 .lastSection {
   min-height: 800px;
   @media (--viewportMedium) {
-    min-height: 450px;
+    min-height: 510px;
   }
 }
 
@@ -66,9 +66,9 @@
 .visionContent li {
   color: #000000;
   font-size: 19px;
-  line-height: 1.7;
+  line-height: 1.9;
   @media (--viewportLarge) {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
@@ -116,6 +116,6 @@
   font-size: 20px;
   line-height: 1.9;
   @media (--viewportLarge) {
-    font-size: 17px;
+    font-size: 18px;
   }
 }

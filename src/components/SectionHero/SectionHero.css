@@ -32,7 +32,7 @@
   align-items: flex-end;
   justify-content: center;
   top: -92px;
-  min-height: 95vh;
+  min-height: 105vh;
   @media (--viewportMedium) {
     min-height: none;
   }
@@ -130,7 +130,7 @@
   padding: 20px;
 
   animation-delay: 0.8s;
-  transform: translateY(-120px);
+  transform: translateY(-130px);
 
   @media (--viewportMedium) {
     display: block;

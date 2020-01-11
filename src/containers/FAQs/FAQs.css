@@ -6,8 +6,9 @@
 
 .content {
   padding: 15px;
+  padding: 24px 33px;
   @media (--viewportMedium) {
-    padding: 24px 65px;
+    padding: 24px 110px;
   }
 }
 
@@ -41,15 +42,18 @@
 .col h2 {
   font-size: 23px;
   font-weight: 900;
+  line-height: 1.7;
   @media (--viewportMedium) {
-    font-size: 18px;
+    font-size: 19px;
+    margin-bottom: 32px;
   }
 }
 
 .col p {
   font-size: 19px;
+  line-height: 1.85;
   @media (--viewportMedium) {
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 17px;
+    line-height: 1.9;
   }
 }

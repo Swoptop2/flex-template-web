@@ -64,7 +64,7 @@
   line-height: 1.8;
   font-size: 20px;
   @media (--viewportLarge) {
-    font-size: 17px;
+    font-size: 18px;
   }
 }
 

@@ -78,7 +78,7 @@ const GirlsVideo = _ => {
           <div className={css.thumbnail}>
             <i
               onClick={handleClickVideo}
-              style={{ fontSize: '35px', color: 'rgba(0, 0, 0, 0.7)', cursor: 'pointer' }}
+              style={{ fontSize: '35px', color: 'rgba(255, 255, 255, 0.7)', cursor: 'pointer' }}
               className="fa fa-play"
             ></i>
             <img src={girlsImg} className={css.thumbImg} alt="Our Why Thumbnail" />

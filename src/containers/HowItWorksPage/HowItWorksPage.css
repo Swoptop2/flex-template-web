@@ -11,16 +11,22 @@
   font-weight: 900;
   word-spacing: 1.3px;
   letter-spacing: 1.3px;
-  margin-bottom: 40px;
-  font-size: 37px;
+  margin-top: 120px;
+  margin-bottom: 65px;
+  font-size: 39px;
   line-height: 1.4;
   @media (--viewportMedium) {
-    font-size: 41px;
+    font-size: 43px;
   }
 }
 
 .sectionContainer {
-  margin-bottom: 110px;
+  margin: 10px 35px;
+  margin-bottom: 160px;
+  @media (--viewportMedium) {
+    margin: 10px 50px;
+    margin-bottom: 160px;
+  }
 }
 
 .section {
@@ -30,7 +36,7 @@
   padding: 5px;
   @media (--viewportLarge) {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 45px;
   }
 }
 
@@ -45,19 +51,20 @@
 
 .stepText h2 {
   text-align: center;
-  font-size: 35px;
+  font-size: 37px;
   color: var(--marketplaceColor);
   font-weight: 900;
   margin-bottom: 32px;
+  line-height: 1.5;
 }
 
 .stepText p,
 .stepText li {
   color: var(--marketplaceColor);
-  line-height: 1.7;
-  font-size: 19px;
+  line-height: 1.8;
+  font-size: 20px;
   @media (--viewportLarge) {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 

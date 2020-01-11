@@ -30,7 +30,7 @@ const FAQs = () => {
             <h1 className={css.title}>FAQs: Renter</h1>
             <section className={css.section}>
               <div className={css.col}>
-                <h2>How long unitl my rental request is accepted?</h2>
+                <h2>How long until my rental request is accepted?</h2>
                 <p>
                   The Owner has up until the day before the rental to accept or deny your request.
                 </p>
@@ -73,12 +73,6 @@ const FAQs = () => {
                 <h2>
                   What happens if I am unable to return the item by the end of the rental period?
                 </h2>
-                <p>
-                  First, out of courtesy please reach out to the Owner to let them know. If you fail
-                  to return the item by the end of the third day of the rental period you will be
-                  charged a $10/day late fee.
-                </p>
-                <h2>What happens if an item I rented is not in good condition?</h2>
                 <p>
                   First, out of courtesy please reach out to the Owner to let them know. If you fail
                   to return the item by the end of the third day of the rental period you will be

@@ -277,7 +277,7 @@
 .signup {
   font-family: 'Poppins', Helvetica, Arial, sans-serif;
   font-weight: 900;
-  font-size: 14px !important;
+  font-size: 16px !important;
   line-height: 24px;
   letter-spacing: 1px;
   padding: 8px 15px;
@@ -334,7 +334,7 @@
   @apply --marketplaceLinkStyles;
   /* Font is specific to this component */
   @apply --marketplaceH4FontStyles;
-  font-size: 14px;
+  font-size: 16px;
 
   /* Dimensions */
   position: relative;

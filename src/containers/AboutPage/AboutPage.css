@@ -20,15 +20,16 @@
   display: flex;
   min-height: 550px;
   flex-direction: column;
-  margin-bottom: 60px;
+  margin: 20px;
+  margin-bottom: 90px;
   @media (--viewportMedium) {
     flex-direction: row;
-    min-height: 450px;
+    min-height: 440px;
   }
 }
 
 .lastSection {
-  min-height: 650px;
+  min-height: 800px;
   @media (--viewportMedium) {
     min-height: 450px;
   }
@@ -37,14 +38,14 @@
 .title {
   color: #000000;
   margin: 0;
-  font-size: 43px;
+  font-size: 44.5px;
   font-weight: 900;
   letter-spacing: 1.2px;
   margin-bottom: 40px;
 }
 
 .videoContainer {
-  flex: 2;
+  flex: 1.5;
   position: relative;
   box-shadow: 0px 0px 6px #ccc;
 }
@@ -58,7 +59,7 @@
 }
 
 .visionContent {
-  flex: 2;
+  flex: 1.5;
 }
 
 .visionContent p,
@@ -100,7 +101,8 @@
 .lastText {
   flex: 0.5;
   @media (--viewportMedium) {
-    flex: 1;
+    flex: 0.8;
+    padding-right: 30px;
   }
 }
 
@@ -111,9 +113,9 @@
 .text p,
 .lastText p {
   color: #000000;
-  font-size: 19px;
-  line-height: 1.7;
+  font-size: 20px;
+  line-height: 1.9;
   @media (--viewportLarge) {
-    font-size: 16px;
+    font-size: 17px;
   }
 }

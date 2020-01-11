@@ -9,7 +9,11 @@ const handleEmailRequest = (req, res) => {
   if (action === 'contact') {
     const { values } = req.query;
     const info = JSON.parse(values);
-    const msg = constructMessage(info.email, `Message by ${info.name} from Swoptop`, info.message);
+    const msg = constructMessage(
+      info.email,
+      `Message by ${info.firstName} ${info.lastName} from Swoptop`,
+      info.message
+    );
     sgMail
       .send(msg)
       .then(response => {

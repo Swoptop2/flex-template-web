@@ -4,41 +4,74 @@
 
 .content {
   padding: 15px;
+  display: flex;
+  margin-top: 70px;
+  flex-direction: column;
   @media (--viewportMedium) {
-    padding: 24px 65px;
+    padding: 24px 50px;
+    flex-direction: row;
   }
 }
 
 .title {
-  text-align: center;
+  color: #000000;
+  font-size: 45px;
+  margin-bottom: 28px;
+  font-weight: 900;
 }
 
-.sectionTitle {
-  font-weight: 400;
-  text-align: center;
-  font-size: 25px;
-  margin-top: 40px;
-  margin-bottom: 0px;
-  line-height: 1.1;
-  @media (--viewportMedium) {
-    font-size: 30px;
-  }
+.contactInfo {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.contactInfo p {
+  color: #000000;
+  line-height: 1.9;
+  margin-bottom: 36px;
+  font-size: 18px;
+}
+
+.socialIcons {
+  width: 31%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 85%;
+  width: 100%;
   margin: 10px auto;
+  padding: 5px;
+  flex: 1.8;
   @media (--viewportMedium) {
     width: 55%;
   }
 }
 
+.nameInputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+}
+
 .form input,
 .form textarea {
-  margin-top: 55px;
+  border: 1.3px solid #ccc;
+  border-radius: 2px;
+  background-color: #fafafa;
+}
+
+.input {
+  margin-top: 25px;
+  width: 100%;
+}
+
+.input p {
+  margin: 0;
+  font-size: 17px;
 }
 
 .errorInput {
@@ -51,20 +84,21 @@
   padding: 0;
   color: red;
   font-style: bold;
-  font-size: 16px;
 }
 
 .button {
   outline: none;
-  background-color: #ff0484;
+  background-color: #000;
   text-decoration: none;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
   border: none;
-  border-radius: 6px;
-  padding: 15px 65px;
   color: #fff;
-  margin-top: 85px;
+  font-weight: 900;
+  text-align: center;
+  margin-top: 25px;
+  font-size: 18px;
+  padding: 20px 30px;
   @media (--viewportMedium) {
-    padding: 15px 80px;
+    padding: 20px 30px;
   }
 }

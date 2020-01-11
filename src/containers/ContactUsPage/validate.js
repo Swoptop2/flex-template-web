@@ -1,8 +1,15 @@
 const validateValues = {
-  validateName(value) {
+  validateFirstName(value) {
     let error = '';
-    if (!value.name) {
-      error = 'Your name is required';
+    if (!value.firstName) {
+      error = 'Your first name is required';
+    }
+    return error;
+  },
+  validateLastName(value) {
+    let error = '';
+    if (!value.lastName) {
+      error = 'Your last name is required';
     }
     return error;
   },

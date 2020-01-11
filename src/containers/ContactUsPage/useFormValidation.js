@@ -4,7 +4,8 @@ import swal from 'sweetalert';
 
 const useFormValidation = (initialState, validate) => {
   const [values, setValues] = useState(initialState);
-  const [nameError, setNameError] = useState('');
+  const [firstNameError, setFirstNameError] = useState('');
+  const [lastNameError, setLastNameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [messageError, setMessageError] = useState('');
 
@@ -15,9 +16,15 @@ const useFormValidation = (initialState, validate) => {
     });
   };
 
-  const handleNameBlur = () => {
-    const validationErrors = validate.validateName(values);
-    setNameError(validationErrors);
+  const handleFirstNameBlur = () => {
+    console.log('validating');
+    const validationErrors = validate.validateFirstName(values);
+    setFirstNameError(validationErrors);
+  };
+
+  const handleLastNameBlur = () => {
+    const validationErrors = validate.validateLastName(values);
+    setLastNameError(validationErrors);
   };
 
   const handleEmailBlur = () => {
@@ -33,7 +40,8 @@ const useFormValidation = (initialState, validate) => {
   const handleSubmit = event => {
     event.preventDefault();
     if (
-      nameError === '' &&
+      firstNameError === '' &&
+      lastNameError === '' &&
       emailError === '' &&
       messageError === '' &&
       values.name !== '' &&
@@ -76,11 +84,13 @@ const useFormValidation = (initialState, validate) => {
   return {
     handleSubmit,
     handleChange,
-    handleNameBlur,
+    handleFirstNameBlur,
+    handleLastNameBlur,
     handleEmailBlur,
     handleMessageBlur,
     values,
-    nameError,
+    firstNameError,
+    lastNameError,
     emailError,
     messageError,
   };

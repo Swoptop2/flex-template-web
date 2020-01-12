@@ -158,6 +158,10 @@
   border-bottom-color: var(--matterColorAnti);
 }
 
+.message label {
+  margin-bottom: 20px;
+}
+
 .submitContainer {
   margin-top: auto;
 

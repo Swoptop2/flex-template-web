@@ -11,7 +11,7 @@
  */
 
   --DateRangeInput_selectionHeight: 36px;
-  --DateRangeInput_hoveredOverlayColor: rgba(255, 255, 255, 0.2);
+  --DateRangeInput_hoveredOverlayColor: rgba(0, 0, 0, 0.5);
 
   /* Distance to top */
   --DateRangeInput_top: 252px;
@@ -32,7 +32,7 @@
     top: 36px !important;
     width: 100%;
     min-height: calc(100vh - var(--DateRangeInput_top));
-    background-color: var(--marketplaceColor);
+    background-color: #ffffff;
 
     @media (--viewportMedium) {
       /* !important is added to top because react-dates uses inline style for height */
@@ -58,7 +58,7 @@
   }
   & :global(.DayPicker__horizontal) {
     margin: 0 auto;
-    background-color: var(--marketplaceColor);
+    background-color: #ffffff;
     box-shadow: none;
   }
 
@@ -102,7 +102,7 @@
     }
   }
   & :global(.DayPicker_weekHeader) {
-    color: var(--matterColorLight);
+    color: #000000;
     top: 57px;
   }
 
@@ -115,7 +115,7 @@
   }
 
   & :global(.CalendarMonth_caption) {
-    color: var(--matterColorLight);
+    color: #000000;
     @apply --marketplaceH2FontStyles;
     margin: 1px 0 14px;
     font-weight: 400;
@@ -127,7 +127,7 @@
   }
 
   & :global(.CalendarDay__default) {
-    background-color: var(--marketplaceColor);
+    background-color: #ffffff;
     border: 0;
     padding: 0;
     width: 100%;
@@ -135,7 +135,7 @@
   }
   & :global(.CalendarDay) {
     @apply --marketplaceH4FontStyles;
-    color: var(--matterColorLight);
+    color: #000000;
     border: 0;
     margin-top: 0;
     margin-bottom: 0;
@@ -220,7 +220,7 @@
     background-color: var(--successColor);
     border-top-right-radius: calc(var(--DateRangeInput_selectionHeight) / 2);
     border-bottom-right-radius: calc(var(--DateRangeInput_selectionHeight) / 2);
-    color: var(--matterColorLight);
+    color: #000000;
   }
   & :global(.CalendarDay:hover .renderedDay) {
     display: flex;
@@ -235,7 +235,7 @@
   & :global(.CalendarDay__blocked_out_of_range:active),
   & :global(.CalendarDay__blocked_out_of_range:hover) {
     background-color: transparent;
-    color: var(--marketplaceColorDark);
+    color: #ccc;
     border: 0;
   }
   /* Remove default bg-color and use our extra span instead '.renderedDay' */
@@ -243,7 +243,7 @@
   & :global(.CalendarDay__blocked_calendar:active),
   & :global(.CalendarDay__blocked_calendar:hover) {
     background-color: transparent;
-    color: var(--marketplaceColorDark);
+    color: #ccc;
     border: 0;
   }
   & :global(.CalendarDay__blocked_out_of_range .CalendarDay__blocked_calendar .renderedDay) {

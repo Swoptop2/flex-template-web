@@ -31,6 +31,7 @@ export class BookingDatesFormComponent extends Component {
   }
 
   componentDidMount() {
+    // TODO: store missingAvatar boolean in localStorage since it changes on refresh
     if (this.props.currentUser) {
       if (this.props.currentUser.profileImage) {
         this.setState({ missingAvatar: false });
@@ -114,6 +115,40 @@ export class BookingDatesFormComponent extends Component {
             fetchTimeSlotsError,
           } = fieldRenderProps;
           const { startDate, endDate } = values && values.bookingDates ? values.bookingDates : {};
+          let datesOutOfRange = false;
+
+          const datesUnavailable = (timeSlots, startDate, middleDate, endDate) => {
+            let shouldBlockBtn = false;
+            const firstAvailable = timeSlots.some(
+              slot =>
+                startDate.getMonth() === slot.attributes.start.getMonth() &&
+                startDate.getDate() === slot.attributes.start.getDate()
+            );
+            const middleAvailable = timeSlots.some(
+              slot =>
+                middleDate.getMonth() === slot.attributes.start.getMonth() &&
+                middleDate.getDate() === slot.attributes.start.getDate()
+            );
+            const lastAvailable = timeSlots.some(
+              slot =>
+                endDate.getMonth() === slot.attributes.start.getMonth() &&
+                endDate.getDate() === slot.attributes.start.getDate()
+            );
+            if (firstAvailable === false || lastAvailable === false || middleAvailable === false) {
+              shouldBlockBtn = true;
+            }
+            return shouldBlockBtn;
+          };
+
+          if (startDate) {
+            const middleDate = new Date(startDate.getTime());
+            middleDate.setDate(middleDate.getDate() + 1);
+
+            const shouldBlock = datesUnavailable(timeSlots, startDate, middleDate, endDate);
+            if (shouldBlock) {
+              datesOutOfRange = true;
+            }
+          }
 
           const bookingStartLabel = intl.formatMessage({
             id: 'BookingDatesForm.bookingStartTitle',
@@ -200,6 +235,12 @@ export class BookingDatesFormComponent extends Component {
                   bookingDatesRequired(startDateErrorMessage, endDateErrorMessage)
                 )}
               />
+              {datesOutOfRange && this.props.currentUser != null ? (
+                <p className={css.note}>
+                  *You need to select a a booking period of 3 consecutive available dates to be able
+                  to book.
+                </p>
+              ) : null}
               {bookingInfo}
               <p className={css.smallPrint}>
                 <FormattedMessage
@@ -216,7 +257,8 @@ export class BookingDatesFormComponent extends Component {
                   disabled={
                     (this.state.missingAvatar && this.props.currentUser != null) ||
                     (this.state.missingInsta && this.props.currentUser != null) ||
-                    (this.state.missingLocation && this.props.currentUser != null)
+                    (this.state.missingLocation && this.props.currentUser != null) ||
+                    (datesOutOfRange && this.props.currentUser != null)
                   }
                 >
                   <FormattedMessage id="BookingDatesForm.requestToBook" />
@@ -234,6 +276,12 @@ export class BookingDatesFormComponent extends Component {
                     Profile Settings to do so.
                   </p>
                 ) : null}
+                {/* {datesOutOfRange && this.props.currentUser != null ? (
+                  <p className={css.note}>
+                    *You need to select a a booking period of 3 consecutive available dates to be
+                    able to book.
+                  </p>
+                ) : null} */}
               </div>
             </Form>
           );

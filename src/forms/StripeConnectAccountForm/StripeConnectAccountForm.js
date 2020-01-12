@@ -14,6 +14,7 @@ import {
   FieldSelect,
   Form,
   StripeBankAccountTokenInputField,
+  NamedLink,
 } from '../../components';
 
 import css from './StripeConnectAccountForm.css';
@@ -241,7 +242,10 @@ const StripeConnectAccountFormComponent = props => {
             <ErrorsMaybe stripeAccountError={stripeAccountError} />
 
             {children}
-
+            <p style={{ fontSize: '17px' }}>
+              Having trouble? Click <NamedLink name="ContactUsPage">here</NamedLink> to contact
+              support
+            </p>
             {submitButtonMaybe}
           </Form>
         ) : (

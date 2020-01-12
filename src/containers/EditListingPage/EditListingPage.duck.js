@@ -539,7 +539,7 @@ export const requestPublishListingDraft = listingId => (dispatch, getState, sdk)
           swal({
             title: 'Listing added!',
             text:
-              'The Swoptop team has been notified about your new listing and will approve it as soon as possible. If the team takes too long to approve your listing, please let us now by sending an email to support@swoptop.com.',
+              'The Swoptop team has been notified about your new listing and will approve it as soon as possible.',
             icon: 'success',
           });
         })

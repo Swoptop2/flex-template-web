@@ -19,7 +19,7 @@ const SectionContent = props => {
           We are in high demand, so the more people that sign up for the waitlist at your school,
           the sooner we will launch on your campus.
         </p>
-        <NamedLink name="AboutPage" className={css.button}>
+        <NamedLink name="WaitlistPage" className={css.button}>
           Sign Up for Waitlist
         </NamedLink>
       </div>

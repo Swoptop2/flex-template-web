@@ -6,8 +6,9 @@ const useFormValidation = (initialState, validate) => {
   const [values, setValues] = useState(initialState);
   const [firstNameError, setFirstNameError] = useState('');
   const [lastNameError, setLastNameError] = useState('');
+  const [instaError, setInstaError] = useState('');
   const [emailError, setEmailError] = useState('');
-  const [messageError, setMessageError] = useState('');
+  const [schoolError, setSchoolError] = useState('');
 
   const handleChange = event => {
     setValues({
@@ -17,7 +18,6 @@ const useFormValidation = (initialState, validate) => {
   };
 
   const handleFirstNameBlur = () => {
-    console.log('validating');
     const validationErrors = validate.validateFirstName(values);
     setFirstNameError(validationErrors);
   };
@@ -27,14 +27,19 @@ const useFormValidation = (initialState, validate) => {
     setLastNameError(validationErrors);
   };
 
+  const handleInstaBlur = () => {
+    const validationErrors = validate.validateInsta(values);
+    setInstaError(validationErrors);
+  };
+
   const handleEmailBlur = () => {
     const validationErrors = validate.validateEmail(values);
     setEmailError(validationErrors);
   };
 
-  const handleMessageBlur = () => {
-    const validationErrors = validate.validateMessage(values);
-    setMessageError(validationErrors);
+  const handleSchoolBlur = () => {
+    const validationErrors = validate.validateSchool(values);
+    setSchoolError(validationErrors);
   };
 
   const handleSubmit = event => {
@@ -42,15 +47,17 @@ const useFormValidation = (initialState, validate) => {
     if (
       firstNameError === '' &&
       lastNameError === '' &&
+      instaError === '' &&
       emailError === '' &&
-      messageError === '' &&
+      schoolError === '' &&
       values.firstName !== '' &&
       values.lastName !== '' &&
+      values.insta !== '' &&
       values.email !== '' &&
-      values.message !== ''
+      values.school !== ''
     ) {
       // submit form
-      const action = 'contact';
+      const action = 'waitlist';
       const params = {
         action,
         values,
@@ -87,13 +94,15 @@ const useFormValidation = (initialState, validate) => {
     handleChange,
     handleFirstNameBlur,
     handleLastNameBlur,
+    handleInstaBlur,
     handleEmailBlur,
-    handleMessageBlur,
+    handleSchoolBlur,
     values,
     firstNameError,
     lastNameError,
+    instaError,
     emailError,
-    messageError,
+    schoolError,
   };
 };
 

@@ -146,7 +146,7 @@
 }
 
 .tip {
-  @apply --marketplaceH5FontStyles;
+  @apply --marketplaceH3FontStyles;
   flex-shrink: 0;
   color: var(--matterColorAnti);
   margin-top: 24px;

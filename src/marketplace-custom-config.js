@@ -56,7 +56,7 @@ export const items = [
   { key: 'shorts', label: 'Shorts' },
   { key: 'bodysuit', label: 'Bodysuit' },
   { key: 'costume', label: 'Costume' },
-  { key: 'other', label: 'Other' },
+  { key: 'accessories', label: 'Accessories' },
 ];
 
 export const sizes = [

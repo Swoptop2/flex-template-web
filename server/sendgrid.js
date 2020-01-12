@@ -6,7 +6,28 @@ const handleEmailRequest = (req, res) => {
   // if it's form the contact form, the whole message obj needs to be sent and destructured here
   // if it's to notify of a new listing, then the owner's name and the listing's name needs to be pulled
   const { action } = req.query;
-  if (action === 'contact') {
+  if (action === 'waitlist') {
+    const { values } = req.query;
+    const info = JSON.parse(values);
+    const message = info.sorority
+      ? `${info.firstName} ${info.lastName} from ${info.sorority} from the school of ${info.school}, whishes to join Swoptop's waitlist. Her instagram handle is ${info.insta}.`
+      : `${info.firstName} ${info.lastName} from the school of ${info.school}, whishes to join Swoptop's waitlist. Her instagram handle is ${info.insta}.`;
+    const msg = constructMessage(
+      info.email,
+      `Waitlist request by ${info.firstName} ${info.lastName} from Swoptop`,
+      message
+    );
+    sgMail
+      .send(msg)
+      .then(response => {
+        res.send(response);
+        console.log('Message sent!');
+      })
+      .catch(err => {
+        res.send(err);
+        console.log('Message sending error');
+      });
+  } else if (action === 'contact') {
     const { values } = req.query;
     const info = JSON.parse(values);
     const msg = constructMessage(

@@ -32,6 +32,7 @@ import {
   TermsOfServicePage,
   TransactionPage,
   VisionPage,
+  WaitlistPage,
 } from './containers';
 
 // routeConfiguration needs to initialize containers first
@@ -100,6 +101,11 @@ const routeConfiguration = () => {
       path: '/vision',
       name: 'VisionPage',
       component: VisionPage,
+    },
+    {
+      path: '/waitlist',
+      name: 'WaitlistPage',
+      component: WaitlistPage,
     },
     {
       path: '/story',

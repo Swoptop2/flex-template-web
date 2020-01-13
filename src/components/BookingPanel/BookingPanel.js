@@ -65,6 +65,8 @@ const BookingPanel = props => {
     history,
     location,
     intl,
+    sizeOptions,
+    colorOptions,
   } = props;
 
   const price = listing.attributes.price;
@@ -93,6 +95,34 @@ const BookingPanel = props => {
   const classes = classNames(rootClassName || css.root, className);
   const titleClasses = classNames(titleClassName || css.bookingTitle);
 
+  let sizeOption, colorOption;
+
+  const size =
+    listing.attributes.publicData && listing.attributes.publicData.size
+      ? listing.attributes.publicData.size
+      : [];
+  try {
+    sizeOption = sizeOptions.find(option => option.key === size);
+  } catch (err) {}
+  const sizeLabel = sizeOption ? sizeOption.label : '';
+  const color =
+    listing.attributes.publicData && listing.attributes.publicData.color
+      ? listing.attributes.publicData.color
+      : [];
+  try {
+    colorOption = colorOptions.find(option => option.key === color);
+  } catch (err) {}
+
+  const colorLabel = colorOption ? colorOption.label : '';
+  const damageCost =
+    listing.attributes.publicData && listing.attributes.publicData.damageCost
+      ? listing.attributes.publicData.damageCost
+      : '';
+  const retailPrice =
+    listing.attributes.publicData && listing.attributes.publicData.retailPrice
+      ? listing.attributes.publicData.retailPrice
+      : null;
+
   return (
     <div className={classes}>
       <ModalInMobile
@@ -111,7 +141,24 @@ const BookingPanel = props => {
         </div>
 
         <div className={css.bookingHeading}>
-          <h2 className={titleClasses}>{title}</h2>
+          <h2 className={titleClasses}>
+            {title} for {formattedPrice}
+          </h2>
+          <div className={css.itemDetails}>
+            <p>
+              Size: <span>{sizeLabel}</span>
+            </p>
+            <p>
+              Color: <span>{colorLabel}</span>
+            </p>
+
+            <p>
+              Retail Price: <span>${retailPrice}</span>
+            </p>
+            <p>
+              Damage Cost: <span>${damageCost}</span>
+            </p>
+          </div>
           <p className={css.mobileSubTitle}>{subTitleText}</p>
           {subTitleText ? <div className={css.bookingHelp}>{subTitleText}</div> : null}
         </div>
@@ -128,6 +175,10 @@ const BookingPanel = props => {
             fetchTimeSlotsError={fetchTimeSlotsError}
           />
         ) : null}
+        <p className={css.note}>
+          *Damage cost is what will be payed to the renter if the item is returned completely
+          damaged (simple wear & tear doesn't apply)
+        </p>
       </ModalInMobile>
       <div className={css.openBookingForm}>
         <div className={css.priceContainer}>

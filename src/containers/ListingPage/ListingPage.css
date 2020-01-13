@@ -37,9 +37,8 @@
 
 .firstImageItems {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-top: 25px;
+  overflow: scroll;
   @media (--viewportMedium) {
     flex-direction: row;
     justify-content: space-between;
@@ -54,11 +53,11 @@
   }
 }
 
-.desktopFirstImg {
-  max-width: 150px;
-  height: 180px;
+.desktopImg {
+  width: 80%;
+  height: 480px;
   box-shadow: 0 0 4px #ccc;
-  margin-right: 20px;
+  margin-bottom: 12px;
   display: none;
   @media (--viewportLarge) {
     display: block;
@@ -66,13 +65,11 @@
 }
 
 .firstImage {
-  max-width: 250px;
-  max-height: 300px;
+  max-width: 680px;
+  min-width: 100%;
+  max-height: 400px;
   box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.6);
-  order: 2;
-  @media (--viewportMedium) {
-    order: 1;
-  }
+  margin: 5px;
 }
 
 .image {
@@ -97,7 +94,25 @@
 }
 
 .sectionImages {
-  /* margin-top: 140px; */
+  @media (--viewportLarge) {
+    height: 80vh;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+}
+
+.sectionImages::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+
+.sectionImages::-webkit-scrollbar {
+  width: 3px;
+  background-color: #f5f5f5;
+}
+
+.sectionImages::-webkit-scrollbar-thumb {
+  background-color: #ed0a73;
 }
 
 .threeToTwoWrapper {
@@ -276,13 +291,13 @@
   }
 
   @media (--viewportLarge) {
-    max-width: 1128px;
+    max-width: 1168px;
     padding: 0 36px;
     margin: 0 auto 117px;
   }
 
   @media (--viewportXLarge) {
-    max-width: 1056px;
+    max-width: 1156px;
     padding: 0;
   }
 }
@@ -309,12 +324,8 @@
 .bookingPanel {
   @media (--viewportLarge) {
     display: block;
-    margin-top: 95px;
+    margin-top: 15px;
     margin-left: 60px;
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-left-color: var(--matterColorNegative);
-
     padding-left: 60px;
 
     /* The calendar needs 312px */
@@ -361,6 +372,7 @@
 .headingContainer {
 }
 
+/* TODO: add fixed height and overflow scroll */
 .sectionHeading {
   margin-top: 22px;
   margin-bottom: 34px;
@@ -433,11 +445,8 @@
   justify-content: space-between;
   align-items: center;
 
-  @media (--viewportMedium) {
-    margin-bottom: 0;
-    padding: 0;
-    order: 2;
-    width: 100%;
+  @media (--viewportLarge) {
+    display: none;
   }
 }
 
@@ -534,8 +543,7 @@
   display: flex;
   flex-direction: column;
   @media (--viewportLarge) {
-    flex-direction: row;
-    align-items: center;
+    display: none;
   }
 }
 
@@ -563,7 +571,6 @@
 }
 .damageCostContainer {
   @media (--viewportLarge) {
-    margin-top: 25px;
     display: flex;
     align-items: center;
   }

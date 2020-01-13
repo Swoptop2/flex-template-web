@@ -38,7 +38,6 @@ import {
   LayoutWrapperFooter,
   Footer,
   BookingPanel,
-  ResponsiveImage,
 } from '../../components';
 import { TopbarContainer, NotFoundPage } from '../../containers';
 
@@ -384,9 +383,6 @@ export class ListingPageComponent extends Component {
         </span>
       ) : null;
 
-    const { images } = currentListing;
-    const secondImg = images.length > 1 ? images[1] : null;
-
     return (
       <Page
         title={schemaTitle}
@@ -438,33 +434,14 @@ export class ListingPageComponent extends Component {
                     listing={currentListing}
                   />
                   <div className={css.detailsContainer}>
-                    {secondImg ? (
-                      <ResponsiveImage
-                        className={css.desktopFirstImg}
-                        alt="Listing image"
-                        image={secondImg}
-                        variants={[
-                          'scaled-small',
-                          'scaled-medium',
-                          'scaled-large',
-                          'scaled-xlarge',
-                        ]}
-                        sizes="(max-width: 367px) 100vw, 80vw"
-                      />
-                    ) : null}
-                    <div className={css.detailsFlexContainerr}>
-                      <SectionSizeMaybe options={sizesConfig} publicData={publicData} />
-                      <SectionColorMaybe options={colorsConfig} publicData={publicData} />
-                    </div>
+                    <SectionSizeMaybe options={sizesConfig} publicData={publicData} />
+                    <SectionColorMaybe options={colorsConfig} publicData={publicData} />
+                    <SectionDamageCostMaybe publicData={publicData} />
                   </div>
-                  <SectionDamageCostMaybe listing={currentListing} publicData={publicData} />
+
                   <SectionRulesMaybe publicData={publicData} />
 
                   {/* <SectionAllImages listing={currentListing} /> */}
-                  <p className={css.note}>
-                    *Damage cost is what will be payed to the renter if the item is returned
-                    completely damaged (simple wear & tear doesn't apply)
-                  </p>
                   <SectionHostMaybe
                     title={title}
                     listing={currentListing}
@@ -491,6 +468,8 @@ export class ListingPageComponent extends Component {
                   onManageDisableScrolling={onManageDisableScrolling}
                   timeSlots={timeSlots}
                   fetchTimeSlotsError={fetchTimeSlotsError}
+                  sizeOptions={sizesConfig}
+                  colorOptions={colorsConfig}
                 />
               </div>
             </div>

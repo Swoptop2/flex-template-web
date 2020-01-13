@@ -7,18 +7,19 @@ const SectionFirstImage = props => {
 
   const { images } = listing;
 
-  const firstImage = images[0];
-
   return listing.images ? (
     <div className={css.firstImageContainer}>
       <div className={css.firstImageItems}>
-        <ResponsiveImage
-          className={css.firstImage}
-          alt="Listing image"
-          image={firstImage}
-          variants={['scaled-small', 'scaled-medium', 'scaled-large', 'scaled-xlarge']}
-          sizes="(max-width: 767px) 100vw, 80vw"
-        />
+        {images.map((image, i) => (
+          <ResponsiveImage
+            className={css.firstImage}
+            alt="Listing image"
+            image={image}
+            variants={['scaled-small', 'scaled-medium', 'scaled-large', 'scaled-xlarge']}
+            sizes="(max-width: 767px) 100vw, 80vw"
+            key={i}
+          />
+        ))}
       </div>
     </div>
   ) : null;

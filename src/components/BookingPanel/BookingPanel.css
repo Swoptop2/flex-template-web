@@ -78,13 +78,15 @@
 
 .bookingTitle {
   /* Font */
-  color: var(--matterColor);
+  color: var(--marketplaceColor);
   display: none;
 
   margin-top: 0;
   margin-bottom: 9px;
   @media (--viewportLarge) {
     display: block;
+    line-height: 1.8;
+    margin-bottom: 12px;
   }
 }
 
@@ -214,4 +216,30 @@
   width: 100%;
   padding: 15px 24px 15px 24px;
   text-align: center;
+}
+
+.itemDetails {
+  display: none;
+  @media (--viewportLarge) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 15px;
+  }
+}
+
+.itemDetails p {
+  margin: 0;
+  font-size: 16px;
+  color: #000000;
+}
+
+.itemDetails p span {
+  color: #4a4a4a;
+}
+
+.note {
+  font-size: 14px;
+  color: var(--matterColorAnti);
+  padding: 5px;
+  line-height: 1.4;
 }

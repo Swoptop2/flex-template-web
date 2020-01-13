@@ -36,8 +36,8 @@
   display: flex;
 
   @media (--viewportMedium) {
-    position: relative;
-    padding-top: var(--topbarHeightDesktop);
+    position: fixed;
+    padding-top: 43px;
     min-height: var(--SearchPage_containerHeight);
   }
 }

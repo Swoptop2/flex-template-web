@@ -320,6 +320,7 @@ class ContactDetailsFormComponent extends Component {
                   inProgress={inProgress}
                   ready={pristineSinceLastSubmit}
                   disabled={submitDisabled}
+                  style={{ transform: 'translateY(-230px)' }}
                 >
                   <FormattedMessage id="ContactDetailsForm.saveChanges" />
                 </PrimaryButton>

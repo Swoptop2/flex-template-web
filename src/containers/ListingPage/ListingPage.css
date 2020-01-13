@@ -54,8 +54,8 @@
 }
 
 .desktopImg {
-  width: 80%;
-  height: 480px;
+  width: 50%;
+  height: 405px;
   box-shadow: 0 0 4px #ccc;
   margin-bottom: 12px;
   display: none;

@@ -142,7 +142,7 @@ const BookingPanel = props => {
 
         <div className={css.bookingHeading}>
           <h2 className={titleClasses}>
-            {title} for {formattedPrice}
+            {title} {formattedPrice}
           </h2>
           <div className={css.itemDetails}>
             <p>
@@ -161,6 +161,7 @@ const BookingPanel = props => {
           </div>
           <p className={css.mobileSubTitle}>{subTitleText}</p>
           {subTitleText ? <div className={css.bookingHelp}>{subTitleText}</div> : null}
+          <div className={css.bookingHelp}>All rentals are 3 days.</div>
         </div>
         {showBookingDatesForm ? (
           <BookingDatesForm

@@ -5,7 +5,7 @@ exports[`SectionHero matches snapshot 1`] = `
   <div>
     <a
       className=""
-      href="/s?s?address=United+States&bounds=49.64,-66.43,23.88,-125.98"
+      href="/s?s?address=United+States"
       onClick={[Function]}
       style={Object {}}
       title={null}

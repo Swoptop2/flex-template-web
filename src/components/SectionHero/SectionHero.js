@@ -14,9 +14,7 @@ const SectionHero = props => {
   const { currentUser } = props;
   const { LatLng } = sdkTypes;
   const geoCode = new GeocoderMapbox();
-  const [addressString, setAddressString] = useState(
-    `s?address=United+States&bounds=49.64,-66.43,23.88,-125.98`
-  );
+  const [addressString, setAddressString] = useState(`s?address=United+States`);
 
   useEffect(() => {
     // add one, subtract one. subtract one, add one to coordinates in order to get coorect bounds for location
@@ -42,7 +40,7 @@ const SectionHero = props => {
         swal({
           title: 'Welcome!',
           text:
-            "It seems like it's your first time in the new and improved Swoptop. Before proceeding, be sure to update your location info in the Profile Settings and to add your phone number in the Account Seetings. After that, you're all set!",
+            "It seems like it's your first time in the new and improved Swoptop. Before proceeding, be sure to update your location info in the Profile Settings and to add your phone number in the Account Settings. After that, you're all set!",
           icon: 'info',
         });
       }

@@ -13,9 +13,7 @@ const SectionHowItWorks = props => {
   const { rootClassName, className, currentUser } = props;
   const { LatLng } = sdkTypes;
   const geoCode = new GeocoderMapbox();
-  const [addressString, setAddressString] = useState(
-    `s?address=United+States&bounds=49.64,-66.43,23.88,-125.98`
-  );
+  const [addressString, setAddressString] = useState(`s?address=United+States`);
 
   useEffect(() => {
     if (currentUser) {

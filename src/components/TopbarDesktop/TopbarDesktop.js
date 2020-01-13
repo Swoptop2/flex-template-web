@@ -33,9 +33,7 @@ const TopbarDesktop = props => {
     initialSearchFormValues,
   } = props;
   const [mounted, setMounted] = useState(false);
-  const [addressString, setAddressString] = useState(
-    `s?address=United+States&bounds=49.64,-66.43,23.88,-125.98`
-  );
+  const [addressString, setAddressString] = useState(`s?address=United+States`);
   const { LatLng } = sdkTypes;
   const geoCode = new GeocoderMapbox();
 
@@ -62,7 +60,7 @@ const TopbarDesktop = props => {
       }
     }
     // eslint-disable-next-line
-  }, []);
+  }, [currentUser]);
 
   const authenticatedOnClientSide = mounted && isAuthenticated;
   const isAuthenticatedOrJustHydrated = isAuthenticated || !mounted;

@@ -313,16 +313,17 @@ const SearchFiltersComponent = props => {
   return (
     <div className={classes}>
       <div className={css.filters}>
-        {currentUser ? (
-          <button
-            className={activeClass ? css.heartActive : css.heartBtn}
-            type="button"
-            onClick={toggleFilter}
-          >
-            Your Loves
-            <i className="fa fa-chevron-down" style={arrowStyles}></i>
-          </button>
-        ) : null}
+        <button
+          className={activeClass ? css.heartActive : css.heartBtn}
+          type="button"
+          onClick={toggleFilter}
+          disabled={currentUser ? false : true}
+          style={currentUser ? { cursor: 'pointer' } : { cursor: 'not-allowed' }}
+        >
+          Loves
+          <i className="fa fa-chevron-down" style={arrowStyles}></i>
+        </button>
+
         {itemFilterElement}
         {sizeFilterElement}
         {colorFilterElement}

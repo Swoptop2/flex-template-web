@@ -1028,7 +1028,7 @@
   "TopbarSearchForm.searchHelp": "Tip: You can also search items by zip code, for example \"00500\" or city district \"Sörnäinen\".",
   "TransactionPage.deletedListing": "deleted listing",
   "TransactionPage.fetchOrderFailed": "Fetching order data failed.",
-  "TransactionPage.fetchSaleFailed": "Fetching sale data failed. Make sure you're logged in as the correct user",
+  "TransactionPage.fetchSaleFailed": "Something isn’t working. Contact team@swoptop.com for assistance",
   "TransactionPage.loadingOrderData": "Loading order data.",
   "TransactionPage.loadingSaleData": "Loading sale data.",
   "TransactionPage.title": "Sale details: {title}",

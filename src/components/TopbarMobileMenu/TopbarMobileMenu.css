@@ -118,12 +118,12 @@
 .signupLink {
   text-decoration: none;
   white-space: nowrap;
-  color: var(--marketplaceColor);
+  color: #ff0484;
 }
 .loginLink {
   text-decoration: none;
   white-space: nowrap;
-  color: var(--marketplaceColor);
+  color: #ff0484;
 }
 
 .currentPage {

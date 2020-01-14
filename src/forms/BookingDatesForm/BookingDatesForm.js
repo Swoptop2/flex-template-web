@@ -22,30 +22,44 @@ export class BookingDatesFormComponent extends Component {
     super(props);
     this.state = {
       focusedInput: null,
-      missingAvatar: true,
-      missingInsta: true,
-      missingLocation: true,
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.onFocusedInputChange = this.onFocusedInputChange.bind(this);
   }
 
   componentDidMount() {
+    const bookingValidator = {
+      missingAvatar: true,
+      missingInsta: true,
+      missingLocation: true,
+      missingPhone: true,
+    };
     // TODO: store missingAvatar boolean in localStorage since it changes on refresh
     if (this.props.currentUser) {
       if (this.props.currentUser.profileImage) {
-        this.setState({ missingAvatar: false });
+        // this.setState({ missingAvatar: false });
+        bookingValidator.missingAvatar = false;
       }
       if (this.props.currentUser.attributes.profile.publicData.instaHandle) {
-        this.setState({ missingInsta: false });
+        // this.setState({ missingInsta: false });
+        bookingValidator.missingInsta = false;
+      }
+      if (this.props.currentUser.attributes.profile.publicData.phoneNumber) {
+        bookingValidator.missingPhone = false;
       }
       if (
         this.props.currentUser.attributes.profile.protectedData.state &&
         this.props.currentUser.attributes.profile.protectedData.city
       ) {
-        this.setState({ missingLocation: false });
+        // this.setState({ missingLocation: false });
+        bookingValidator.missingLocation = false;
       }
+      sessionStorage.setItem('validate', JSON.stringify(bookingValidator));
     }
+  }
+
+  componentWillUnmount() {
+    sessionStorage.removeItem('validate');
   }
 
   // Function that can be passed to nested components
@@ -212,6 +226,21 @@ export class BookingDatesFormComponent extends Component {
             submitButtonWrapperClassName || css.submitButtonWrapper
           );
 
+          let validator;
+          let realValidator = {
+            missingAvatar: true,
+            missingInsta: true,
+            missingLocation: true,
+            missingPhone: true,
+          };
+          try {
+            validator = JSON.parse(sessionStorage.getItem('validate'));
+            realValidator.missingAvatar = validator.missingAvatar;
+            realValidator.missingInsta = validator.missingInsta;
+            realValidator.missingLocation = validator.missingLocation;
+            realValidator.missingPhone = validator.missingPhone;
+          } catch (err) {}
+
           return (
             <Form onSubmit={handleSubmit} className={classes}>
               {timeSlotsError}
@@ -255,33 +284,34 @@ export class BookingDatesFormComponent extends Component {
                 <PrimaryButton
                   type="submit"
                   disabled={
-                    (this.state.missingAvatar && this.props.currentUser != null) ||
-                    (this.state.missingInsta && this.props.currentUser != null) ||
-                    (this.state.missingLocation && this.props.currentUser != null) ||
+                    (realValidator.missingAvatar && this.props.currentUser != null) ||
+                    (realValidator.missingInsta && this.props.currentUser != null) ||
+                    (realValidator.missingLocation && this.props.currentUser != null) ||
+                    (realValidator.missingPhone && this.props.currentUser != null) ||
                     (datesOutOfRange && this.props.currentUser != null)
                   }
                 >
                   <FormattedMessage id="BookingDatesForm.requestToBook" />
                 </PrimaryButton>
-                {(this.state.missingAvatar && this.props.currentUser != null) ||
-                (this.state.missingInsta && this.props.currentUser != null) ? (
+                {(realValidator.missingAvatar && this.props.currentUser != null) ||
+                (realValidator.missingInsta && this.props.currentUser != null) ? (
                   <p className={css.note}>
                     *You need to add a profile picture and your Instagram handle before you can
                     proceed. Please go to your Profile Settings to do so.
                   </p>
                 ) : null}
-                {this.state.missingLocation && this.props.currentUser != null ? (
+                {/* validate phone number addition */}
+                {realValidator.missingPhone && this.props.currentUser != null ? (
+                  <p className={css.note}>
+                    *You must add your phone number in the Account Settings in order to proceed.
+                  </p>
+                ) : null}
+                {realValidator.missingLocation && this.props.currentUser != null ? (
                   <p className={css.note}>
                     *You need to update your location info before proceeding. Please go to you
                     Profile Settings to do so.
                   </p>
                 ) : null}
-                {/* {datesOutOfRange && this.props.currentUser != null ? (
-                  <p className={css.note}>
-                    *You need to select a a booking period of 3 consecutive available dates to be
-                    able to book.
-                  </p>
-                ) : null} */}
               </div>
             </Form>
           );

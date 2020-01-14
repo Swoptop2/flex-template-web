@@ -93,9 +93,16 @@
   padding: 15px 30px 17px 30px;
 }
 
+.popupSize fieldset ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
 .isOpen {
   display: block;
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
+  top: -70px;
 }

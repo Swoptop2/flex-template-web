@@ -44,7 +44,7 @@ export class BookingDatesFormComponent extends Component {
         // this.setState({ missingInsta: false });
         bookingValidator.missingInsta = false;
       }
-      if (this.props.currentUser.attributes.profile.publicData.phoneNumber) {
+      if (this.props.currentUser.attributes.profile.protectedData.phoneNumber) {
         bookingValidator.missingPhone = false;
       }
       if (

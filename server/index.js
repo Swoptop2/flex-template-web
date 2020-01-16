@@ -72,6 +72,12 @@ app.use(log.requestHandler());
 // See: https://www.npmjs.com/package/helmet
 app.use(helmet());
 
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'https://sharetribe.imgix.net');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 if (cspEnabled) {
   // When a CSP directive is violated, the browser posts a JSON body
   // to the defined report URL and we need to parse this body.

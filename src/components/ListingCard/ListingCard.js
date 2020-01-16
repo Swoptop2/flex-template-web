@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, useState, useEffect, useRef } from 'react';
 import { string, func } from 'prop-types';
 import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl';
 import classNames from 'classnames';
@@ -49,6 +49,9 @@ const LazyImage = lazyLoadWithDimensions(ListingImage, { loadAfterInitialRenderi
 
 export const ListingCardComponent = props => {
   const [isLiked, setIsLiked] = useState(false);
+  const [imgStyle, setImgStyle] = useState({ backgroundColor: '#ffffff' });
+  const canvasRef = useRef(null);
+  const imgRef = useRef(null);
   const {
     className,
     rootClassName,
@@ -67,12 +70,19 @@ export const ListingCardComponent = props => {
   const authorName = author.attributes.profile.displayName;
   const firstImage =
     currentListing.images && currentListing.images.length > 0 ? currentListing.images[0] : null;
-
+  //https://sharetribe.imgix.net
   const { formattedPrice, priceTitle } = priceData(price, intl);
 
-  // do it inside a useEffect
-
   useEffect(() => {
+    imgRef.current.addEventListener('load', () => {
+      if (canvasRef.current) {
+        let context = canvasRef.current.getContext('2d');
+        context.drawImage(imgRef.current, 0, 0);
+        const result = context.getImageData(0, 0, 1, 1).data;
+        setImgStyle({ backgroundColor: `rgb(${result[0]}, ${result[1]}, ${result[2]})` });
+      }
+    });
+
     if (currentUser) {
       if (currentUser.attributes.profile.publicData.likedListings) {
         const {
@@ -93,8 +103,9 @@ export const ListingCardComponent = props => {
         };
       }
     }
+
     // eslint-disable-next-line
-  }, [currentUser]);
+  }, [currentUser, firstImage]);
 
   const unitType = config.bookingUnitType;
   const isNightly = unitType === LINE_ITEM_NIGHT;
@@ -126,7 +137,19 @@ export const ListingCardComponent = props => {
       ) : null}
       <NamedLink className={classes} name="ListingPage" params={{ id, slug }}>
         <div className={css.threeToTwoWrapper}>
-          <div className={css.aspectWrapper}>
+          <div style={imgStyle} className={css.aspectWrapper}>
+            <canvas style={{ display: 'none' }} ref={canvasRef}></canvas>
+            <img
+              width={2400}
+              height={2400}
+              crossOrigin="anonymous"
+              src={
+                firstImage ? firstImage.attributes.variants['scaled-xlarge'].url : 'www.google.com'
+              }
+              ref={imgRef}
+              style={{ display: 'none' }}
+              alt=""
+            />
             <LazyImage
               rootClassName={css.rootForImage}
               alt={title}

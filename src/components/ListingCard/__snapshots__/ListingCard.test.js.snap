@@ -13,7 +13,32 @@ exports[`ListingCard matches snapshot 1`] = `
     }
   >
     <div>
-      <div>
+      <div
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+          }
+        }
+      >
+        <canvas
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        />
+        <img
+          alt=""
+          crossOrigin="anonymous"
+          height={2400}
+          src="www.google.com"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          width={2400}
+        />
         <lazyLoadWithDimensions(ListingImage)
           alt="listing1 title"
           image={null}

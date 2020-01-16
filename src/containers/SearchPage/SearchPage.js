@@ -36,7 +36,7 @@ import css from './SearchPage.css';
 // Pagination page size might need to be dynamic on responsive page layouts
 // Current design has max 3 columns 12 is divisible by 2 and 3
 // So, there's enough cards to fill all columns on full pagination pages
-const RESULT_PAGE_SIZE = 99;
+const RESULT_PAGE_SIZE = 84;
 const MODAL_BREAKPOINT = 768; // Search is in modal on mobile layout
 const SEARCH_WITH_MAP_DEBOUNCE = 300; // Little bit of debounce before search is initiated.
 

@@ -53,15 +53,29 @@
   }
 }
 
+.imagesList {
+  display: none;
+  position: absolute;
+  width: 5%;
+  @media (--viewportMedium) {
+    display: block;
+  }
+}
+
 .desktopImg {
   width: 50%;
   height: 405px;
   box-shadow: 0 0 4px #ccc;
-  margin-bottom: 12px;
+  margin: 0 auto;
   display: none;
+  object-fit: contain;
   @media (--viewportLarge) {
     display: block;
   }
+}
+
+.listImg {
+  height: 75px;
 }
 
 .firstImage {
@@ -95,7 +109,6 @@
 
 .sectionImages {
   @media (--viewportLarge) {
-    height: 80vh;
     overflow: scroll;
     overflow-x: hidden;
   }
@@ -298,7 +311,6 @@
 
   @media (--viewportXLarge) {
     max-width: 1156px;
-    padding: 0;
   }
 }
 

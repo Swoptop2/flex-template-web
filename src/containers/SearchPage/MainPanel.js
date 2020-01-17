@@ -34,8 +34,10 @@ class MainPanel extends Component {
         this.props.currentUser.attributes.profile.publicData.likedListings ===
         prevProps.currentUser.attributes.profile.publicData.likedListings
       ) {
-        if (this.myRef.current.scrollTop > 0) {
-          this.myRef.current.scrollTop = 0;
+        if (this.myRef.current) {
+          if (this.myRef.current.scrollTop > 0) {
+            this.myRef.current.scrollTop = 0;
+          }
         }
       }
     }

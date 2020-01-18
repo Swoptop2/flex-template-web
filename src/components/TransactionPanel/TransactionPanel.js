@@ -41,6 +41,7 @@ import DetailCardImage from './DetailCardImage';
 import FeedSection from './FeedSection';
 import SaleActionButtonsMaybe from './SaleActionButtonsMaybe';
 import SaleProviderCancelButtonMaybe from './SaleProviderCancelButtonMaybe';
+import SaleCustomerCancelButtonMaybe from './SaleCustomerCancelButtonMaybe';
 import PanelHeading, {
   HEADING_ENQUIRED,
   HEADING_PAYMENT_PENDING,
@@ -196,6 +197,7 @@ export class TransactionPanelComponent extends Component {
       fetchTimeSlotsError,
       nextTransitions,
       onCancelBookingProvider,
+      onCancelBookingRequestCustomer,
       cancelBookingInProgress,
       cancelBookingError,
     } = this.props;
@@ -250,6 +252,7 @@ export class TransactionPanelComponent extends Component {
           headingState: HEADING_REQUESTED,
           showDetailCardHeadings: isCustomer,
           showSaleButtons: isProvider && !isCustomerBanned,
+          showCustomerCancelButtons: isCustomer && !isCustomerBanned,
         };
       } else if (txIsAccepted(tx)) {
         return {
@@ -336,6 +339,18 @@ export class TransactionPanelComponent extends Component {
         cancelBookingInProgress={cancelBookingInProgress}
         cancelBookingError={cancelBookingError}
         onCancelBooking={() => onCancelBookingProvider(currentTransaction.id)}
+        startDate={startDate}
+        createdAtDate={createdAtDate}
+      />
+    );
+
+    // TODO: create cancel button for customer to cancel booking request
+    const customerCancelBookingRequestButton = (
+      <SaleCustomerCancelButtonMaybe
+        showButtons={stateData.showCustomerCancelButtons}
+        cancelBookingInProgress={cancelBookingInProgress}
+        cancelBookingError={cancelBookingError}
+        onCancelBookingRequest={() => onCancelBookingRequestCustomer(currentTransaction.id)}
         startDate={startDate}
         createdAtDate={createdAtDate}
       />
@@ -589,6 +604,9 @@ export class TransactionPanelComponent extends Component {
             {stateData.showCancelButtons ? (
               <div className={css.mobileActionButtons}>{providerCancelBookingButton}</div>
             ) : null}
+            {stateData.showCustomerCancelButtons ? (
+              <div className={css.mobileActionButtons}>{customerCancelBookingRequestButton}</div>
+            ) : null}
           </div>
 
           <div className={css.asideDesktop}>
@@ -635,6 +653,9 @@ export class TransactionPanelComponent extends Component {
               ) : null}
               {stateData.showCancelButtons ? (
                 <div className={css.desktopActionButtons}>{providerCancelBookingButton}</div>
+              ) : null}
+              {stateData.showCustomerCancelButtons ? (
+                <div className={css.desktopActionButtons}>{customerCancelBookingRequestButton}</div>
               ) : null}
             </div>
           </div>

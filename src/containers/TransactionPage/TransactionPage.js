@@ -36,6 +36,7 @@ import {
   sendReview,
   fetchMoreMessages,
   cancelBookingProvider,
+  cancelBookingRequestCustomer,
   addEmail,
 } from './TransactionPage.duck';
 import css from './TransactionPage.css';
@@ -85,6 +86,7 @@ export const TransactionPageComponent = props => {
     callSetInitialValues,
     onInitializeCardPaymentData,
     onCancelBookingProvider,
+    onCancelBookingRequestCustomer,
   } = props;
   transactionData = transaction;
 
@@ -261,6 +263,7 @@ export const TransactionPageComponent = props => {
       acceptSaleError={acceptSaleError}
       declineSaleError={declineSaleError}
       onCancelBookingProvider={onCancelBookingProvider}
+      onCancelBookingRequestCustomer={onCancelBookingRequestCustomer}
       nextTransitions={processTransitions}
       onSubmitBookingRequest={handleSubmitBookingRequest}
       timeSlots={timeSlots}
@@ -322,6 +325,7 @@ TransactionPageComponent.propTypes = {
   onAcceptSale: func.isRequired,
   onDeclineSale: func.isRequired,
   onCancelBookingProvider: func.isRequired,
+  onCancelBookingRequestCustomer: func.isRequired,
   scrollingDisabled: bool.isRequired,
   transaction: propTypes.transaction,
   fetchMessagesError: propTypes.error,
@@ -416,6 +420,8 @@ const mapDispatchToProps = dispatch => {
     onDeclineSale: transactionId => dispatch(declineSale(transactionId)),
     onCancelBookingProvider: transactionId =>
       dispatch(cancelBookingProvider(transactionId, transactionData)),
+    onCancelBookingRequestCustomer: transactionId =>
+      dispatch(cancelBookingRequestCustomer(transactionId)),
     onShowMoreMessages: txId => dispatch(fetchMoreMessages(txId)),
     onSendMessage: (txId, message) => dispatch(sendMessage(txId, message)),
     onManageDisableScrolling: (componentId, disableScrolling) =>

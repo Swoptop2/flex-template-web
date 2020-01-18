@@ -13,6 +13,7 @@ import {
   TRANSITION_ACCEPT,
   TRANSITION_DECLINE,
   TRANSITION_PROVIDER_CANCEL,
+  TRANSITION_CUSTOMER_CANCEL,
 } from '../../util/transaction';
 import * as log from '../../util/log';
 import {
@@ -401,7 +402,7 @@ export const declineSale = id => (dispatch, getState, sdk) => {
 export const cancelBookingProvider = id => (dispatch, getState, sdk) => {
   swal({
     title: 'Are you sure?',
-    text: 'This booking will be cancelled and the booking amount will be refunded to the customer.',
+    text: 'This booking will be canceled and the booking amount will be refunded to the customer.',
     icon: 'warning',
     buttons: true,
     dangerMode: true,
@@ -424,6 +425,40 @@ export const cancelBookingProvider = id => (dispatch, getState, sdk) => {
           log.error(e, 'cancel-request-failed', {
             txId: id,
             transition: TRANSITION_PROVIDER_CANCEL,
+          });
+          throw e;
+        });
+    }
+  });
+};
+
+export const cancelBookingRequestCustomer = id => (dispatch, getState, sdk) => {
+  swal({
+    title: 'Are you sure?',
+    text:
+      'This booking request will be canceled and the item will become available for someone else.',
+    icon: 'warning',
+    buttons: true,
+    dangerMode: true,
+  }).then(willDelete => {
+    if (willDelete) {
+      if (cancelingBookingInProgress(getState())) {
+        return Promise.reject(new Error('Request cancellation already in progress'));
+      }
+      dispatch(cancelRental());
+      return sdk.transactions
+        .transition({ id, transition: TRANSITION_CUSTOMER_CANCEL, params: {} }, { expand: true })
+        .then(response => {
+          dispatch(addMarketplaceEntities(response));
+          dispatch(cancelBookingSuccess());
+          dispatch(fetchCurrentUserNotifications());
+          return response;
+        })
+        .catch(e => {
+          dispatch(cancelBookingError(storableError(e)));
+          log.error(e, 'cancel-request-failed', {
+            txId: id,
+            transition: TRANSITION_CUSTOMER_CANCEL,
           });
           throw e;
         });

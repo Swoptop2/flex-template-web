@@ -34,6 +34,9 @@ export const TRANSITION_EXPIRE_PAYMENT = 'transition/expire-payment';
 export const TRANSITION_ACCEPT = 'transition/accept';
 export const TRANSITION_DECLINE = 'transition/decline';
 
+//Customer can canel booking request
+export const TRANSITION_CUSTOMER_CANCEL = 'transition/customer-cancel';
+
 // The backend automatically expire the transaction.
 export const TRANSITION_EXPIRE = 'transition/expire';
 
@@ -143,6 +146,7 @@ const stateDescription = {
         [TRANSITION_DECLINE]: STATE_DECLINED,
         [TRANSITION_EXPIRE]: STATE_DECLINED,
         [TRANSITION_ACCEPT]: STATE_ACCEPTED,
+        [TRANSITION_CUSTOMER_CANCEL]: STATE_CANCELED,
       },
     },
 
@@ -309,6 +313,7 @@ export const isRelevantPastTransition = transition => {
     TRANSITION_DECLINE,
     TRANSITION_EXPIRE,
     TRANSITION_PROVIDER_CANCEL,
+    TRANSITION_CUSTOMER_CANCEL,
     TRANSITION_REVIEW_1_BY_CUSTOMER,
     TRANSITION_REVIEW_1_BY_PROVIDER,
     TRANSITION_REVIEW_2_BY_CUSTOMER,

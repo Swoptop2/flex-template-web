@@ -83,6 +83,17 @@ const UserCard = props => {
     [css.withBioMissingAbove]: !hasBio,
   });
 
+  let allowsTryOns = '';
+  try {
+    if (user.attributes.profile.publicData) {
+      allowsTryOns = user.attributes.profile.publicData.userAllowsTryOns
+        ? 'I allow try ons'
+        : user.attributes.profile.publicData.userAllowsTryOns === false
+        ? 'I do not allow try ons'
+        : '';
+    }
+  } catch (err) {}
+
   // const separator = isCurrentUser ? null : <span className={css.linkSeparator}>•</span>;
 
   // const contact = (
@@ -125,6 +136,9 @@ const UserCard = props => {
               <FormattedMessage id="UserCard.heading" values={{ name: displayName }} />
             </h3>
             {editProfileDesktop}
+            <p style={allowsTryOns === '' ? { display: 'none' } : { fontWeight: 900 }}>
+              {allowsTryOns}
+            </p>
           </div>
           {hasBio ? <ExpandableBio className={css.desktopBio} bio={bio} /> : null}
           {links}

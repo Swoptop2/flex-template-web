@@ -135,6 +135,9 @@ const SignupFormComponent = props => {
         // city
         const cityRequiredMessage = 'You must select your city';
         const cityRequired = validators.required(cityRequiredMessage);
+        // try ons
+        const tryOnsRequiredMessage = 'You mests select this option';
+        const tryOnsRequired = validators.required(tryOnsRequiredMessage);
 
         const schoolRequiredMessage = 'You must enter the College you go to';
         const schoolRequired = validators.required(schoolRequiredMessage);
@@ -246,6 +249,19 @@ const SignupFormComponent = props => {
                     {city.name}
                   </option>
                 ))}
+              </FieldSelect>
+              <FieldSelect
+                className={css.fieldSelect}
+                label="Allow try ons?"
+                validate={tryOnsRequired}
+                name="allowTryOns"
+                id="allowTryOns"
+              >
+                <option disabled value="">
+                  Allow try ons?
+                </option>
+                <option value={true}>Allow try ons</option>
+                <option value={false}>Do not allow try ons</option>
               </FieldSelect>
               <FieldTextInput
                 className={css.password}

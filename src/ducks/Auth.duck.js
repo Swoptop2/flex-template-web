@@ -171,7 +171,19 @@ export const signup = params => (dispatch, getState, sdk) => {
     return Promise.reject(new Error('Login or logout already in progress'));
   }
   dispatch(signupRequest());
-  const { email, password, firstName, lastName, state, city, school, sorority, ...rest } = params;
+  const {
+    email,
+    password,
+    firstName,
+    lastName,
+    state,
+    city,
+    school,
+    allowTryOns,
+    sorority,
+    ...rest
+  } = params;
+  const userAllowsTryOns = allowTryOns === 'true' ? true : false;
   const likedListings = [];
 
   const createUserParams = isEmpty(rest)
@@ -181,7 +193,7 @@ export const signup = params => (dispatch, getState, sdk) => {
         firstName,
         lastName,
         protectedData: { state, city },
-        publicData: { email, school, sorority, likedListings },
+        publicData: { email, school, sorority, likedListings, userAllowsTryOns },
       }
     : {
         email,
@@ -189,7 +201,7 @@ export const signup = params => (dispatch, getState, sdk) => {
         firstName,
         lastName,
         protectedData: { state, city, ...rest },
-        publicData: { email, school, sorority, likedListings },
+        publicData: { email, school, sorority, likedListings, userAllowsTryOns },
       };
 
   // We must login the user if signup succeeds since the API doesn't

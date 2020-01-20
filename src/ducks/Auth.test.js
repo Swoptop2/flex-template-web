@@ -357,6 +357,7 @@ describe('Auth duck', () => {
       };
       const { phoneNumber, school, sorority, ...rest } = params;
       const likedListings = [];
+      const userAllowsTryOns = false;
 
       return signup(params)(dispatch, getState, sdk).then(() => {
         expect(sdk.currentUser.create.mock.calls).toEqual([
@@ -364,7 +365,7 @@ describe('Auth duck', () => {
             {
               ...rest,
               protectedData: { phoneNumber },
-              publicData: { email, email, school, sorority, likedListings },
+              publicData: { email, email, school, sorority, likedListings, userAllowsTryOns },
             },
           ],
         ]);
@@ -406,6 +407,7 @@ describe('Auth duck', () => {
       };
       const { phoneNumber, school, sorority, ...rest } = params;
       const likedListings = [];
+      const userAllowsTryOns = false;
 
       // disable error logging
       log.error = jest.fn();
@@ -416,7 +418,7 @@ describe('Auth duck', () => {
             {
               ...rest,
               protectedData: { phoneNumber },
-              publicData: { email, school, sorority, likedListings },
+              publicData: { email, school, sorority, likedListings, userAllowsTryOns },
             },
           ],
         ]);

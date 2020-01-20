@@ -590,6 +590,41 @@ exports[`SignupForm matches snapshot 1`] = `
       className=""
     >
       <label
+        htmlFor="allowTryOns"
+      >
+        Allow try ons?
+      </label>
+      <select
+        className=""
+        id="allowTryOns"
+        name="allowTryOns"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        value=""
+      >
+        <option
+          disabled={true}
+          value=""
+        >
+          Allow try ons?
+        </option>
+        <option
+          value={true}
+        >
+          Allow try ons
+        </option>
+        <option
+          value={false}
+        >
+          Do not allow try ons
+        </option>
+      </select>
+    </div>
+    <div
+      className=""
+    >
+      <label
         htmlFor="password"
       >
         SignupForm.passwordLabel

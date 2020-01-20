@@ -56,26 +56,31 @@
 .imagesList {
   display: none;
   position: absolute;
-  width: 5%;
+  width: 9%;
   @media (--viewportMedium) {
     display: block;
+    margin: 0;
   }
 }
 
 .desktopImg {
-  width: 50%;
-  height: 405px;
+  width: 60%;
+  height: 80vh;
   box-shadow: 0 0 4px #ccc;
-  margin: 0 auto;
+  margin-left: 200px;
   display: none;
   object-fit: contain;
   @media (--viewportLarge) {
     display: block;
   }
+  @media (--viewportXLarge) {
+    height: 67vh;
+  }
 }
 
 .listImg {
-  height: 75px;
+  height: 130px;
+  object-fit: contain;
 }
 
 .firstImage {

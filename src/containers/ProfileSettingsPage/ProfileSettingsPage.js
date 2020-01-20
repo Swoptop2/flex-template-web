@@ -53,19 +53,23 @@ export class ProfileSettingsPageComponent extends Component {
         instaHandle,
         school,
         sorority,
+        allowTryOns,
         bio: rawBio,
       } = values;
 
       // Ensure that the optional bio is a string
       const bio = rawBio || '';
 
+      const userAllowsTryOns = allowTryOns && allowTryOns !== 'false' ? true : false;
+
       const profile = {
         firstName: firstName.trim(),
         lastName: lastName.trim(),
         bio,
         protectedData: { city, state },
-        publicData: { instaHandle, school, sorority },
+        publicData: { instaHandle, school, sorority, userAllowsTryOns },
       };
+
       const uploadedImage = this.props.image;
 
       // Update profileImage only if file system has been accessed
@@ -98,6 +102,9 @@ export class ProfileSettingsPageComponent extends Component {
     const instaHandle = user.attributes.profile.publicData
       ? user.attributes.profile.publicData.instaHandle
       : null;
+    const allowTryOns = user.attributes.profile.publicData
+      ? user.attributes.profile.publicData.userAllowsTryOns
+      : null;
 
     const profileImageId = user.profileImage ? user.profileImage.id : null;
     const profileImage = image || { imageId: profileImageId };
@@ -116,6 +123,7 @@ export class ProfileSettingsPageComponent extends Component {
           school,
           sorority,
           instaHandle,
+          allowTryOns,
         }}
         profileImage={profileImage}
         onImageUpload={e => onImageUploadHandler(e, onImageUpload)}

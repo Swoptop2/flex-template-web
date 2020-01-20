@@ -136,6 +136,9 @@ class ProfileSettingsFormComponent extends Component {
           // college
           const collegeRequiredMessage = "You must enter your college's name";
           const collegeRequired = validators.required(collegeRequiredMessage);
+          // try ons
+          const tryOnsRequiredMessage = 'You must select an option';
+          const tryOnsRequired = validators.required(tryOnsRequiredMessage);
 
           const hasUploadError = !!uploadImageError && !uploadInProgress;
           const errorClasses = classNames({ [css.avatarUploadError]: hasUploadError });
@@ -364,6 +367,22 @@ class ProfileSettingsFormComponent extends Component {
                     placeholder="Alpha Chi Omega"
                   />
                 </div>
+                <h3 style={{ marginTop: '30px' }} className={css.sectionTitle}>
+                  Allow try ons?
+                </h3>
+                <FieldSelect
+                  className={css.fieldSelect}
+                  label="Allow try ons?"
+                  validate={tryOnsRequired}
+                  name="allowTryOns"
+                  id="allowTryOns"
+                >
+                  <option disabled value="">
+                    Allow try ons?
+                  </option>
+                  <option value={true}>Allow try ons</option>
+                  <option value={false}>Do not allow try ons</option>
+                </FieldSelect>
                 <h3 style={{ marginTop: '30px' }} className={css.sectionTitle}>
                   Social
                 </h3>

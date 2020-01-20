@@ -27,5 +27,6 @@ exports[`SectionHero matches snapshot 1`] = `
       type="video/mp4"
     />
   </video>
+  <div />
 </div>
 `;

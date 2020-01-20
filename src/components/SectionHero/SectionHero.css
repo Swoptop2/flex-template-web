@@ -47,26 +47,6 @@
   min-height: 100%;
   min-width: 100%;
   object-fit: cover;
-  display: none;
-  @media (--viewportMedium) {
-    display: block;
-  }
-}
-
-.mobileBg {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  min-height: 100%;
-  min-width: 100%;
-  background-image: url('./mobileBg.jpg');
-  background-position: center;
-  background-size: contain;
-  @media (--viewportMedium) {
-    display: none;
-  }
 }
 
 /* Animation for the hero elements */
@@ -95,8 +75,7 @@
 }
 
 .heroContent {
-  margin: 20px 24px 50px 24px;
-  transform: translateY(-220px);
+  margin: 50px 24px 50px 24px;
 
   @media (--viewportMedium) {
     margin: 50px 7.5vw 50px 7.5vw;
@@ -148,10 +127,10 @@
 .heroButton {
   @apply --marketplaceButtonStyles;
   @apply --SectionHero_animation;
-  padding: 15px;
+  padding: 20px;
 
   animation-delay: 0.8s;
-  transform: translateY(-103px);
+  transform: translateY(-145px);
 
   @media (--viewportMedium) {
     display: block;

@@ -20,6 +20,7 @@ class MainPanel extends Component {
     this.state = { isSearchFiltersPanelOpen: false };
     this.myRef = React.createRef();
     this.divRef = React.createRef();
+    this.topDivRef = React.createRef();
     this.setScroll = this.setScroll.bind(this);
   }
 
@@ -34,10 +35,8 @@ class MainPanel extends Component {
         this.props.currentUser.attributes.profile.publicData.likedListings ===
         prevProps.currentUser.attributes.profile.publicData.likedListings
       ) {
-        if (this.myRef.current) {
-          if (this.myRef.current.scrollTop > 0) {
-            this.myRef.current.scrollTop = 0;
-          }
+        if (this.topDivRef.current) {
+          this.topDivRef.current.scrollIntoView();
         }
       }
     }
@@ -148,6 +147,7 @@ class MainPanel extends Component {
               [css.newSearchInProgress]: !listingsAreLoaded,
             })}
           >
+            <div style={{ float: 'left', clear: 'both' }} ref={this.topDivRef}></div>
             <button style={{ color: '#fff' }} className={css.scrollDown} onClick={this.setScroll}>
               <i className="fa fa-chevron-down"></i>
             </button>

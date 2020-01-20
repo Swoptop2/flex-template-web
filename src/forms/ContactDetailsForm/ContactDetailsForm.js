@@ -320,7 +320,11 @@ class ContactDetailsFormComponent extends Component {
                   inProgress={inProgress}
                   ready={pristineSinceLastSubmit}
                   disabled={submitDisabled}
-                  style={{ transform: 'translateY(-230px)' }}
+                  style={
+                    emailChanged
+                      ? { transform: 'translateY(0px)' }
+                      : { transform: 'translateY(-230px' }
+                  }
                 >
                   <FormattedMessage id="ContactDetailsForm.saveChanges" />
                 </PrimaryButton>

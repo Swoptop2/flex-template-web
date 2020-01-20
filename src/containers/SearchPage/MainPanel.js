@@ -36,7 +36,9 @@ class MainPanel extends Component {
         prevProps.currentUser.attributes.profile.publicData.likedListings
       ) {
         if (this.topDivRef.current) {
-          this.topDivRef.current.scrollIntoView();
+          console.log('scrolling into view');
+          // this.topDivRef.current.scrollIntoView();
+          this.myRef.current.scrollTop = 0;
         }
       }
     }

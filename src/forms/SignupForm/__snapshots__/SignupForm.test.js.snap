@@ -607,7 +607,7 @@ exports[`SignupForm matches snapshot 1`] = `
           disabled={true}
           value=""
         >
-          Allow try ons?
+          Select one...
         </option>
         <option
           value={true}

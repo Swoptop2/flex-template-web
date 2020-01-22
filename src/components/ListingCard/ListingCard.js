@@ -49,7 +49,7 @@ const LazyImage = lazyLoadWithDimensions(ListingImage, { loadAfterInitialRenderi
 
 export const ListingCardComponent = props => {
   const [isLiked, setIsLiked] = useState(false);
-  const [imgStyle, setImgStyle] = useState({ backgroundColor: '#ffffff' });
+  // const [imgStyle, setImgStyle] = useState({ backgroundColor: '#ffffff' });
   const canvasRef = useRef(null);
   const imgRef = useRef(null);
   const {
@@ -74,14 +74,14 @@ export const ListingCardComponent = props => {
   const { formattedPrice, priceTitle } = priceData(price, intl);
 
   useEffect(() => {
-    imgRef.current.addEventListener('load', () => {
-      if (canvasRef.current) {
-        let context = canvasRef.current.getContext('2d');
-        context.drawImage(imgRef.current, 0, 0);
-        const result = context.getImageData(0, 0, 1, 1).data;
-        setImgStyle({ backgroundColor: `rgb(${result[0]}, ${result[1]}, ${result[2]})` });
-      }
-    });
+    // imgRef.current.addEventListener('load', () => {
+    //   if (canvasRef.current) {
+    //     let context = canvasRef.current.getContext('2d');
+    //     context.drawImage(imgRef.current, 0, 0);
+    //     const result = context.getImageData(0, 0, 1, 1).data;
+    //     setImgStyle({ backgroundColor: `rgb(${result[0]}, ${result[1]}, ${result[2]})` });
+    //   }
+    // });
 
     if (currentUser) {
       if (currentUser.attributes.profile.publicData.likedListings) {
@@ -137,7 +137,7 @@ export const ListingCardComponent = props => {
       ) : null}
       <NamedLink className={classes} name="ListingPage" params={{ id, slug }}>
         <div className={css.threeToTwoWrapper}>
-          <div style={imgStyle} className={css.aspectWrapper}>
+          <div style={{ backgroundColor: '#ffffff' }} className={css.aspectWrapper}>
             <canvas style={{ display: 'none' }} ref={canvasRef}></canvas>
             <img
               width={2400}

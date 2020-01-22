@@ -177,8 +177,8 @@ const BookingPanel = props => {
           />
         ) : null}
         <p className={css.note}>
-          *Damage cost is what will be payed to the renter if the item is returned completely
-          damaged (simple wear & tear doesn't apply)
+          *Damage cost is what you will pay to the renter if the item is damaged or lost during your
+          rental (simple wear & tear does not apply)
         </p>
       </ModalInMobile>
       <div className={css.openBookingForm}>

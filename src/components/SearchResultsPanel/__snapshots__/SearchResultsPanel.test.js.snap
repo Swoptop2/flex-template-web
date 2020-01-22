@@ -5,5 +5,12 @@ exports[`SearchResultsPanel matches snapshot 1`] = `
   className=""
 >
   <div />
+  <div
+    style={
+      Object {
+        "height": "80px",
+      }
+    }
+  />
 </div>
 `;

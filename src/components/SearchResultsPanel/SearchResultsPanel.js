@@ -70,6 +70,7 @@ const SearchResultsPanel = props => {
         {props.children}
       </div>
       {paginationLinks}
+      <div style={{ height: '80px' }}></div>
     </div>
   );
 };

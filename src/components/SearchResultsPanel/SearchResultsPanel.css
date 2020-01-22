@@ -86,6 +86,6 @@
 
   @media (--viewportLarge) {
     padding: 0 36px;
-    transform: translateY(-35px);
+    /* transform: translateY(-25px); */
   }
 }

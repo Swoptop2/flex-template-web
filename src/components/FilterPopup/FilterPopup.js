@@ -109,6 +109,7 @@ class FilterPopup extends Component {
       initialValues,
       keepDirtyOnReinitialize,
       contentPlacementOffset,
+      noChevron,
     } = this.props;
 
     const classes = classNames(rootClassName || css.root, className);
@@ -137,7 +138,7 @@ class FilterPopup extends Component {
             onClick={() => this.toggleOpen()}
           >
             {label}
-            <i className="fa fa-chevron-down" style={arrowStyles}></i>
+            {noChevron ? null : <i className="fa fa-chevron-down" style={arrowStyles}></i>}
           </button>
           <div
             id={id}

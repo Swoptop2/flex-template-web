@@ -90,7 +90,7 @@ const SectionHeading = props => {
             <h1 className={css.title}>{richTitle}</h1>
             <div className={css.author}>
               {category}
-              {retailPrice ? <span>{`Retail Pirce $${retailPrice}.00`}</span> : null}
+              {retailPrice ? <span>{`Retail Price $${retailPrice}.00`}</span> : null}
             </div>
           </div>
           <div className={css.desktopPriceContainer}>

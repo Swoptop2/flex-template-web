@@ -132,6 +132,7 @@ class KeywordFilter extends Component {
     return showAsPopup ? (
       <FilterPopup
         className={classes}
+        noChevron={true}
         rootClassName={rootClassName}
         popupClassName={css.popupSize}
         name={name}

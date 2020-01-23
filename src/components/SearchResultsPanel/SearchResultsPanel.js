@@ -69,8 +69,20 @@ const SearchResultsPanel = props => {
         ))}
         {props.children}
       </div>
+      <div style={{ height: '50px', marginTop: '20px', visibility: 'hidden' }}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam unde placeat in non
+        maxime accusantium. Consequatur repellat asperiores atque odit quod molestias, quaerat nisi
+        obcaecati veniam aperiam nulla esse quis aliquid culpa officia saepe numquam nesciunt,
+        possimus odio impedit suscipit ipsa praesentium. Iste porro exercitationem ipsum officiis
+        temporibus
+      </div>
       {paginationLinks}
-      <div style={{ height: '80px' }}></div>
+      <div style={{ height: '50px', marginTop: '20px', visibility: 'hidden' }}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam unde placeat in non
+        maxime accusantium. Consequatur repellat asperiores atque odit quod molestias, quaerat nisi
+        obcaecati veniam aperiam nulla esse quis aliquid culpa officia saepe numquam nesciunt,
+        possimus odio impedit suscipit ipsa praesentium.
+      </div>
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { string, func } from 'prop-types';
 import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl';
 import classNames from 'classnames';
-import { lazyLoadWithDimensions } from '../../util/contextHelpers';
+// import { lazyLoadWithDimensions } from '../../util/contextHelpers';
 import { LINE_ITEM_DAY, LINE_ITEM_NIGHT, propTypes } from '../../util/types';
 import { formatMoney } from '../../util/currency';
 import { ensureListing, ensureUser } from '../../util/data';
@@ -40,18 +40,18 @@ const priceData = (price, intl) => {
   return {};
 };
 
-class ListingImage extends Component {
-  render() {
-    return <ResponsiveImage {...this.props} />;
-  }
-}
-const LazyImage = lazyLoadWithDimensions(ListingImage, { loadAfterInitialRendering: 3000 });
+// class ListingImage extends Component {
+//   render() {
+//     return <ResponsiveImage {...this.props} />;
+//   }
+// }
+// const LazyImage = lazyLoadWithDimensions(ListingImage, { loadAfterInitialRendering: 3000 });
 
 export const ListingCardComponent = props => {
   const [isLiked, setIsLiked] = useState(false);
   // const [imgStyle, setImgStyle] = useState({ backgroundColor: '#ffffff' });
-  const canvasRef = useRef(null);
-  const imgRef = useRef(null);
+  // const canvasRef = useRef(null);
+  // const imgRef = useRef(null);
   const {
     className,
     rootClassName,
@@ -138,7 +138,7 @@ export const ListingCardComponent = props => {
       <NamedLink className={classes} name="ListingPage" params={{ id, slug }}>
         <div className={css.threeToTwoWrapper}>
           <div style={{ backgroundColor: '#ffffff' }} className={css.aspectWrapper}>
-            <canvas style={{ display: 'none' }} ref={canvasRef}></canvas>
+            {/* <canvas style={{ display: 'none' }} ref={canvasRef}></canvas>
             <img
               width={2400}
               height={2400}
@@ -149,14 +149,21 @@ export const ListingCardComponent = props => {
               ref={imgRef}
               style={{ display: 'none' }}
               alt=""
-            />
-            <LazyImage
+            /> */}
+            <ResponsiveImage
               rootClassName={css.rootForImage}
               alt={title}
               image={firstImage}
-              variants={['scaled-xlarge']}
+              variants={['scaled-small', 'scaled-medium']}
               sizes={renderSizes}
             />
+            {/* <LazyImage
+              rootClassName={css.rootForImage}
+              alt={title}
+              image={firstImage}
+              variants={['scaled-medium']}
+              sizes={renderSizes}
+            /> */}
           </div>
         </div>
         <div className={css.info}>

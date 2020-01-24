@@ -15,7 +15,7 @@ const SectionFirstImage = props => {
             className={css.firstImage}
             alt="Listing image"
             image={image}
-            variants={['scaled-small', 'scaled-medium', 'scaled-large', 'scaled-xlarge']}
+            variants={['scaled-small', 'scaled-medium']}
             sizes="(max-width: 767px) 100vw, 80vw"
             key={i}
           />

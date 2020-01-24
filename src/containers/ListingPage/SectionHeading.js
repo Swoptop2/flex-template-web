@@ -67,7 +67,7 @@ const SectionHeading = props => {
                   className={css.listImg}
                   alt="Listing image"
                   image={img}
-                  variants={['scaled-xlarge']}
+                  variants={['scaled-small, scaled-medium']}
                   sizes="(max-width: 367px) 100vw, 80vw"
                 />
               </li>
@@ -80,7 +80,7 @@ const SectionHeading = props => {
             className={css.desktopImg}
             alt="Listing image"
             image={images[selectedImageIndex]}
-            variants={['scaled-xlarge']}
+            variants={['scaled-small, scaled-medium']}
             sizes="(max-width: 367px) 100vw, 80vw"
             style={imgStyle}
           />
@@ -90,7 +90,7 @@ const SectionHeading = props => {
             <h1 className={css.title}>{richTitle}</h1>
             <div className={css.author}>
               {category}
-              {retailPrice ? <span>{`Retail Price $${retailPrice}.00`}</span> : null}
+              {retailPrice ? <span>{`Retail Pirce $${retailPrice}.00`}</span> : null}
             </div>
           </div>
           <div className={css.desktopPriceContainer}>

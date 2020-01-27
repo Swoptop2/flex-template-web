@@ -67,7 +67,7 @@ const SectionHeading = props => {
                   className={css.listImg}
                   alt="Listing image"
                   image={img}
-                  variants={['scaled-small, scaled-medium']}
+                  variants={['scaled-small', 'scaled-medium', 'scaled-xlarge']}
                   sizes="(max-width: 367px) 100vw, 80vw"
                 />
               </li>
@@ -80,7 +80,7 @@ const SectionHeading = props => {
             className={css.desktopImg}
             alt="Listing image"
             image={images[selectedImageIndex]}
-            variants={['scaled-small, scaled-medium']}
+            variants={['scaled-small', 'scaled-medium', 'scaled-xlarge']}
             sizes="(max-width: 367px) 100vw, 80vw"
             style={imgStyle}
           />

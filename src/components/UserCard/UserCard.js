@@ -93,6 +93,14 @@ const UserCard = props => {
         : '';
     }
   } catch (err) {}
+  let height = '';
+  try {
+    if (user.attributes.profile.publicData) {
+      height = user.attributes.profile.publicData.height
+        ? user.attributes.profile.publicData.height
+        : '';
+    }
+  } catch (err) {}
 
   // const separator = isCurrentUser ? null : <span className={css.linkSeparator}>•</span>;
 
@@ -140,10 +148,12 @@ const UserCard = props => {
               {allowsTryOns}
             </p>
           </div>
+          {height ? <p className={css.desktopBio}>Height: {height}</p> : null}
           {hasBio ? <ExpandableBio className={css.desktopBio} bio={bio} /> : null}
           {links}
         </div>
       </div>
+      {height ? <p className={css.mobileBio}>Height: {height}</p> : null}
       {hasBio ? <ExpandableBio className={css.mobileBio} bio={bio} /> : null}
     </div>
   );

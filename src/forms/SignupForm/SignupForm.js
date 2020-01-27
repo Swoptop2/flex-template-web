@@ -142,6 +142,8 @@ const SignupFormComponent = props => {
         const schoolRequiredMessage = 'You must enter the College you go to';
         const schoolRequired = validators.required(schoolRequiredMessage);
 
+        const heightPlaceholder = 'e.g. 5\' 4"';
+
         const handleTermsKeyUp = e => {
           // Allow click action with keyboard like with normal links
           if (e.keyCode === KEY_CODE_ENTER) {
@@ -263,6 +265,14 @@ const SignupFormComponent = props => {
                 <option value={true}>Allow try ons</option>
                 <option value={false}>Do not allow try ons</option>
               </FieldSelect>
+              <FieldTextInput
+                className={css.password}
+                type="text"
+                id="height"
+                name="height"
+                label="Height (optional)"
+                placeholder={heightPlaceholder}
+              />
               <FieldTextInput
                 className={css.password}
                 type="password"

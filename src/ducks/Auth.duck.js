@@ -181,6 +181,7 @@ export const signup = params => (dispatch, getState, sdk) => {
     school,
     allowTryOns,
     sorority,
+    height,
     ...rest
   } = params;
   const userAllowsTryOns = allowTryOns === 'true' ? true : false;
@@ -193,7 +194,7 @@ export const signup = params => (dispatch, getState, sdk) => {
         firstName,
         lastName,
         protectedData: { state, city },
-        publicData: { email, school, sorority, likedListings, userAllowsTryOns },
+        publicData: { email, school, sorority, likedListings, userAllowsTryOns, height },
       }
     : {
         email,
@@ -201,7 +202,7 @@ export const signup = params => (dispatch, getState, sdk) => {
         firstName,
         lastName,
         protectedData: { state, city, ...rest },
-        publicData: { email, school, sorority, likedListings, userAllowsTryOns },
+        publicData: { email, school, sorority, likedListings, userAllowsTryOns, height },
       };
 
   // We must login the user if signup succeeds since the API doesn't

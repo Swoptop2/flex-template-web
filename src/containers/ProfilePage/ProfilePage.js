@@ -76,11 +76,12 @@ export class ProfilePageComponent extends Component {
     const isCurrentUser =
       ensuredCurrentUser.id && profileUser.id && ensuredCurrentUser.id.uuid === profileUser.id.uuid;
     const displayName = profileUser.attributes.profile.displayName;
-    let school, sorority, instagramHandle;
+    let school, sorority, instagramHandle, height;
     if (profileUser.attributes.profile.publicData) {
       school = profileUser.attributes.profile.publicData.school;
       sorority = profileUser.attributes.profile.publicData.sorority;
       instagramHandle = profileUser.attributes.profile.publicData.instaHandle;
+      height = profileUser.attributes.profile.publicData.height;
     }
 
     const bio = profileUser.attributes.profile.bio;
@@ -194,23 +195,28 @@ export class ProfilePageComponent extends Component {
           <FormattedMessage id="ProfilePage.desktopHeading" values={{ name: displayName }} />
         </h1>
         {instagramHandle ? (
-          <h2>
+          <h3>
             Instagram handle: <span className={css.schoolData}>{instagramHandle}</span>
-          </h2>
+          </h3>
         ) : null}
         <div className={css.schoolDataContainer}>
           {school ? (
-            <h2>
+            <h3>
               College: <span className={css.schoolData}>{school}</span>
-            </h2>
+            </h3>
           ) : null}
           {sorority ? (
-            <h2>
+            <h3>
               Sorority: <span className={css.schoolData}>{sorority}</span>
-            </h2>
+            </h3>
           ) : null}
         </div>
-        {hasBio ? <p className={css.bio}>{bio}</p> : null}
+        {height ? (
+          <h3>
+            Height: <span className={css.schoolData}>{height}</span>
+          </h3>
+        ) : null}
+        {hasBio ? <h3 className={css.bio}>{bio}</h3> : null}
         {hasListings ? (
           <div className={listingsContainerClasses}>
             <h2 className={css.listingsTitle}>

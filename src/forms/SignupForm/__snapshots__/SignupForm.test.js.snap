@@ -625,6 +625,26 @@ exports[`SignupForm matches snapshot 1`] = `
       className=""
     >
       <label
+        htmlFor="height"
+      >
+        Height (optional)
+      </label>
+      <input
+        className=""
+        id="height"
+        name="height"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="e.g. 5' 4\\""
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className=""
+    >
+      <label
         htmlFor="password"
       >
         SignupForm.passwordLabel

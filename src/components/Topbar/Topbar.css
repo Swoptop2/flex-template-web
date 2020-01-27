@@ -146,6 +146,8 @@
   fill: var(--matterColor);
 }
 .rootSearchIcon {
+  /*TODO: Remove display none*/
+  display: none;
   stroke: var(--matterColor);
 }
 

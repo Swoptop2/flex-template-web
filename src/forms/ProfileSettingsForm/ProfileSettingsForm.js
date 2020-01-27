@@ -400,6 +400,14 @@ class ProfileSettingsFormComponent extends Component {
                   <FormattedMessage id="ProfileSettingsForm.bioHeading" />
                 </h3>
                 <FieldTextInput
+                  type="text"
+                  id="height"
+                  name="height"
+                  label="Height (optional)"
+                  placeholder={'e.g. 5\' 4"'}
+                  style={{ marginBottom: '10px' }}
+                />
+                <FieldTextInput
                   type="textarea"
                   id="bio"
                   name="bio"

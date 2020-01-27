@@ -21,6 +21,12 @@ const SectionFirstImage = props => {
           />
         ))}
       </div>
+      {images.length > 1 ? (
+        <div className={css.chevrons}>
+          <i style={{ transform: 'rotate(90deg)' }} className="fa fa-chevron-down"></i>
+          <i style={{ transform: 'rotate(-90deg)' }} className="fa fa-chevron-down"></i>
+        </div>
+      ) : null}
     </div>
   ) : null;
 };

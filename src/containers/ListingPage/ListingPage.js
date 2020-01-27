@@ -45,6 +45,7 @@ import { sendEnquiry, loadData, setInitialValues, addEmail } from './ListingPage
 import SectionImages from './SectionImages';
 import SectionHeading from './SectionHeading';
 import SectionSizeMaybe from './SectionSizeMaybe';
+import SectionFitsMaybe from './SectionFitsMaybe';
 import SectionColorMaybe from './SectionColorMaybe';
 import SectionDamageCostMaybe from './SectionDamageCostMaybe';
 import SectionHostMaybe from './SectionHostMaybe';
@@ -203,6 +204,7 @@ export class ListingPageComponent extends Component {
       categoriesConfig,
       sizesConfig,
       colorsConfig,
+      fitsConfig,
     } = this.props;
 
     const listingId = new UUID(rawParams.id);
@@ -219,7 +221,7 @@ export class ListingPageComponent extends Component {
     const listingType = isDraftVariant
       ? LISTING_PAGE_PARAM_TYPE_DRAFT
       : LISTING_PAGE_PARAM_TYPE_EDIT;
-    const listingTab = isDraftVariant ? 'photos' : 'description';
+    const listingTab = isDraftVariant ? 'photos' : 'details';
 
     const isApproved =
       currentListing.id && currentListing.attributes.state !== LISTING_STATE_PENDING_APPROVAL;
@@ -435,6 +437,7 @@ export class ListingPageComponent extends Component {
                   />
                   <div className={css.detailsContainer}>
                     <SectionSizeMaybe options={sizesConfig} publicData={publicData} />
+                    <SectionFitsMaybe options={fitsConfig} publicData={publicData} />
                     <SectionColorMaybe options={colorsConfig} publicData={publicData} />
                     <SectionDamageCostMaybe publicData={publicData} />
                   </div>
@@ -470,6 +473,7 @@ export class ListingPageComponent extends Component {
                   fetchTimeSlotsError={fetchTimeSlotsError}
                   sizeOptions={sizesConfig}
                   colorOptions={colorsConfig}
+                  fitsOptions={fitsConfig}
                 />
               </div>
             </div>
@@ -496,6 +500,7 @@ ListingPageComponent.defaultProps = {
   categoriesConfig: config.custom.categories,
   sizesConfig: config.custom.sizes,
   colorsConfig: config.custom.colors,
+  fitsConfig: config.custom.fits,
 };
 
 ListingPageComponent.propTypes = {
@@ -539,6 +544,7 @@ ListingPageComponent.propTypes = {
   categoriesConfig: array,
   sizesConfig: array,
   colorsConfig: array,
+  fitsConfig: array,
 };
 
 const mapStateToProps = state => {

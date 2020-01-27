@@ -49,10 +49,11 @@ const EditListingDetailsPanelComponent = props => {
           item: publicData.item,
           color: publicData.color,
           size: publicData.size,
+          fits: publicData.fits,
           brandStore: publicData.brandStore,
         }}
         onSubmit={values => {
-          const { item, color, size, brandStore = '' } = values;
+          const { item, color, size, fits, brandStore = '' } = values;
           const selectedItem = config.custom.items.find(option => option.key === item);
           const updateValues = {
             title: `${brandStore} ${selectedItem.label}`,
@@ -60,6 +61,7 @@ const EditListingDetailsPanelComponent = props => {
               item,
               color,
               size,
+              fits,
               brandStore,
             },
           };
@@ -73,6 +75,7 @@ const EditListingDetailsPanelComponent = props => {
         items={config.custom.items}
         colors={config.custom.colors}
         sizes={config.custom.sizes}
+        fits={config.custom.fits}
         currentUser={currentUser}
       />
     </div>

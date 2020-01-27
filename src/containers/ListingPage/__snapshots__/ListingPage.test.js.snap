@@ -39,7 +39,7 @@ exports[`ListingPage matches snapshot 1`] = `
             Object {
               "id": "listing1",
               "slug": "listing1-title",
-              "tab": "description",
+              "tab": "details",
               "type": "edit",
             }
           }
@@ -258,6 +258,25 @@ exports[`ListingPage matches snapshot 1`] = `
                     Object {
                       "key": "xl-16",
                       "label": "XL, 16",
+                    },
+                  ]
+                }
+                publicData={Object {}}
+              />
+              <SectionFits
+                options={
+                  Array [
+                    Object {
+                      "key": "runs_true_to_size",
+                      "label": "Runs true to size",
+                    },
+                    Object {
+                      "key": "runs_small",
+                      "label": "Runs small",
+                    },
+                    Object {
+                      "key": "runs_big",
+                      "label": "Runs big",
                     },
                   ]
                 }
@@ -489,6 +508,22 @@ exports[`ListingPage matches snapshot 1`] = `
               ]
             }
             fetchTimeSlotsError={null}
+            fitsOptions={
+              Array [
+                Object {
+                  "key": "runs_true_to_size",
+                  "label": "Runs true to size",
+                },
+                Object {
+                  "key": "runs_small",
+                  "label": "Runs small",
+                },
+                Object {
+                  "key": "runs_big",
+                  "label": "Runs big",
+                },
+              ]
+            }
             isOwnListing={false}
             listing={
               Object {

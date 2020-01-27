@@ -677,7 +677,13 @@ export function requestUpdateListing(tab, data) {
         const payload = {
           id,
           include: ['author', 'images'],
-          'fields.image': ['variants.landscape-crop', 'variants.landscape-crop2x'],
+          'fields.image': [
+            'variants.landscape-crop',
+            'variants.landscape-crop2x',
+            'variants.scaled-small',
+            'variants.scaled-medium',
+            'variants.scaled-xlarge',
+          ],
         };
         return dispatch(requestShowListing(payload));
       })
@@ -729,7 +735,13 @@ export const loadData = params => (dispatch, getState, sdk) => {
   const payload = {
     id: new UUID(id),
     include: ['author', 'images'],
-    'fields.image': ['variants.landscape-crop', 'variants.landscape-crop2x'],
+    'fields.image': [
+      'variants.landscape-crop',
+      'variants.landscape-crop2x',
+      'variants.scaled-small',
+      'variants.scaled-medium',
+      'variants.scaled-xlarge',
+    ],
   };
 
   return Promise.all([dispatch(requestShowListing(payload)), dispatch(fetchCurrentUser())])

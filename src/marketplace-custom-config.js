@@ -91,6 +91,12 @@ export const colors = [
   { key: 'nude', label: 'Nude' },
 ];
 
+export const fits = [
+  { key: 'runs_true_to_size', label: 'Runs true to size' },
+  { key: 'runs_small', label: 'Runs small' },
+  { key: 'runs_big', label: 'Runs big' },
+];
+
 // Price filter configuration
 // Note: unlike most prices this is not handled in subunits
 export const priceFilterConfig = {

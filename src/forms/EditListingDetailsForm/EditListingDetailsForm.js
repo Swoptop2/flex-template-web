@@ -51,6 +51,7 @@ export const EditListingDetailsFormComponent = props => {
           items,
           colors,
           sizes,
+          fits,
         } = fieldRenderProps;
 
         // item
@@ -91,6 +92,14 @@ export const EditListingDetailsFormComponent = props => {
             id: 'EditListingSizeForm.sizeRequired',
           })
         );
+
+        // fits
+        const fitsPlaceholder = intl.formatMessage({
+          id: 'EditListingFitsForm.fitsPlaceholder',
+        });
+        const fitsLabel = intl.formatMessage({
+          id: 'EditListingFitsForm.fitsLabel',
+        });
 
         // brand
         const brandLabelMessage = intl.formatMessage({
@@ -177,6 +186,15 @@ export const EditListingDetailsFormComponent = props => {
               ))}
             </FieldSelect>
 
+            <FieldSelect className={css.item} name="fits" id="fits" label={fitsLabel}>
+              <option value="">{fitsPlaceholder}</option>
+              {fits.map(c => (
+                <option key={c.key} value={c.key}>
+                  {c.label}
+                </option>
+              ))}
+            </FieldSelect>
+
             <FieldTextInput
               id="brandStore"
               name="brandStore"
@@ -243,6 +261,12 @@ EditListingDetailsFormComponent.propTypes = {
     })
   ).isRequired,
   sizes: arrayOf(
+    shape({
+      key: string.isRequired,
+      label: string.isRequired,
+    })
+  ).isRequired,
+  fits: arrayOf(
     shape({
       key: string.isRequired,
       label: string.isRequired,

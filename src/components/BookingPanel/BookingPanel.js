@@ -67,6 +67,7 @@ const BookingPanel = props => {
     intl,
     sizeOptions,
     colorOptions,
+    fitsOptions,
   } = props;
 
   const price = listing.attributes.price;
@@ -95,7 +96,7 @@ const BookingPanel = props => {
   const classes = classNames(rootClassName || css.root, className);
   const titleClasses = classNames(titleClassName || css.bookingTitle);
 
-  let sizeOption, colorOption;
+  let sizeOption, colorOption, fitsOption;
 
   const size =
     listing.attributes.publicData && listing.attributes.publicData.size
@@ -105,6 +106,14 @@ const BookingPanel = props => {
     sizeOption = sizeOptions.find(option => option.key === size);
   } catch (err) {}
   const sizeLabel = sizeOption ? sizeOption.label : '';
+  const fits =
+    listing.attributes.publicData && listing.attributes.publicData.fits
+      ? listing.attributes.publicData.fits
+      : [];
+  try {
+    fitsOption = fitsOptions.find(option => option.key === fits);
+  } catch (err) {}
+  const fitsLabel = fitsOption ? fitsOption.label : '';
   const color =
     listing.attributes.publicData && listing.attributes.publicData.color
       ? listing.attributes.publicData.color
@@ -157,6 +166,9 @@ const BookingPanel = props => {
             </p>
             <p>
               Damage Cost: <span>${damageCost}</span>
+            </p>
+            <p>
+              Fits: <span>{fitsLabel}</span>
             </p>
           </div>
           <p className={css.mobileSubTitle}>{subTitleText}</p>

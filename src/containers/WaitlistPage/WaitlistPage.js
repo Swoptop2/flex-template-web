@@ -19,6 +19,7 @@ const INITIAL_STATE = {
   email: '',
   school: '',
   sorority: '',
+  reference: '',
 };
 
 const WaitlistPage = () => {
@@ -30,12 +31,14 @@ const WaitlistPage = () => {
     handleInstaBlur,
     handleEmailBlur,
     handleSchoolBlur,
+    handleReferenceBlur,
     values,
     firstNameError,
     lastNameError,
     instaError,
     emailError,
     schoolError,
+    referenceError,
   } = useFormValidation(INITIAL_STATE, validateValues);
   return (
     <StaticPage
@@ -157,11 +160,22 @@ const WaitlistPage = () => {
                 <p>Sorority</p>
                 <input
                   onChange={handleChange}
-                  onBlur={handleEmailBlur}
                   name="sorority"
                   value={values.sorority}
                   autoComplete="off"
                 />
+              </div>
+              <div className={css.input}>
+                <p>How did you hear of us?</p>
+                <input
+                  onChange={handleChange}
+                  onBlur={handleReferenceBlur}
+                  name="reference"
+                  value={values.reference}
+                  autoComplete="off"
+                  className={referenceError && css.errorInput}
+                />
+                {referenceError && <p className={css.errorText}>{referenceError}</p>}
               </div>
               <div style={{ width: '100%' }}>
                 <button className={css.button} type="submit">

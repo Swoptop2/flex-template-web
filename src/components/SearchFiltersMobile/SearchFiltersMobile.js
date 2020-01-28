@@ -400,16 +400,19 @@ class SearchFiltersMobileComponent extends Component {
           {searchInProgress ? loadingResults : null}
         </div>
         <div className={css.buttons}>
-          <Button
-            rootClassName={filtersButtonClasses}
-            className={activeClass ? css.heartActive : css.heartBtn}
-            onClick={toggleFilter}
-          >
-            <FormattedMessage
-              id="SearchFilters.heartFilterButtonLabel"
-              className={css.mapIconText}
-            />
-          </Button>
+          {/* TODO: hide filter when not logged in */}
+          {currentUser ? (
+            <Button
+              rootClassName={filtersButtonClasses}
+              className={activeClass ? css.heartActive : css.heartBtn}
+              onClick={toggleFilter}
+            >
+              <FormattedMessage
+                id="SearchFilters.heartFilterButtonLabel"
+                className={css.mapIconText}
+              />
+            </Button>
+          ) : null}
           <Button
             rootClassName={filtersButtonClasses}
             className={costumeActiveClass ? css.heartActive : css.heartBtn}

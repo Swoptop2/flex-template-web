@@ -10,8 +10,8 @@ const handleEmailRequest = (req, res) => {
     const { values } = req.query;
     const info = JSON.parse(values);
     const message = info.sorority
-      ? `${info.firstName} ${info.lastName} from ${info.sorority} from the school of ${info.school}, whishes to join Swoptop's waitlist. Her instagram handle is ${info.insta}.`
-      : `${info.firstName} ${info.lastName} from the school of ${info.school}, whishes to join Swoptop's waitlist. Her instagram handle is ${info.insta}.`;
+      ? `${info.firstName} ${info.lastName} from ${info.sorority} from the school of ${info.school}, whishes to join Swoptop's waitlist. Her instagram handle is ${info.insta}. This is how she learned about swoptop: ${info.reference}.`
+      : `${info.firstName} ${info.lastName} from the school of ${info.school}, whishes to join Swoptop's waitlist. Her instagram handle is ${info.insta}. This is how she learned about swoptop: ${info.reference}.`;
     const msg = constructMessage(
       info.email,
       `Waitlist request by ${info.firstName} ${info.lastName} from Swoptop`,

@@ -36,6 +36,13 @@ const validateValues = {
     }
     return error;
   },
+  validateReference(value) {
+    let error = '';
+    if (!value.reference) {
+      error = 'This field is required';
+    }
+    return error;
+  },
 };
 
 export default validateValues;

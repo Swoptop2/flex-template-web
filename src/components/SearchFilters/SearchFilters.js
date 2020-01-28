@@ -353,8 +353,6 @@ const SearchFiltersComponent = props => {
           className={costumeActiveClass ? css.heartActive : css.heartBtn}
           type="button"
           onClick={toggleCostumeFilter}
-          disabled={currentUser ? false : true}
-          style={currentUser ? { cursor: 'pointer' } : { cursor: 'not-allowed' }}
         >
           Costumes
         </button>

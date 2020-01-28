@@ -9,6 +9,7 @@ const useFormValidation = (initialState, validate) => {
   const [instaError, setInstaError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [schoolError, setSchoolError] = useState('');
+  const [referenceError, setReferenceError] = useState('');
 
   const handleChange = event => {
     setValues({
@@ -41,6 +42,10 @@ const useFormValidation = (initialState, validate) => {
     const validationErrors = validate.validateSchool(values);
     setSchoolError(validationErrors);
   };
+  const handleReferenceBlur = () => {
+    const validationErrors = validate.validateReference(values);
+    setReferenceError(validationErrors);
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -54,7 +59,8 @@ const useFormValidation = (initialState, validate) => {
       values.lastName !== '' &&
       values.insta !== '' &&
       values.email !== '' &&
-      values.school !== ''
+      values.school !== '' &&
+      values.reference !== ''
     ) {
       // submit form
       const action = 'waitlist';
@@ -97,12 +103,14 @@ const useFormValidation = (initialState, validate) => {
     handleInstaBlur,
     handleEmailBlur,
     handleSchoolBlur,
+    handleReferenceBlur,
     values,
     firstNameError,
     lastNameError,
     instaError,
     emailError,
     schoolError,
+    referenceError,
   };
 };
 

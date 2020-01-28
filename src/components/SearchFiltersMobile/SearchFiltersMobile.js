@@ -24,7 +24,12 @@ const RADIX = 10;
 class SearchFiltersMobileComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { isFiltersOpenOnMobile: false, initialQueryParams: null, heartActive: false };
+    this.state = {
+      isFiltersOpenOnMobile: false,
+      initialQueryParams: null,
+      heartActive: false,
+      costumeActive: false,
+    };
 
     this.openFilters = this.openFilters.bind(this);
     this.cancelFilters = this.cancelFilters.bind(this);
@@ -43,8 +48,12 @@ class SearchFiltersMobileComponent extends Component {
 
   componentWillUnmount() {
     const localData = JSON.parse(localStorage.getItem('heartActive'));
+    const costumeLocalData = JSON.parse(localStorage.getItem('costumeActive'));
     if (localData) {
       localStorage.removeItem('heartActive');
+    }
+    if (costumeLocalData) {
+      localStorage.removeItem('costumeActtive');
     }
   }
 
@@ -349,10 +358,37 @@ class SearchFiltersMobileComponent extends Component {
       }
     };
 
-    let activeClass = false;
+    const toggleCostumeFilter = _ => {
+      const queryParams = {
+        ...urlQueryParams,
+        pub_item: 'costume',
+      };
+
+      // perform state setting
+      this.setState(prevState => ({
+        costumeActive: !prevState.costumeActive,
+      }));
+      if (this.state.costumeActive) {
+        this.handleSelectMultiple('pub_item', null);
+        localStorage.removeItem('costumeActive');
+      } else {
+        localStorage.setItem('costumeActive', JSON.stringify({ active: true }));
+        history.push(
+          createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams)
+        );
+      }
+    };
+
+    let activeClass = false,
+      costumeActiveClass = false;
     try {
       if (JSON.parse(localStorage.getItem('heartActive'))) {
         activeClass = true;
+      }
+    } catch (err) {}
+    try {
+      if (JSON.parse(localStorage.getItem('costumeActive'))) {
+        costumeActiveClass = true;
       }
     } catch (err) {}
 
@@ -371,6 +407,16 @@ class SearchFiltersMobileComponent extends Component {
           >
             <FormattedMessage
               id="SearchFilters.heartFilterButtonLabel"
+              className={css.mapIconText}
+            />
+          </Button>
+          <Button
+            rootClassName={filtersButtonClasses}
+            className={costumeActiveClass ? css.heartActive : css.heartBtn}
+            onClick={toggleCostumeFilter}
+          >
+            <FormattedMessage
+              id="SearchFilters.costumeFilterButtonLabel"
               className={css.mapIconText}
             />
           </Button>

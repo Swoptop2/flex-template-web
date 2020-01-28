@@ -292,6 +292,6 @@
 }
 
 .arrowIcon {
-  stroke: var(--matterColorLight);
-  fill: var(--matterColorLight);
+  stroke: var(--marketplaceColor);
+  fill: var(--marketplaceColor);
 }

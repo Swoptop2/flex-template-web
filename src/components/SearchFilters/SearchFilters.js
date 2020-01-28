@@ -60,6 +60,7 @@ const initialDateRangeValue = (queryParams, paramName) => {
 
 const SearchFiltersComponent = props => {
   const [heartActive, setheartActive] = useState(false);
+  const [costumeActive, setCostumeActive] = useState(false);
   const {
     rootClassName,
     className,
@@ -84,8 +85,12 @@ const SearchFiltersComponent = props => {
   useEffect(() => {
     return () => {
       const localData = JSON.parse(localStorage.getItem('heartActive'));
+      const costumeLocalData = JSON.parse(localStorage.getItem('costumeActive'));
       if (localData) {
         localStorage.removeItem('heartActive');
+      }
+      if (costumeLocalData) {
+        localStorage.removeItem('costumeActive');
       }
     };
 
@@ -155,6 +160,25 @@ const SearchFiltersComponent = props => {
       localStorage.removeItem('heartActive');
     } else {
       localStorage.setItem('heartActive', JSON.stringify({ active: true }));
+      history.push(
+        createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams)
+      );
+    }
+  };
+
+  const toggleCostumeFilter = _ => {
+    const queryParams = {
+      ...urlQueryParams,
+      pub_item: 'costume',
+    };
+
+    setCostumeActive(!costumeActive);
+    if (costumeActive) {
+      //remove form localStorage
+      handleSelectOptions('pub_item', null);
+      localStorage.removeItem('costumeActive');
+    } else {
+      localStorage.setItem('costumeActive', JSON.stringify({ active: true }));
       history.push(
         createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams)
       );
@@ -301,15 +325,18 @@ const SearchFiltersComponent = props => {
     </button>
   ) : null;
 
-  let activeClass = false;
+  let activeClass = false,
+    costumeActiveClass = false;
   try {
     if (JSON.parse(localStorage.getItem('heartActive'))) {
       activeClass = true;
     }
   } catch (err) {}
-  const arrowStyles = activeClass
-    ? { fontSize: '11px', transform: 'rotate(-180deg)', transition: 'ease-in-out 250ms' }
-    : { fontSize: '11px', transition: 'ease-in-out 250ms' };
+  try {
+    if (JSON.parse(localStorage.getItem('costumeActive'))) {
+      costumeActiveClass = true;
+    }
+  } catch (err) {}
   return (
     <div className={classes}>
       <div className={css.filters}>
@@ -321,7 +348,15 @@ const SearchFiltersComponent = props => {
           style={currentUser ? { cursor: 'pointer' } : { cursor: 'not-allowed' }}
         >
           Loves
-          <i className="fa fa-chevron-down" style={arrowStyles}></i>
+        </button>
+        <button
+          className={costumeActiveClass ? css.heartActive : css.heartBtn}
+          type="button"
+          onClick={toggleCostumeFilter}
+          disabled={currentUser ? false : true}
+          style={currentUser ? { cursor: 'pointer' } : { cursor: 'not-allowed' }}
+        >
+          Costumes
         </button>
 
         {itemFilterElement}

@@ -770,6 +770,7 @@
   "SearchFilters.categoryLabel": "Category",
   "SearchFilters.filtersButtonLabel": "Filters",
   "SearchFilters.heartFilterButtonLabel": "Your Loves",
+  "SearchFilters.costumeFilterButtonLabel": "Costumes",
   "SearchFilters.foundResults": "{count, number} {count, plural, one {result} other {results}}",
   "SearchFilters.keywordLabel": "Search by brand",
   "SearchFilters.loadingResults": "Loading search results…",

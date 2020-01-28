@@ -33,7 +33,7 @@ const SaleActionButtonsMaybe = props => {
   const cantAccept = _ => {
     let cantAccept = false;
     const daysDifference = now.getDate() - realStartingDate.getDate();
-    if (daysDifference >= 1) cantAccept = true;
+    if (daysDifference >= 1 && now.getMonth() === realStartingDate.getMonth()) cantAccept = true;
     return cantAccept;
   };
 

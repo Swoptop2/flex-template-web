@@ -30,7 +30,7 @@ const SaleCustomerCancelButtonMaybe = props => {
   const cantCancelBooking = _ => {
     let cantCancel = false;
     const daysDifference = now.getDate() - realStartingDate.getDate();
-    if (daysDifference >= 1) cantCancel = true;
+    if (daysDifference >= 1 && now.getMonth() === realStartingDate.getMonth()) cantCancel = true;
     return cantCancel;
   };
 

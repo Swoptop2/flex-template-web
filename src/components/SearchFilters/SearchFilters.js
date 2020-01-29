@@ -349,6 +349,12 @@ const SearchFiltersComponent = props => {
         >
           Loves
         </button>
+        {itemFilterElement}
+        {sizeFilterElement}
+        {colorFilterElement}
+        {priceFilterElement}
+        {dateRangeFilterElement}
+        {keywordFilterElement}
         <button
           className={costumeActiveClass ? css.heartActive : css.heartBtn}
           type="button"
@@ -357,12 +363,6 @@ const SearchFiltersComponent = props => {
           Costumes
         </button>
 
-        {itemFilterElement}
-        {sizeFilterElement}
-        {colorFilterElement}
-        {priceFilterElement}
-        {dateRangeFilterElement}
-        {keywordFilterElement}
         {toggleSearchFiltersPanelButton}
       </div>
 

@@ -18,8 +18,8 @@ exports[`ManageListingCard matches snapshot 1`] = `
         sizes={null}
         variants={
           Array [
-            "landscape-crop",
-            "landscape-crop2x",
+            "scaled-small",
+            "scaled-medium",
           ]
         }
       />

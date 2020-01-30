@@ -21,7 +21,7 @@
 
 .topbar {
   @media (--viewportMedium) {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     /* We need to raise Topbar above .container */
@@ -36,8 +36,8 @@
   display: flex;
 
   @media (--viewportMedium) {
-    position: fixed;
-    padding-top: 43px;
+    /* position: fixed; */
+    /* padding-top: 43px; */
     min-height: var(--SearchPage_containerHeight);
   }
 }
@@ -46,12 +46,11 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding: 2px 0 0 0;
   z-index: 1;
 
   @media (--viewportMedium) {
     flex-direction: row;
-    padding: 18px 0 0 0;
+    /* padding: 18px 0 0 0; */
     height: 100vh;
     /**
      * .container is using flexbox,
@@ -62,7 +61,7 @@
 
   @media (--viewportLarge) {
     /* flex-basis: 62.5%; */
-    padding: 23px 0 0 0;
+    /* padding: 23px 0 0 0; */
   }
 }
 

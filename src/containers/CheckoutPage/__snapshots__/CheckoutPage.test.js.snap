@@ -149,5 +149,11 @@ exports[`CheckoutPage matches snapshot 1`] = `
       </div>
     </div>
   </div>
+  <LayoutWrapperFooter
+    className={null}
+    rootClassName={null}
+  >
+    <injectIntl(Footer) />
+  </LayoutWrapperFooter>
 </Page>
 `;

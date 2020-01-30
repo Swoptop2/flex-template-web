@@ -21,7 +21,16 @@ const SectionHeading = props => {
         let context = canvasRef.current.getContext('2d');
         context.drawImage(imgRef.current, 0, 0);
         const result = context.getImageData(0, 0, 1, 1).data;
-        setImgStyle({ backgroundColor: `rgb(${result[0]}, ${result[1]}, ${result[2]})` });
+        setImgStyle(
+          images.length > 1
+            ? {
+                backgroundColor: `rgb(${result[0]}, ${result[1]}, ${result[2]})`,
+              }
+            : {
+                backgroundColor: `rgb(${result[0]}, ${result[1]}, ${result[2]})`,
+                marginLeft: '100px',
+              }
+        );
       }
     });
   }, [images]);

@@ -14,7 +14,7 @@ import { parse, stringify } from '../../util/urlHelpers';
 import { propTypes } from '../../util/types';
 import { getListingsById } from '../../ducks/marketplaceData.duck';
 import { manageDisableScrolling, isScrollingDisabled } from '../../ducks/UI.duck';
-import { ModalInMobile, Page } from '../../components';
+import { ModalInMobile, Page, LayoutWrapperFooter, Footer } from '../../components';
 import { TopbarContainer } from '../../containers';
 
 import {
@@ -231,34 +231,39 @@ export class SearchPageComponent extends Component {
           currentSearchParams={urlQueryParams}
         />
         <div className={css.container}>
-          <MainPanel
-            currentUser={currentUser}
-            urlQueryParams={validQueryParams}
-            listings={listings}
-            searchInProgress={searchInProgress}
-            searchListingsError={searchListingsError}
-            searchParamsAreInSync={searchParamsAreInSync}
-            onActivateListing={onActivateListing}
-            onFavoriteListing={onFavoriteListing}
-            onSetLikedListingsArray={onSetLikedListingsArray}
-            onManageDisableScrolling={onManageDisableScrolling}
-            onOpenModal={this.onOpenMobileModal}
-            onCloseModal={this.onCloseMobileModal}
-            onMapIconClick={onMapIconClick}
-            pagination={pagination}
-            searchParamsForPagination={parse(location.search)}
-            showAsModalMaxWidth={MODAL_BREAKPOINT}
-            primaryFilters={{
-              categoryFilter: filters.categoryFilter,
-              amenitiesFilter: filters.amenitiesFilter,
-              priceFilter: filters.priceFilter,
-              dateRangeFilter: filters.dateRangeFilter,
-              keywordFilter: filters.keywordFilter,
-              itemFilter: filters.itemFilter,
-              sizeFilter: filters.sizeFilter,
-              colorFilter: filters.colorFilter,
-            }}
-          />
+          <div>
+            <MainPanel
+              currentUser={currentUser}
+              urlQueryParams={validQueryParams}
+              listings={listings}
+              searchInProgress={searchInProgress}
+              searchListingsError={searchListingsError}
+              searchParamsAreInSync={searchParamsAreInSync}
+              onActivateListing={onActivateListing}
+              onFavoriteListing={onFavoriteListing}
+              onSetLikedListingsArray={onSetLikedListingsArray}
+              onManageDisableScrolling={onManageDisableScrolling}
+              onOpenModal={this.onOpenMobileModal}
+              onCloseModal={this.onCloseMobileModal}
+              onMapIconClick={onMapIconClick}
+              pagination={pagination}
+              searchParamsForPagination={parse(location.search)}
+              showAsModalMaxWidth={MODAL_BREAKPOINT}
+              primaryFilters={{
+                categoryFilter: filters.categoryFilter,
+                amenitiesFilter: filters.amenitiesFilter,
+                priceFilter: filters.priceFilter,
+                dateRangeFilter: filters.dateRangeFilter,
+                keywordFilter: filters.keywordFilter,
+                itemFilter: filters.itemFilter,
+                sizeFilter: filters.sizeFilter,
+                colorFilter: filters.colorFilter,
+              }}
+            />
+            <LayoutWrapperFooter>
+              <Footer />
+            </LayoutWrapperFooter>
+          </div>
           <ModalInMobile
             className={css.mapPanel}
             id="SearchPage.map"

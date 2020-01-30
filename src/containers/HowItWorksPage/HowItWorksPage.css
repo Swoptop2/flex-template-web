@@ -156,3 +156,25 @@ ul li {
 .hiwP {
   font-size: 18px !important;
 }
+
+.video {
+  width: 80%;
+  margin: 0 auto;
+  min-height: 200px;
+  margin-bottom: 40px;
+  @media (--viewportMedium) {
+    width: 50%;
+    min-height: 420px;
+  }
+  @media (--viewportXLarge) {
+    border: 2px solid red;
+  }
+}
+
+.iframe {
+  width: 100%;
+  min-height: 200px;
+  @media (--viewportMedium) {
+    min-height: 420px;
+  }
+}

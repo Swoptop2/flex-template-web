@@ -214,6 +214,16 @@ const HowItWorksPage = () => {
                 </NamedLink>
               </div>
             </div>
+            <div className={css.video}>
+              <iframe
+                className={css.iframe}
+                title="video"
+                src="https://www.youtube.com/embed/Ei7Sv4eG61I"
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
         </LayoutWrapperMain>
         <LayoutWrapperFooter>

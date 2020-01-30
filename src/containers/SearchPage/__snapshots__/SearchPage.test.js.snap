@@ -22,245 +22,253 @@ exports[`SearchPageComponent matches snapshot 1`] = `
     currentSearchParams={Object {}}
   />
   <div>
-    <MainPanel
-      className={null}
-      listings={Array []}
-      onActivateListing={[Function]}
-      onCloseModal={[Function]}
-      onManageDisableScrolling={[Function]}
-      onMapIconClick={[Function]}
-      onOpenModal={[Function]}
-      pagination={
-        Object {
-          "page": 1,
-          "perPage": 12,
-          "totalItems": 22,
-          "totalPages": 2,
+    <div>
+      <MainPanel
+        className={null}
+        listings={Array []}
+        onActivateListing={[Function]}
+        onCloseModal={[Function]}
+        onManageDisableScrolling={[Function]}
+        onMapIconClick={[Function]}
+        onOpenModal={[Function]}
+        pagination={
+          Object {
+            "page": 1,
+            "perPage": 12,
+            "totalItems": 22,
+            "totalPages": 2,
+          }
         }
-      }
-      primaryFilters={
-        Object {
-          "amenitiesFilter": Object {
-            "options": Array [
-              Object {
-                "key": "dog1",
-                "label": "Dog 1",
-              },
-              Object {
-                "key": "dog2",
-                "label": "Dog 2",
-              },
-            ],
-            "paramName": "pub_amenities",
-          },
-          "categoryFilter": Object {
-            "options": Array [
-              Object {
-                "key": "cat1",
-                "label": "Cat 1",
-              },
-              Object {
-                "key": "cat2",
-                "label": "Cat 2",
-              },
-            ],
-            "paramName": "pub_category",
-          },
-          "colorFilter": Object {
-            "options": Array [
-              Object {
-                "key": "black",
-                "label": "Black",
-              },
-              Object {
-                "key": "white",
-                "label": "White",
-              },
-              Object {
-                "key": "multicolored_print",
-                "label": "Multicolored/Print",
-              },
-              Object {
-                "key": "red",
-                "label": "Red",
-              },
-              Object {
-                "key": "orange",
-                "label": "Orange",
-              },
-              Object {
-                "key": "yellow",
-                "label": "Yellow",
-              },
-              Object {
-                "key": "green",
-                "label": "Green",
-              },
-              Object {
-                "key": "blue_navy",
-                "label": "Blue/Navy",
-              },
-              Object {
-                "key": "denim",
-                "label": "Denim",
-              },
-              Object {
-                "key": "purple",
-                "label": "Purple",
-              },
-              Object {
-                "key": "pink",
-                "label": "Pink",
-              },
-              Object {
-                "key": "brown",
-                "label": "Brown",
-              },
-              Object {
-                "key": "gray",
-                "label": "Gray",
-              },
-              Object {
-                "key": "metallic",
-                "label": "Metallic",
-              },
-              Object {
-                "key": "sequin",
-                "label": "Sequin",
-              },
-              Object {
-                "key": "nude",
-                "label": "Nude",
-              },
-            ],
-            "paramName": "pub_color",
-          },
-          "dateRangeFilter": Object {
-            "config": Object {
-              "active": true,
+        primaryFilters={
+          Object {
+            "amenitiesFilter": Object {
+              "options": Array [
+                Object {
+                  "key": "dog1",
+                  "label": "Dog 1",
+                },
+                Object {
+                  "key": "dog2",
+                  "label": "Dog 2",
+                },
+              ],
+              "paramName": "pub_amenities",
             },
-            "paramName": "dates",
-          },
-          "itemFilter": Object {
-            "options": Array [
-              Object {
-                "key": "dress",
-                "label": "Dress",
-              },
-              Object {
-                "key": "romper",
-                "label": "Romper",
-              },
-              Object {
-                "key": "matching_set",
-                "label": "Matching Set",
-              },
-              Object {
-                "key": "top",
-                "label": "Top",
-              },
-              Object {
-                "key": "sweater",
-                "label": "Sweater",
-              },
-              Object {
-                "key": "jacket",
-                "label": "Jacket",
-              },
-              Object {
-                "key": "pants",
-                "label": "Pants",
-              },
-              Object {
-                "key": "skirt",
-                "label": "Skirt",
-              },
-              Object {
-                "key": "shorts",
-                "label": "Shorts",
-              },
-              Object {
-                "key": "bodysuit",
-                "label": "Bodysuit",
-              },
-              Object {
-                "key": "accessories",
-                "label": "Accessories",
-              },
-            ],
-            "paramName": "pub_item",
-          },
-          "keywordFilter": Object {
-            "config": Object {
-              "active": true,
+            "categoryFilter": Object {
+              "options": Array [
+                Object {
+                  "key": "cat1",
+                  "label": "Cat 1",
+                },
+                Object {
+                  "key": "cat2",
+                  "label": "Cat 2",
+                },
+              ],
+              "paramName": "pub_category",
             },
-            "paramName": "keywords",
-          },
-          "priceFilter": Object {
-            "config": Object {
-              "max": 100,
-              "min": 0,
-              "step": 5,
+            "colorFilter": Object {
+              "options": Array [
+                Object {
+                  "key": "black",
+                  "label": "Black",
+                },
+                Object {
+                  "key": "white",
+                  "label": "White",
+                },
+                Object {
+                  "key": "multicolored_print",
+                  "label": "Multicolored/Print",
+                },
+                Object {
+                  "key": "red",
+                  "label": "Red",
+                },
+                Object {
+                  "key": "orange",
+                  "label": "Orange",
+                },
+                Object {
+                  "key": "yellow",
+                  "label": "Yellow",
+                },
+                Object {
+                  "key": "green",
+                  "label": "Green",
+                },
+                Object {
+                  "key": "blue_navy",
+                  "label": "Blue/Navy",
+                },
+                Object {
+                  "key": "denim",
+                  "label": "Denim",
+                },
+                Object {
+                  "key": "purple",
+                  "label": "Purple",
+                },
+                Object {
+                  "key": "pink",
+                  "label": "Pink",
+                },
+                Object {
+                  "key": "brown",
+                  "label": "Brown",
+                },
+                Object {
+                  "key": "gray",
+                  "label": "Gray",
+                },
+                Object {
+                  "key": "metallic",
+                  "label": "Metallic",
+                },
+                Object {
+                  "key": "sequin",
+                  "label": "Sequin",
+                },
+                Object {
+                  "key": "nude",
+                  "label": "Nude",
+                },
+              ],
+              "paramName": "pub_color",
             },
-            "paramName": "price",
-          },
-          "sizeFilter": Object {
-            "options": Array [
-              Object {
-                "key": "xxs-00",
-                "label": "XXS, 00",
+            "dateRangeFilter": Object {
+              "config": Object {
+                "active": true,
               },
-              Object {
-                "key": "xs-0",
-                "label": "XS, 0",
+              "paramName": "dates",
+            },
+            "itemFilter": Object {
+              "options": Array [
+                Object {
+                  "key": "dress",
+                  "label": "Dress",
+                },
+                Object {
+                  "key": "romper",
+                  "label": "Romper",
+                },
+                Object {
+                  "key": "matching_set",
+                  "label": "Matching Set",
+                },
+                Object {
+                  "key": "top",
+                  "label": "Top",
+                },
+                Object {
+                  "key": "sweater",
+                  "label": "Sweater",
+                },
+                Object {
+                  "key": "jacket",
+                  "label": "Jacket",
+                },
+                Object {
+                  "key": "pants",
+                  "label": "Pants",
+                },
+                Object {
+                  "key": "skirt",
+                  "label": "Skirt",
+                },
+                Object {
+                  "key": "shorts",
+                  "label": "Shorts",
+                },
+                Object {
+                  "key": "bodysuit",
+                  "label": "Bodysuit",
+                },
+                Object {
+                  "key": "accessories",
+                  "label": "Accessories",
+                },
+              ],
+              "paramName": "pub_item",
+            },
+            "keywordFilter": Object {
+              "config": Object {
+                "active": true,
               },
-              Object {
-                "key": "s-2",
-                "label": "S, 2",
+              "paramName": "keywords",
+            },
+            "priceFilter": Object {
+              "config": Object {
+                "max": 100,
+                "min": 0,
+                "step": 5,
               },
-              Object {
-                "key": "s-4",
-                "label": "S, 4",
-              },
-              Object {
-                "key": "m-6",
-                "label": "M, 6",
-              },
-              Object {
-                "key": "m-8",
-                "label": "M, 8",
-              },
-              Object {
-                "key": "l-10",
-                "label": "L, 10",
-              },
-              Object {
-                "key": "l-12",
-                "label": "L, 12",
-              },
-              Object {
-                "key": "xl-14",
-                "label": "XL, 14",
-              },
-              Object {
-                "key": "xl-16",
-                "label": "XL, 16",
-              },
-            ],
-            "paramName": "pub_size",
-          },
+              "paramName": "price",
+            },
+            "sizeFilter": Object {
+              "options": Array [
+                Object {
+                  "key": "xxs-00",
+                  "label": "XXS, 00",
+                },
+                Object {
+                  "key": "xs-0",
+                  "label": "XS, 0",
+                },
+                Object {
+                  "key": "s-2",
+                  "label": "S, 2",
+                },
+                Object {
+                  "key": "s-4",
+                  "label": "S, 4",
+                },
+                Object {
+                  "key": "m-6",
+                  "label": "M, 6",
+                },
+                Object {
+                  "key": "m-8",
+                  "label": "M, 8",
+                },
+                Object {
+                  "key": "l-10",
+                  "label": "L, 10",
+                },
+                Object {
+                  "key": "l-12",
+                  "label": "L, 12",
+                },
+                Object {
+                  "key": "xl-14",
+                  "label": "XL, 14",
+                },
+                Object {
+                  "key": "xl-16",
+                  "label": "XL, 16",
+                },
+              ],
+              "paramName": "pub_size",
+            },
+          }
         }
-      }
-      resultsCount={0}
-      rootClassName={null}
-      searchInProgress={false}
-      searchListingsError={null}
-      searchParamsAreInSync={true}
-      searchParamsForPagination={Object {}}
-      secondaryFilters={null}
-      showAsModalMaxWidth={768}
-      urlQueryParams={Object {}}
-    />
+        resultsCount={0}
+        rootClassName={null}
+        searchInProgress={false}
+        searchListingsError={null}
+        searchParamsAreInSync={true}
+        searchParamsForPagination={Object {}}
+        secondaryFilters={null}
+        showAsModalMaxWidth={768}
+        urlQueryParams={Object {}}
+      />
+      <LayoutWrapperFooter
+        className={null}
+        rootClassName={null}
+      >
+        <injectIntl(Footer) />
+      </LayoutWrapperFooter>
+    </div>
     <withViewport(ModalInMobileComponent)
       id="SearchPage.map"
       isModalOpenOnMobile={false}

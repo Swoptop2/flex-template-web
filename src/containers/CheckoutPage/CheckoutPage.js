@@ -39,6 +39,8 @@ import {
   NamedRedirect,
   Page,
   ResponsiveImage,
+  LayoutWrapperFooter,
+  Footer,
 } from '../../components';
 import { StripePaymentForm } from '../../forms';
 import { isScrollingDisabled } from '../../ducks/UI.duck';
@@ -190,7 +192,6 @@ export class CheckoutPageComponent extends Component {
       const real = moment(bookingEndForAPI)
         .add(1, 'days')
         .toDate();
-      console.log(bookingEndForAPI, real);
 
       // Fetch speculated transaction for showing price in booking breakdown
       // NOTE: if unit type is line-item/units, quantity needs to be added.
@@ -861,6 +862,9 @@ export class CheckoutPageComponent extends Component {
             {breakdown}
           </div>
         </div>
+        <LayoutWrapperFooter>
+          <Footer />
+        </LayoutWrapperFooter>
       </Page>
     );
   }

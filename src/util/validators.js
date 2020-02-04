@@ -30,6 +30,26 @@ export const required = message => value => {
   return VALID;
 };
 
+export const noDecimals = message => value => {
+  if (value.indexOf('.') !== -1) {
+    return message;
+  } else {
+    return VALID;
+  }
+};
+
+export const noDecimalsObj = message => value => {
+  if (value) {
+    const realValue = value.amount / 100;
+    if (realValue.toString().indexOf('.') !== -1) {
+      return message;
+    } else {
+      return VALID;
+    }
+  }
+  return VALID;
+};
+
 export const requiredStringNoTrim = message => value => {
   return typeof value === 'string' && value.length > 0 ? VALID : message;
 };

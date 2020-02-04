@@ -55,6 +55,9 @@ export const EditListingPricingFormComponent = props => (
       const minimumPricingMessage = intl.formatMessage({
         id: 'EditListingRetailPricingForm.minimumPricing',
       });
+      const noDecimalsMessage = intl.formatMessage({
+        id: 'EditListingRetailPricingForm.noDecimals',
+      });
 
       // damage cost
       const damagePriceLabelMessage = intl.formatMessage({
@@ -83,6 +86,7 @@ export const EditListingPricingFormComponent = props => (
           id: 'EditListingPricingForm.priceRequired',
         })
       );
+      const noDecimalsAllowed = validators.noDecimalsObj(noDecimalsMessage);
       const minPrice = new Money(config.listingMinimumPriceSubUnits, config.currency);
       const maxPrice = new Money(config.listingMaximumPriceSubUnits, config.currency);
       const minPriceRequired = validators.moneySubUnitAmountAtLeast(
@@ -109,7 +113,12 @@ export const EditListingPricingFormComponent = props => (
       );
       const priceValidators =
         config.listingMinimumPriceSubUnits && config.listingMaximumPriceSubUnits
-          ? validators.composeValidators(priceRequired, minPriceRequired, maxPriceRequired)
+          ? validators.composeValidators(
+              noDecimalsAllowed,
+              priceRequired,
+              minPriceRequired,
+              maxPriceRequired
+            )
           : priceRequired;
 
       const classes = classNames(css.root, className);
@@ -139,7 +148,8 @@ export const EditListingPricingFormComponent = props => (
             placeholder={retailPricePlaceholderMessage}
             validate={validators.composeValidators(
               validators.required(retailPricingRequiredMessage),
-              validators.minPricing(minimumPricingMessage)
+              validators.minPricing(minimumPricingMessage),
+              validators.noDecimals(noDecimalsMessage)
             )}
           />
           <FieldTextInput
@@ -151,7 +161,8 @@ export const EditListingPricingFormComponent = props => (
             placeholder={damagePricePlaceholderMessage}
             validate={validators.composeValidators(
               validators.required(damagePricingRequiredMessage),
-              validators.minPricing(minimumDamagePricingMessage)
+              validators.minPricing(minimumDamagePricingMessage),
+              validators.noDecimals(noDecimalsMessage)
             )}
           />
           <FieldCurrencyInput

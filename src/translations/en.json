@@ -198,6 +198,7 @@
   "EditListingRetailPricingForm.updateFailed": "Failed to update listing. Please try again.",
   "EditListingRetailPricingForm.retailPricingRequired": "You must enter the retail pricing.",
   "EditListingRetailPricingForm.minimumPricing": "Price must be greater than 0.",
+  "EditListingRetailPricingForm.noDecimals": "No decimals allowed",
   "EditListingRetailPricingPanel.title": "Edit the retail price of {listingTitle}",
   "EditListingRetailPricingPanel.createListingTitle": "Set your item's retail price",
   "EditListingBrandForm.brandLabel": "Brand",

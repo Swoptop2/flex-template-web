@@ -23,10 +23,24 @@ class KeywordFilter extends Component {
     this.mobileInputRef = React.createRef();
 
     this.positionStyleForContent = this.positionStyleForContent.bind(this);
+    this.clearInput = this.clearInput.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.onRef) {
+      this.props.onRef(this);
+    }
   }
 
   componentWillUnmount() {
     window.clearTimeout(this.shortKeywordTimeout);
+    if (this.props.onRef) {
+      this.props.onRef(undefined);
+    }
+  }
+
+  clearInput() {
+    this.mobileInputRef.current.value = '';
   }
 
   positionStyleForContent() {
@@ -65,6 +79,7 @@ class KeywordFilter extends Component {
       urlParam,
       intl,
       showAsPopup,
+      showUserFilter,
       ...rest
     } = this.props;
 
@@ -82,9 +97,13 @@ class KeywordFilter extends Component {
         )
       : label;
 
-    const filterText = intl.formatMessage({ id: 'KeywordFilter.filterText' });
+    const filterText = showUserFilter
+      ? intl.formatMessage({ id: 'UserFilter.filterText' })
+      : intl.formatMessage({ id: 'KeywordFilter.filterText' });
 
-    const placeholder = intl.formatMessage({ id: 'KeywordFilter.placeholder' });
+    const placeholder = showUserFilter
+      ? intl.formatMessage({ id: 'UserFilter.placeholder' })
+      : intl.formatMessage({ id: 'KeywordFilter.placeholder' });
 
     const contentStyle = this.positionStyleForContent();
 

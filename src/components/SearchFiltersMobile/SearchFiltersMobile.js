@@ -24,11 +24,18 @@ const RADIX = 10;
 class SearchFiltersMobileComponent extends Component {
   constructor(props) {
     super(props);
+    let showUserFilterState;
+    try {
+      showUserFilterState = JSON.parse(localStorage.getItem('showUserFilter'))
+        ? JSON.parse(localStorage.getItem('showUserFilter'))
+        : false;
+    } catch (error) {}
     this.state = {
       isFiltersOpenOnMobile: false,
       initialQueryParams: null,
       heartActive: false,
       costumeActive: false,
+      showUserFilter: showUserFilterState,
     };
 
     this.openFilters = this.openFilters.bind(this);
@@ -44,6 +51,7 @@ class SearchFiltersMobileComponent extends Component {
     this.initialValues = this.initialValues.bind(this);
     this.initialPriceRangeValue = this.initialPriceRangeValue.bind(this);
     this.initialDateRangeValue = this.initialDateRangeValue.bind(this);
+    this.toggleUserFilter = this.toggleUserFilter.bind(this);
   }
 
   componentWillUnmount() {
@@ -196,6 +204,20 @@ class SearchFiltersMobileComponent extends Component {
     return initialValues;
   }
 
+  toggleUserFilter() {
+    if (this.state.showUserFilter) {
+      this.setState({ showUserFilter: false });
+      this.handleKeyword('keywords', null);
+      localStorage.removeItem('showUserFilter');
+      this.child.clearInput();
+    } else {
+      this.resetAll();
+      this.setState({ showUserFilter: true });
+      localStorage.setItem('showUserFilter', JSON.stringify(true));
+      this.child.clearInput();
+    }
+  }
+
   render() {
     const {
       rootClassName,
@@ -235,76 +257,86 @@ class SearchFiltersMobileComponent extends Component {
     );
 
     const filtersButtonClasses =
-      selectedFiltersCount > 0 ? css.filtersButtonSelected : css.filtersButton;
+      selectedFiltersCount > 0 || this.state.costumeActive
+        ? css.filtersButtonSelected
+        : css.filtersButton;
+
+    const heartFilterButtonClasses = this.state.heartActive
+      ? css.filtersButtonSelected
+      : css.filtersButton;
 
     const itemLabel = 'Item';
 
     const initialItem = this.initialValues(itemFilter.paramName);
 
-    const itemFilterElement = itemFilter ? (
-      <SelectMultipleFilter
-        id="SearchFiltersMobile.itemFilter"
-        name="item"
-        urlParam={itemFilter.paramName}
-        label={itemLabel}
-        onSubmit={this.handleSelectMultiple}
-        liveEdit
-        options={itemFilter.options}
-        initialValues={initialItem}
-      />
-    ) : null;
+    const itemFilterElement =
+      itemFilter && !this.state.showUserFilter ? (
+        <SelectMultipleFilter
+          id="SearchFiltersMobile.itemFilter"
+          name="item"
+          urlParam={itemFilter.paramName}
+          label={itemLabel}
+          onSubmit={this.handleSelectMultiple}
+          liveEdit
+          options={itemFilter.options}
+          initialValues={initialItem}
+        />
+      ) : null;
 
     const sizeLabel = 'size';
 
     const initialSize = this.initialValues(sizeFilter.paramName);
 
-    const sizeFilterElement = sizeFilter ? (
-      <SelectMultipleFilter
-        id="SearchFiltersMobile.sizeFilter"
-        name="size"
-        urlParam={sizeFilter.paramName}
-        label={sizeLabel}
-        onSubmit={this.handleSelectMultiple}
-        liveEdit
-        options={sizeFilter.options}
-        initialValues={initialSize}
-      />
-    ) : null;
+    const sizeFilterElement =
+      sizeFilter && !this.state.showUserFilter ? (
+        <SelectMultipleFilter
+          id="SearchFiltersMobile.sizeFilter"
+          name="size"
+          urlParam={sizeFilter.paramName}
+          label={sizeLabel}
+          onSubmit={this.handleSelectMultiple}
+          liveEdit
+          options={sizeFilter.options}
+          initialValues={initialSize}
+        />
+      ) : null;
 
     const colorLabel = 'Color';
 
     const initialColor = this.initialValues(colorFilter.paramName);
 
-    const colorFilterElement = colorFilter ? (
-      <SelectMultipleFilter
-        id="SearchFiltersMobile.colorFilter"
-        name="color"
-        urlParam={colorFilter.paramName}
-        label={colorLabel}
-        onSubmit={this.handleSelectMultiple}
-        liveEdit
-        options={colorFilter.options}
-        initialValues={initialColor}
-      />
-    ) : null;
+    const colorFilterElement =
+      colorFilter && !this.state.showUserFilter ? (
+        <SelectMultipleFilter
+          id="SearchFiltersMobile.colorFilter"
+          name="color"
+          urlParam={colorFilter.paramName}
+          label={colorLabel}
+          onSubmit={this.handleSelectMultiple}
+          liveEdit
+          options={colorFilter.options}
+          initialValues={initialColor}
+        />
+      ) : null;
 
     const initialPriceRange = this.initialPriceRangeValue(priceFilter.paramName);
 
-    const priceFilterElement = priceFilter ? (
-      <PriceFilter
-        id="SearchFiltersMobile.priceFilter"
-        urlParam={priceFilter.paramName}
-        onSubmit={this.handlePrice}
-        liveEdit
-        {...priceFilter.config}
-        initialValues={initialPriceRange}
-      />
-    ) : null;
+    const priceFilterElement =
+      priceFilter && !this.state.showUserFilter ? (
+        <PriceFilter
+          id="SearchFiltersMobile.priceFilter"
+          urlParam={priceFilter.paramName}
+          onSubmit={this.handlePrice}
+          liveEdit
+          {...priceFilter.config}
+          initialValues={initialPriceRange}
+        />
+      ) : null;
 
     const initialDateRange = this.initialDateRangeValue(dateRangeFilter.paramName);
 
     const dateRangeFilterElement =
-      dateRangeFilter && dateRangeFilter.config.active ? (
+      dateRangeFilter && dateRangeFilter.config.active && !this.state.showUserFilter ? (
         <BookingDateRangeFilter
           id="SearchFiltersMobile.dateRangeFilter"
           urlParam={dateRangeFilter.paramName}
@@ -316,21 +348,41 @@ class SearchFiltersMobileComponent extends Component {
       ) : null;
 
     const initialKeyword = this.initialValue(keywordFilter.paramName);
-    const keywordLabel = intl.formatMessage({
-      id: 'SearchFiltersMobile.keywordLabel',
-    });
+    const keywordLabel = this.state.showUserFilter
+      ? intl.formatMessage({
+          id: 'SearchFiltersMobile.userLabel',
+        })
+      : intl.formatMessage({
+          id: 'SearchFiltersMobile.keywordLabel',
+        });
     const keywordFilterElement =
       keywordFilter && keywordFilter.config.active ? (
-        <KeywordFilter
-          id={'SearchFiltersMobile.keywordFilter'}
-          name="keyword"
-          urlParam={keywordFilter.paramName}
-          label={keywordLabel}
-          onSubmit={this.handleKeyword}
-          liveEdit
-          showAsPopup={false}
-          initialValues={initialKeyword}
-        />
+        <div>
+          <div className={css.toggleContainer}>
+            <label className={css.switch}>
+              <input
+                onClick={this.toggleUserFilter}
+                className={css.toggleInput}
+                defaultChecked={this.state.showUserFilter}
+                type="checkbox"
+              />
+              <span className={css.slider}></span>
+            </label>
+            <p>Search by user</p>
+          </div>
+          <KeywordFilter
+            id={'SearchFiltersMobile.keywordFilter'}
+            name="keyword"
+            urlParam={keywordFilter.paramName}
+            label={keywordLabel}
+            onSubmit={this.handleKeyword}
+            liveEdit
+            showAsPopup={false}
+            initialValues={initialKeyword}
+            showUserFilter={this.state.showUserFilter}
+            onRef={ref => (this.child = ref)}
+          />
+        </div>
       ) : null;
 
     const toggleFilter = _ => {
@@ -400,10 +452,9 @@ class SearchFiltersMobileComponent extends Component {
           {searchInProgress ? loadingResults : null}
         </div>
         <div className={css.buttons}>
-          {/* TODO: hide filter when not logged in */}
           {currentUser ? (
             <Button
-              rootClassName={filtersButtonClasses}
+              rootClassName={heartFilterButtonClasses}
               className={activeClass ? css.heartActive : css.heartBtn}
               onClick={toggleFilter}
             >
@@ -413,16 +464,6 @@ class SearchFiltersMobileComponent extends Component {
               />
             </Button>
           ) : null}
-          <Button
-            rootClassName={filtersButtonClasses}
-            className={costumeActiveClass ? css.heartActive : css.heartBtn}
-            onClick={toggleCostumeFilter}
-          >
-            <FormattedMessage
-              id="SearchFilters.costumeFilterButtonLabel"
-              className={css.mapIconText}
-            />
-          </Button>
           <Button rootClassName={filtersButtonClasses} onClick={this.openFilters}>
             <FormattedMessage id="SearchFilters.filtersButtonLabel" className={css.mapIconText} />
           </Button>
@@ -453,6 +494,18 @@ class SearchFiltersMobileComponent extends Component {
               {colorFilterElement}
               {priceFilterElement}
               {dateRangeFilterElement}
+              {!this.state.showUserFilter ? (
+                <Button
+                  rootClassName={filtersButtonClasses}
+                  className={costumeActiveClass ? css.costumeActive : css.costumeBtn}
+                  onClick={toggleCostumeFilter}
+                >
+                  <FormattedMessage
+                    id="SearchFilters.costumeFilterButtonLabel"
+                    className={css.mapIconText}
+                  />
+                </Button>
+              ) : null}
             </div>
           ) : null}
 

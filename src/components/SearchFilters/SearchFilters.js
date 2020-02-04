@@ -61,6 +61,13 @@ const initialDateRangeValue = (queryParams, paramName) => {
 const SearchFiltersComponent = props => {
   const [heartActive, setheartActive] = useState(false);
   const [costumeActive, setCostumeActive] = useState(false);
+  let showUserFilterState;
+  try {
+    showUserFilterState = JSON.parse(localStorage.getItem('showUserFilter'))
+      ? JSON.parse(localStorage.getItem('showUserFilter'))
+      : false;
+  } catch (error) {}
+  const [showUserFilter, setShowUserFilter] = useState(showUserFilterState);
   const {
     rootClassName,
     className,
@@ -68,6 +75,7 @@ const SearchFiltersComponent = props => {
     urlQueryParams,
     listingsAreLoaded,
     resultsCount,
+    filterParamNames,
     searchInProgress,
     itemFilter,
     sizeFilter,
@@ -86,16 +94,27 @@ const SearchFiltersComponent = props => {
     return () => {
       const localData = JSON.parse(localStorage.getItem('heartActive'));
       const costumeLocalData = JSON.parse(localStorage.getItem('costumeActive'));
+      const userFilterLocalData = JSON.parse(localStorage.getItem('showUserFilter'));
       if (localData) {
         localStorage.removeItem('heartActive');
       }
       if (costumeLocalData) {
         localStorage.removeItem('costumeActive');
       }
+      if (userFilterLocalData) {
+        localStorage.removeItem('showUserFilter');
+      }
     };
 
     // es-lint-disable-next-line
   }, []);
+
+  const resetAll = _ => {
+    const queryParams = omit(urlQueryParams, filterParamNames);
+    // eslint-disable-next-line
+    const params = { bounds: queryParams.bounds, ['s?address']: queryParams['s?address'] };
+    history.push(createResourceLocatorString('SearchPage', routeConfiguration(), {}, params));
+  };
 
   const hasNoResult = listingsAreLoaded && resultsCount === 0;
   const classes = classNames(rootClassName || css.root, { [css.longInfo]: hasNoResult }, className);
@@ -106,9 +125,11 @@ const SearchFiltersComponent = props => {
 
   const colorLabel = 'Color';
 
-  const keywordLabel = intl.formatMessage({
-    id: 'SearchFilters.keywordLabel',
-  });
+  const keywordLabel = showUserFilter
+    ? intl.formatMessage({ id: 'SearchFilters.userLabel' })
+    : intl.formatMessage({
+        id: 'SearchFilters.keywordLabel',
+      });
 
   const initialItem = itemFilter ? initialValues(urlQueryParams, itemFilter.paramName) : null;
 
@@ -135,6 +156,18 @@ const SearchFiltersComponent = props => {
         : omit(urlQueryParams, urlParam);
 
     history.push(createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams));
+  };
+
+  const toggleUserFilter = _ => {
+    if (showUserFilter) {
+      setShowUserFilter(false);
+      handleKeyword('keywords', null);
+      localStorage.removeItem('showUserFilter');
+    } else {
+      resetAll();
+      setShowUserFilter(true);
+      localStorage.setItem('showUserFilter', JSON.stringify(true));
+    }
   };
 
   const toggleFilter = _ => {
@@ -304,6 +337,7 @@ const SearchFiltersComponent = props => {
         showAsPopup
         initialValues={initialKeyword}
         contentPlacementOffset={FILTER_DROPDOWN_OFFSET}
+        showUserFilter={showUserFilter}
       />
     ) : null;
 
@@ -337,33 +371,52 @@ const SearchFiltersComponent = props => {
       costumeActiveClass = true;
     }
   } catch (err) {}
+
   return (
     <div className={classes}>
-      <div className={css.filters}>
-        <button
-          className={activeClass ? css.heartActive : css.heartBtn}
-          type="button"
-          onClick={toggleFilter}
-          disabled={currentUser ? false : true}
-          style={currentUser ? { cursor: 'pointer' } : { cursor: 'not-allowed' }}
-        >
-          Loves
-        </button>
-        {itemFilterElement}
-        {sizeFilterElement}
-        {colorFilterElement}
-        {priceFilterElement}
-        {dateRangeFilterElement}
-        {keywordFilterElement}
-        <button
-          className={costumeActiveClass ? css.heartActive : css.heartBtn}
-          type="button"
-          onClick={toggleCostumeFilter}
-        >
-          Costumes
-        </button>
+      {!showUserFilter ? (
+        <div className={css.filters}>
+          <button
+            className={activeClass ? css.heartActive : css.heartBtn}
+            type="button"
+            onClick={toggleFilter}
+            disabled={currentUser ? false : true}
+            style={currentUser ? { cursor: 'pointer' } : { cursor: 'not-allowed' }}
+          >
+            Loves
+          </button>
+          {itemFilterElement}
+          {sizeFilterElement}
+          {colorFilterElement}
+          {priceFilterElement}
+          {dateRangeFilterElement}
+          {keywordFilterElement}
+          <button
+            className={costumeActiveClass ? css.heartActive : css.heartBtn}
+            type="button"
+            onClick={toggleCostumeFilter}
+          >
+            Costumes
+          </button>
 
-        {toggleSearchFiltersPanelButton}
+          {toggleSearchFiltersPanelButton}
+        </div>
+      ) : (
+        <div>{keywordFilterElement}</div>
+      )}
+
+      <div className={css.userToggle}>
+        {' '}
+        <label className={css.switch}>
+          <input
+            onClick={toggleUserFilter}
+            className={css.toggleInput}
+            defaultChecked={showUserFilter}
+            type="checkbox"
+          />
+          <span className={css.slider}></span>
+        </label>
+        <span>Search by user</span>
       </div>
 
       {listingsAreLoaded && resultsCount > 0 ? (

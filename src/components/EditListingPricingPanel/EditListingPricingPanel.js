@@ -44,6 +44,8 @@ const EditListingPricingPanel = props => {
     author: {
       attributes: {
         profile: {
+          firstName,
+          lastName,
           protectedData: { city, state },
         },
       },
@@ -84,6 +86,7 @@ const EditListingPricingPanel = props => {
           publicData: {
             damageCost,
             retailPrice,
+            author: `${firstName} ${lastName}`,
             location: { address: `${city}, ${state}, United States of America` },
             listingIdForLikeFilter: uuid,
           },

@@ -374,49 +374,51 @@ const SearchFiltersComponent = props => {
 
   return (
     <div className={classes}>
-      {!showUserFilter ? (
-        <div className={css.filters}>
-          <button
-            className={activeClass ? css.heartActive : css.heartBtn}
-            type="button"
-            onClick={toggleFilter}
-            disabled={currentUser ? false : true}
-            style={currentUser ? { cursor: 'pointer' } : { cursor: 'not-allowed' }}
-          >
-            Loves
-          </button>
-          {itemFilterElement}
-          {sizeFilterElement}
-          {colorFilterElement}
-          {priceFilterElement}
-          {dateRangeFilterElement}
-          {keywordFilterElement}
-          <button
-            className={costumeActiveClass ? css.heartActive : css.heartBtn}
-            type="button"
-            onClick={toggleCostumeFilter}
-          >
-            Costumes
-          </button>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        {!showUserFilter ? (
+          <div className={css.filters}>
+            <button
+              className={activeClass ? css.heartActive : css.heartBtn}
+              type="button"
+              onClick={toggleFilter}
+              disabled={currentUser ? false : true}
+              style={currentUser ? { cursor: 'pointer' } : { cursor: 'not-allowed' }}
+            >
+              Loves
+            </button>
+            {itemFilterElement}
+            {sizeFilterElement}
+            {colorFilterElement}
+            {priceFilterElement}
+            {dateRangeFilterElement}
+            {keywordFilterElement}
+            <button
+              className={costumeActiveClass ? css.heartActive : css.heartBtn}
+              type="button"
+              onClick={toggleCostumeFilter}
+            >
+              Costumes
+            </button>
 
-          {toggleSearchFiltersPanelButton}
+            {toggleSearchFiltersPanelButton}
+          </div>
+        ) : (
+          <div style={showUserFilter ? { order: '2' } : {}}>{keywordFilterElement}</div>
+        )}
+
+        <div className={css.userToggle}>
+          {' '}
+          <label className={css.switch}>
+            <input
+              onClick={toggleUserFilter}
+              className={css.toggleInput}
+              defaultChecked={showUserFilter}
+              type="checkbox"
+            />
+            <span className={css.slider}></span>
+          </label>
+          <span>Search by user</span>
         </div>
-      ) : (
-        <div>{keywordFilterElement}</div>
-      )}
-
-      <div className={css.userToggle}>
-        {' '}
-        <label className={css.switch}>
-          <input
-            onClick={toggleUserFilter}
-            className={css.toggleInput}
-            defaultChecked={showUserFilter}
-            type="checkbox"
-          />
-          <span className={css.slider}></span>
-        </label>
-        <span>Search by user</span>
       </div>
 
       {listingsAreLoaded && resultsCount > 0 ? (

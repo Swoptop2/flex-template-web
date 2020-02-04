@@ -121,6 +121,11 @@ export const searchMapListingsError = e => ({
 });
 
 export const searchListings = searchParams => (dispatch, getState, sdk) => {
+  let includeCostumes = false;
+  if (searchParams.pub_item && searchParams.pub_item === 'costume') {
+    includeCostumes = true;
+  }
+  console.log(includeCostumes);
   dispatch(searchListingsRequest(searchParams));
 
   const priceSearchParams = priceParam => {
@@ -166,6 +171,12 @@ export const searchListings = searchParams => (dispatch, getState, sdk) => {
   return sdk.listings
     .query(params)
     .then(response => {
+      const data = response.data.data;
+      const listings = includeCostumes
+        ? data
+        : data.filter(listing => listing.attributes.publicData.item !== 'costume');
+      response.data.data = listings;
+      console.log(response);
       dispatch(addMarketplaceEntities(response));
       dispatch(searchListingsSuccess(response));
       return response;

@@ -211,3 +211,16 @@
   -ms-transform: translateX(13px);
   transform: translateX(13px);
 }
+
+.resetBtn {
+  display: none;
+  border: none;
+  font-size: 15px;
+  text-align: left;
+  padding-left: 16px;
+  cursor: pointer;
+  color: var(--matterColorAnti);
+  @media (--viewportMedium) {
+    display: block;
+  }
+}

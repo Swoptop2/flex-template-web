@@ -375,6 +375,9 @@ const SearchFiltersComponent = props => {
   return (
     <div className={classes}>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <button onClick={resetAll} className={css.resetBtn}>
+          Reset All
+        </button>
         {!showUserFilter ? (
           <div className={css.filters}>
             <button

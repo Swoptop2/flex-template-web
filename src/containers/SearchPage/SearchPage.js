@@ -55,6 +55,14 @@ export class SearchPageComponent extends Component {
     this.onCloseMobileModal = this.onCloseMobileModal.bind(this);
   }
 
+  componentDidMount() {
+    try {
+      const ReactPixel = require('react-facebook-pixel');
+      ReactPixel.default.init(process.env.REACT_APP_FB_PIXEL);
+      ReactPixel.default.pageView();
+    } catch (error) {}
+  }
+
   filters() {
     const {
       categories,

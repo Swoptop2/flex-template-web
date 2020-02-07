@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router-dom';
+import ReactPixel from 'react-facebook-pixel';
 import { FormattedMessage, injectIntl, intlShape } from '../../util/reactIntl';
 import classNames from 'classnames';
 import config from '../../config';
@@ -71,7 +72,6 @@ export class AuthenticationPageComponent extends Component {
     // (i.e. `from` is present). We must also check the `emailVerified`
     // flag only when the current user is fully loaded.
     const showEmailVerification = !isLogin && currentUserLoaded && !user.attributes.emailVerified;
-
     // Already authenticated, redirect away from auth page
     if (isAuthenticated && from) {
       return <Redirect to={from} />;
@@ -133,6 +133,8 @@ export class AuthenticationPageComponent extends Component {
     const handleSubmitSignup = values => {
       const { fname, lname, ...rest } = values;
       const params = { firstName: fname.trim(), lastName: lname.trim(), ...rest };
+      ReactPixel.init(process.env.REACT_APP_FB_PIXEL);
+      ReactPixel.track('CompleteRegistration', {});
       submitSignup(params);
     };
 

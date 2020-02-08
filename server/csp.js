@@ -37,7 +37,7 @@ const defaultDirectives = {
     data,
     'assets-sharetribecom.sharetribe.com',
     'fonts.gstatic.com',
-    'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0',
+    'stackpath.bootstrapcdn.com',
   ],
   frameSrc: [self, '*.stripe.com'],
   imgSrc: [

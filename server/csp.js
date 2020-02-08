@@ -32,7 +32,13 @@ const defaultDirectives = {
     'sentry.io',
     '*.stripe.com',
   ],
-  fontSrc: [self, data, 'assets-sharetribecom.sharetribe.com', 'fonts.gstatic.com'],
+  fontSrc: [
+    self,
+    data,
+    'assets-sharetribecom.sharetribe.com',
+    'fonts.gstatic.com',
+    'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0',
+  ],
   frameSrc: [self, '*.stripe.com'],
   imgSrc: [
     self,
@@ -69,14 +75,20 @@ const defaultDirectives = {
     '*.google-analytics.com',
     'js.stripe.com',
   ],
-  styleSrc: [self, unsafeInline, 'fonts.googleapis.com', 'api.mapbox.com'],
+  styleSrc: [
+    self,
+    unsafeInline,
+    'fonts.googleapis.com',
+    'api.mapbox.com',
+    'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+  ],
 };
 
 /**
  * Middleware for creating a Content Security Policy
  *
  * @param {String} reportUri URL where the browser will POST the
- * policy violation reports
+ * policy violation reports,
  *
  * @param {Boolean} enforceSsl When SSL is enforced, all mixed content
  * is blocked/reported by the policy

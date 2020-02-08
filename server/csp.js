@@ -64,6 +64,7 @@ const defaultDirectives = {
     'stats.g.doubleclick.net',
 
     '*.stripe.com',
+    'www.facebook.com',
   ],
   scriptSrc: [
     self,
@@ -74,6 +75,7 @@ const defaultDirectives = {
     'api.mapbox.com',
     '*.google-analytics.com',
     'js.stripe.com',
+    'connect.facebook.net',
   ],
   styleSrc: [
     self,

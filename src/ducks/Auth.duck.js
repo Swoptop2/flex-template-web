@@ -1,4 +1,5 @@
 import isEmpty from 'lodash/isEmpty';
+import ReactPixel from 'react-facebook-pixel';
 import { clearCurrentUser, fetchCurrentUser } from './user.duck';
 import { storableError } from '../util/errors';
 import * as log from '../util/log';
@@ -209,7 +210,13 @@ export const signup = params => (dispatch, getState, sdk) => {
   // do that automatically.
   return sdk.currentUser
     .create(createUserParams)
-    .then(() => dispatch(signupSuccess()))
+    .then(() => {
+      dispatch(signupSuccess());
+      try {
+        ReactPixel.init(process.env.REACT_APP_FB_PIXEL);
+        ReactPixel.track('CompleteRegistration', {});
+      } catch (err) {}
+    })
     .then(() => dispatch(login(email, password)))
     .catch(e => {
       dispatch(signupError(storableError(e)));

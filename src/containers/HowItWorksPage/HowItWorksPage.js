@@ -202,9 +202,9 @@ const HowItWorksPage = () => {
                       <h2>Get Paid</h2>
                       <p className={css.centered}>
                         Congrats! There is no better feeling than earning money all on your own.
-                        Earnings take 7-10 days to hit your bank account depending on which bank you
-                        use. You will be emailed a receipt so you can keep track of your earnings
-                        (you can also check out the History tab).
+                        Earnings generally take 1-2 business days to hit your bank account. You will
+                        be emailed a receipt so you can keep track of your earnings (you can also
+                        check out the History tab).
                       </p>
                     </div>
                   </div>

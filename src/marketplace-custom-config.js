@@ -45,7 +45,8 @@ export const categories = [
 ];
 
 export const items = [
-  { key: 'dress', label: 'Dress' },
+  { key: 'short_dress', label: 'Short Dress' },
+  { key: 'long_dress', label: 'Long Dress' },
   { key: 'romper', label: 'Romper' },
   { key: 'matching_set', label: 'Matching Set' },
   { key: 'top', label: 'Top' },

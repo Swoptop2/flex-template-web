@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { propTypes } from '../../util/types';
@@ -17,7 +17,11 @@ const SearchResultsPanel = props => {
     setLikedListingsArray,
     currentUser,
   } = props;
+  const bottomDivRef = useRef(null);
+  const containerRef = useRef(null);
   const classes = classNames(rootClassName || css.root, className);
+
+  const options = {};
 
   useEffect(() => {
     if (currentUser) {
@@ -30,6 +34,15 @@ const SearchResultsPanel = props => {
         setLikedListingsArray();
       }
     }
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting === false && document.documentElement.scrollTop > 0) {
+          window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        }
+      });
+    }, options);
+
+    observer.observe(bottomDivRef.current);
     // eslint-disable-next-line
   }, [currentUser]);
 
@@ -55,7 +68,7 @@ const SearchResultsPanel = props => {
 
   return (
     <div className={classes}>
-      <div className={css.listingCards}>
+      <div ref={containerRef} className={css.listingCards}>
         {listings.map(l => (
           <ListingCard
             className={css.listingCard}
@@ -69,7 +82,7 @@ const SearchResultsPanel = props => {
         ))}
         {props.children}
       </div>
-      <div style={{ height: '50px', marginTop: '20px', visibility: 'hidden' }}>
+      <div ref={bottomDivRef} style={{ height: '50px', marginTop: '20px', visibility: 'hidden' }}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam unde placeat in non
         maxime accusantium. Consequatur repellat asperiores atque odit quod molestias, quaerat nisi
         obcaecati veniam aperiam nulla esse quis aliquid culpa officia saepe numquam nesciunt,

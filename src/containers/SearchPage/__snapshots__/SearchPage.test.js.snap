@@ -145,12 +145,12 @@ exports[`SearchPageComponent matches snapshot 1`] = `
             "itemFilter": Object {
               "options": Array [
                 Object {
-                  "key": "short_dress",
-                  "label": "Short Dress",
+                  "key": "dress",
+                  "label": "Dress",
                 },
                 Object {
-                  "key": "long_dress",
-                  "label": "Long Dress",
+                  "key": "gown",
+                  "label": "Gown",
                 },
                 Object {
                   "key": "romper",

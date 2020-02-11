@@ -24,6 +24,7 @@ const SearchResultsPanel = props => {
   const options = {};
 
   useEffect(() => {
+    console.log(window.innerWidth);
     if (currentUser) {
       const {
         attributes: {
@@ -36,7 +37,11 @@ const SearchResultsPanel = props => {
     }
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting === false && document.documentElement.scrollTop > 0) {
+        if (
+          entry.isIntersecting === false &&
+          document.documentElement.scrollTop > 0 &&
+          window.innerWidth > 450
+        ) {
           window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
         }
       });

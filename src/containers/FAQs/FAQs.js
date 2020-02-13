@@ -50,6 +50,19 @@ const FAQs = () => {
                   Yes! You can browse from anywhere and request to rent items when you are not at
                   school as long as the rental period begins when you are back at school.
                 </p>
+                <h2>How long does it take to get refunded if the rental is canceled?</h2>
+                <p>
+                  Refunds generally take 5-10 business days to hit your account depending on what
+                  bank you use.
+                </p>
+                <h2>
+                  Is there a way I can message the owner to have a try on before the card charge?
+                </h2>
+                <p>
+                  Yes and no. You can message the Owner when booking a rental using the message box.
+                  Your card will be charged when the Owners accepts the rental. It will not be
+                  charged if the rental is denied.
+                </p>
               </div>
               <div className={css.col}>
                 <h2>How do I get in contact with the Owner?</h2>
@@ -65,6 +78,15 @@ const FAQs = () => {
                   reach out to the Owner on your behalf. Damage fee’s are issued depending on the
                   damage committed. In other words, if the damage is beyond repair, you will be
                   charged the damage cost for this item.
+                </p>
+                <h2>What if I need a dress for more than 3 days?</h2>
+                <p>
+                  It is up to the Owner if she allows this. If you know you are going out of town
+                  and need the item for an extra day, for example, simply let the Owner know in the
+                  message box when you request the booking. That way she will know the situation
+                  upon accepting or declining the rental. Depending on the situation, most Owners do
+                  not have a problem with an additional day to the rental as long as you are upfront
+                  and handle the rental responsibly.
                 </p>
               </div>
               <div className={css.col}>
@@ -84,6 +106,18 @@ const FAQs = () => {
                   are held to high standards, and although this rarely occurs, we will make sure it
                   is addressed. Each situation will be handled on a case by case basis.
                 </p>
+                <h2>What if I don’t want an item after I try it on?</h2>
+                <p>
+                  If you try on the item and it does not fit or is not what you expected then the
+                  Owner can cancel the rental or you can reach out to us at team@swoptop.com to
+                  cancel the rental.
+                </p>
+                <h2>What happens if I need to cancel a rental?</h2>
+                <p>
+                  Email team@swoptop.com to cancel. It’s helpful if you include your reasoning.
+                  Also, we ask that you give us 24 hours notice before the start day of the rental
+                  period so we can let the Owner know.
+                </p>
               </div>
             </section>
             <h1 className={css.title}>FAQs: Owner</h1>
@@ -97,6 +131,11 @@ const FAQs = () => {
                 </p>
                 <h2>What is the Swoptop fee for Owners?</h2>
                 <p>There is a 15% transaction fee every time a rental is processed.</p>
+                <h2>How long does it take to get paid out?</h2>
+                <p>
+                  Earnings from your rental take 1-2 business days to direct deposit into your bank
+                  account after the rental period is complete.
+                </p>
               </div>
               <div className={css.col}>
                 <h2>How long does it take for my listing to be approved?</h2>
@@ -110,6 +149,19 @@ const FAQs = () => {
                   Once you accept the rental request, the Renter will be emailed your phone number.
                   She is instructed to reach out on the first day of the rental period to arrange
                   pick up and drop off details.
+                </p>
+                <h2>How do I set up my direct deposit?</h2>
+                <p>
+                  When you post your first listing, you will be prompted to fill out your personal
+                  information to set up a direct deposit into your account of your earnings. Check
+                  out our{' '}
+                  <a
+                    style={{ fontWeight: 'bold' }}
+                    href="https://www.instagram.com/stories/highlights/18121973947048466/"
+                  >
+                    “Help with payments” highlight
+                  </a>{' '}
+                  on Instagram to walk you through the simple steps.
                 </p>
               </div>
               <div className={css.col}>

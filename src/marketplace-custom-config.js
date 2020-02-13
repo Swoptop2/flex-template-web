@@ -45,18 +45,19 @@ export const categories = [
 ];
 
 export const items = [
+  { key: 'accessories', label: 'Accessories' },
+  { key: 'bodysuit', label: 'Bodysuit' },
+  { key: 'costume', label: 'Costume' },
   { key: 'dress', label: 'Dress' },
   { key: 'gown', label: 'Gown' },
-  { key: 'romper', label: 'Romper' },
-  { key: 'matching_set', label: 'Matching Set' },
-  { key: 'top', label: 'Top' },
-  { key: 'sweater', label: 'Sweater' },
   { key: 'jacket', label: 'Jacket' },
+  { key: 'matching_set', label: 'Matching Set' },
   { key: 'pants', label: 'Pants' },
-  { key: 'skirt', label: 'Skirt' },
+  { key: 'romper', label: 'Romper' },
   { key: 'shorts', label: 'Shorts' },
-  { key: 'bodysuit', label: 'Bodysuit' },
-  { key: 'accessories', label: 'Accessories' },
+  { key: 'skirt', label: 'Skirt' },
+  { key: 'sweater', label: 'Sweater' },
+  { key: 'top', label: 'Top' },
 ];
 
 export const sizes = [

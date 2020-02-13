@@ -24,7 +24,6 @@ const SearchResultsPanel = props => {
   const options = {};
 
   useEffect(() => {
-    console.log(window.innerWidth);
     if (currentUser) {
       const {
         attributes: {

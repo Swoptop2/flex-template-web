@@ -145,6 +145,18 @@ exports[`SearchPageComponent matches snapshot 1`] = `
             "itemFilter": Object {
               "options": Array [
                 Object {
+                  "key": "accessories",
+                  "label": "Accessories",
+                },
+                Object {
+                  "key": "bodysuit",
+                  "label": "Bodysuit",
+                },
+                Object {
+                  "key": "costume",
+                  "label": "Costume",
+                },
+                Object {
                   "key": "dress",
                   "label": "Dress",
                 },
@@ -153,44 +165,36 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                   "label": "Gown",
                 },
                 Object {
-                  "key": "romper",
-                  "label": "Romper",
+                  "key": "jacket",
+                  "label": "Jacket",
                 },
                 Object {
                   "key": "matching_set",
                   "label": "Matching Set",
                 },
                 Object {
-                  "key": "top",
-                  "label": "Top",
-                },
-                Object {
-                  "key": "sweater",
-                  "label": "Sweater",
-                },
-                Object {
-                  "key": "jacket",
-                  "label": "Jacket",
-                },
-                Object {
                   "key": "pants",
                   "label": "Pants",
                 },
                 Object {
-                  "key": "skirt",
-                  "label": "Skirt",
+                  "key": "romper",
+                  "label": "Romper",
                 },
                 Object {
                   "key": "shorts",
                   "label": "Shorts",
                 },
                 Object {
-                  "key": "bodysuit",
-                  "label": "Bodysuit",
+                  "key": "skirt",
+                  "label": "Skirt",
                 },
                 Object {
-                  "key": "accessories",
-                  "label": "Accessories",
+                  "key": "sweater",
+                  "label": "Sweater",
+                },
+                Object {
+                  "key": "top",
+                  "label": "Top",
                 },
               ],
               "paramName": "pub_item",

@@ -131,7 +131,13 @@ const SearchFiltersComponent = props => {
         id: 'SearchFilters.keywordLabel',
       });
 
-  const initialItem = itemFilter ? initialValues(urlQueryParams, itemFilter.paramName) : null;
+  const initialItemWithCostume = itemFilter
+    ? initialValues(urlQueryParams, itemFilter.paramName)
+    : null;
+  const initialItem =
+    initialItemWithCostume && !initialItemWithCostume.includes('costume')
+      ? initialItemWithCostume
+      : [];
 
   const initialSize = sizeFilter ? initialValues(urlQueryParams, sizeFilter.paramName) : null;
 
@@ -260,6 +266,9 @@ const SearchFiltersComponent = props => {
     history.push(createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams));
   };
 
+  // filter out the costume from item options since costumes has its own filter
+  const itemFilterOptions = itemFilter.options.filter(option => option.key !== 'costume');
+
   const itemFilterElement = itemFilter ? (
     <SelectMultipleFilter
       id={'SearchFilters.itemFilter'}
@@ -268,7 +277,7 @@ const SearchFiltersComponent = props => {
       label={itemLabel}
       onSubmit={handleSelectOptions}
       showAsPopup
-      options={itemFilter.options}
+      options={itemFilterOptions}
       initialValues={initialItem}
       contentPlacementOffset={FILTER_DROPDOWN_OFFSET}
     />
@@ -372,6 +381,16 @@ const SearchFiltersComponent = props => {
     }
   } catch (err) {}
 
+  const costumeFilterElement = (
+    <button
+      className={costumeActiveClass ? css.heartActive : css.heartBtn}
+      type="button"
+      onClick={toggleCostumeFilter}
+    >
+      Costumes
+    </button>
+  );
+
   return (
     <div className={classes}>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -395,14 +414,7 @@ const SearchFiltersComponent = props => {
             {priceFilterElement}
             {dateRangeFilterElement}
             {keywordFilterElement}
-            <button
-              className={costumeActiveClass ? css.heartActive : css.heartBtn}
-              type="button"
-              onClick={toggleCostumeFilter}
-            >
-              Costumes
-            </button>
-
+            {costumeFilterElement}
             {toggleSearchFiltersPanelButton}
           </div>
         ) : (

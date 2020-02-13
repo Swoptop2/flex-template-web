@@ -268,7 +268,7 @@ exports[`ListingPage matches snapshot 1`] = `
                   Array [
                     Object {
                       "key": "runs_true_to_size",
-                      "label": "Runs true to size",
+                      "label": "True to size",
                     },
                     Object {
                       "key": "runs_small",
@@ -512,7 +512,7 @@ exports[`ListingPage matches snapshot 1`] = `
               Array [
                 Object {
                   "key": "runs_true_to_size",
-                  "label": "Runs true to size",
+                  "label": "True to size",
                 },
                 Object {
                   "key": "runs_small",

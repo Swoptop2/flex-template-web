@@ -93,7 +93,7 @@ export const colors = [
 ];
 
 export const fits = [
-  { key: 'runs_true_to_size', label: 'Runs true to size' },
+  { key: 'runs_true_to_size', label: 'True to size' },
   { key: 'runs_small', label: 'Runs small' },
   { key: 'runs_big', label: 'Runs big' },
 ];

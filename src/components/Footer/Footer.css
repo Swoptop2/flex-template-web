@@ -172,6 +172,7 @@
   color: var(--marketplaceColor);
   font-weight: 900;
   font-size: 20px;
+  margin-bottom: 20px;
   @media (--viewportMedium) {
     font-size: 17.5px;
   }
@@ -201,7 +202,7 @@
 
 .listItem {
   min-height: 24px;
-  margin-bottom: 6px;
+  margin-bottom: 15px;
 
   @media (--viewportMedium) {
     margin-bottom: 14px;
@@ -215,7 +216,6 @@
   color: var(--marketplaceColor);
   transition: var(--transitionStyleButton);
   text-decoration: underline;
-  padding-bottom: 50px;
 
   margin-top: 0;
   margin-bottom: 12px;
@@ -227,6 +227,7 @@
   @media (--viewportMedium) {
     margin-top: 0;
     margin-bottom: 0;
+    padding-bottom: 50px;
   }
 }
 

@@ -1,5 +1,6 @@
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_KEY);
+const moment = require('moment');
 // set the 'to' propoerty to an environment variable holding support's email address
 
 const handleEmailRequest = (req, res) => {
@@ -9,13 +10,35 @@ const handleEmailRequest = (req, res) => {
   if (action === 'waitlist') {
     const { values } = req.query;
     const info = JSON.parse(values);
-    const message = info.sorority
-      ? `${info.firstName} ${info.lastName} from ${info.sorority} from the school of ${info.school}, whishes to join Swoptop's waitlist. Her instagram handle is ${info.insta}. This is how she learned about swoptop: ${info.reference}.`
-      : `${info.firstName} ${info.lastName} from the school of ${info.school}, whishes to join Swoptop's waitlist. Her instagram handle is ${info.insta}. This is how she learned about swoptop: ${info.reference}.`;
+
+    const message = `New waitlist request from ${info.firstName} ${info.lastName}!`;
+    const messageHtml = `<table>
+     <thead>
+       <tr>
+         <th style="padding: 0px 15px;" >Submitted On</th>
+         <th style="padding: 0px 15px;" >Name</th>
+         <th style="padding: 0px 15px;" >Sorority</th>
+         <th style="padding: 0px 15px;" >School</th>
+         <th style="padding: 0px 15px;" >Instagram Username</th>
+         <th style="padding: 0px 15px;" >How heard</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td style="padding: 0px 15px;" >${moment().format('MMM DD, YYYY')}</td>
+         <td style="padding: 0px 15px;" >${info.firstName} ${info.lastName}</td>
+         <td style="padding: 0px 15px;" >${info.sorority ? info.sorority : '-'}</td>
+         <td style="padding: 0px 15px;" >${info.school}</td>
+         <td style="padding: 0px 15px;" >${info.insta}</td>
+         <td style="padding: 0px 15px;" >${info.reference}</td>
+       </tr>
+     </tbody>
+   </table>`;
     const msg = constructMessage(
       info.email,
       `Waitlist request by ${info.firstName} ${info.lastName} from Swoptop`,
-      message
+      message,
+      messageHtml
     );
     sgMail
       .send(msg)

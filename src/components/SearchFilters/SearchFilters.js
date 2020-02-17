@@ -164,6 +164,16 @@ const SearchFiltersComponent = props => {
     history.push(createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams));
   };
 
+  const handleItemSelectOptions = (urlParam, options) => {
+    if (costumeActive) localStorage.removeItem('costumeActive');
+    const queryParams =
+      options && options.length > 0
+        ? { ...urlQueryParams, [urlParam]: options.join(',') }
+        : omit(urlQueryParams, urlParam);
+
+    history.push(createResourceLocatorString('SearchPage', routeConfiguration(), {}, queryParams));
+  };
+
   const toggleUserFilter = _ => {
     if (showUserFilter) {
       setShowUserFilter(false);
@@ -275,7 +285,7 @@ const SearchFiltersComponent = props => {
       name="item"
       urlParam={itemFilter.paramName}
       label={itemLabel}
-      onSubmit={handleSelectOptions}
+      onSubmit={handleItemSelectOptions}
       showAsPopup
       options={itemFilterOptions}
       initialValues={initialItem}

@@ -269,6 +269,8 @@ class SearchFiltersMobileComponent extends Component {
 
     const initialItem = this.initialValues(itemFilter.paramName);
 
+    const itemFilterOptions = itemFilter.options.filter(option => option.key !== 'costume');
+
     const itemFilterElement =
       itemFilter && !this.state.showUserFilter ? (
         <SelectMultipleFilter
@@ -278,7 +280,7 @@ class SearchFiltersMobileComponent extends Component {
           label={itemLabel}
           onSubmit={this.handleSelectMultiple}
           liveEdit
-          options={itemFilter.options}
+          options={itemFilterOptions}
           initialValues={initialItem}
         />
       ) : null;

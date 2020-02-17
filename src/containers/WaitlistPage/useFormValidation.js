@@ -82,7 +82,7 @@ const useFormValidation = (initialState, validate) => {
           console.error(err);
           swal({
             title: 'Oops!',
-            text: 'Somehting went wrong, please try again',
+            text: 'Something went wrong, please try again',
             icon: 'error',
           }).then(window.location.reload());
         });

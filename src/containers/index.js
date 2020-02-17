@@ -24,6 +24,7 @@ export { default as PrivacyPolicyPage } from './PrivacyPolicyPage/PrivacyPolicyP
 export { default as ProfilePage } from './ProfilePage/ProfilePage';
 export { default as ProfileSettingsPage } from './ProfileSettingsPage/ProfileSettingsPage';
 export {default as Renter} from './HowItWorksPage/Renter';
+export {default as ReportsPage } from './ReportsPage/ReportsPage';
 export { default as SearchPage } from './SearchPage/SearchPage';
 export { default as StaticPage } from './StaticPage/StaticPage';
 export { default as StoryPage } from './StoryPage/StoryPage';

@@ -54,6 +54,7 @@ const cspEnabled = CSP === 'block' || CSP === 'report';
 const app = express();
 
 const handleEmailRequest = require('./sendgrid');
+const { handleUserCsvRequest, handleListingCsvRequest } = require('./reports');
 
 const errorPage = fs.readFileSync(path.join(buildPath, '500.html'), 'utf-8');
 
@@ -128,6 +129,14 @@ app.use(cookieParser());
 // handle email request either from contact form or from new posted listing
 app.get('/api/send', (req, res) => {
   handleEmailRequest(req, res);
+});
+
+app.get('/api/user-csv', (req, res) => {
+  handleUserCsvRequest(req, res);
+});
+
+app.get('/api/listing-csv', (req, res) => {
+  handleListingCsvRequest(req, res);
 });
 
 // Use basic authentication when not in dev mode. This is

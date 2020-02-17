@@ -26,6 +26,7 @@ import {
   ProfilePage,
   ProfileSettingsPage,
   Renter,
+  ReportsPage,
   SearchPage,
   StoryPage,
   StyleguidePage,
@@ -71,6 +72,11 @@ const routeConfiguration = () => {
       path: '/howitworks',
       name: 'HowItWorksPage',
       component: HowitWorksPage,
+    },
+    {
+      path: '/reports',
+      name: 'ReportsPage',
+      component: props => <ReportsPage {...props} />,
     },
     {
       path: '/renter',

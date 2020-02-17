@@ -1016,6 +1016,7 @@
   "Topbar.mobileSearchHelp": "Tip: You can also search items by zip code, for example \"00500\" or city district – \"Sörnäinen\".",
   "Topbar.searchIcon": "Open search",
   "TopbarDesktop.accountSettingsLink": "Account settings",
+  "TopbarDesktop.reportsPageLink": "System reports",
   "TopbarDesktop.createListing": "+ Add your item",
   "TopbarDesktop.inbox": "History",
   "TopbarDesktop.login": "Log in",

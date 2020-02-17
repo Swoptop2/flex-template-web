@@ -1,0 +1,41 @@
+@import '../../marketplace.css';
+
+.root {
+  background-color: var(--matterColorLight);
+}
+
+.content {
+  padding: 15px;
+  padding: 24px 33px;
+  @media (--viewportMedium) {
+    padding: 24px 110px;
+  }
+}
+
+.title {
+  color: #000000;
+  margin: 0;
+  font-size: 43px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  margin-bottom: 40px;
+  margin-top: 30px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 35px;
+}
+
+.button {
+  @apply --marketplaceButtonStyles;
+  margin: 0 auto;
+  width: 73%;
+  padding: 15px;
+  justify-self: center;
+  animation-delay: 0.8s;
+  @media (--viewportMedium) {
+    width: 20%;
+  }
+}

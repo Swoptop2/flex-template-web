@@ -17,6 +17,7 @@ import css from './ReportsPage.css';
 const ReportsPage = ({ currentUser }) => {
   const [hideButtons, setHideButtons] = useState(true);
   const [disableUserBtn, setDisableUserBtn] = useState(false);
+  const [disableListingBtn, setDisableListingBtn] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -48,6 +49,56 @@ const ReportsPage = ({ currentUser }) => {
       .then(res => {
         users = res.data;
         exportCSVFile(headers, users, 'Swoptop Users');
+      })
+      .catch(err => {
+        console.error(err);
+        swal({
+          title: 'Oops!',
+          text: 'Something went wrong, please reload and try again',
+          icon: 'error',
+        });
+      });
+  };
+
+  const generateListingCsv = _ => {
+    let listings = [];
+    var headers = {
+      title: 'Title', // remove commas to avoid errors
+      author: 'Author',
+      brand: 'Brand',
+      color: 'Color',
+      damageCost: 'Damage Cost',
+      fits: 'Fits',
+      location: 'Location',
+      retailPrice: 'Retail Price',
+      size: 'Size',
+      price: 'Price',
+    };
+    setDisableListingBtn(true);
+    swal({
+      title: 'Success!',
+      text: 'Please wait while your file downloads',
+      icon: 'success',
+    });
+    axios('/api/listing-csv')
+      .then(res => {
+        listings = res.data;
+        const formattedListings = [];
+        listings.forEach(lst => {
+          formattedListings.push({
+            title: lst.title.replace(/,/g, ''),
+            author: lst.author.replace(/,/g, ''),
+            brand: lst.brand.replace(/,/g, ''),
+            color: lst.color,
+            damageCost: lst.damageCost,
+            fits: lst.fits,
+            location: lst.location.replace(/,/g, ''),
+            retailPrice: lst.retailPrice,
+            size: lst.size,
+            price: lst.price,
+          });
+        });
+        exportCSVFile(headers, formattedListings, 'Swoptop Listings');
       })
       .catch(err => {
         console.error(err);
@@ -133,7 +184,11 @@ const ReportsPage = ({ currentUser }) => {
                 <button onClick={generateUserCsv} disabled={disableUserBtn} className={css.button}>
                   Generate User CSV
                 </button>
-                <button disabled={hideButtons} className={css.button}>
+                <button
+                  onClick={generateListingCsv}
+                  disabled={disableListingBtn}
+                  className={css.button}
+                >
                   Generate Listing CSV
                 </button>
               </div>

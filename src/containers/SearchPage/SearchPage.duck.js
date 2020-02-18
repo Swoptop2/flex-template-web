@@ -169,7 +169,6 @@ export const searchListings = searchParams => (dispatch, getState, sdk) => {
   if (!params.pub_item) {
     params.pub_item = items;
   }
-  console.log(params);
   return sdk.listings
     .query(params)
     .then(response => {

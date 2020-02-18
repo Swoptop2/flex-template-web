@@ -51,6 +51,19 @@ exports[`LandingPage matches snapshot 1`] = `
       rootClassName={null}
     >
       <div>
+        <p>
+          Follow
+           
+          <a
+            href="https://www.instagram.com/swoptop/?igshid=g9ec4w44231a"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            @swoptop
+          </a>
+           
+          to learn more
+        </p>
         <SectionHero
           className={null}
           history={

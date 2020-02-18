@@ -61,31 +61,49 @@ class TopbarSearchFormComponent extends Component {
                   };
 
                   const searchInput = { ...restInput, onChange: searchOnChange };
-                  return (
-                    <LocationAutocompleteInput
-                      className={isMobile ? css.mobileInputRoot : desktopInputRootClass}
-                      iconClassName={isMobile ? css.mobileIcon : css.desktopIcon}
-                      inputClassName={isMobile ? css.mobileInput : css.desktopInput}
-                      predictionsClassName={
-                        isMobile ? css.mobilePredictions : css.desktopPredictions
-                      }
-                      predictionsAttributionClassName={
-                        isMobile ? css.mobilePredictionsAttribution : null
-                      }
-                      placeholder={
-                        isMobile
-                          ? 'Try "Tuscaloosa, Alabama" '
-                          : intl.formatMessage({ id: 'TopbarSearchForm.placeholder' })
-                      }
-                      closeOnBlur={!isMobile}
-                      inputRef={node => {
-                        this.searchInput = node;
-                      }}
-                      input={searchInput}
-                      meta={meta}
-                      isMobile={isMobile}
-                    />
-                  );
+                  // TODO: change back to true whe ready to search by locations on top bar
+                  const showAutoCompleteInput = false;
+                  if (showAutoCompleteInput) {
+                    return (
+                      <LocationAutocompleteInput
+                        className={isMobile ? css.mobileInputRoot : desktopInputRootClass}
+                        iconClassName={isMobile ? css.mobileIcon : css.desktopIcon}
+                        inputClassName={isMobile ? css.mobileInput : css.desktopInput}
+                        predictionsClassName={
+                          isMobile ? css.mobilePredictions : css.desktopPredictions
+                        }
+                        predictionsAttributionClassName={
+                          isMobile ? css.mobilePredictionsAttribution : null
+                        }
+                        placeholder={
+                          isMobile
+                            ? 'Try "Tuscaloosa, Alabama" '
+                            : intl.formatMessage({ id: 'TopbarSearchForm.placeholder' })
+                        }
+                        closeOnBlur={!isMobile}
+                        inputRef={node => {
+                          this.searchInput = node;
+                        }}
+                        input={searchInput}
+                        meta={meta}
+                        isMobile={isMobile}
+                      />
+                    );
+                  } else {
+                    return (
+                      <div className={css.learnMore}>
+                        Follow{' '}
+                        <a
+                          href="https://www.instagram.com/swoptop/?igshid=g9ec4w44231a"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          @swoptop
+                        </a>{' '}
+                        to learn more
+                      </div>
+                    );
+                  }
                 }}
               />
             </Form>

@@ -133,10 +133,17 @@ export const deletePaymentMethodError = e => ({
 
 // ================ Thunks ================ //
 
-export const createStripeCustomer = stripePaymentMethodId => (dispatch, getState, sdk) => {
+export const createStripeCustomer = (stripePaymentMethodId, userEmail) => (
+  dispatch,
+  getState,
+  sdk
+) => {
   dispatch(stripeCustomerCreateRequest());
   return sdk.stripeCustomer
-    .create({ stripePaymentMethodId }, { expand: true, include: ['defaultPaymentMethod'] })
+    .create(
+      { stripePaymentMethodId, stripeCustomerEmail: userEmail },
+      { expand: true, include: ['defaultPaymentMethod'] }
+    )
     .then(response => {
       const stripeCustomer = response.data.data;
       dispatch(stripeCustomerCreateSuccess(stripeCustomer));
@@ -189,17 +196,16 @@ export const updatePaymentMethod = stripePaymentMethodId => (dispatch, getState,
 };
 
 // This function helps to choose correct thunk function
-export const savePaymentMethod = (stripeCustomer, stripePaymentMethodId) => (
+export const savePaymentMethod = (stripeCustomer, stripePaymentMethodId, userEmail) => (
   dispatch,
   getState,
   sdk
 ) => {
   const hasAlreadyDefaultPaymentMethod =
     stripeCustomer && stripeCustomer.defaultPaymentMethod && stripeCustomer.defaultPaymentMethod.id;
-
   const savePromise =
     !stripeCustomer || !stripeCustomer.id
-      ? dispatch(createStripeCustomer(stripePaymentMethodId))
+      ? dispatch(createStripeCustomer(stripePaymentMethodId, userEmail))
       : hasAlreadyDefaultPaymentMethod
       ? dispatch(updatePaymentMethod(stripePaymentMethodId))
       : dispatch(addPaymentMethod(stripePaymentMethodId));

@@ -99,7 +99,6 @@ const checkIsPaymentExpired = existingTransaction => {
 export class CheckoutPageComponent extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       pageData: {},
       dataLoaded: false,
@@ -227,6 +226,8 @@ export class CheckoutPageComponent extends Component {
     } = handlePaymentParams;
     const storedTx = ensureTransaction(pageData.transaction);
 
+    const userEmail = currentUser ? currentUser.attributes.email : null;
+
     const ensuredCurrentUser = ensureCurrentUser(currentUser);
     const ensuredStripeCustomer = ensureStripeCustomer(ensuredCurrentUser.stripeCustomer);
     const ensuredDefaultPaymentMethod = ensurePaymentMethodCard(
@@ -330,7 +331,7 @@ export class CheckoutPageComponent extends Component {
       const pi = createdPaymentIntent || paymentIntent;
 
       if (selectedPaymentFlow === PAY_AND_SAVE_FOR_LATER_USE) {
-        return onSavePaymentMethod(ensuredStripeCustomer, pi.payment_method)
+        return onSavePaymentMethod(ensuredStripeCustomer, pi.payment_method, userEmail)
           .then(response => {
             if (response.errors) {
               return { ...fnParams, paymentMethodSaved: false };
@@ -970,8 +971,8 @@ const mapDispatchToProps = dispatch => ({
   onHandleCardPayment: params => dispatch(handleCardPayment(params)),
   onConfirmPayment: params => dispatch(confirmPayment(params)),
   onSendMessage: params => dispatch(sendMessage(params)),
-  onSavePaymentMethod: (stripeCustomer, stripePaymentMethodId) =>
-    dispatch(savePaymentMethod(stripeCustomer, stripePaymentMethodId)),
+  onSavePaymentMethod: (stripeCustomer, stripePaymentMethodId, userEmail) =>
+    dispatch(savePaymentMethod(stripeCustomer, stripePaymentMethodId, userEmail)),
 });
 
 const CheckoutPage = compose(

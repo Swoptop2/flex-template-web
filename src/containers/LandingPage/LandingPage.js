@@ -60,6 +60,17 @@ export const LandingPageComponent = props => {
         </LayoutWrapperTopbar>
         <LayoutWrapperMain>
           <div className={css.heroContainer}>
+            <p className={css.followNote}>
+              Follow{' '}
+              <a
+                rel="noopener noreferrer"
+                href="https://www.instagram.com/swoptop/?igshid=g9ec4w44231a"
+                target="_blank"
+              >
+                @swoptop
+              </a>{' '}
+              to learn more
+            </p>
             <SectionHero
               currentUser={currentUser}
               className={css.hero}

@@ -46,6 +46,16 @@
   }
 }
 
+.followNote {
+  z-index: 999;
+  width: 80%;
+  margin: 15px auto;
+  text-align: center;
+  @media (--viewportMedium) {
+    display: none;
+  }
+}
+
 .title {
   @apply --marketplaceH1FontStyles;
   margin-top: 0;

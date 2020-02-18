@@ -96,7 +96,7 @@
 
 .heroContent {
   margin: 20px 24px 50px 24px;
-  transform: translateY(-220px);
+  transform: translateY(-250px);
 
   @media (--viewportMedium) {
     margin: 50px 7.5vw 50px 7.5vw;

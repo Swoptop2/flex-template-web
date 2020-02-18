@@ -47,6 +47,8 @@ const PaymentMethodsPageComponent = props => {
     stripeCustomerFetched,
   } = props;
 
+  const userEmail = currentUser ? currentUser.attributes.email : null;
+
   const getClientSecret = setupIntent => {
     return setupIntent && setupIntent.attributes ? setupIntent.attributes.clientSecret : null;
   };
@@ -100,8 +102,7 @@ const PaymentMethodsPageComponent = props => {
       .then(result => {
         const newPaymentMethod = result.setupIntent.payment_method;
         // Note: stripe.handleCardSetup might return an error inside successful call (200), but those are rejected in thunk functions.
-
-        return onSavePaymentMethod(stripeCustomer, newPaymentMethod);
+        return onSavePaymentMethod(stripeCustomer, newPaymentMethod, userEmail);
       })
       .then(() => {
         // Update currentUser entity and its sub entities: stripeCustomer and defaultPaymentMethod
@@ -255,8 +256,8 @@ const mapDispatchToProps = dispatch => ({
   fetchStripeCustomer: () => dispatch(stripeCustomer()),
   onHandleCardSetup: params => dispatch(handleCardSetup(params)),
   onCreateSetupIntent: params => dispatch(createStripeSetupIntent(params)),
-  onSavePaymentMethod: (stripeCustomer, newPaymentMethod) =>
-    dispatch(savePaymentMethod(stripeCustomer, newPaymentMethod)),
+  onSavePaymentMethod: (stripeCustomer, newPaymentMethod, userEmail) =>
+    dispatch(savePaymentMethod(stripeCustomer, newPaymentMethod, userEmail)),
   onDeletePaymentMethod: params => dispatch(deletePaymentMethod(params)),
 });
 

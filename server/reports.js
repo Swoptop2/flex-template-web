@@ -17,6 +17,7 @@ const handleUserCsvRequest = (req, res) => {
       usersArray = [...resp.data.data];
     })
     .then(resp2 => {
+      // make query for all the pages to get all users
       for (let i = 2; i < totalPages + 1; i++) {
         integrationSdk.users
           .query({ page: i })
@@ -25,8 +26,7 @@ const handleUserCsvRequest = (req, res) => {
           })
           .then(resp4 => {
             if (usersArray.length === totalItems) {
-              // console.log('aqui está la jugada', usersArray.length);
-              // res.json(usersArray);
+              // map through users array to get desired data and create an array of objects with desired fields
               const userDataArray = usersArray.map(usr => {
                 return {
                   name: `${usr.attributes.profile.firstName} ${usr.attributes.profile.lastName}`,
@@ -57,7 +57,62 @@ const handleUserCsvRequest = (req, res) => {
     .catch(err => console.log(err));
 };
 
-const handleListingCsvRequest = (req, res) => {};
+const handleListingCsvRequest = (req, res) => {
+  let listingsArray = [];
+  let totalPages, totalItems;
+  integrationSdk.listings
+    .query()
+    .then(resp => {
+      totalPages = resp.data.meta.totalPages;
+      totalItems = resp.data.meta.totalItems;
+      listingsArray = [...resp.data.data];
+    })
+    .then(resp2 => {
+      for (let i = 2; i < totalPages + 1; i++) {
+        integrationSdk.listings
+          .query({ page: i })
+          .then(resp3 => {
+            listingsArray = [...listingsArray, ...resp3.data.data];
+          })
+          .then(resp4 => {
+            if (listingsArray.length === totalItems) {
+              // map through listings array to return desired objects
+              const listingDataArray = listingsArray.map(lst => {
+                return {
+                  title: lst.attributes.title,
+                  author: lst.attributes.publicData.author ? lst.attributes.publicData.author : '-',
+                  brand: lst.attributes.publicData.brandStore
+                    ? lst.attributes.publicData.brandStore
+                    : '-',
+                  color: lst.attributes.publicData.color ? lst.attributes.publicData.color : '-',
+                  damageCost: lst.attributes.publicData.damageCost
+                    ? `$${lst.attributes.publicData.damageCost}`
+                    : '-',
+                  fits:
+                    lst.attributes.publicData.fits === 'runs_true_to_size'
+                      ? 'True to size'
+                      : lst.attributes.publicData.fits === 'runs_small'
+                      ? 'Runs small'
+                      : lst.attributes.publicData.fits === 'runs_big'
+                      ? 'Runs big'
+                      : '-',
+                  location: lst.attributes.publicData.location
+                    ? lst.attributes.publicData.location.address
+                    : '-',
+                  retailPrice: lst.attributes.publicData.retailPrice
+                    ? `$${lst.attributes.publicData.retailPrice}`
+                    : '-',
+                  size: lst.attributes.publicData.size ? lst.attributes.publicData.size : '-',
+                  price: lst.attributes.price ? `$${lst.attributes.price.amount / 100}` : null,
+                };
+              });
+              res.send(listingDataArray);
+            }
+          });
+      }
+    })
+    .catch(err => console.log(err));
+};
 
 module.exports = {
   handleUserCsvRequest,

@@ -1,4 +1,5 @@
 const flexIntegrationSdk = require('sharetribe-flex-integration-sdk');
+const moment = require('moment');
 
 const integrationSdk = flexIntegrationSdk.createInstance({
   clientId: process.env.FLEX_INTEGRATION_CLIENT_ID,
@@ -81,6 +82,8 @@ const handleListingCsvRequest = (req, res) => {
                 return {
                   title: lst.attributes.title,
                   author: lst.attributes.publicData.author ? lst.attributes.publicData.author : '-',
+                  createdAt: moment(lst.attributes.createdAt).format('MMM DD YYYY'),
+                  item: lst.attributes.publicData.item ? lst.attributes.publicData.item : '-',
                   brand: lst.attributes.publicData.brandStore
                     ? lst.attributes.publicData.brandStore
                     : '-',
@@ -104,6 +107,9 @@ const handleListingCsvRequest = (req, res) => {
                     : '-',
                   size: lst.attributes.publicData.size ? lst.attributes.publicData.size : '-',
                   price: lst.attributes.price ? `$${lst.attributes.price.amount / 100}` : null,
+                  listingId: lst.attributes.publicData.listingIdForLikeFilter
+                    ? lst.attributes.publicData.listingIdForLikeFilter
+                    : '-',
                 };
               });
               res.send(listingDataArray);

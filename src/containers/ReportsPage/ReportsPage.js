@@ -65,6 +65,8 @@ const ReportsPage = ({ currentUser }) => {
     var headers = {
       title: 'Title', // remove commas to avoid errors
       author: 'Author',
+      createdAt: 'Created at',
+      item: 'Item',
       brand: 'Brand',
       color: 'Color',
       damageCost: 'Damage Cost',
@@ -73,6 +75,7 @@ const ReportsPage = ({ currentUser }) => {
       retailPrice: 'Retail Price',
       size: 'Size',
       price: 'Price',
+      listingId: 'Listing ID',
     };
     setDisableListingBtn(true);
     swal({
@@ -88,6 +91,8 @@ const ReportsPage = ({ currentUser }) => {
           formattedListings.push({
             title: lst.title.replace(/,/g, ''),
             author: lst.author.replace(/,/g, ''),
+            createdAt: lst.createdAt,
+            item: lst.item,
             brand: lst.brand.replace(/,/g, ''),
             color: lst.color,
             damageCost: lst.damageCost,
@@ -96,6 +101,7 @@ const ReportsPage = ({ currentUser }) => {
             retailPrice: lst.retailPrice,
             size: lst.size,
             price: lst.price,
+            listingId: lst.listingId,
           });
         });
         exportCSVFile(headers, formattedListings, 'Swoptop Listings');

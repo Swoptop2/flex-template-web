@@ -10247,10 +10247,10 @@ sharetribe-flex-integration-sdk@^1.1.0:
     transit-js "^0.8.861"
     xdg-basedir "^4.0.0"
 
-sharetribe-flex-sdk@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/sharetribe-flex-sdk/-/sharetribe-flex-sdk-1.8.0.tgz#d7f24bf416f15c5f20d7b6830e0d6e5832082b43"
-  integrity sha512-600NLlvQamxQP8hKhyWlytl5cycoYxAMce1xXAFxTMAoNiOyLEh9K/6I4nrf9AowpDL+2IoPvWGZd9ftl4xeGQ==
+sharetribe-flex-sdk@^1.9.0:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/sharetribe-flex-sdk/-/sharetribe-flex-sdk-1.9.1.tgz#a73f4cbe1ecc11de014a80724a55a43f7e57bfa6"
+  integrity sha512-KDi0u5dHpUHmdbUH940oDWdLhtcD+OBs3RVnILZsv/HFWhtJuwEZxqjJ9h1SwF1L1aZ7hlgWhoae6Md4fe75WQ==
   dependencies:
     axios "^0.19.0"
     js-cookie "^2.1.3"

@@ -166,7 +166,7 @@ describe('Auth duck', () => {
     });
 
     it('should set initial state for anonymous users', () => {
-      const authInfoAnonymous = { grantType: 'client_credentials' };
+      const authInfoAnonymous = { isAnonymous: true };
       const initialState = reducer();
       expect(initialState.authInfoLoaded).toEqual(false);
       const state = reducer(initialState, authInfoSuccess(authInfoAnonymous));
@@ -175,12 +175,12 @@ describe('Auth duck', () => {
     });
 
     it('should set initial state for unauthenticated users', () => {
-      const authInfoLoggedIn = { grantType: 'refresh_token' };
+      const authInfoLoggedIn = { isAnonymous: true };
       const initialState = reducer();
       expect(initialState.authInfoLoaded).toEqual(false);
       const state = reducer(initialState, authInfoSuccess(authInfoLoggedIn));
       expect(state.authInfoLoaded).toEqual(true);
-      expect(state.isAuthenticated).toEqual(true);
+      expect(state.isAuthenticated).toEqual(false);
     });
   });
 

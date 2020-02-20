@@ -169,3 +169,8 @@
 .learnMore {
   font-size: 17px;
 }
+
+.learnMore a {
+  color: #ff0484;
+  font-weight: 900;
+}

@@ -56,6 +56,11 @@
   }
 }
 
+.followNote a {
+  color: #ff0484;
+  font-weight: 900;
+}
+
 .title {
   @apply --marketplaceH1FontStyles;
   margin-top: 0;

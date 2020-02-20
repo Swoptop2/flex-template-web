@@ -51,7 +51,7 @@ export const items = [
   { key: 'dress', label: 'Dress' },
   { key: 'gown', label: 'Gown' },
   { key: 'jacket', label: 'Jacket' },
-  { key: 'matching_set', label: 'Matching Set' },
+  { key: 'matching_set', label: 'Set' },
   { key: 'pants', label: 'Pants' },
   { key: 'romper', label: 'Romper' },
   { key: 'shorts', label: 'Shorts' },
@@ -71,6 +71,7 @@ export const sizes = [
   { key: 'l-12', label: 'L, 12' },
   { key: 'xl-14', label: 'XL, 14' },
   { key: 'xl-16', label: 'XL, 16' },
+  { key: 'one_size_fits_all', label: 'one size fits all' },
 ];
 
 export const colors = [

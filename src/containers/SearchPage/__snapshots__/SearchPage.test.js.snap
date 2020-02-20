@@ -170,7 +170,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                 },
                 Object {
                   "key": "matching_set",
-                  "label": "Matching Set",
+                  "label": "Set",
                 },
                 Object {
                   "key": "pants",
@@ -254,6 +254,10 @@ exports[`SearchPageComponent matches snapshot 1`] = `
                 Object {
                   "key": "xl-16",
                   "label": "XL, 16",
+                },
+                Object {
+                  "key": "one_size_fits_all",
+                  "label": "one size fits all",
                 },
               ],
               "paramName": "pub_size",

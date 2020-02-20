@@ -259,6 +259,10 @@ exports[`ListingPage matches snapshot 1`] = `
                       "key": "xl-16",
                       "label": "XL, 16",
                     },
+                    Object {
+                      "key": "one_size_fits_all",
+                      "label": "one size fits all",
+                    },
                   ]
                 }
                 publicData={Object {}}
@@ -610,6 +614,10 @@ exports[`ListingPage matches snapshot 1`] = `
                 Object {
                   "key": "xl-16",
                   "label": "XL, 16",
+                },
+                Object {
+                  "key": "one_size_fits_all",
+                  "label": "one size fits all",
                 },
               ]
             }

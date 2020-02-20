@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import 'intersection-observer';
 import { propTypes } from '../../util/types';
 import { ListingCard, PaginationLinks } from '../../components';
 import css from './SearchResultsPanel.css';

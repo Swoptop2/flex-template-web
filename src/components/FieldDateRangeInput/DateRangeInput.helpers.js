@@ -14,7 +14,7 @@ const timeSlotEqualsDay = (timeSlot, day) => {
     // the start date is used to represent available dates.
     const localStartDate = dateFromAPIToLocalNoon(timeSlot.attributes.start);
 
-    return isSameDay(day, moment(localStartDate).subtract(1, 'days'));
+    return isSameDay(day, moment(localStartDate).subtract(2, 'days'));
   } else {
     return false;
   }
@@ -118,7 +118,9 @@ export const pickerEndDateToApiDate = (unitType, endDate) => {
  */
 export const isDayBlockedFn = (timeSlots, startDate, endDate, focusedInput, unitType) => {
   const endOfRange = config.dayCountAvailableForBooking - 1;
-  const lastBookableDate = moment().add(endOfRange, 'days');
+  const lastBookableDate = moment()
+    .add(endOfRange, 'days')
+    .add(1, 'days');
 
   // start date selected, end date missing
   const startDateSelected = isStartDateSelected(timeSlots, startDate, endDate, focusedInput);

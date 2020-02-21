@@ -46,6 +46,8 @@ const handleUserCsvRequest = (req, res) => {
                     : '-',
                   height: usr.attributes.profile.publicData.height
                     ? usr.attributes.profile.publicData.height
+                        .replace(/'/g, 'ft')
+                        .replace(/"/g, 'in')
                     : '-',
                   allowstryOns: usr.attributes.profile.publicData.userAllowsTryOns ? 'Yes' : 'No',
                 };

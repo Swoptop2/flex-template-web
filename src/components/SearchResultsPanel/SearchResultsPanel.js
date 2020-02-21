@@ -37,11 +37,7 @@ const SearchResultsPanel = props => {
     }
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
-        if (
-          entry.isIntersecting === false &&
-          document.documentElement.scrollTop > 0 &&
-          window.innerWidth > 450
-        ) {
+        if (entry.isIntersecting === false && window.innerWidth > 450) {
           window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
         }
       });

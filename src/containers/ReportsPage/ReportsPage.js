@@ -37,6 +37,7 @@ const ReportsPage = ({ currentUser }) => {
       school: 'School',
       sorority: 'Sorority',
       height: 'Height',
+      insta: 'Insta Handle',
       allowstryOns: 'Allows Try Ons',
     };
     setDisableUserBtn(true);

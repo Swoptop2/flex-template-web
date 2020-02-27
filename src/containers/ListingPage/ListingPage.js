@@ -93,6 +93,22 @@ export class ListingPageComponent extends Component {
   }
 
   componentDidMount() {
+    // check if a previous listing's data is still stored in local storage. remove if so
+    const localData = localStorage.getItem('cardData');
+    if (localData) {
+      localStorage.removeItem('cardData');
+    }
+    // store props.params.slug and props.params.id in local storage
+    const {
+      params: { slug, id },
+    } = this.props;
+    const cardData = {
+      listingSlug: slug,
+      listingId: id,
+    };
+
+    localStorage.setItem('cardData', JSON.stringify(cardData));
+    // remove on componentWillUnmount after a few seconds so listing card has time to check -->
     if (this.props.currentUser) {
       const {
         attributes: { email },
@@ -103,6 +119,12 @@ export class ListingPageComponent extends Component {
         }
       } catch (err) {}
     }
+  }
+
+  componentWillUnmount() {
+    setTimeout(() => {
+      localStorage.removeItem('cardData');
+    }, 5000);
   }
 
   handleSubmit(values) {

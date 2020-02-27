@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { string, func } from 'prop-types';
 import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl';
 import classNames from 'classnames';
@@ -49,6 +49,7 @@ const priceData = (price, intl) => {
 
 export const ListingCardComponent = props => {
   const [isLiked, setIsLiked] = useState(false);
+  const listingCardRef = useRef(null);
   // const [imgStyle, setImgStyle] = useState({ backgroundColor: '#ffffff' });
   // const canvasRef = useRef(null);
   // const imgRef = useRef(null);
@@ -74,15 +75,14 @@ export const ListingCardComponent = props => {
   const { formattedPrice, priceTitle } = priceData(price, intl);
 
   useEffect(() => {
-    // imgRef.current.addEventListener('load', () => {
-    //   if (canvasRef.current) {
-    //     let context = canvasRef.current.getContext('2d');
-    //     context.drawImage(imgRef.current, 0, 0);
-    //     const result = context.getImageData(0, 0, 1, 1).data;
-    //     setImgStyle({ backgroundColor: `rgb(${result[0]}, ${result[1]}, ${result[2]})` });
-    //   }
-    // });
-
+    const localData = localStorage.getItem('cardData');
+    if (localData) {
+      const { listingSlug, listingId } = JSON.parse(localData);
+      // 2. compare listing's slug and uuid and scroll into view if they match
+      if (listingSlug === slug && listingId === id) {
+        listingCardRef.current.scrollIntoView();
+      }
+    }
     if (currentUser) {
       if (currentUser.attributes.profile.publicData.likedListings) {
         const {
@@ -98,7 +98,7 @@ export const ListingCardComponent = props => {
           setIsLiked(true);
         }
         return () => {
-          // remove array from local storage
+          // remove array from local storage on unmount
           localStorage.removeItem('liked');
         };
       }
@@ -136,7 +136,7 @@ export const ListingCardComponent = props => {
         </div>
       ) : null}
       <NamedLink className={classes} name="ListingPage" params={{ id, slug }}>
-        <div className={css.threeToTwoWrapper}>
+        <div ref={listingCardRef} className={css.threeToTwoWrapper}>
           <div style={{ backgroundColor: '#ffffff' }} className={css.aspectWrapper}>
             {/* <canvas style={{ display: 'none' }} ref={canvasRef}></canvas>
             <img

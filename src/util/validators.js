@@ -31,7 +31,7 @@ export const required = message => value => {
 };
 
 export const noDecimals = message => value => {
-  if (value.indexOf('.') !== -1) {
+  if (value.toString().indexOf('.') !== -1) {
     return message;
   } else {
     return VALID;

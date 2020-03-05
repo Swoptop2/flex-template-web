@@ -11,6 +11,7 @@ exports[`ListingCard matches snapshot 1`] = `
         "slug": "listing1-title",
       }
     }
+    scrollPosition={0}
   >
     <div>
       <div

@@ -9,7 +9,7 @@ import { ensureListing, ensureUser } from '../../util/data';
 import { richText } from '../../util/richText';
 import { createSlug } from '../../util/urlHelpers';
 import config from '../../config';
-import { NamedLink, ResponsiveImage } from '../../components';
+import { ListingNamedLink, ResponsiveImage } from '../../components';
 // import { types as sdkTypes } from '../../util/sdkLoader';
 
 import css from './ListingCard.css';
@@ -49,6 +49,7 @@ const priceData = (price, intl) => {
 
 export const ListingCardComponent = props => {
   const [isLiked, setIsLiked] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
   const listingCardRef = useRef(null);
   // const [imgStyle, setImgStyle] = useState({ backgroundColor: '#ffffff' });
   // const canvasRef = useRef(null);
@@ -75,14 +76,8 @@ export const ListingCardComponent = props => {
   const { formattedPrice, priceTitle } = priceData(price, intl);
 
   useEffect(() => {
-    const localData = localStorage.getItem('cardData');
-    if (localData) {
-      const { listingSlug, listingId } = JSON.parse(localData);
-      // 2. compare listing's slug and uuid and scroll into view if they match
-      if (listingSlug === slug && listingId === id) {
-        listingCardRef.current.scrollIntoView();
-      }
-    }
+    setScrollPosition(listingCardRef.current.offsetTop);
+
     if (currentUser) {
       if (currentUser.attributes.profile.publicData.likedListings) {
         const {
@@ -103,7 +98,6 @@ export const ListingCardComponent = props => {
         };
       }
     }
-
     // eslint-disable-next-line
   }, [currentUser, firstImage]);
 
@@ -135,7 +129,12 @@ export const ListingCardComponent = props => {
           ></i>
         </div>
       ) : null}
-      <NamedLink className={classes} name="ListingPage" params={{ id, slug }}>
+      <ListingNamedLink
+        className={classes}
+        name="ListingPage"
+        scrollPosition={scrollPosition}
+        params={{ id, slug }}
+      >
         <div ref={listingCardRef} className={css.threeToTwoWrapper}>
           <div style={{ backgroundColor: '#ffffff' }} className={css.aspectWrapper}>
             {/* <canvas style={{ display: 'none' }} ref={canvasRef}></canvas>
@@ -187,7 +186,7 @@ export const ListingCardComponent = props => {
             </div>
           </div>
         </div>
-      </NamedLink>
+      </ListingNamedLink>
     </div>
   );
 };

@@ -95,14 +95,14 @@ export class ListingPageComponent extends Component {
   componentDidMount() {
     // store props.params.slug and props.params.id in local storage
     const {
-      params: { slug, id },
+      location: { scrollPosition },
     } = this.props;
     const cardData = {
-      listingSlug: slug,
-      listingId: id,
+      cardPosition: scrollPosition,
     };
-
-    localStorage.setItem('cardData', JSON.stringify(cardData));
+    if (scrollPosition) {
+      localStorage.setItem('cardData', JSON.stringify(cardData));
+    }
     // remove on componentWillUnmount after a few seconds so listing card has time to check -->
     if (this.props.currentUser) {
       const {
@@ -119,7 +119,7 @@ export class ListingPageComponent extends Component {
   componentWillUnmount() {
     setTimeout(() => {
       localStorage.removeItem('cardData');
-    }, 90000);
+    }, 70000);
   }
 
   handleSubmit(values) {

@@ -22,6 +22,7 @@ class MainPanel extends Component {
     this.divRef = React.createRef();
     this.topDivRef = React.createRef();
     this.setScroll = this.setScroll.bind(this);
+    this.pageChanged = false;
   }
 
   setScroll() {
@@ -30,15 +31,47 @@ class MainPanel extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    // if there is a scroll position in local storage, scroll to there first
+    const localData = JSON.parse(localStorage.getItem('cardData'));
     if (this.props.currentUser && prevProps.currentUser) {
+      if (
+        this.props.currentUser.attributes.profile.publicData.likedListings !==
+        prevProps.currentUser.attributes.profile.publicData.likedListings
+      ) {
+        return;
+      }
+      if (prevProps.pagination && this.props.pagination) {
+        if (prevProps.pagination.page !== this.props.pagination.page) {
+          this.pageChanged = true;
+        }
+        if (this.pageChanged) {
+          this.myRef.current.scrollTop = 0;
+          return;
+        }
+        if (localData && !this.pageChanged) {
+          this.myRef.current.scrollTop = localData.cardPosition - 80;
+          return;
+        }
+      }
       if (
         this.props.currentUser.attributes.profile.publicData.likedListings ===
         prevProps.currentUser.attributes.profile.publicData.likedListings
       ) {
         if (this.topDivRef.current) {
-          // this.topDivRef.current.scrollIntoView();
           this.myRef.current.scrollTop = 0;
         }
+      }
+    } else if (prevProps.pagination && this.props.pagination) {
+      if (prevProps.pagination.page !== this.props.pagination.page) {
+        this.pageChanged = true;
+      }
+      if (this.pageChanged) {
+        this.myRef.current.scrollTop = 0;
+        return;
+      }
+      if (localData && !this.pageChanged) {
+        this.myRef.current.scrollTop = localData.cardPosition - 80;
+        return;
       }
     } else {
       this.myRef.current.scrollTop = 0;

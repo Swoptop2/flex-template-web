@@ -44,6 +44,13 @@ export class ProfilePageComponent extends Component {
 
     this.showOfProviderReviews = this.showOfProviderReviews.bind(this);
     this.showOfCustomerReviews = this.showOfCustomerReviews.bind(this);
+    this.topRef = React.createRef();
+  }
+
+  componentDidMount() {
+    try {
+      this.topRef.current.scrollIntoView();
+    } catch (error) {}
   }
 
   showOfProviderReviews() {
@@ -191,6 +198,9 @@ export class ProfilePageComponent extends Component {
 
     const mainContent = (
       <div>
+        <div ref={this.topRef} style={{ visibility: 'hidden' }}>
+          emtpy
+        </div>
         <h1 className={css.desktopHeading}>
           <FormattedMessage id="ProfilePage.desktopHeading" values={{ name: displayName }} />
         </h1>
@@ -235,6 +245,7 @@ export class ProfilePageComponent extends Component {
           </div>
         ) : null}
         {isMobileLayout ? mobileReviews : desktopReviews}
+        {/* <div ref={this.topRef}>test</div> */}
       </div>
     );
 

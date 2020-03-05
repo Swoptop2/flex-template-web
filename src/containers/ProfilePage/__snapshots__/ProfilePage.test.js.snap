@@ -68,6 +68,15 @@ exports[`ProfilePage matches snapshot 1`] = `
       rootClassName={null}
     >
       <div>
+        <div
+          style={
+            Object {
+              "visibility": "hidden",
+            }
+          }
+        >
+          emtpy
+        </div>
         <h1>
           <FormattedMessage
             id="ProfilePage.desktopHeading"
